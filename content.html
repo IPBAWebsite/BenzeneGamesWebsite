@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Benzene Games</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
+    html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -60,100 +68,133 @@
     .topnav a:hover {
       color: black;
     }
-    @media screen and (max-width: 1000px) {
-      .topnav a {
-        padding: 0 10px;
-        font-size: 16px;
-        line-height: 60px;
-      }
-    }
-
-.socialiconnav a i {
-    font-size: 2em;
-    vertical-align: middle;
+@media screen and (max-width: 1000px) {
+  .topnav a {
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 60px;
+  }
 }
     
-footer {
-height: 75vh;
-background-color: #0d254e;
-z-index: 1;
-}
-      .socialIcons a:nth-child(1) i {
-    font-size: 3em;
-    color: #FF0000;
-    opacity: 0.9;
-}
-.socialIcons a:nth-child(2) i {
-    font-size: 3em;
-    color: #3b5998;
-    opacity: 0.9;
-}
-.socialIcons a:nth-child(3) i {
-    font-size: 3em;
-    color: black;
-    opacity: 0.9;
-}
-      .footerContainer{
-width: 100%;
-padidng: 70px 30px 20px;
-}
-      .socialIcons{
-display: flex;
-justify-content: center;
-}
-      .socialIcons a{
-text-decoration: none;
-padding: 10px;
-background-color: white;
-margin: 10px;
-margin-top: 310px;
-border-radius: 50%;
-}
-      .socialIcons a:hover{
-color: black;
-transition: 0.5s;
-}
-      .socialIcons a:hover i {
-color: white;
-transition: 0.5s;
-}
-      .footerNav{
-margin: 30px 0;
-}
-      .footerNav ul{
-display: flex;
-justify-content: center;
-list-style-type:none;
+
+    .socialiconnav a i {
+      font-size: 2em;
+      vertical-align: middle;
+    }
+    
+   footer {
+  min-height: 75vh;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+  background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-      .footerNav ul li a{
-color: white;
-margin-right: 40px;
-margin-left: 40px;
-text-decoration:none;
-font-size:2em;
-opacity:0.7;
-transition:0.5s;
-font-family: 'Merriweather', serif;
+    
+  .footerOverlay {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 83, 19, 0.85); 
+      z-index: 2;
+      pointer-events: none;
+    }
+
+  .footerContainer, .footerNav, .socialIcons {
+      position: relative;
+      z-index: 3; 
+    }
+
+  .socialIcons a:nth-child(1) i {
+      font-size: 5em;
+      color: #FF0000;
+    }
+  .socialIcons a:nth-child(2) i {
+      font-size: 5em;
+      color: #3b5998;
+      opacity: 0.9;
+    }
+  .socialIcons a:nth-child(3) i {
+      font-size: 5em;
+      color: black;
+    }
+  .footerContainer{
+      width: 100%;
+      padding: 70px 30px 20px;
+    }
+  .socialIcons{
+      display: flex;
+      justify-content: center;
+    }
+  .socialIcons a{
+      text-decoration: none;
+      padding: 10px;
+      margin: 10px;
+      margin-top: 310px;
+    background-color: white;
+    border-radius: 25%;
+    }
+  .socialIcons a:hover{
+      color: black;
+      transition: 0.5s;
+    }
+  .socialIcons a:hover i {
+      color: black;
+      transition: 0.5s;
+    }
+  .footerNav{
+      margin: 30px 0;
+    }
+    .footerNav ul{
+      display: flex;
+      justify-content: center;
+      list-style-type:none;
+    }
+  .footerNav ul li a {
+      color: white;
+      margin-right: 40px;
+      margin-left: 40px;
+      text-decoration:none;
+      font-size:2em;
+      opacity:0.9; 
+      transition:0.5s;
+      font-family: "Stack Sans Text", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      text-shadow: 2px 2px 8px #000; 
+    }
+.footerNav ul li a:hover {
+  opacity: 1;
+  color: black;            
+  text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c;
+  transition: 0.2s;
 }
-      .footerNav ul li a:hover {
-opacity: 1;
+    
+.footerBottom {
+  background-color: #ff5313;
+  padding: 20px;
+  text-align: center;
+  margin-top: 0;
 }
-.footerBottom{
-background-color: #091b3b;
-padding: 20px;
-text-align: center;
-}
-.footerBottom p{
-color: white;
-}
-.designer{
-opacity:0.7;
-text-transform: uppercase;
-letter-spacing: 1px;
-font-weight: 400;
-magin: 0px 5px;
-}
+  .footerBottom p{
+      color: white;
+    }
+    .designer{
+      opacity:0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 400;
+      magin: 0px 5px;
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -174,26 +215,27 @@ magin: 0px 5px;
     </ul>
   </div>
   <footer>
-   <div style="height: 6.25vh"></div>
-   <div class="footerContainer">
-   <div class="socialIcons">
-     <a href="https://www.youtube.com/@ChewAHerb"><i class="fa-brands fa-youtube"></i></a>
-<a href=""><i class="fa-brands fa-facebook"></i></a>
-<a href=""><i class="fa-brands fa-instagram"></i></a>
-   </div>
-<div style="height: 2.5vh"></div>
-   <div class="footerNav">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="brand.html">Brand</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact Us</a></li>
-</ul>
-</div>
-</div>
+    <div class="footerOverlay"></div>
+    <div style="height: 6.25vh"></div>
+    <div class="footerContainer">
+      <div class="socialIcons">
+        <a href="https://www.youtube.com/@ChewAHerb"><i class="fa-brands fa-youtube"></i></a>
+        <a href=""><i class="fa-brands fa-discord"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <div style="height: 2.5vh"></div>
+      <div class="footerNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="brand.html">Brand</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
   <div class="footerBottom">
-<p>Copyright &copy;2025; Designed by <span class="designer">Group5</p>
-</div>
+    <p>Copyright &copy;2025; Designed by <span class="designer">Group5</span></p>
+  </div>
 </body>
 </html>
