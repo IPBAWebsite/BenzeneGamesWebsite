@@ -239,7 +239,7 @@
   .hero-pagination {
   position: absolute;
   left: 50%;
-  bottom: 14px;                  /* slightly above progress bar */
+  bottom: 14px;                  
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
@@ -249,11 +249,11 @@
   pointer-events: auto;
 }
 
-/* each page indicator is a button for accessibility */
+
 .hero-page {
   display: inline-block;
-  width: 46px;                   /* length of the short line */
-  height: 6px;                   /* thickness */
+  width: 46px;                   
+  height: 6px;                   
   border-radius: 6px;
   background: rgba(255,255,255,0.18);
   border: none;
@@ -517,7 +517,7 @@
   function resetProgress() {
     progress.style.transition = 'none';
     progress.style.width = '0%';
-    // small timeout to allow transition reflow
+  
     requestAnimationFrame(() => {
       progress.style.transition = 'width ' + intervalMs + 'ms linear';
       progress.style.width = '100%';
@@ -535,17 +535,17 @@
     progressTimer = requestAnimationFrame(updateProgress);
   }
 
-  // events
+ 
   next.addEventListener('click', () => { nextSlide(); startAuto(); });
   prev.addEventListener('click', () => { prevSlide(); startAuto(); });
 
-  // pause on hover/focus
+
   slider.addEventListener('mouseenter', stopAuto);
   slider.addEventListener('mouseleave', startAuto);
   slider.addEventListener('focusin', stopAuto);
   slider.addEventListener('focusout', startAuto);
 
-  // keyboard left/right
+
   slider.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') prevSlide();
     if (e.key === 'ArrowRight') nextSlide();
@@ -565,8 +565,6 @@
   const pagination = document.getElementById('heroPagination');
 
   if (!pagination || slides.length <= 1) return; 
-
-  // build buttons dynamically (one per slide)
   slides.forEach((s, i) => {
     const btn = document.createElement('button');
     btn.className = 'hero-page';
@@ -576,8 +574,8 @@
 
     btn.addEventListener('click', (e) => {
       const idx = Number(e.currentTarget.dataset.index);
-      show(idx);          // show is assumed from your hero script
-      startAuto();        // restart auto-advance
+      show(idx);          
+      startAuto();        
     });
     pagination.appendChild(btn);
   });
@@ -589,7 +587,7 @@
       btn.classList.remove('active', 'done');
       btn.removeAttribute('aria-current');
       if (idx < currentIndex) {
-        // pages already visited
+        
         btn.classList.add('done');
       }
       if (idx === currentIndex) {
@@ -630,12 +628,8 @@
     window.heroPatch = true;
   }
 
-
   const initialActive = Array.from(slides).findIndex(s => s.classList.contains('active'));
   updatePagination(initialActive >= 0 ? initialActive : 0);
-
-
-
 })();
 </script>
 </body>
