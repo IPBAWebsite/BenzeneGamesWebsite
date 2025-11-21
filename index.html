@@ -170,6 +170,11 @@
       z-index: 3;
       position: relative;
     }
+    .hero-heading-group {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto 0.5rem auto;
+}
 
     .hero-content {
       text-align: center;
@@ -182,11 +187,8 @@
       padding: 12vh 20px 6vh; 
     }
 .brand-label {
-  display: inline-block !important;
-  margin: 0 auto 1.2rem auto !important;
-  text-align: center !important;
-  width: auto !important;
-  float: none !important;
+  display: block;
+  margin: 0 auto 1.2rem auto;
   font-size: 0.8rem;
   letter-spacing: 1.5px;
   color: rgba(255,255,255,0.85);
@@ -195,6 +197,7 @@
   border-radius: 20px;
   font-weight: 700;
   text-shadow: 0 2px 8px #000;
+  width: fit-content;
 }
    
     .hero-title {
@@ -215,7 +218,8 @@
         0 0 10px #ffc13c;
       letter-spacing: 0.03em;
       background: rgba(0,0,0,0.13);
-      display: inline-block;
+      display: block;      
+      margin: 0 auto 0.6rem auto;
       padding: 0.09em 0.21em;
       border-radius: 8px;
     }
@@ -491,7 +495,7 @@
             TURN UP THE HEAT WITH <span style="white-space:nowrap;">BENZENE GAMES</span>
           </h1>
           <p class="hero-desc">Your next favorite gaming content creators start here.</p>
-          <a class="hero-cta" href="#learn">Learn more</a>
+          <a class="hero-cta" href="brand.html">Learn more</a>
         </div>
       </article>
       <article class="hero-slide" style="background-image:url('download (4).jpg')" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
@@ -503,19 +507,21 @@
             Get to Know Us
           </h1>
           <p class="hero-desc"> A crew of content creators having fun and making content worth watching.</p>
-          <a class="hero-cta" href="brand.html">Learn more</a>
+          <a class="hero-cta" href="about.html">Learn more</a>
         </div>
       </article>
       <article class="hero-slide" style="background-image:url('Pc Setup.jpg')" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
         <div class="hero-overlay"></div>
         <div class="hero-rgboverlay"></div>
         <div class="hero-content">
-          <span class="brand-label">CONTENT</span>
-          <h1 class="hero-title"> Our Content </h1>
-          <p class="hero-desc"> New videos and streams are on the way.</p>
-          <a class="hero-cta" href="brand.html">Learn more</a>
+  <div class="hero-heading-group">
+    <span class="brand-label">ABOUT</span>
+    <h1 class="hero-title">Get to Know Us</h1>
   </div>
-</article>t
+  <p class="hero-desc">A crew of content creators having fun and making content worth watching.</p>
+  <a class="hero-cta" href="content.html">Learn more</a>
+</div>
+</article>
     </div>
     <button class="hero-arrow hero-prev" aria-label="Previous slide" id="heroPrev">‹</button>
     <button class="hero-arrow hero-next" aria-label="Next slide" id="heroNext">›</button>
