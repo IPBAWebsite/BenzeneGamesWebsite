@@ -7,12 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -68,20 +68,48 @@
     .topnav a:hover {
       color: black;
     }
-@media screen and (max-width: 1000px) {
-  .topnav a {
-    padding: 0 10px;
-    font-size: 16px;
-    line-height: 60px;
-  }
-}
-    
-
+    @media screen and (max-width: 1000px) {
+      .topnav a {
+        padding: 0 10px;
+        font-size: 16px;
+        line-height: 60px;
+      }
+    }
     .socialiconnav a i {
       font-size: 2em;
       vertical-align: middle;
     }
-.team-grid {
+
+    /* NEW: Main background wrapper except nav/footer */
+    .main-bg {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      /* Example background: gradient + optional image (customize as desired) */
+      background:
+        linear-gradient(110deg, #ff8040 0%, #ff2500 30%, #ffc13c 56%, #fff6b0 72%, #ff5313 88%, #fd392d 100%);
+      /* If you want to use your own background image, add it like below:
+      background: 
+        linear-gradient(110deg, #ff8040 0%, #ff2500 30%, #ffc13c 56%, #fff6b0 72%, #ff5313 88%, #fd392d 100%),
+        url('your-image.jpg') center center/cover no-repeat;
+      */
+    }
+
+    .main-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 12, 3, 0.32); /* like your hero overlays */
+      z-index: 0;
+      pointer-events: none;
+    }
+    .main-bg > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 40px 20px;
@@ -125,88 +153,85 @@
         grid-template-columns: 1fr;
       }
     }
-.hero {
-    width: 100%;
-    height: 30vh;
-    background-image: url('');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;   
-    justify-content: center; 
-    color: white; 
-    padding: 0 20px;
-}
+    .hero {
+      width: 100%;
+      height: 30vh;
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;   
+      justify-content: center; 
+      color: white; 
+      padding: 0 20px;
+    }
 
-.hero h1 {
-    font-size: 3vw;
-    font-family: "Metropolis Regular";
-    text-align: center;
-    margin: 0; 
-}
+    .hero h1 {
+      font-size: 3vw;
+      font-family: "Metropolis Regular";
+      text-align: center;
+      margin: 0; 
+    }
 
+    .who-section, .what-section, .mission-section {
+      display: flex;
+      align-items: center; 
+      justify-content: center; 
+      margin: 0;
+      width: 100%;
+      min-height: 40vh;
+    }
 
-.who-section, .what-section, .mission-section {
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    margin: 0;
-    width: 100%;
-    min-height: 40vh;
-}
-
-.rcorners1 img, .rcorners2 img, .rcorners3 img {
-margin: 0;
-width: 60px;
-height: auto;
-}
-.who-section h1, .what-section h1, .mission-section h1 {
-margin: 0;
-font-size: 3em;
-color: white;
-}
-.who-section p, .what-section p, .mission-section p {
-font-size: 3vh;
-color: white;
-}
-.rcorners1, .rcorners2, .rcorners3 {
-  border-radius: 15px;
-  padding: 10px;  
-  width: 80vh;
-}
-.rcorners1{
-background-color: #31ac6b; 
-min-height: 30vh;
-text-align: center;
-}
-.rcorners2{
-background-color: #018ed6;
-min-height: 32vh;
-text-align: center;
-}
-.rcorners3{
-background-color: #fec223;
-min-height: 30vh;
-text-align: center;
-}
-   footer {
-  min-height: 75vh;
-  position: relative;
-  height: auto;
-  max-width: 100%;
-  width: 100%;
-  background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 1;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-    
-  .footerOverlay {
+    .rcorners1 img, .rcorners2 img, .rcorners3 img {
+      margin: 0;
+      width: 60px;
+      height: auto;
+    }
+    .who-section h1, .what-section h1, .mission-section h1 {
+      margin: 0;
+      font-size: 3em;
+      color: white;
+    }
+    .who-section p, .what-section p, .mission-section p {
+      font-size: 3vh;
+      color: white;
+    }
+    .rcorners1, .rcorners2, .rcorners3 {
+      border-radius: 15px;
+      padding: 10px;  
+      width: 80vh;
+    }
+    .rcorners1{
+      background-color: #31ac6b; 
+      min-height: 30vh;
+      text-align: center;
+    }
+    .rcorners2{
+      background-color: #018ed6;
+      min-height: 32vh;
+      text-align: center;
+    }
+    .rcorners3{
+      background-color: #fec223;
+      min-height: 30vh;
+      text-align: center;
+    }
+    footer {
+      min-height: 75vh;
+      position: relative;
+      height: auto;
+      max-width: 100%;
+      width: 100%;
+      background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .footerOverlay {
       position: absolute;
       left: 0; top: 0;
       width: 100%; height: 100%;
@@ -214,50 +239,48 @@ text-align: center;
       z-index: 2;
       pointer-events: none;
     }
-
-  .footerContainer, .footerNav, .socialIcons {
+    .footerContainer, .footerNav, .socialIcons {
       position: relative;
       z-index: 3; 
     }
-
-  .socialIcons a:nth-child(1) i {
+    .socialIcons a:nth-child(1) i {
       font-size: 5em;
       color: #FF0000;
     }
-  .socialIcons a:nth-child(2) i {
+    .socialIcons a:nth-child(2) i {
       font-size: 5em;
       color: #3b5998;
       opacity: 0.9;
     }
-  .socialIcons a:nth-child(3) i {
+    .socialIcons a:nth-child(3) i {
       font-size: 5em;
       color: black;
     }
-  .footerContainer{
+    .footerContainer{
       width: 100%;
       padding: 70px 30px 20px;
     }
-  .socialIcons{
+    .socialIcons{
       display: flex;
       justify-content: center;
     }
-  .socialIcons a{
+    .socialIcons a{
       text-decoration: none;
       padding: 10px;
       margin: 10px;
       margin-top: 310px;
-    background-color: white;
-    border-radius: 25%;
+      background-color: white;
+      border-radius: 25%;
     }
-  .socialIcons a:hover{
+    .socialIcons a:hover{
       color: black;
       transition: 0.5s;
     }
-  .socialIcons a:hover i {
+    .socialIcons a:hover i {
       color: black;
       transition: 0.5s;
     }
-  .footerNav{
+    .footerNav{
       margin: 30px 0;
     }
     .footerNav ul{
@@ -265,7 +288,7 @@ text-align: center;
       justify-content: center;
       list-style-type:none;
     }
-  .footerNav ul li a {
+    .footerNav ul li a {
       color: white;
       margin-right: 40px;
       margin-left: 40px;
@@ -279,20 +302,19 @@ text-align: center;
       font-style: normal;
       text-shadow: 2px 2px 8px #000; 
     }
-.footerNav ul li a:hover {
-  opacity: 1;
-  color: black;            
-  text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c;
-  transition: 0.2s;
-}
-    
-.footerBottom {
-  background-color: #ff5313;
-  padding: 20px;
-  text-align: center;
-  margin-top: 0;
-}
-  .footerBottom p{
+    .footerNav ul li a:hover {
+      opacity: 1;
+      color: black;            
+      text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c;
+      transition: 0.2s;
+    }
+    .footerBottom {
+      background-color: #ff5313;
+      padding: 20px;
+      text-align: center;
+      margin-top: 0;
+    }
+    .footerBottom p{
       color: white;
     }
     .designer{
@@ -300,7 +322,7 @@ text-align: center;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 400;
-      magin: 0px 5px;
+      margin: 0px 5px;
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -321,64 +343,70 @@ text-align: center;
       </li>
     </ul>
   </div>
-  <div style="height: 150px;"></div>
+
+  <!-- MAIN CONTENT BACKGROUND WRAPPER -->
+  <div class="main-bg">
+    <div style="height: 150px;"></div>
     <h1 style="text-align:center;">Meet Our Team</h1>
-  <div class="team-grid">
-    <div class="team-member">
-      <img src="fuckass.jpg" alt="Member 1">
-      <div class="team-name">Alice Smith</div>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="fuckass.jpg" alt="Member 1">
+        <div class="team-name">Alice Smith</div>
+      </div>
+      <div class="team-member">
+        <img src="fuckass.jpg" alt="Member 2">
+        <div class="team-name">Bob Jones</div>
+      </div>
+      <div class="team-member">
+        <img src="fuckass.jpg" alt="Member 3">
+        <div class="team-name">Carlos Lee</div>
+      </div>
+      <div class="team-member">
+        <img src="fuckass.jpg" alt="Member 4">
+        <div class="team-name">Dana Patel</div>
+      </div>
+      <div class="team-member">
+        <img src="fuckass.jpg" alt="Member 5">
+        <div class="team-name">Ella Wang</div>
+      </div>
+      <div class="team-member">
+        <img src="fuckass.jpg" alt="Member 6">
+        <div class="team-name">Frank Musa</div>
+      </div>
     </div>
-    <div class="team-member">
-      <img src="fuckass.jpg" alt="Member 2">
-      <div class="team-name">Bob Jones</div>
-    </div>
-    <div class="team-member">
-      <img src="fuckass.jpg" alt="Member 3">
-      <div class="team-name">Carlos Lee</div>
-    </div>
-    <div class="team-member">
-      <img src="fuckass.jpg" alt="Member 4">
-      <div class="team-name">Dana Patel</div>
-    </div>
-    <div class="team-member">
-      <img src="fuckass.jpg" alt="Member 5">
-      <div class="team-name">Ella Wang</div>
-    </div>
-    <div class="team-member">
-      <img src="fuckass.jpg" alt="Member 6">
-      <div class="team-name">Frank Musa</div>
-    </div>
+    <section class="who-section">
+      <div class="rcorners1">
+        <img src="472373179_583072744324717_6566046115389369536_n-removebg-preview (1).png">
+        <h1>Who we are</h1>
+        <p>We are a team dedicated to improving wellness through natural,
+        fun, safe, and effective solutions.</p>
+      </div>
+    </section>
+    <section class="what-section">
+      <div class="rcorners2">
+        <img src="472924252_2272473079798286_3954083799053601738_n-removebg-preview (1).png">
+        <h1>What we do </h1>
+        <p>
+        We create natural cough remedies that provide 
+        quick relief and are easy to use. Our product 
+        is designed to make taking care of your health 
+        simple and enjoyable.
+        </p>
+      </div>
+    </section>
+    <section class="mission-section">
+      <div class="rcorners3">
+        <img src="Capture.5454544-removebg-preview (1).png">
+        <h1>Our Mission</h1>
+        <p>
+        Our mission is to provide our customers with a safe<br> 
+        and effective natural cough remedy while offering<br>
+        greater convenience and fun through our product. </p>
+      </div>
+    </section>
   </div>
-  <section class="who-section">
-<div class="rcorners1">
-<img src="472373179_583072744324717_6566046115389369536_n-removebg-preview (1).png">
-<h1>Who we are</h1>
-<p>We are a team dedicated to improving wellness through natural,
-fun, safe, and effective solutions.</p>
-</div>
-</section>
-<section class="what-section">
-<div class="rcorners2">
-<img src="472924252_2272473079798286_3954083799053601738_n-removebg-preview (1).png">
-<h1>What we do </h1>
-<p>
-We create natural cough remedies that provide 
-quick relief and are easy to use. Our product 
-is designed to make taking care of your health 
-simple and enjoyable.
-</p>
-</div>
-</section>
-<section class="mission-section">
-<div class="rcorners3">
-<img src="Capture.5454544-removebg-preview (1).png">
-<h1>Our Mission</h1>
-<p>
-Our mission is to provide our customers with a safe<br> 
-and effective natural cough remedy while offering<br>
-greater convenience and fun through our product. </p>
-</div>
-</section>
+  <!-- END WRAPPER -->
+
   <footer>
     <div class="footerOverlay"></div>
     <div style="height: 6.25vh"></div>
