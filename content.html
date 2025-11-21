@@ -81,6 +81,53 @@
       font-size: 2em;
       vertical-align: middle;
     }
+
+.comingsoon-hero {
+  position: relative;
+  width: 100vw;
+  min-height: 68vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('download (5).jpg') center center / cover no-repeat fixed;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.comingsoon-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 12, 3, 0.47);
+  z-index: 1;
+}
+
+.comingsoon-centerbox {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.comingsoon-centerbox h1 {
+  font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+  font-weight: 800;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.8), 0 0 18px #fd392d;
+}
+
+.comingsoon-centerbox p {
+  font-size: 1.3rem;
+  color: #fffbe9;
+  text-shadow: 0 2px 6px #000;
+  max-width: 480px;
+  margin: 0 auto;
+}
     
    footer {
   min-height: 75vh;
@@ -214,6 +261,13 @@
       </li>
     </ul>
   </div>
+  <section class="comingsoon-hero">
+  <div class="comingsoon-overlay"></div>
+  <div class="comingsoon-centerbox">
+    <h1>Coming Soon</h1>
+    <p>Our creator content will be revealed soon. Stay tuned!</p>
+  </div>
+</section>
   <footer>
     <div class="footerOverlay"></div>
     <div style="height: 6.25vh"></div>
