@@ -4,7 +4,7 @@
   <title>Benzene Games</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       width: 100%;
@@ -128,56 +128,40 @@
       transform: scale(1);
       pointer-events: auto;
     }
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(254, 232, 76, 0.18); /* translucent gold highlight */
-  pointer-events: none;
-  z-index: 1;
-}
-
-Copilot said: You got it! If you want a
-You got it! If you want a real flaming look—with hot oranges, reds, and some glowing yellow/white for heat—the overlay should fade from deep orange-red at the bottom (like a fire pit), up to gold/yellow/white at the top or center, and use some movement for that “alive” flame vibe. We’ll also make sure it’s semi-transparent so your image is still visible and the overlay doesn’t drown everything out.
-
-🔥 Super Flame Overlay CSS (try this!)
-Replace your .hero-overlay and .hero-rgboverlay CSS with the following for a true fire effect:
-
-CSS
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(30, 12, 3, 0.30);  
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-rgboverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  mix-blend-mode: lighten; 
-  opacity: 0.42;            
-  background:
-    radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
-    linear-gradient(
-      110deg,
-      #ff8040 0%,    
-      #ff2500 30%,   
-      #ffc13c 56%,   
-      #fff6b0 72%,   
-      #ff5313 88%,   
-      #fd392d 100%  
-    );
-  background-size: 200% 200%;
-  animation: flames 5s linear infinite;
-}
-
-@keyframes flames {
-  0% { background-position: 0% 75%, 100% 0%; }
-  50% { background-position: 100% 25%, 0% 100%; }
-  100% { background-position: 0% 75%, 100% 0%; }
-}
+    /* --- Super Flame Overlays --- */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 12, 3, 0.30);  /* Subtle smoky look */
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-rgboverlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: lighten;
+      opacity: 0.42;
+      background:
+        radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
+        linear-gradient(
+          110deg,
+          #ff8040 0%,    
+          #ff2500 30%,   
+          #ffc13c 56%,   
+          #fff6b0 72%,   
+          #ff5313 88%,   
+          #fd392d 100%  
+        );
+      background-size: 200% 200%;
+      animation: flames 5s linear infinite;
+    }
+    @keyframes flames {
+      0% { background-position: 0% 75%, 100% 0%; }
+      50% { background-position: 100% 25%, 0% 100%; }
+      100% { background-position: 0% 75%, 100% 0%; }
+    }
     .hero-slide > .hero-overlay,
     .hero-slide > .hero-rgboverlay {
       pointer-events: none;
@@ -206,20 +190,46 @@ CSS
       border-radius: 20px;
       margin-bottom: 0.75rem;
       font-weight: 700;
+      text-shadow: 0 2px 8px #000;
     }
+    /* Science Gothic for hero-title with flame shadow and no-break */
     .hero-title {
+      font-family: "Science Gothic", Arial, Helvetica, sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 800;
+      font-style: normal;
+      font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "CTRS" 0;
       font-size: clamp(1.6rem, 4.5vw, 3.2rem); 
       line-height: 1.05;
       margin: 0.35rem 0 0.6rem;
-      font-weight: 700;
-      text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+      text-shadow:
+        0 4px 18px rgba(0,0,0,0.88),
+        0 0 22px #fd392d,
+        0 0 10px #ffc13c;
+      letter-spacing: 0.03em;
+      background: rgba(0,0,0,0.13);
+      display: inline-block;
+      padding: 0.09em 0.21em;
+      border-radius: 8px;
     }
     .hero-desc {
+      font-family: "Science Gothic", Arial, Helvetica, sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "CTRS" 0;
       margin: 0 auto 1.1rem;
       max-width: 820px;
-      color: rgba(255,255,255,0.92);
+      color: #fffbe9;
       font-size: clamp(0.95rem, 1.6vw, 1.05rem);
-      opacity: 0.95;
+      opacity: 0.96;
+      text-shadow: 0 2px 8px #000, 0 0 8px #fd392d;
     }
     .hero-cta {
       display: inline-block;
@@ -473,7 +483,9 @@ CSS
         <div class="hero-rgboverlay"></div>
         <div class="hero-content">
           <span class="brand-label">BRAND</span>
-          <h1 class="hero-title">TURN UP THE HEAT WITH BENZENE GAMES</h1>
+          <h1 class="hero-title">
+            TURN UP THE HEAT WITH <span style="white-space:nowrap;">BENZENE GAMES</span>
+          </h1>
           <p class="hero-desc">Introducing our future generation employees and their commitment to delivering a sustainable future.</p>
           <a class="hero-cta" href="#learn">Learn more</a>
         </div>
@@ -483,7 +495,9 @@ CSS
         <div class="hero-rgboverlay"></div>
         <div class="hero-content">
           <span class="brand-label">STORIES</span>
-          <h1 class="hero-title">New Product Stories & Community Highlights</h1>
+          <h1 class="hero-title">
+            New Product Stories &amp; <span style="white-space:nowrap;">Community Highlights</span>
+          </h1>
           <p class="hero-desc">Explore how our community builds and shares sustainable experiences.</p>
           <a class="hero-cta" href="brand.html">Learn more</a>
         </div>
