@@ -136,30 +136,47 @@
   z-index: 1;
 }
 
+Copilot said: You got it! If you want a
+You got it! If you want a real flaming look—with hot oranges, reds, and some glowing yellow/white for heat—the overlay should fade from deep orange-red at the bottom (like a fire pit), up to gold/yellow/white at the top or center, and use some movement for that “alive” flame vibe. We’ll also make sure it’s semi-transparent so your image is still visible and the overlay doesn’t drown everything out.
+
+🔥 Super Flame Overlay CSS (try this!)
+Replace your .hero-overlay and .hero-rgboverlay CSS with the following for a true fire effect:
+
+CSS
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 12, 3, 0.30);  
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero-rgboverlay {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  mix-blend-mode: lighten; /* "screen" or "lighten", either works */
-  opacity: 0.30;
+  mix-blend-mode: lighten; 
+  opacity: 0.42;            
   background:
-    radial-gradient(circle at 60% 60%, rgba(255,255,255,0.18) 0%, rgba(255,83,19,0.08) 70%, rgba(0,0,0,0) 100%),
+    radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
     linear-gradient(
-      120deg,
-      #ff5313 0%,   
-      #ffd36c 20%,  
-      #fff4e6 38%,  
-      #fd392d 66%,  
-      #c7370e 100%  
+      110deg,
+      #ff8040 0%,    
+      #ff2500 30%,   
+      #ffc13c 56%,   
+      #fff6b0 72%,   
+      #ff5313 88%,   
+      #fd392d 100%  
     );
-  background-size: 180% 180%;
-  animation: flames 7s linear infinite;
+  background-size: 200% 200%;
+  animation: flames 5s linear infinite;
 }
+
 @keyframes flames {
-  0% { background-position: 0% 55%;}
-  50% { background-position: 100% 65%;}
-  100% { background-position: 0% 55%;}
+  0% { background-position: 0% 75%, 100% 0%; }
+  50% { background-position: 100% 25%, 0% 100%; }
+  100% { background-position: 0% 75%, 100% 0%; }
 }
     .hero-slide > .hero-overlay,
     .hero-slide > .hero-rgboverlay {
