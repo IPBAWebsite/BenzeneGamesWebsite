@@ -95,38 +95,93 @@
   padding: 0;
 }
 
-.comingsoon-overlay {
+.hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(30, 12, 3, 0.47);
+  pointer-events: none;
   z-index: 1;
+}
+.hero-rgboverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: lighten;
+  opacity: 0.42;
+  background:
+    radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
+    linear-gradient(
+      110deg,
+      #ff8040 0%,    
+      #ff2500 30%,   
+      #ffc13c 56%,   
+      #fff6b0 72%,   
+      #ff5313 88%,   
+      #fd392d 100%  
+    );
+  background-size: 200% 200%;
+  animation: flames 5s linear infinite;
+}
+@keyframes flames {
+  0% { background-position: 0% 75%, 100% 0%; }
+  50% { background-position: 100% 25%, 0% 100%; }
+  100% { background-position: 0% 75%, 100% 0%; }
 }
 
 .comingsoon-centerbox {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   text-align: center;
   color: #fff;
   padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.comingsoon-centerbox h1 {
+.comingsoon-brand-label {
+  display: inline-block;
+  margin: 0 auto 1rem auto;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.07);
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-weight: bold;
+  text-shadow: 0 2px 8px #000;
+  font-family: "Stack Sans Text", Arial, sans-serif;
+}
+
+.comingsoon-title {
   font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
-  font-size: 3rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5em;
-  margin-top: 0;
+  font-size: clamp(2rem, 6vw, 3.8rem);
   font-weight: 800;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.8), 0 0 18px #fd392d;
+  line-height: 1.08;
+  text-transform: uppercase;
+  margin: 0.45rem 0 0.95rem 0;
+  letter-spacing: 0.03em;
+  text-shadow:
+    0 4px 18px rgba(0,0,0,0.88),
+    0 0 22px #fd392d,
+    0 0 10px #ffc13c;
+  background: rgba(0,0,0,0.13);
+  display: inline-block;
+  padding: 0.09em 0.29em;
+  border-radius: 10px;
 }
 
-.comingsoon-centerbox p {
-  font-size: 1.3rem;
+.comingsoon-desc {
+  font-family: "Stack Sans Text", Arial, sans-serif;
+  margin-top: 0.1em;
+  margin-bottom: 1.2em;
+  font-size: 1.17rem;
   color: #fffbe9;
-  text-shadow: 0 2px 6px #000;
-  max-width: 480px;
-  margin: 0 auto;
+  text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
+  max-width: 600px;
 }
     
    footer {
@@ -262,10 +317,12 @@
     </ul>
   </div>
   <section class="comingsoon-hero">
-  <div class="comingsoon-overlay"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-rgboverlay"></div>
   <div class="comingsoon-centerbox">
-    <h1>Coming Soon</h1>
-    <p>Our creator content will be revealed soon. Stay tuned!</p>
+    <span class="comingsoon-brand-label">CONTENT</span>
+    <h1 class="comingsoon-title">COMING SOON</h1>
+    <p class="comingsoon-desc">Our creator content will be revealed soon. Stay tuned!</p>
   </div>
 </section>
   <footer>
