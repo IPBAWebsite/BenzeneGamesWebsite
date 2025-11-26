@@ -44,14 +44,15 @@
     }
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
 
-    .main-bg-video-container {
-      position: fixed;
-      left: 0;
-      width: 100vw;
-      z-index: 0;
-      overflow: hidden;
-      background: transparent;
-    }
+.main-bg-video-container {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 0;
+  background: transparent;
+}
+
 #bgvid {
   position: absolute;
   left: 0; top: 0;
@@ -59,7 +60,6 @@
   height: 100%;
   object-fit: fill !important;
   display: block;
-  background: black;
 }
     .main-bg > * { position: relative; z-index: 2; }
     .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 20px; max-width: 1000px; margin: 40px auto; padding: 0 10px; }
@@ -196,12 +196,13 @@ function resizeBgVideo() {
   const nav = document.querySelector('.topnav');
   const footer = document.getElementById('footer');
   const container = document.querySelector('.main-bg-video-container');
-  const navHeight = nav ? nav.offsetHeight : 0;
-  const footerRect = footer ? footer.getBoundingClientRect() : {top: window.innerHeight};
-  const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-  const mainHeight = (footerRect.top + scrollY) - navHeight;
-  container.style.top = navHeight + "px";
-  container.style.height = mainHeight + "px";
+  if (!nav || !footer || !container) return;
+
+  const navBottom = nav.getBoundingClientRect().bottom + window.scrollY;
+  const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+
+  container.style.top = navBottom + 'px';
+  container.style.height = (footerTop - navBottom) + 'px';
 }
 window.addEventListener('resize', resizeBgVideo);
 window.addEventListener('DOMContentLoaded', resizeBgVideo);
