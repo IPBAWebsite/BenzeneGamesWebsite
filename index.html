@@ -561,145 +561,133 @@
   <div class="footerBottom">
     <p>Copyright &copy;2025; Designed by <span class="designer">Group5</span></p>
   </div>
-  <script>
-    (function(){
-      const slider = document.getElementById('heroSlider');
-      const slides = slider.querySelectorAll('.hero-slide');
-      const prev = document.getElementById('heroPrev');
-      const next = document.getElementById('heroNext');
-      const progress = document.getElementById('heroProgress');
+<script>
+(function(){
+  const slider = document.getElementById('heroSlider');
+  const slides = slider.querySelectorAll('.hero-slide');
+  const prev = document.getElementById('heroPrev');
+  const next = document.getElementById('heroNext');
+  const progress = document.getElementById('heroProgress');
 
-      let current = 0;
-      const slideCount = slides.length;
-      const intervalMs = 6000;
-      let timer = null;
-      let progressTimer = null;
-      let progressStart = null;
+  let current = 0;
+  const slideCount = slides.length;
+  const intervalMs = 6000;
+  let timer = null;
+  let progressTimer = null;
+  let progressStart = null;
 
-      function show(index) {
-        slides[current].classList.remove('active');
-        current = (index + slideCount) % slideCount;
-        slides[current].classList.add('active');
-        resetProgress();
+  function show(index) {
+    slides[current].classList.remove('active');
+    current = (index + slideCount) % slideCount;
+    slides[current].classList.add('active');
+    resetProgress();
+    // Also update pagination
+    updatePagination(current);
+  }
+
+  function nextSlide() { show(current + 1); }
+  function prevSlide() { show(current - 1); }
+
+  function startAuto() {
+    stopAuto();
+    progressStart = performance.now();
+    progressTimer = requestAnimationFrame(updateProgress);
+    timer = setInterval(nextSlide, intervalMs);
+  }
+
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+    if (progressTimer) { cancelAnimationFrame(progressTimer); progressTimer = null; }
+    progress.style.width = '0%';
+  }
+
+  function resetProgress() {
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+
+    requestAnimationFrame(() => {
+      progress.style.transition = 'width ' + intervalMs + 'ms linear';
+      progress.style.width = '100%';
+    });
+  }
+
+  function updateProgress(ts) {
+    if (!progressStart) progressStart = ts;
+    const elapsed = ts - progressStart;
+    const pct = Math.min(100, (elapsed / intervalMs) * 100);
+    progress.style.width = pct + '%';
+    if (pct >= 100) {
+      progressStart = ts;
+    }
+    progressTimer = requestAnimationFrame(updateProgress);
+  }
+  
+  function updatePagination(currentIndex) {
+    const pagination = document.getElementById('heroPagination');
+    if (!pagination) return;
+    const items = pagination.querySelectorAll('.hero-page');
+    items.forEach((btn, idx) => {
+      btn.classList.remove('active', 'done');
+      btn.removeAttribute('aria-current');
+      if (idx < currentIndex) {
+        btn.classList.add('done');
       }
-
-      function nextSlide() { show(current + 1); }
-      function prevSlide() { show(current - 1); }
-
-      function startAuto() {
-        stopAuto();
-        progressStart = performance.now();
-        progressTimer = requestAnimationFrame(updateProgress);
-        timer = setInterval(nextSlide, intervalMs);
+      if (idx === currentIndex) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-current', 'true');
       }
+    });
+  }
 
-      function stopAuto() {
-        if (timer) { clearInterval(timer); timer = null; }
-        if (progressTimer) { cancelAnimationFrame(progressTimer); progressTimer = null; }
-        progress.style.width = '0%';
-      }
+  next.addEventListener('click', () => { nextSlide(); startAuto(); });
+  prev.addEventListener('click', () => { prevSlide(); startAuto(); });
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+  slider.addEventListener('focusin', stopAuto);
+  slider.addEventListener('focusout', startAuto);
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+    startAuto();
+  });
+  slides.forEach((s,i) => {
+    if (i !== current) s.classList.remove('active');
+  });
+  resetProgress();
+  startAuto();
 
-      function resetProgress() {
-        progress.style.transition = 'none';
-        progress.style.width = '0%';
-      
-        requestAnimationFrame(() => {
-          progress.style.transition = 'width ' + intervalMs + 'ms linear';
-          progress.style.width = '100%';
-        });
-      }
+  
+  window.show = show;
+  window.startAuto = startAuto;
+  window.updatePagination = updatePagination;
+})();
+(function(){
+  const slider = document.getElementById('heroSlider');
+  const slides = slider.querySelectorAll('.hero-slide');
+  const pagination = document.getElementById('heroPagination');
 
-      function updateProgress(ts) {
-        if (!progressStart) progressStart = ts;
-        const elapsed = ts - progressStart;
-        const pct = Math.min(100, (elapsed / intervalMs) * 100);
-        progress.style.width = pct + '%';
-        if (pct >= 100) {
-          progressStart = ts;
-        }
-        progressTimer = requestAnimationFrame(updateProgress);
-      }
-      next.addEventListener('click', () => { nextSlide(); startAuto(); });
-      prev.addEventListener('click', () => { prevSlide(); startAuto(); });
-      slider.addEventListener('mouseenter', stopAuto);
-      slider.addEventListener('mouseleave', startAuto);
-      slider.addEventListener('focusin', stopAuto);
-      slider.addEventListener('focusout', startAuto);
-      slider.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prevSlide();
-        if (e.key === 'ArrowRight') nextSlide();
-        startAuto();
-      });
-      slides.forEach((s,i) => {
-        if (i !== current) s.classList.remove('active');
-      });
-      resetProgress();
-      startAuto();
-    })();
-    (function(){
-      const slider = document.getElementById('heroSlider');
-      const slides = slider.querySelectorAll('.hero-slide');
-      const pagination = document.getElementById('heroPagination');
+  if (!pagination || slides.length <= 1) return; 
+  slides.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'hero-page';
+    btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    btn.setAttribute('data-index', i);
+    btn.type = 'button';
 
-      if (!pagination || slides.length <= 1) return; 
-      slides.forEach((s, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'hero-page';
-        btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-        btn.setAttribute('data-index', i);
-        btn.type = 'button';
+    btn.addEventListener('click', (e) => {
+      const idx = Number(e.currentTarget.dataset.index);
+      show(idx);          
+      startAuto();        
+    });
+    pagination.appendChild(btn);
+  });
 
-        btn.addEventListener('click', (e) => {
-          const idx = Number(e.currentTarget.dataset.index);
-          show(idx);          
-          startAuto();        
-        });
-        pagination.appendChild(btn);
-      });
-
-      function updatePagination(currentIndex) {
-        const items = pagination.querySelectorAll('.hero-page');
-        items.forEach((btn, idx) => {
-          btn.classList.remove('active', 'done');
-          btn.removeAttribute('aria-current');
-          if (idx < currentIndex) {
-            btn.classList.add('done');
-          }
-          if (idx === currentIndex) {
-            btn.classList.add('active');
-            btn.setAttribute('aria-current', 'true');
-          }
-        });
-      }
-
-      if (typeof window === 'object' && typeof window.heroPatch === 'undefined') {
-        try {
-          if (typeof show === 'function') {
-            const originalShow = show;
-            window.show = function(index) {
-              originalShow(index);
-              const activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
-              updatePagination(activeIndex >= 0 ? activeIndex : 0);
-            };
-          } else {
-            const obs = new MutationObserver(() => {
-              const activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
-              updatePagination(activeIndex >= 0 ? activeIndex : 0);
-            });
-            slides.forEach(s => obs.observe(s, { attributes: true, attributeFilter: ['class'] }));
-          }
-        } catch (e) {
-          setInterval(() => {
-            const activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
-            updatePagination(activeIndex >= 0 ? activeIndex : 0);
-          }, 200);
-        }
-        window.heroPatch = true;
-      }
-
-      const initialActive = Array.from(slides).findIndex(s => s.classList.contains('active'));
-      updatePagination(initialActive >= 0 ? initialActive : 0);
-    })();
-  </script>
+  
+  const initialActive = Array.from(slides).findIndex(s => s.classList.contains('active'));
+  if (typeof updatePagination === 'function') {
+    updatePagination(initialActive >= 0 ? initialActive : 0);
+  }
+})();
+</script>
 </body>
 </html>
