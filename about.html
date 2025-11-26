@@ -16,18 +16,18 @@
       padding: 0;
       box-sizing: border-box;
       overflow-x: hidden;
+      position: relative;
     }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: white;
-      padding-top: 90px;
+      padding-top: 150px; /* match navbar height */
       overflow-x: hidden;
     }
     .logo { padding-left: 40px; padding-right: 40px; }
     .logo img { width: 130px; height: auto; vertical-align: middle; margin: 0; display: block; }
     .topnav {
-      position: fixed; top: 0; width: 100%; background-color: #fd392d; height: 150px;
+      position: fixed; top: 0; left: 0; width: 100%; background-color: #fd392d; height: 150px;
       display: flex; align-items: center; padding: 0 20px; z-index: 1000;
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; }
@@ -43,172 +43,61 @@
     }
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
 
+.main-bg-video-container {
+  position: absolute;
+  left: 0;
+  top: 150px; 
+  right: 0;
+  bottom: 220px; 
+  width: 100vw;
+  z-index: 0;
+  overflow: hidden;
+}
 
 #bgvid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  min-width: 100vw;
-  min-height: 100vh;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-}
-.main-bg {
-  position: relative;
-  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
-  background: none !important;
-  z-index: 1;
+  height: 100%;
+  object-fit: fill;
+  display: block;
 }
-    .main-bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(30, 12, 3, 0.30);
-      z-index: 2;
-      pointer-events: none;
-    }
-    .main-bg-flame {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      mix-blend-mode: lighten;
-      opacity: 0.42;
-      background:
-        radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
-        linear-gradient(
-          110deg,
-          #ff8040 0%, #ff2500 30%, #ffc13c 56%,
-          #fff6b0 72%, #ff5313 88%, #fd392d 100%
-        );
-      background-size: 200% 200%;
-      animation: flames 5s linear infinite;
-    }
-    @keyframes flames {
-      0% { background-position: 0% 75%, 100% 0%; }
-      50% { background-position: 100% 25%, 0% 100%; }
-      100% { background-position: 0% 75%, 100% 0%; }
-    }
-    .main-bg > *:not(.main-bg-overlay):not(.main-bg-flame):not(#bgvid) {
+
+    .main-bg {
       position: relative;
-      z-index: 4;
+      min-height: calc(100vh - 150px - 220px);
+      width: 100%;
+      background: none !important;
+      z-index: 1;
     }
-    .team-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 20px;
-      max-width: 1000px; margin: 40px auto; padding: 0 10px;
-    }
-    .team-member {
-      display: flex; flex-direction: column; align-items: center;
-      background: #fef689; border-radius: 15px; padding: 20px 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-    }
-    .team-member img {
-      width: 160px; height: 160px; object-fit: cover;
-      border-radius: 50%; margin-bottom: 18px; box-shadow: 0 2px 8px #ccc;
-    }
-    .team-name {
-      font-size: 1.2em; color: #222; margin-top: 0;
-      font-family: "Stack Sans Text", Arial, Helvetica, sans-serif;
-      font-weight: 500; text-align: center; letter-spacing: 1px;
-    }
-    @media (max-width: 900px) {
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .team-grid { grid-template-columns: 1fr; }
-    }
-    .hero {
-      width: 100%; height: 30vh; background-image: url(''); background-size: cover;
-      background-position: center; display: flex; align-items: center;
-      justify-content: center; color: white; padding: 0 20px;
-    }
-    .hero-title {
-      font-family: "Science Gothic", Arial, Helvetica, sans-serif;
-      font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.8rem);
-      line-height: 1.05; margin: 0.35rem 0 0.6rem;
-      color: #f6f6f6;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.88), 0 0 22px #fd392d, 0 0 10px #ffc13c;
-      letter-spacing: 0.03em; background: rgba(0,0,0,0.13); display: block;
-      padding: 0.09em 0.21em; border-radius: 8px; text-align: center;
-    }
-    .hero h1 {
-      font-size: 3vw; font-family: "Metropolis Regular"; text-align: center; margin: 0;
-    }
-    .who-section, .what-section, .mission-section {
-      display: flex; align-items: center; justify-content: center;
-      margin: 0; width: 100%; min-height: 40vh;
-    }
-    .rcorners1, .rcorners2, .rcorners3 {
-      background: rgba(25,25,25,0.38);
-      border: 1.5px solid rgba(255,255,255,0.10);
-      box-shadow: 0 6px 32px rgba(40,8,0,0.22);
-      backdrop-filter: blur(22px);
-      border-radius: 18px;
-      padding: 46px 32px;
-      max-width: 680px;
-      margin: 0 auto 48px auto;
-      color: #f6f6f6;
-      box-sizing: border-box;
-      transition: box-shadow 0.3s;
-    }
-    .rcorners1 h1, .rcorners2 h1, .rcorners3 h1 {
-      font-family: 'Science Gothic', Arial, Helvetica, sans-serif;
-      font-size: clamp(2rem, 5vw, 2.8rem); color: #fff; font-weight: 800;
-      text-shadow: 0 0 14px #fd392dcc, 0 2px 12px #000b;
-      margin-bottom: 12px; text-align: center;
-    }
-    .rcorners1 p, .rcorners2 p, .rcorners3 p {
-      color: #fff; font-family: 'Oswald', Arial, Helvetica, sans-serif;
-      font-weight: 200; font-size: 1.25rem; line-height: 1.65;
-      margin-top: 0; text-align: center;
-    }
-    footer {
-      min-height: 75vh; position: relative; height: auto; max-width: 100%; width: 100%;
-      background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg");
-      background-size: cover; background-position: center; background-repeat: no-repeat;
-      z-index: 1; padding: 0; margin: 0; box-sizing: border-box;
-    }
-    .footerOverlay {
-      position: absolute; left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(255, 83, 19, 0.85);
-      z-index: 2; pointer-events: none;
-    }
+    .main-bg > * { position: relative; z-index: 2; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 20px; max-width: 1000px; margin: 40px auto; padding: 0 10px; }
+    .team-member { display: flex; flex-direction: column; align-items: center; background: #fef689; border-radius: 15px; padding: 20px 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+    .team-member img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 18px; box-shadow: 0 2px 8px #ccc; }
+    .team-name { font-size: 1.2em; color: #222; margin-top: 0; font-family: "Stack Sans Text", Arial, Helvetica, sans-serif; font-weight: 500; text-align: center; letter-spacing: 1px; }
+    @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
+    .hero-title { font-family: "Science Gothic", Arial, Helvetica, sans-serif; font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.8rem); line-height: 1.05; margin: 0.35rem 0 0.6rem; color: #f6f6f6; text-shadow: 0 4px 18px rgba(0,0,0,0.88), 0 0 22px #fd392d, 0 0 10px #ffc13c; letter-spacing: 0.03em; background: rgba(0,0,0,0.13); display: block; padding: 0.09em 0.21em; border-radius: 8px; text-align: center; }
+    .who-section, .what-section, .mission-section { display: flex; align-items: center; justify-content: center; margin: 0; width: 100%; min-height: 40vh; }
+    .rcorners1, .rcorners2, .rcorners3 { background: rgba(25,25,25,0.38); border: 1.5px solid rgba(255,255,255,0.10); box-shadow: 0 6px 32px rgba(40,8,0,0.22); backdrop-filter: blur(22px); border-radius: 18px; padding: 46px 32px; max-width: 680px; margin: 0 auto 48px auto; color: #f6f6f6; box-sizing: border-box; transition: box-shadow 0.3s; }
+    .rcorners1 h1, .rcorners2 h1, .rcorners3 h1 { font-family: 'Science Gothic', Arial, Helvetica, sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); color: #fff; font-weight: 800; text-shadow: 0 0 14px #fd392dcc, 0 2px 12px #000b; margin-bottom: 12px; text-align: center; }
+    .rcorners1 p, .rcorners2 p, .rcorners3 p { color: #fff; font-family: 'Oswald', Arial, Helvetica, sans-serif; font-weight: 200; font-size: 1.25rem; line-height: 1.65; margin-top: 0; text-align: center; }
+    footer { min-height: 220px; position: relative; height: auto; max-width: 100%; width: 100%; background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg"); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 2; padding: 0; margin: 0; box-sizing: border-box; }
+    .footerOverlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255, 83, 19, 0.85); z-index: 2; pointer-events: none; }
     .footerContainer, .footerNav, .socialIcons { position: relative; z-index: 3; }
     .socialIcons a:nth-child(1) i { font-size: 5em; color: #FF0000; }
     .socialIcons a:nth-child(2) i { font-size: 5em; color: #3b5998; opacity: 0.9; }
     .socialIcons a:nth-child(3) i { font-size: 5em; color: black; }
     .footerContainer { width: 100%; padding: 70px 30px 20px; }
     .socialIcons{ display: flex; justify-content: center; }
-    .socialIcons a {
-      text-decoration: none; padding: 10px; margin: 10px; margin-top: 310px;
-      background-color: white; border-radius: 25%;
-    }
+    .socialIcons a { text-decoration: none; padding: 10px; margin: 10px; margin-top: 310px; background-color: white; border-radius: 25%; }
     .socialIcons a:hover{ color: black; transition: 0.5s; }
     .socialIcons a:hover i { color: black; transition: 0.5s; }
     .footerNav{ margin: 30px 0; }
     .footerNav ul{ display: flex; justify-content: center; list-style-type:none; }
-    .footerNav ul li a {
-      color: white; margin-right: 40px; margin-left: 40px; text-decoration:none;
-      font-size:2em; opacity:0.9; transition:0.5s;
-      font-family: "Stack Sans Text", Arial, Helvetica, sans-serif; font-weight: 500;
-      text-shadow: 2px 2px 8px #000;
-    }
-    .footerNav ul li a:hover {
-      opacity: 1; color: black;
-      text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c; transition: 0.2s;
-    }
-    .footerBottom {
-      background-color: #ff5313; padding: 20px; text-align: center; margin-top: 0;
-    }
+    .footerNav ul li a { color: white; margin-right: 40px; margin-left: 40px; text-decoration:none; font-size:2em; opacity:0.9; transition:0.5s; font-family: "Stack Sans Text", Arial, Helvetica, sans-serif; font-weight: 500; text-shadow: 2px 2px 8px #000; }
+    .footerNav ul li a:hover { opacity: 1; color: black; text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c; transition: 0.2s; }
+    .footerBottom { background-color: #ff5313; padding: 20px; text-align: center; margin-top: 0; }
     .footerBottom p{ color: white; }
-    .designer{
-      opacity:0.7; text-transform: uppercase; letter-spacing: 1px; font-weight: 400; margin: 0px 5px;
-    }
+    .designer{ opacity:0.7; text-transform: uppercase; letter-spacing: 1px; font-weight: 400; margin: 0px 5px; }
   </style>
 </head>
 <body>
@@ -227,13 +116,14 @@
       </li>
     </ul>
   </div>
-  <div class="main-bg">
-    <video autoplay muted loop playsinline id="bgvid">
-      <source src="Benzene.mp4.mp4" type="video/mp4">
-    </video>
-    <div class="main-bg-overlay"></div>
-    <div class="main-bg-flame"></div>
 
+  <div class="main-bg-video-container">
+    <video autoplay muted loop playsinline id="bgvid">
+      <source src="benzene.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="main-bg">
     <h1 class="hero-title">Meet Our Team</h1>
     <div class="team-grid">
       <div class="team-member">
