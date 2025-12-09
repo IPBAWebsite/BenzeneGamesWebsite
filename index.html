@@ -35,7 +35,13 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(25,25,25,0.38); border: 1.5px solid rgba(255,255,255,0.10); shadow: 0 6px 32px rgba(40,8,0,0.22); backdrop-filter: blur(22px);  color: #f6f6f6; 
+      background: rgba(25,25,25,0.38);
+      border: 1.5px solid rgba(255,255,255,0.10);
+      box-shadow: 0 6px 32px rgba(40,8,0,0.22);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px); 
+      color: #f6f6f6;
+      transition: box-shadow 0.3s, background 0.25s;
       height: 150px;
       display: flex;
       align-items: center;
