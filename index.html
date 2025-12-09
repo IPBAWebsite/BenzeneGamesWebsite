@@ -5,7 +5,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Added a futuristic display font (Audiowide) for the brand highlight -->
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -46,7 +45,7 @@
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; }
     .topnav li { display: inline-block; }
 
-    /* anchors centered with flex (reliable underline positioning) */
+   
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -62,7 +61,7 @@
       transition: color .12s ease;
     }
 
-    /* position underline relative to anchor center (consistent for tall nav) */
+
     .topnav a::after {
       content: "";
       position: absolute;
@@ -91,7 +90,7 @@
       .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
     }
 
-    /* hero layout (unchanged) */
+  
     .hero { width: 100vw; margin: 0; position: relative; overflow: hidden; height: 90vh; min-height: 600px; max-width: 100vw; }
     .hero-slider { width: 100vw; height: 90vh; min-height: 600px; max-width: 100vw; position: relative; display: block; }
     .hero-slide { position: absolute; inset: 0; width: 100vw; height: 90vh; min-height: 600px; background-size: cover; background-position: center center; background-repeat: no-repeat; opacity: 0; transform: scale(1.02); transition: opacity 600ms ease, transform 800ms ease; display: flex; align-items: center; justify-content: center; padding: 40px 20px; pointer-events: none; }
@@ -115,20 +114,20 @@
 
     .hero-title { font-family: "Orbitron", "Science Gothic", Arial, Helvetica, sans-serif; font-weight: 800; font-size: clamp(1.6rem, 4.5vw, 3.2rem); line-height: 1.05; margin: 0.35rem 0 0.6rem; text-shadow: 0 4px 18px rgba(0,0,0,0.88), 0 0 22px #fd392d; letter-spacing: 0.03em; background: rgba(0,0,0,0.13); display:block; margin: 0 auto 0.6rem; padding: 0.09em 0.21em; border-radius: 8px; }
 
-    /* =========================
-       BRAND HIGHLIGHT (ENHANCEMENTS)
-       ========================= */
+ 
+    
+      
     .brand-highlight {
       position: relative;
       display: inline-block;
-      font-family: "Audiowide", "Orbitron", sans-serif; /* futuristic font */
+      font-family: "Audiowide", "Orbitron", sans-serif; 
       font-weight: 700;
-      /* slightly larger + more spaced letters for emphasis */
+    
       font-size: clamp(1.15rem, 3.8vw, 2.0rem);
       letter-spacing: 0.12em;
-      color: #ff4d2e; /* ember red/orange */
+      color: #ff4d2e; 
       -webkit-text-stroke: 0.6px rgba(0,0,0,0.45);
-      /* layered neon/ember glow for contrast and ambiance */
+      
       text-shadow:
         0 0 6px rgba(255,100,60,0.95),
         0 0 18px rgba(255,60,40,0.85),
@@ -137,11 +136,10 @@
       transition: transform .18s ease, text-shadow .18s ease;
       padding: 0 6px;
       z-index: 4;
-      /* accept the small backdrop box */
       --backdrop-radius: 8px;
     }
 
-    /* subtle dark blurred backdrop behind the text to increase contrast without blocking image */
+  
     .brand-highlight::before {
       content: "";
       position: absolute;
@@ -159,7 +157,7 @@
       pointer-events: none;
     }
 
-    /* glowing ember accent underline */
+   
     .brand-highlight::after {
       content: "";
       position: absolute;
@@ -177,7 +175,7 @@
       pointer-events: none;
     }
 
-    /* intensify glow when the first slide is active */
+   
     .hero-slide:nth-of-type(1).active .brand-highlight {
       transform: translateY(-2px) scale(1.03);
       text-shadow:
@@ -188,7 +186,7 @@
         0 4px 14px rgba(0,0,0,0.6);
     }
 
-    /* responsive reductions so the underline & backdrop never dominate */
+  
     @media (max-width: 900px) {
       .brand-highlight { font-size: clamp(1.05rem, 3.6vw, 1.4rem); letter-spacing: 0.08em; padding: 0 4px; }
       .brand-highlight::before { width: calc(100% + 12px); height: calc(100% + 8px); }
@@ -200,12 +198,12 @@
       .brand-highlight::before { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); background: rgba(0,0,0,0.44); }
     }
 
-    /* keep the rest of the hero copy readable (unchanged) */
+    
     .hero-desc { font-family: "Science Gothic", Arial, Helvetica, sans-serif; font-weight:400; margin: 0 auto 1.1rem; max-width:820px; color:#fffbe9; font-size: clamp(1rem,2.2vw,1.25rem); opacity: 0.98; text-shadow: 0 2px 8px #000, 0 0 8px #fd392d; }
     .hero-cta { display:inline-block; background:#fff; color:#222; text-decoration:none; padding:10px 18px; border-radius:24px; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.25); transition: transform .15s ease, box-shadow .15s ease; }
     .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.32); background:#222; color:#fff; }
 
-    /* footer frosted glass + social icons (unchanged) */
+   
     footer { min-height:0; height:auto; max-width:100%; width:100%; background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg"); background-size: cover; background-position: center; position: relative; z-index: 1; padding: 12px 0 8px; margin: 0; box-sizing: border-box; }
     .footerOverlay { position:absolute; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.14); z-index:2; pointer-events:none; }
     .footerGlass { position:absolute; left:0; right:0; top:0; bottom:0; background: rgba(255,255,255,0.045); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.06); z-index:2; pointer-events:none; }
