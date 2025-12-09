@@ -4,13 +4,15 @@
   <title>Benzene Games</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Oswald:wght@200;400;700&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+   
     html, body {
       width: 100%;
       margin: 0;
@@ -20,77 +22,255 @@
       position: relative;
       background: transparent !important;
     }
+
+    
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      padding-top: 150px;
+      font-family: "Poppins", Arial, Helvetica, sans-serif;
+     
+      padding-top: 0;
       overflow-x: hidden;
+      color: #efeae6;
     }
+
     .logo { padding-left: 40px; padding-right: 40px; }
     .logo img { width: 130px; height: auto; vertical-align: middle; margin: 0; display: block; }
+
+    
     .topnav {
-      position: fixed; top: 0; left: 0; width: 100%; background-color: #fd392d; height: 150px;
-      display: flex; align-items: center; padding: 0 20px; z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.45); /* darker glass per request */
+      border: 1.5px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 32px rgba(0,0,0,0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #ffffff;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 1100; /* sit above background video */
     }
-    .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; }
+    .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
+
     .topnav a {
-      display: block; color: #FFFFFF; text-align: center; padding: 0 20px;
-      text-decoration: none; font-size: 30px; line-height: 90px;
-      font-family: "Stack Sans Text", Arial, Helvetica, sans-serif; font-weight: 500;
+      display: block;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 0 20px;
+      text-decoration: none;
+      font-size: 20px;                 
+      line-height: 150px;              
+      font-family: "Poppins", "Stack Sans Text", sans-serif;
+      font-weight: 600;
+      position: relative;              
+      transition: color .12s ease;
     }
-    .topnav a:hover { color: black; }
+
+    /* Animated underline instead of color jump */
+    .topnav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      width: 56%;
+      height: 3px;
+      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+      border-radius: 3px;
+      transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
+      opacity: 0;
+    }
+    .topnav a:hover::after,
+    .topnav a:focus::after {
+      transform: translateX(-50%) scaleX(1);
+      opacity: 1;
+    }
+    .topnav a:hover,
+    .topnav a:focus {
+      color: #fff; 
+      outline: none;
+    }
+
     @media screen and (max-width: 1000px) {
-      .topnav a { padding: 0 10px; font-size: 16px; line-height: 60px; }
+      .topnav { height: 60px; }
+      .topnav a { font-size: 16px; line-height: 60px; padding: 0 10px; }
     }
+
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
 
-.main-bg-video-container {
-  position: absolute;
-  left: 0;
-  width: 100vw;
-  overflow: hidden;
-  z-index: 0;
-  background: transparent;
-  pointer-events: none;
-}
+  
+    .main-bg-video-container {
+      position: absolute;
+      top: 0;                
+      left: 0;
+      width: 100vw;
+      overflow: hidden;
+      z-index: 0;            
+      background: transparent;
+      pointer-events: none;
+    }
+    #bgvid {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;     
+      display: block;
+      pointer-events: none;
+    }
 
-#bgvid {
-  width: 100%;
-  height: 100%;
-  object-fit: fill !important;
-  display: block;
-}
-    .main-bg > * { position: relative; z-index: 2; }
-    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 20px; max-width: 1000px; margin: 40px auto; padding: 0 10px; }
-    .team-member { display: flex; flex-direction: column; align-items: center; background: #ffa500; border-radius: 15px; padding: 20px 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
-    .team-member img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 18px; box-shadow: 0 2px 8px #ccc; }
-    .team-name { font-size: 1.2em; color: #222; margin-top: 0; font-family: "Stack Sans Text", Arial, Helvetica, sans-serif; font-weight: 500; text-align: center; letter-spacing: 1px; }
+    
+    .main-bg > * { position: relative; z-index: 10; }
+
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 10px;
+      z-index: 10;
+    }
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   
+      background: rgba(25,25,25,0.38);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 22px 14px;
+      transition: transform .18s ease, box-shadow .18s ease;
+      min-height: 260px;
+    }
+    .team-member:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 44px rgba(0,0,0,0.55);
+    }
+    .team-member img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      border: 3px solid rgba(255,255,255,0.04);
+    }
+
+   
+    .team-name {
+      font-size: 1.15rem;
+      color: #fffbe9; 
+      margin-top: 0;
+      font-family: "Poppins", "Stack Sans Text", sans-serif;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.6px;
+    }
+    .team-role {
+      margin-top: 6px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
     @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
-    .hero-title { font-family: "Science Gothic", Arial, Helvetica, sans-serif; font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.8rem); line-height: 1.05; margin: 0.35rem 0 0.6rem; color: #f6f6f6; text-shadow: 0 4px 18px rgba(0,0,0,0.88), 0 0 22px #fd392d, 0 0 10px #ffc13c; letter-spacing: 0.03em; background: rgba(0,0,0,0.13); display: block; padding: 0.09em 0.21em; border-radius: 8px; text-align: center; }
-    .who-section, .what-section, .mission-section { display: flex; align-items: center; justify-content: center; margin: 0; width: 100%; min-height: 40vh; }
-    .rcorners1, .rcorners2, .rcorners3 { background: rgba(25,25,25,0.38); border: 1.5px solid rgba(255,255,255,0.10); box-shadow: 0 6px 32px rgba(40,8,0,0.22); backdrop-filter: blur(22px); border-radius: 18px; padding: 46px 32px; max-width: 680px; margin: 0 auto 48px auto; color: #f6f6f6; box-sizing: border-box; transition: box-shadow 0.3s; }
-    .rcorners1 h1, .rcorners2 h1, .rcorners3 h1 { font-family: 'Science Gothic', Arial, Helvetica, sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); color: #fff; font-weight: 800; text-shadow: 0 0 14px #fd392dcc, 0 2px 12px #000b; margin-bottom: 12px; text-align: center; }
-    .rcorners1 p, .rcorners2 p, .rcorners3 p { color: #fff; font-family: 'Oswald', Arial, Helvetica, sans-serif; font-weight: 200; font-size: 1.5rem; line-height: 1.65; margin-top: 0; text-align: center; }
-    footer { min-height: 220px; position: relative; height: auto; max-width: 100%; width: 100%; background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg"); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 2; padding: 0; margin: 0; box-sizing: border-box; }
-    .footerOverlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255, 83, 19, 0.85); z-index: 2; pointer-events: none; }
+
+   
+    .hero-title {
+      font-family: "Orbitron", "Science Gothic", Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      line-height: 1.05;
+      margin: 28px 0;
+      color: #fff;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.88), 0 0 22px #fd392d;
+      letter-spacing: 0.02em;
+      background: rgba(0,0,0,0.18);
+      display: inline-block;
+      padding: 0.09em 0.21em;
+      border-radius: 8px;
+    }
+
+   
+    .rcorners1, .rcorners2, .rcorners3 {
+      background: rgba(25,25,25,0.38);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 46px 32px;
+      max-width: 820px;
+      margin: 0 auto 48px auto;
+      color: #fffbe9;
+      box-sizing: border-box;
+      transition: box-shadow .25s ease, transform .18s ease;
+    }
+    .rcorners1:hover, .rcorners2:hover, .rcorners3:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+    }
+    .rcorners1 h1, .rcorners2 h1, .rcorners3 h1 {
+      font-family: "Orbitron", "Science Gothic", Arial, sans-serif;
+      font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .rcorners1 p, .rcorners2 p, .rcorners3 p {
+      color: rgba(255,255,255,0.92);
+      font-family: "Poppins", "Oswald", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    
+    footer {
+      min-height: 0;
+      height: auto;
+      max-width: 100%;
+      width: 100%;
+      background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      z-index: 20;
+      padding: 12px 0 8px;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    footer > div[style] { height: 1vh !important; min-height: 0 !important; }
+
+    .footerOverlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,83,19,0.85); z-index: 2; pointer-events: none; }
     .footerContainer, .footerNav, .socialIcons { position: relative; z-index: 3; }
-    .socialIcons a:nth-child(1) i { font-size: 5em; color: #FF0000; }
-    .socialIcons a:nth-child(2) i { font-size: 5em; color: #3b5998; opacity: 0.9; }
-    .socialIcons a:nth-child(3) i { font-size: 5em; color: black; }
-    .footerContainer { width: 100%; padding: 70px 30px 20px; }
-    .socialIcons{ display: flex; justify-content: center; }
-    .socialIcons a { text-decoration: none; padding: 10px; margin: 10px; margin-top: 310px; background-color: white; border-radius: 25%; }
-    .socialIcons a:hover{ color: black; transition: 0.5s; }
-    .socialIcons a:hover i { color: black; transition: 0.5s; }
-    .footerNav{ margin: 30px 0; }
-    .footerNav ul{ display: flex; justify-content: center; list-style-type:none; }
-    .footerNav ul li a { color: white; margin-right: 40px; margin-left: 40px; text-decoration:none; font-size:2em; opacity:0.9; transition:0.5s; font-family: "Stack Sans Text", Arial, Helvetica, sans-serif; font-weight: 500; text-shadow: 2px 2px 8px #000; }
-    .footerNav ul li a:hover { opacity: 1; color: black; text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c; transition: 0.2s; }
-    .footerBottom { background-color: #ff5313; padding: 20px; text-align: center; margin-top: 0; }
-    .footerBottom p{ color: white; }
-    .designer{ opacity:0.7; text-transform: uppercase; letter-spacing: 1px; font-weight: 400; margin: 0px 5px; }
+    .footerContainer { width: 100%; padding: 24px 30px 12px; display:flex; flex-direction: column; align-items: center; gap: 12px; }
+    .socialIcons { display:flex; justify-content:center; gap:18px; }
+    .socialIcons a { text-decoration: none; padding: 10px; margin: 0 10px; background-color: white; border-radius: 25%; display:inline-flex; align-items:center; justify-content:center; }
+    .socialIcons a:nth-child(1) i, .socialIcons a:nth-child(2) i, .socialIcons a:nth-child(3) i { font-size: 5em; }
+    .footerNav { margin: 8px 0; }
+    .footerNav ul { display:flex; justify-content:center; list-style:none; gap: 28px; padding:0; margin:0; }
+    .footerNav ul li a { color: white; text-decoration:none; font-size:2em; opacity:0.9; transition:0.5s; font-family: "Stack Sans Text", sans-serif; font-weight:500; text-shadow: 2px 2px 8px #000; }
+    .footerNav ul li a:hover { color:black; text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c; }
+
+    .footerBottom { background-color: #ff5313; padding: 12px 16px; text-align:center; margin-top:0; }
+    .footerBottom p { color: white; margin: 0; }
   </style>
 </head>
 <body>
@@ -118,55 +298,62 @@
 
   <div class="main-bg">
     <h1 class="hero-title">Meet Our Team</h1>
+
     <div class="team-grid">
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 1">
         <div class="team-name">Kurt Apostol</div>
+        <div class="team-role">Editor / Creator</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 2">
         <div class="team-name">Samuel Verano</div>
+        <div class="team-role">Streamer</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 3">
         <div class="team-name">Adriel Segundo</div>
+        <div class="team-role">Gameplay</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 4">
         <div class="team-name">Martha Claire Mejia</div>
+        <div class="team-role">Producer</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 5">
         <div class="team-name">Hannah Lian Larsen</div>
+        <div class="team-role">Community</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 6">
         <div class="team-name">Lanz Yosef William Ronquillo</div>
+        <div class="team-role">Tech</div>
       </div>
     </div>
+
     <section class="who-section">
       <div class="rcorners1">
         <h1>Who we are</h1>
         <p>We're Benzene Games! A gaming content creation group consisting of 6 members. We do fun challenges, and explore different games. Will six sides form to make a great team? Stick around and find out!</p>
       </div>
     </section>
+
     <section class="what-section">
       <div class="rcorners2">
-        <h1>What we do </h1>
-        <p>
-        We make gaming content that’s fun to watch and fun to create. From challenges to game explorations to spontaneous chaos, we’re always trying something new. If it looks fun, we’re probably doing it and if we haven’t yet, we will.
-        </p>
+        <h1>What we do</h1>
+        <p>We make gaming content that’s fun to watch and fun to create. From challenges to game explorations to spontaneous chaos, we’re always trying something new. If it looks fun, we’re probably doing it and if we haven’t yet, we will.</p>
       </div>
     </section>
+
     <section class="mission-section">
       <div class="rcorners3">
         <h1>Our Mission</h1>
-        <p>
-       Our mission is simple: bring people together through fun, entertaining game challenges.
-We want to create streams that are exciting, unpredictable, and full of energy. </p>
+        <p>Our mission is simple: bring people together through fun, entertaining game challenges. We want to create streams that are exciting, unpredictable, and full of energy.</p>
       </div>
     </section>
   </div>
+
   <footer id="footer">
     <div class="footerOverlay"></div>
     <div style="height: 6.25vh"></div>
@@ -187,24 +374,33 @@ We want to create streams that are exciting, unpredictable, and full of energy. 
       </div>
     </div>
   </footer>
+
   <div class="footerBottom">
     <p>Copyright &copy;2025; Designed by <span class="designer">Group5</span></p>
   </div>
+
+  <script>
+  
+  function resizeBgVideo() {
+    const nav = document.querySelector('.topnav');
+    const footer = document.getElementById('footer');
+    const container = document.querySelector('.main-bg-video-container');
+    if (!nav || !footer || !container) return;
+
+    
+    const top = 0;
+    
+    const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+    
+    container.style.top = top + 'px';
+   
+    const height = Math.max(0, footerTop - top);
+    container.style.height = height + 'px';
+  }
+
+  
+  window.addEventListener('resize', resizeBgVideo);
+  window.addEventListener('DOMContentLoaded', resizeBgVideo);
+  </script>
 </body>
-<script>
-function resizeBgVideo() {
-  const nav = document.querySelector('.topnav');
-  const footer = document.getElementById('footer');
-  const container = document.querySelector('.main-bg-video-container');
-  if (!nav || !footer || !container) return;
-
-  const navBottom = nav.offsetHeight;
-  const footerTop = footer.offsetTop;
-
-  container.style.top = navBottom + 'px';
-  container.style.height = (footerTop - navBottom) + 'px';
-}
-window.addEventListener('resize', resizeBgVideo);
-window.addEventListener('DOMContentLoaded', resizeBgVideo);
-</script>
 </html>
