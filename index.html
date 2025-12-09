@@ -17,7 +17,6 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: white;
-      /* removed padding-top so content sits under fixed nav as you wanted */
       overflow-x: hidden;
     }
     .logo {
@@ -35,12 +34,10 @@
       position: fixed;
       top: 0;
       width: 100%;
-      /* glass look — kept your original colors/blur/border */
       background: rgba(25,25,25,0.38);
       border: 1.5px solid rgba(255,255,255,0.10);
-      box-shadow: 0 6px 32px rgba(40,8,0,0.22); /* fixed: use box-shadow, not shadow */
+      box-shadow: 0 6px 32px rgba(40,8,0,0.22); 
       backdrop-filter: blur(22px);
-      /* -webkit-backdrop-filter removed since you said you're on Chrome (optional) */
       color: #f6f6f6;
       height: 150px;
       display: flex;
@@ -60,7 +57,7 @@
     }
     .topnav a {
       display: block;
-      color: #FFFFFF; /* preserved your original link color */
+      color: #FFFFFF; 
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
@@ -78,7 +75,7 @@
       .topnav {
         height: 60px;
       }
-      /* removed body padding-top in media query too */
+      
       .topnav a {
         padding: 0 10px;
         font-size: 16px;
