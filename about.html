@@ -263,7 +263,40 @@
     .footerContainer { width: 100%; padding: 24px 30px 12px; display:flex; flex-direction: column; align-items: center; gap: 12px; }
     .socialIcons { display:flex; justify-content:center; gap:18px; }
     .socialIcons a { text-decoration: none; padding: 10px; margin: 0 10px; background-color: white; border-radius: 25%; display:inline-flex; align-items:center; justify-content:center; }
-    .socialIcons a:nth-child(1) i, .socialIcons a:nth-child(2) i, .socialIcons a:nth-child(3) i { font-size: 5em; }
+
+    /* frosted glass full-coverage for about footer */
+    .footerGlass {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 0;
+      background: rgba(255,255,255,0.045);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.06);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* preserve original large icon size */
+    .socialIcons a i {
+      font-size: 5em;
+      line-height: 1;
+      color: #222;
+    }
+    .socialIcons a:nth-child(1) i { color: #FF0000; }   /* YouTube red */
+    .socialIcons a:nth-child(2) i { color: #5865F2; }   /* Discord */
+    .socialIcons a:nth-child(3) i { color: #E1306C; }   /* Instagram */
+
+    .socialIcons a,
+    .socialIcons a:visited,
+    .socialIcons a:link,
+    .socialIcons a:active {
+      color: inherit; /* prevent visited from recoloring icons */
+    }
+
     .footerNav { margin: 8px 0; }
     .footerNav ul { display:flex; justify-content:center; list-style:none; gap: 28px; padding:0; margin:0; }
     .footerNav ul li a { color: white; text-decoration:none; font-size:2em; opacity:0.9; transition:0.5s; font-family: "Stack Sans Text", sans-serif; font-weight:500; text-shadow: 2px 2px 8px #000; }
@@ -356,12 +389,13 @@
 
   <footer id="footer">
     <div class="footerOverlay"></div>
+    <div class="footerGlass" aria-hidden="true"></div>
     <div style="height: 6.25vh"></div>
     <div class="footerContainer">
       <div class="socialIcons">
-        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a>
-        <a href=""><i class="fa-brands fa-discord"></i></a>
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
       </div>
       <div style="height: 2.5vh"></div>
       <div class="footerNav">
