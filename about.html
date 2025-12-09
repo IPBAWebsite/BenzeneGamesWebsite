@@ -42,7 +42,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45); 
+      background: rgba(0,0,0,0.45); /* darker glass per request */
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
@@ -52,32 +52,34 @@
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100; 
+      z-index: 1100; /* sit above background video */
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
 
+    /* anchors centered with flex (remove line-height centering) */
     .topnav a {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
       color: #FFFFFF;
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
       font-size: 20px;                 
-      line-height: 150px;              
       font-family: "Poppins", "Stack Sans Text", sans-serif;
       font-weight: 600;
       position: relative;              
       transition: color .12s ease;
     }
 
-  
+    /* Animated underline positioned via top+translateY so it sits under the text */
     .topnav a::after {
       content: "";
       position: absolute;
       left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%) scaleX(0);
+      top: 50%;
+      transform: translateX(-50%) translateY(14px) scaleX(0);
       transform-origin: center;
       width: 56%;
       height: 3px;
@@ -88,7 +90,7 @@
     }
     .topnav a:hover::after,
     .topnav a:focus::after {
-      transform: translateX(-50%) scaleX(1);
+      transform: translateX(-50%) translateY(14px) scaleX(1);
       opacity: 1;
     }
     .topnav a:hover,
@@ -99,7 +101,14 @@
 
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
-      .topnav a { font-size: 16px; line-height: 60px; padding: 0 10px; }
+      .topnav a { font-size: 16px; padding: 0 10px; }
+      .topnav a::after {
+        transform: translateX(-50%) translateY(9px) scaleX(0);
+      }
+      .topnav a:hover::after,
+      .topnav a:focus::after {
+        transform: translateX(-50%) translateY(9px) scaleX(1);
+      }
     }
 
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
@@ -264,7 +273,7 @@
     .socialIcons { display:flex; justify-content:center; gap:18px; }
     .socialIcons a { text-decoration: none; padding: 10px; margin: 0 10px; background-color: white; border-radius: 25%; display:inline-flex; align-items:center; justify-content:center; }
 
-    
+    /* frosted glass full-coverage for about footer */
     .footerGlass {
       position: absolute;
       left: 0;
@@ -280,21 +289,21 @@
       pointer-events: none;
     }
 
-    /* preserve original large icon size */
+    /* preserve original large icon size (5em) */
     .socialIcons a i {
       font-size: 5em;
       line-height: 1;
       color: #222;
     }
-    .socialIcons a:nth-child(1) i { color: #FF0000; }   
-    .socialIcons a:nth-child(2) i { color: #5865F2; }   
-    .socialIcons a:nth-child(3) i { color: #E1306C; }   
+    .socialIcons a:nth-child(1) i { color: #FF0000; }   /* YouTube red */
+    .socialIcons a:nth-child(2) i { color: #5865F2; }   /* Discord */
+    .socialIcons a:nth-child(3) i { color: #E1306C; }   /* Instagram */
 
     .socialIcons a,
     .socialIcons a:visited,
     .socialIcons a:link,
     .socialIcons a:active {
-      color: inherit; 
+      color: inherit; /* prevent visited from recoloring icons */
     }
 
     .footerNav { margin: 8px 0; }
@@ -336,7 +345,7 @@
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 1">
         <div class="team-name">Kurt Apostol</div>
-        <div class="team-role">Streamer</div>
+        <div class="team-role">Editor / Creator</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 2">
@@ -346,22 +355,22 @@
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 3">
         <div class="team-name">Adriel Segundo</div>
-        <div class="team-role">Streamer</div>
+        <div class="team-role">Gameplay</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 4">
         <div class="team-name">Martha Claire Mejia</div>
-        <div class="team-role">Streamer</div>
+        <div class="team-role">Producer</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 5">
         <div class="team-name">Hannah Lian Larsen</div>
-        <div class="team-role">Streamer</div>
+        <div class="team-role">Community</div>
       </div>
       <div class="team-member">
         <img src="downloadngw.jpg" alt="Member 6">
         <div class="team-name">Lanz Yosef William Ronquillo</div>
-        <div class="team-role">Streamer</div>
+        <div class="team-role">Tech</div>
       </div>
     </div>
 
