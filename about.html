@@ -42,7 +42,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45); /* darker glass per request */
+      background: rgba(0,0,0,0.45); 
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
@@ -52,12 +52,12 @@
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100; /* sit above background video */
+      z-index: 1100; 
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
 
-    /* anchors centered with flex (remove line-height centering) */
+    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -66,14 +66,14 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 20px;                 
+      font-size: 22px;                 
       font-family: "Poppins", "Stack Sans Text", sans-serif;
       font-weight: 600;
       position: relative;              
       transition: color .12s ease;
     }
 
-    /* Animated underline positioned via top+translateY so it sits under the text */
+    
     .topnav a::after {
       content: "";
       position: absolute;
