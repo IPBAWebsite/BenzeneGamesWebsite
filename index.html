@@ -5,7 +5,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
 
   <style>
     html, body {
@@ -22,9 +22,17 @@
       padding-top: 0;
       overflow-x: hidden;
     }
-
-    .logo { padding-left: 40px; padding-right: 40px; }
-    .logo img { width: 130px; height: auto; vertical-align: middle; margin: 0; display: block; }
+    .logo {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    .logo img {
+      width: 130px;
+      height: auto;
+      vertical-align: middle;
+      margin: 0;
+      display: block;
+    }
 
     .topnav {
       position: fixed;
@@ -42,10 +50,18 @@
       padding: 0 20px;
       z-index: 1000;
     }
-    .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; }
-    .topnav li { display: inline-block; }
+    .topnav ul {
+      margin-left: auto;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+    }
+    .topnav li {
+      display: inline-block;
+    }
 
-   
+    /* anchors centered with flex (remove line-height centering) so pseudo element positions reliably */
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -56,17 +72,26 @@
       text-decoration: none;
       font-size: 22px;
       font-family: "Poppins", "Stack Sans Text", sans-serif;
+      font-optical-sizing: auto;
       font-weight: 600;
+      font-style: normal;
       position: relative;
       transition: color .12s ease;
     }
 
+    .topnav a:hover,
+    .topnav a:focus {
+      color: #FFFFFF;
+      outline: none;
+    }
 
+    /* Use top:50% and translateY to place the underline relative to the anchor center,
+       so it stays at a consistent distance under the text regardless of nav height. */
     .topnav a::after {
       content: "";
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 50%; /* anchor center */
       transform: translateX(-50%) translateY(14px) scaleX(0);
       transform-origin: center;
       width: 56%;
@@ -83,212 +108,525 @@
     }
 
     @media screen and (max-width: 1000px) {
-      .topnav { height: 60px; }
-      .topnav a { padding: 0 10px; font-size: 18px; }
-      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
+      .topnav {
+        height: 60px;
+      }
+
+      .topnav a {
+        padding: 0 10px;
+        font-size: 18px;
+      }
+
+      /* slightly smaller offset on short navbars */
+      .topnav a::after {
+        transform: translateX(-50%) translateY(9px) scaleX(0);
+      }
       .topnav a:hover::after,
-      .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
+      .topnav a:focus::after {
+        transform: translateX(-50%) translateY(9px) scaleX(1);
+      }
     }
 
-  
-    .hero { width: 100vw; margin: 0; position: relative; overflow: hidden; height: 90vh; min-height: 600px; max-width: 100vw; }
-    .hero-slider { width: 100vw; height: 90vh; min-height: 600px; max-width: 100vw; position: relative; display: block; }
-    .hero-slide { position: absolute; inset: 0; width: 100vw; height: 90vh; min-height: 600px; background-size: cover; background-position: center center; background-repeat: no-repeat; opacity: 0; transform: scale(1.02); transition: opacity 600ms ease, transform 800ms ease; display: flex; align-items: center; justify-content: center; padding: 40px 20px; pointer-events: none; }
-    .hero-slide.active { position: relative; opacity: 1; transform: scale(1); pointer-events: auto; }
+    .socialiconnav a i {
+      font-size: 2em;
+      vertical-align: middle;
+    }
 
-    .hero-overlay { position: absolute; inset: 0; background: rgba(30, 12, 3, 0.30); pointer-events: none; z-index: 1; }
-    .hero-rgboverlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; mix-blend-mode: lighten; opacity: 0.42;
-      background: radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
-                 linear-gradient(110deg, #ff8040 0%, #ff2500 30%, #ffc13c 56%, #fff6b0 72%, #ff5313 88%, #fd392d 100%);
+    .hero {
+      width: 100vw;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      height: 90vh;
+      min-height: 600px;
+      max-width: 100vw;
+    }
+    .hero-slider {
+      width: 100vw;
+      height: 90vh;
+      min-height: 600px;
+      max-width: 100vw;
+      position: relative;
+      display: block;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100vw;
+      height: 90vh;
+      min-height: 600px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 600ms ease, transform 800ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      pointer-events: none;
+    }
+    .hero-slide.active {
+      position: relative;
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 12, 3, 0.30);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-rgboverlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: lighten;
+      opacity: 0.42;
+      background:
+        radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
+        linear-gradient(
+          110deg,
+          #ff8040 0%,
+          #ff2500 30%,
+          #ffc13c 56%,
+          #fff6b0 72%,
+          #ff5313 88%,
+          #fd392d 100%
+        );
       background-size: 200% 200%;
       animation: flames 5s linear infinite;
     }
-    @keyframes flames { 0% { background-position: 0% 75%, 100% 0%; } 50% { background-position: 100% 25%, 0% 100%; } 100% { background-position: 0% 75%, 100% 0%; } }
-
-    .hero-slide > .hero-overlay, .hero-slide > .hero-rgboverlay { pointer-events: none; }
-    .hero-slide > .hero-content { z-index: 3; position: relative; }
-    .hero-heading-group { display: inline-block; text-align: center; margin: 0 auto 0.5rem auto; }
-
-    .hero-content { text-align: center; position: relative; z-index: 3; color: #fff; max-width: 980px; margin: 0 auto; padding: 12vh 20px 6vh; }
-    .brand-label { display:block; margin: 0 auto 1.2rem; font-size: 0.95rem; letter-spacing: 1.5px; color: rgba(255,255,255,0.95); background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 20px; font-weight: 800; text-shadow: 0 2px 8px #000; width: fit-content; }
-
-    .hero-title { font-family: "Orbitron", "Science Gothic", Arial, Helvetica, sans-serif; font-weight: 800; font-size: clamp(1.6rem, 4.5vw, 3.2rem); line-height: 1.05; margin: 0.35rem 0 0.6rem; text-shadow: 0 4px 18px rgba(0,0,0,0.88), 0 0 22px #fd392d; letter-spacing: 0.03em; background: rgba(0,0,0,0.13); display:block; margin: 0 auto 0.6rem; padding: 0.09em 0.21em; border-radius: 8px; }
-
- 
-    
-      
-    .brand-highlight {
+    @keyframes flames {
+      0% { background-position: 0% 75%, 100% 0%; }
+      50% { background-position: 100% 25%, 0% 100%; }
+      100% { background-position: 0% 75%, 100% 0%; }
+    }
+    .hero-slide > .hero-overlay,
+    .hero-slide > .hero-rgboverlay {
+      pointer-events: none;
+    }
+    .hero-slide > .hero-content {
+      z-index: 3;
       position: relative;
+    }
+    .hero-heading-group {
       display: inline-block;
-      font-family: "Audiowide", "Orbitron", sans-serif; 
-      font-weight: 700;
-    
-      font-size: clamp(1.15rem, 3.8vw, 2.0rem);
-      letter-spacing: 0.12em;
-      color: #ff4d2e; 
-      -webkit-text-stroke: 0.6px rgba(0,0,0,0.45);
-      
-      text-shadow:
-        0 0 6px rgba(255,100,60,0.95),
-        0 0 18px rgba(255,60,40,0.85),
-        0 0 34px rgba(255,40,30,0.6),
-        0 6px 22px rgba(0,0,0,0.7);
-      transition: transform .18s ease, text-shadow .18s ease;
-      padding: 0 6px;
-      z-index: 4;
-      --backdrop-radius: 8px;
+      text-align: center;
+      margin: 0 auto 0.5rem auto;
     }
 
-  
-    .brand-highlight::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      color: #fff;
+      text-align: center;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12vh 20px 6vh;
+    }
+.brand-label {
+  display: block;
+  margin: 0 auto 1.2rem auto;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.06);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: 800;
+  text-shadow: 0 2px 8px #000;
+  width: fit-content;
+}
+
+    .hero-title {
+      font-family: "Orbitron", "Science Gothic", Arial, Helvetica, sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 800;
+      font-style: normal;
+      font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "CTRS" 0;
+      font-size: clamp(1.6rem, 4.5vw, 3.2rem);
+      line-height: 1.05;
+      margin: 0.35rem 0 0.6rem;
+      text-shadow:
+        0 4px 18px rgba(0,0,0,0.88),
+        0 0 22px #fd392d,
+        0 0 10px #ffc13c;
+      letter-spacing: 0.03em;
+      background: rgba(0,0,0,0.13);
       display: block;
-      width: calc(100% + 18px);
-      height: calc(100% + 10px);
-      border-radius: var(--backdrop-radius);
-      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      pointer-events: none;
+      margin: 0 auto 0.6rem auto;
+      padding: 0.09em 0.21em;
+      border-radius: 8px;
     }
 
-   
-    .brand-highlight::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -12px;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 5px;
-      background: linear-gradient(90deg, rgba(255,138,75,0.95), rgba(255,43,43,1));
-      border-radius: 3px;
-      box-shadow:
-        0 0 10px rgba(255,80,40,0.9),
-        0 4px 20px rgba(255,40,40,0.45);
-      opacity: 0.98;
-      pointer-events: none;
-    }
-
-   
-    .hero-slide:nth-of-type(1).active .brand-highlight {
-      transform: translateY(-2px) scale(1.03);
+    /* Strong neon-red glow for BENZENE GAMES on slide 1 */
+    .hero-title .brand-highlight {
+      display: inline-block;
+      font-weight: 900;
+      font-size: clamp(1.05rem, 3.2vw, 1.5rem);
+      color: #ff3333;
+      -webkit-text-stroke: 0.6px rgba(0,0,0,0.35);
       text-shadow:
-        0 0 10px rgba(255,100,60,1),
-        0 0 28px rgba(255,60,40,0.98),
-        0 0 54px rgba(255,30,30,0.78),
+        0 0 6px rgba(255,60,60,0.95),
+        0 0 18px rgba(255,40,40,0.85),
+        0 0 34px rgba(255,30,30,0.6),
+        0 8px 28px rgba(255,8,8,0.12),
+        0 2px 10px rgba(0,0,0,0.6);
+      transition: text-shadow .18s ease, transform .18s ease;
+      padding: 0 0.08em;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+    }
+    .hero-slide:nth-of-type(1).active .brand-highlight {
+      transform: translateY(-2px) scale(1.02);
+      /* intensify glow when slide is active */
+      text-shadow:
+        0 0 10px rgba(255,80,80,1),
+        0 0 28px rgba(255,60,60,0.95),
+        0 0 54px rgba(255,30,30,0.7),
         0 10px 40px rgba(255,10,10,0.12),
         0 4px 14px rgba(0,0,0,0.6);
     }
 
-  
+    .hero-desc {
+      font-family: "Science Gothic", Arial, Helvetica, sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "CTRS" 0;
+      margin: 0 auto 1.1rem;
+      max-width: 820px;
+      color: #fffbe9;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      opacity: 0.98;
+      text-shadow: 0 2px 8px #000, 0 0 8px #fd392d;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: #fff;
+      color: #222;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.32);
+      background: #222;
+      color: #fff;
+    }
+
+    /* rest of CSS unchanged... (footer, progress, pagination, etc) */
+
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      border: 0;
+      width: 38px;
+      height: 56px;
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .hero-prev { left: 12px; }
+    .hero-next { right: 12px; }
+    .hero-arrow:hover { background: rgba(0,0,0,0.6); }
+
+    .hero-progress-wrap {
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      z-index: 4;
+    }
+    .hero-progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg,#fff 0%, #ffd36c 60%, #ff6b3d 100%);
+      transition: width 6s linear;
+    }
+
     @media (max-width: 900px) {
-      .brand-highlight { font-size: clamp(1.05rem, 3.6vw, 1.4rem); letter-spacing: 0.08em; padding: 0 4px; }
-      .brand-highlight::before { width: calc(100% + 12px); height: calc(100% + 8px); }
-      .brand-highlight::after { bottom: -9px; height: 4px; width: 56%; box-shadow: 0 0 8px rgba(255,80,40,0.85); }
+      .hero, .hero-slider, .hero-slide {
+        min-height: 400px;
+        height: 60vh;
+      }
+      .hero-content { padding: 8vh 16px 6vh; }
+      .hero-prev, .hero-next { width: 34px; height: 46px; }
+      .hero-title { font-size: clamp(1.3rem, 6vw, 2.2rem); }
+      .brand-label { font-size: 0.75rem; padding: 5px 9px; }
     }
+
     @media (max-width: 600px) {
-      .brand-highlight { font-size: clamp(0.95rem, 4vw, 1.15rem); letter-spacing: 0.06em; }
-      .brand-highlight::after { bottom: -7px; height: 3px; width: 52%; }
-      .brand-highlight::before { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); background: rgba(0,0,0,0.44); }
+      .hero, .hero-slider, .hero-slide {
+        min-height: 250px;
+        height: 45vh;
+      }
+      .hero-overlay { background: rgba(11,11,11,0.55); }
+      .hero-content { padding-top: 6vh; padding-bottom: 4vh; }
+      .hero-prev, .hero-next { display: none; }
+      /* slightly reduce the neon glow on tiny screens so it doesn't look oversized */
+      .hero-title .brand-highlight {
+        text-shadow:
+          0 0 6px rgba(255,60,60,0.9),
+          0 0 14px rgba(255,40,40,0.7),
+          0 4px 14px rgba(0,0,0,0.6);
+      }
     }
 
-    
-    .hero-desc { font-family: "Science Gothic", Arial, Helvetica, sans-serif; font-weight:400; margin: 0 auto 1.1rem; max-width:820px; color:#fffbe9; font-size: clamp(1rem,2.2vw,1.25rem); opacity: 0.98; text-shadow: 0 2px 8px #000, 0 0 8px #fd392d; }
-    .hero-cta { display:inline-block; background:#fff; color:#222; text-decoration:none; padding:10px 18px; border-radius:24px; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.25); transition: transform .15s ease, box-shadow .15s ease; }
-    .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.32); background:#222; color:#fff; }
+    /* Footer + frosted glass kept as before (full coverage); social icons restored to original large size */
+    footer {
+      min-height: 0;
+      height: auto;
+      max-width: 100%;
+      width: 100%;
+      background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      z-index: 1;
+      padding: 12px 0 8px;
+      margin: 0;
+      box-sizing: border-box;
+    }
 
-   
-    footer { min-height:0; height:auto; max-width:100%; width:100%; background-image: url("FreeSample-Vectorizer-io-Capture.benzene.svg"); background-size: cover; background-position: center; position: relative; z-index: 1; padding: 12px 0 8px; margin: 0; box-sizing: border-box; }
-    .footerOverlay { position:absolute; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.14); z-index:2; pointer-events:none; }
-    .footerGlass { position:absolute; left:0; right:0; top:0; bottom:0; background: rgba(255,255,255,0.045); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.06); z-index:2; pointer-events:none; }
-    .footerContainer, .footerNav, .socialIcons { position: relative; z-index: 3; }
-    .footerContainer{ width: 100%; padding: 24px 30px 12px; display:flex; flex-direction: column; align-items: center; gap: 12px; }
-    .socialIcons{ display: flex; justify-content:center; gap:18px; }
-    .socialIcons a{ text-decoration:none; padding:10px; margin:0 10px; background-color:white; border-radius:25%; display:inline-flex; align-items:center; justify-content:center; }
-    .socialIcons a i { font-size: 5em; line-height:1; }
+    footer > div[style] {
+      height: 1vh !important;
+      min-height: 0 !important;
+    }
+
+    .footerOverlay {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.14);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .footerGlass {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 0;
+      background: rgba(255,255,255,0.045);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.06);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .footerContainer, .footerNav, .socialIcons {
+      position: relative;
+      z-index: 3;
+    }
+    .footerContainer{
+      width: 100%;
+      padding: 24px 30px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .socialIcons{
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+    .socialIcons a{
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      background-color: white;
+      border-radius: 25%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .socialIcons a i {
+      font-size: 5em;
+      line-height: 1;
+    }
+    .socialIcons a:nth-child(1) i {
+      color: #FF0000;
+    }
+    .socialIcons a:nth-child(2) i {
+      color: #3b5998;
+      opacity: 0.9;
+    }
+    .socialIcons a:nth-child(3) i {
+      color: black;
+    }
+    .socialIcons a:hover{
+      color: black;
+      transition: 0.5s;
+    }
+    .socialIcons a:hover i {
+      color: black;
+      transition: 0.5s;
+    }
+
+    .footerNav{
+      margin: 8px 0;
+    }
+    .footerNav ul{
+      display: flex;
+      justify-content: center;
+      list-style-type:none;
+      gap: 28px;
+      padding: 0;
+      margin: 0;
+    }
+    .footerNav ul li a {
+      color: white;
+      margin-right: 40px;
+      margin-left: 40px;
+      text-decoration:none;
+      font-size:2em;
+      opacity:0.9;
+      transition:0.5s;
+      font-family: "Stack Sans Text", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      text-shadow: 2px 2px 8px #000;
+    }
+    .footerNav ul li a:hover {
+      opacity: 1;
+      color: black;
+      text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c;
+      transition: 0.2s;
+    }
+    .footerBottom {
+      background-color: #ff5313;
+      padding: 12px 16px;
+      text-align: center;
+      margin-top: 0;
+    }
+    .footerBottom p{
+      color: white;
+      margin: 0;
+    }
+    .designer{
+      opacity:0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 400;
+      margin: 0px 5px;
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="topnav" id="myTopnav">
     <div class="logo">
-      <a href="index.html"><img src="Benzene.JPG" alt="Logo"></a>
+      <a href="index.html">
+        <img src="Benzene.JPG" alt="Logo">
+      </a>
     </div>
     <ul>
       <li><a href="index.html"><span id="nav-home">Brand</span></a></li>
       <li><a href="about.html"><span id="nav-about">About</span></a></li>
       <li><a href="content.html"><span id="nav-product">Content</span></a></li>
-      <li class="socialiconnav"><a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a></li>
+      <li class="socialiconnav">
+        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a>
+      </li>
     </ul>
   </div>
-
   <section class="hero" aria-label="Featured content">
-    <div class="hero-slider" id="heroSlider">
-      <article class="hero-slide active" style="background-image:url('Fiery-RedBenzene.webp')" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
-        <div class="hero-overlay"></div>
-        <div class="hero-rgboverlay"></div>
-        <div class="hero-content">
-          <div class="hero-heading-group">
-            <span class="brand-label">BRAND</span>
-            <h1 class="hero-title">
-              TURN UP THE HEAT WITH <span class="brand-highlight" style="white-space:nowrap;">BENZENE GAMES</span>
-            </h1>
-          </div>
-          <p class="hero-desc">Your next favorite gaming content creators start here.</p>
-          <a class="hero-cta" href="index.html">Learn more</a>
+  <div class="hero-slider" id="heroSlider">
+
+    <article class="hero-slide active" style="background-image:url('Fiery-RedBenzene.webp')" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+      <div class="hero-overlay"></div>
+      <div class="hero-rgboverlay"></div>
+      <div class="hero-content">
+        <div class="hero-heading-group">
+          <span class="brand-label">BRAND</span>
+          <h1 class="hero-title">
+            TURN UP THE HEAT WITH <span class="brand-highlight" style="white-space:nowrap;">BENZENE GAMES</span>
+          </h1>
         </div>
-      </article>
+        <p class="hero-desc">Your next favorite gaming content creators start here.</p>
+        <a class="hero-cta" href="index.html">Learn more</a>
+      </div>
+    </article>
 
-      <article class="hero-slide" style="background-image:url('download (4).jpg')" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
-        <div class="hero-overlay"></div>
-        <div class="hero-rgboverlay"></div>
-        <div class="hero-content">
-          <div class="hero-heading-group">
-            <span class="brand-label">ABOUT</span>
-            <h1 class="hero-title">Get to Know Us</h1>
-          </div>
-          <p class="hero-desc">A crew of content creators having fun and making content worth watching.</p>
-          <a class="hero-cta" href="about.html">Learn more</a>
+    <article class="hero-slide" style="background-image:url('download (4).jpg')" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+      <div class="hero-overlay"></div>
+      <div class="hero-rgboverlay"></div>
+      <div class="hero-content">
+        <div class="hero-heading-group">
+          <span class="brand-label">ABOUT</span>
+          <h1 class="hero-title">
+            Get to Know Us
+          </h1>
         </div>
-      </article>
+        <p class="hero-desc">A crew of content creators having fun and making content worth watching.</p>
+        <a class="hero-cta" href="about.html">Learn more</a>
+      </div>
+    </article>
 
-      <article class="hero-slide" style="background-image:url('Pc Setup.jpg')" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
-        <div class="hero-overlay"></div>
-        <div class="hero-rgboverlay"></div>
-        <div class="hero-content">
-          <div class="hero-heading-group">
-            <span class="brand-label">CONTENT</span>
-            <h1 class="hero-title">Our Content</h1>
-          </div>
-          <p class="hero-desc">New videos and streams are on the way.</p>
-          <a class="hero-cta" href="content.html">Learn more</a>
+    <article class="hero-slide" style="background-image:url('Pc Setup.jpg')" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+      <div class="hero-overlay"></div>
+      <div class="hero-rgboverlay"></div>
+      <div class="hero-content">
+        <div class="hero-heading-group">
+          <span class="brand-label">CONTENT</span>
+          <h1 class="hero-title">Our Content</h1>
         </div>
-      </article>
-    </div>
+        <p class="hero-desc">New videos and streams are on the way.</p>
+        <a class="hero-cta" href="content.html">Learn more</a>
+      </div>
+    </article>
+  </div>
 
-    <button class="hero-arrow hero-prev" aria-label="Previous slide" id="heroPrev">‹</button>
-    <button class="hero-arrow hero-next" aria-label="Next slide" id="heroNext">›</button>
-    <div class="hero-progress-wrap" aria-hidden="true">
-      <div class="hero-progress" id="heroProgress"></div>
-      <nav class="hero-pagination" id="heroPagination" aria-label="Slide pages"></nav>
-    </div>
-  </section>
-
+  <button class="hero-arrow hero-prev" aria-label="Previous slide" id="heroPrev">‹</button>
+  <button class="hero-arrow hero-next" aria-label="Next slide" id="heroNext">›</button>
+  <div class="hero-progress-wrap" aria-hidden="true">
+    <div class="hero-progress" id="heroProgress"></div>
+    <nav class="hero-pagination" id="heroPagination" aria-label="Slide pages"></nav>
+  </div>
+</section>
   <footer>
     <div class="footerOverlay"></div>
     <div class="footerGlass" aria-hidden="true"></div>
     <div style="height: 6.25vh"></div>
     <div class="footerContainer">
       <div class="socialIcons">
-        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        <a href="#"><i class="fa-brands fa-discord"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a>
+        <a href=""><i class="fa-brands fa-discord"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
       </div>
       <div style="height: 2.5vh"></div>
       <div class="footerNav">
@@ -301,119 +639,132 @@
       </div>
     </div>
   </footer>
-
   <div class="footerBottom">
     <p>Copyright &copy;2025; Designed by <span class="designer">Group5</span></p>
   </div>
+<script>
+(function(){
+  const slider = document.getElementById('heroSlider');
+  const slides = slider.querySelectorAll('.hero-slide');
+  const prev = document.getElementById('heroPrev');
+  const next = document.getElementById('heroNext');
+  const progress = document.getElementById('heroProgress');
 
-  <script>
-  (function(){
-    const slider = document.getElementById('heroSlider');
-    const slides = slider.querySelectorAll('.hero-slide');
-    const prev = document.getElementById('heroPrev');
-    const next = document.getElementById('heroNext');
-    const progress = document.getElementById('heroProgress');
+  let current = 0;
+  const slideCount = slides.length;
+  const intervalMs = 6000;
+  let timer = null;
+  let progressTimer = null;
+  let progressStart = null;
 
-    let current = 0;
-    const slideCount = slides.length;
-    const intervalMs = 6000;
-    let timer = null;
-    let progressTimer = null;
-    let progressStart = null;
+  function show(index) {
+    slides[current].classList.remove('active');
+    current = (index + slideCount) % slideCount;
+    slides[current].classList.add('active');
+    resetProgress();
+    updatePagination(current);
+  }
 
-    function show(index) {
-      slides[current].classList.remove('active');
-      current = (index + slideCount) % slideCount;
-      slides[current].classList.add('active');
-      resetProgress();
-      updatePagination(current);
+  function nextSlide() { show(current + 1); }
+  function prevSlide() { show(current - 1); }
+
+  function startAuto() {
+    stopAuto();
+    progressStart = performance.now();
+    progressTimer = requestAnimationFrame(updateProgress);
+    timer = setInterval(nextSlide, intervalMs);
+  }
+
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+    if (progressTimer) { cancelAnimationFrame(progressTimer); progressTimer = null; }
+  }
+
+  function resetProgress() {
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+    progressStart = performance.now();
+  }
+
+  function updateProgress(ts) {
+    if (!progressStart) progressStart = ts || performance.now();
+    const elapsed = (ts || performance.now()) - progressStart;
+    const pct = Math.min(100, (elapsed / intervalMs) * 100);
+    progress.style.width = pct + '%';
+    if (pct >= 100) {
+      nextSlide();
+      progressStart = ts || performance.now();
     }
-
-    function nextSlide() { show(current + 1); }
-    function prevSlide() { show(current - 1); }
-
-    function startAuto() {
-      stopAuto();
-      progressStart = performance.now();
-      progressTimer = requestAnimationFrame(updateProgress);
-      timer = setInterval(nextSlide, intervalMs);
-    }
-
-    function stopAuto() {
-      if (timer) { clearInterval(timer); timer = null; }
-      if (progressTimer) { cancelAnimationFrame(progressTimer); progressTimer = null; }
-    }
-
-    function resetProgress() {
-      progress.style.transition = 'none';
-      progress.style.width = '0%';
-      progressStart = performance.now();
-    }
-
-    function updateProgress(ts) {
-      if (!progressStart) progressStart = ts || performance.now();
-      const elapsed = (ts || performance.now()) - progressStart;
-      const pct = Math.min(100, (elapsed / intervalMs) * 100);
-      progress.style.width = pct + '%';
-      if (pct >= 100) {
-        nextSlide();
-        progressStart = ts || performance.now();
+    progressTimer = requestAnimationFrame(updateProgress);
+  }
+  
+  function updatePagination(currentIndex) {
+    const pagination = document.getElementById('heroPagination');
+    if (!pagination) return;
+    const items = pagination.querySelectorAll('.hero-page');
+    items.forEach((btn, idx) => {
+      btn.classList.remove('active', 'done');
+      btn.removeAttribute('aria-current');
+      if (idx < currentIndex) {
+        btn.classList.add('done');
       }
-      progressTimer = requestAnimationFrame(updateProgress);
-    }
+      if (idx === currentIndex) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-current', 'true');
+      }
+    });
+  }
 
-    function updatePagination(currentIndex) {
-      const pagination = document.getElementById('heroPagination');
-      if (!pagination) return;
-      const items = pagination.querySelectorAll('.hero-page');
-      items.forEach((btn, idx) => {
-        btn.classList.remove('active', 'done');
-        btn.removeAttribute('aria-current');
-        if (idx < currentIndex) btn.classList.add('done');
-        if (idx === currentIndex) { btn.classList.add('active'); btn.setAttribute('aria-current','true'); }
-      });
-    }
+  next.addEventListener('click', () => { nextSlide(); startAuto(); });
+  prev.addEventListener('click', () => { prevSlide(); startAuto(); });
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+  slider.addEventListener('focusin', stopAuto);
+  slider.addEventListener('focusout', startAuto);
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+    startAuto();
+  });
+  slides.forEach((s,i) => {
+    if (i !== current) s.classList.remove('active');
+  });
+  resetProgress();
+  startAuto();
 
-    next.addEventListener('click', () => { nextSlide(); startAuto(); });
-    prev.addEventListener('click', () => { prevSlide(); startAuto(); });
-    slider.addEventListener('mouseenter', stopAuto);
-    slider.addEventListener('mouseleave', startAuto);
-    slider.addEventListener('focusin', stopAuto);
-    slider.addEventListener('focusout', startAuto);
-    slider.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
+  window.show = show;
+  window.startAuto = startAuto;
+  window.updatePagination = updatePagination;
+})();
+(function(){
+  const slider = document.getElementById('heroSlider');
+  const slides = slider.querySelectorAll('.hero-slide');
+  const pagination = document.getElementById('heroPagination');
+
+  if (!pagination || slides.length <= 1) return;
+  slides.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'hero-page';
+    btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    btn.setAttribute('data-index', i);
+    btn.type = 'button';
+
+    btn.addEventListener('click', (e) => {
+      const idx = Number(e.currentTarget.dataset.index);
+      show(idx);
       startAuto();
     });
-    slides.forEach((s,i) => { if (i !== current) s.classList.remove('active'); });
-    resetProgress();
-    startAuto();
+    pagination.appendChild(btn);
+  });
 
-    window.show = show;
-    window.startAuto = startAuto;
-    window.updatePagination = updatePagination;
-  })();
-  (function(){
-    const slider = document.getElementById('heroSlider');
-    const slides = slider.querySelectorAll('.hero-slide');
-    const pagination = document.getElementById('heroPagination');
-    if (!pagination || slides.length <= 1) return;
-    slides.forEach((s, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'hero-page';
-      btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      btn.setAttribute('data-index', i);
-      btn.type = 'button';
-      btn.addEventListener('click', (e) => {
-        const idx = Number(e.currentTarget.dataset.index);
-        show(idx);
-        startAuto();
-      });
-      pagination.appendChild(btn);
-    });
-    const initialActive = Array.from(slides).findIndex(s => s.classList.contains('active'));
-    if (typeof updatePagination === 'function') updatePagination(initialActive >= 0 ? initialActive : 0);
-  })();
-  </script>
+  const initialActive = Array.from(slides).findIndex(s => s.classList.contains('active'));
+  if (typeof updatePagination === 'function') {
+    updatePagination(initialActive >= 0 ? initialActive : 0);
+  }
+})();
+</script>
 </body>
+</html>
+</body>
+</html>
 </html>
