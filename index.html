@@ -19,7 +19,7 @@
       margin: 0;
       font-family: "Poppins", Arial, Helvetica, sans-serif;
       background: white;
-      padding-top: 150px; 
+      padding-top: 0;
       overflow-x: hidden;
     }
     .logo {
@@ -30,16 +30,15 @@
       width: 130px;
       height: auto;
       vertical-align: middle;
-      margin: 0; 
+      margin: 0;
       display: block;
     }
 
-   
     .topnav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.45); 
+      background: rgba(0, 0, 0, 0.45);
       border: 1.5px solid rgba(255,255,255,0.10);
       box-shadow: 0 6px 32px rgba(40,8,0,0.22);
       backdrop-filter: blur(22px);
@@ -52,7 +51,7 @@
       z-index: 1000;
     }
     .topnav ul {
-      margin-left: auto; 
+      margin-left: auto;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -61,29 +60,56 @@
     .topnav li {
       display: inline-block;
     }
+
+    
     .topnav a {
       display: block;
       color: #FFFFFF;
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 30px;
-      line-height: 90px;
+      font-size: 20px;                 
+      line-height: 150px;              
       font-family: "Poppins", "Stack Sans Text", sans-serif;
       font-optical-sizing: auto;
-      font-weight: 500;
+      font-weight: 600;
       font-style: normal;
+      position: relative;              
+      transition: color .12s ease;
     }
-    .topnav a:hover {
-      color: black;
+
+   
+    .topnav a:hover,
+    .topnav a:focus {
+      color: #FFFFFF;
+      outline: none;
     }
+
+    .topnav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 18px;                    
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      width: 56%;
+      height: 3px;
+      background: linear-gradient(90deg, #ffd36c 0%, #ff5313 100%);
+      border-radius: 4px;
+      transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
+      opacity: 0;
+    }
+    .topnav a:hover::after,
+    .topnav a:focus::after {
+      transform: translateX(-50%) scaleX(1);
+      opacity: 1;
+    }
+
     @media screen and (max-width: 1000px) {
       .topnav {
         height: 60px;
       }
-      body {
-        padding-top: 60px;
-      }
+
       .topnav a {
         padding: 0 10px;
         font-size: 16px;
@@ -119,7 +145,7 @@
       width: 100vw;
       height: 90vh;
       min-height: 600px;
-      background-size: cover;  
+      background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
       opacity: 0;
@@ -132,16 +158,16 @@
       pointer-events: none;
     }
     .hero-slide.active {
-      position: relative; 
+      position: relative;
       opacity: 1;
       transform: scale(1);
       pointer-events: auto;
     }
-    
+
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(30, 12, 3, 0.30);  
+      background: rgba(30, 12, 3, 0.30);
       pointer-events: none;
       z-index: 1;
     }
@@ -156,12 +182,12 @@
         radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
         linear-gradient(
           110deg,
-          #ff8040 0%,    
-          #ff2500 30%,   
-          #ffc13c 56%,   
-          #fff6b0 72%,   
-          #ff5313 88%,   
-          #fd392d 100%  
+          #ff8040 0%,
+          #ff2500 30%,
+          #ffc13c 56%,
+          #fff6b0 72%,
+          #ff5313 88%,
+          #fd392d 100%
         );
       background-size: 200% 200%;
       animation: flames 5s linear infinite;
@@ -193,7 +219,7 @@
       text-align: center;
       max-width: 980px;
       margin: 0 auto;
-      padding: 12vh 20px 6vh; 
+      padding: 12vh 20px 6vh;
     }
 .brand-label {
   display: block;
@@ -208,7 +234,7 @@
   text-shadow: 0 2px 8px #000;
   width: fit-content;
 }
-   
+
     .hero-title {
       font-family: "Orbitron", "Science Gothic", Arial, Helvetica, sans-serif;
       font-optical-sizing: auto;
@@ -218,7 +244,7 @@
         "slnt" 0,
         "wdth" 100,
         "CTRS" 0;
-      font-size: clamp(1.6rem, 4.5vw, 3.2rem); 
+      font-size: clamp(1.6rem, 4.5vw, 3.2rem);
       line-height: 1.05;
       margin: 0.35rem 0 0.6rem;
       text-shadow:
@@ -227,11 +253,20 @@
         0 0 10px #ffc13c;
       letter-spacing: 0.03em;
       background: rgba(0,0,0,0.13);
-      display: block;      
+      display: block;
       margin: 0 auto 0.6rem auto;
       padding: 0.09em 0.21em;
       border-radius: 8px;
     }
+
+    
+    .hero-slider .hero-slide:nth-of-type(1) .hero-title span,
+    .hero-slider .hero-slide:nth-of-type(1).active .hero-title span {
+      color: #ffcc66;
+      text-shadow: 0 6px 22px rgba(0,0,0,0.85), 0 0 18px rgba(255,120,50,0.14);
+      transition: color .18s ease, text-shadow .18s ease;
+    }
+
     .hero-desc {
       font-family: "Science Gothic", Arial, Helvetica, sans-serif;
       font-optical-sizing: auto;
@@ -259,8 +294,8 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.25);
       transition: transform .15s ease, box-shadow .15s ease;
     }
-    .hero-cta:hover { 
-      transform: translateY(-3px); 
+    .hero-cta:hover {
+      transform: translateY(-3px);
       box-shadow: 0 10px 24px rgba(0,0,0,0.32);
       background: #222;
       color: #fff;
@@ -320,13 +355,13 @@
       }
       .hero-overlay { background: rgba(11,11,11,0.55); }
       .hero-content { padding-top: 6vh; padding-bottom: 4vh; }
-      .hero-prev, .hero-next { display: none; } 
+      .hero-prev, .hero-next { display: none; }
     }
 
     .hero-pagination {
       position: absolute;
       left: 50%;
-      bottom: 14px;                  
+      bottom: 14px;
       transform: translateX(-50%);
       display: flex;
       gap: 10px;
@@ -338,8 +373,8 @@
 
     .hero-page {
       display: inline-block;
-      width: 46px;                   
-      height: 6px;                   
+      width: 46px;
+      height: 6px;
       border-radius: 6px;
       background: rgba(255,255,255,0.18);
       border: none;
@@ -367,9 +402,9 @@
       .hero-pagination { gap: 8px; bottom: 12px; }
     }
 
-
+   
     footer {
-      min-height: 0; 
+      min-height: 0;
       height: auto;
       max-width: 100%;
       width: 100%;
@@ -384,7 +419,7 @@
       box-sizing: border-box;
     }
 
-
+  
     footer > div[style] {
       height: 1vh !important;
       min-height: 0 !important;
@@ -394,13 +429,13 @@
       position: absolute;
       left: 0; top: 0;
       width: 100%; height: 100%;
-      background: rgba(255, 83, 19, 0.85); 
+      background: rgba(255, 83, 19, 0.85);
       z-index: 2;
       pointer-events: none;
     }
     .footerContainer, .footerNav, .socialIcons {
       position: relative;
-      z-index: 3; 
+      z-index: 3;
     }
     .footerContainer{
       width: 100%;
@@ -418,7 +453,7 @@
     .socialIcons a{
       text-decoration: none;
       padding: 10px;
-      margin: 0 10px; 
+      margin: 0 10px;
       background-color: white;
       border-radius: 25%;
       display: inline-flex;
@@ -463,17 +498,17 @@
       margin-left: 40px;
       text-decoration:none;
       font-size:2em;
-      opacity:0.9; 
+      opacity:0.9;
       transition:0.5s;
       font-family: "Stack Sans Text", sans-serif;
       font-optical-sizing: auto;
       font-weight: 500;
       font-style: normal;
-      text-shadow: 2px 2px 8px #000; 
+      text-shadow: 2px 2px 8px #000;
     }
     .footerNav ul li a:hover {
       opacity: 1;
-      color: black;            
+      color: black;
       text-shadow: 2px 2px 8px #000, 0 0 8px #ffd36c;
       transition: 0.2s;
     }
@@ -695,7 +730,7 @@
   const slides = slider.querySelectorAll('.hero-slide');
   const pagination = document.getElementById('heroPagination');
 
-  if (!pagination || slides.length <= 1) return; 
+  if (!pagination || slides.length <= 1) return;
   slides.forEach((s, i) => {
     const btn = document.createElement('button');
     btn.className = 'hero-page';
@@ -705,8 +740,8 @@
 
     btn.addEventListener('click', (e) => {
       const idx = Number(e.currentTarget.dataset.index);
-      show(idx);          
-      startAuto();        
+      show(idx);
+      startAuto();
     });
     pagination.appendChild(btn);
   });
