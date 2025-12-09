@@ -61,7 +61,7 @@
       display: inline-block;
     }
 
-    /* anchors centered with flex (remove line-height centering) so pseudo element positions reliably */
+    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -85,8 +85,7 @@
       outline: none;
     }
 
-    /* Use top:50% and translateY to place the underline relative to the anchor center,
-       so it stays at a consistent distance under the text regardless of nav height. */
+   
     .topnav a::after {
       content: "";
       position: absolute;
@@ -117,7 +116,7 @@
         font-size: 18px;
       }
 
-      /* slightly smaller offset on short navbars */
+      
       .topnav a::after {
         transform: translateX(-50%) translateY(9px) scaleX(0);
       }
@@ -269,7 +268,7 @@
       border-radius: 8px;
     }
 
-    /* Strong neon-red glow for BENZENE GAMES on slide 1 */
+    
     .hero-title .brand-highlight {
       display: inline-block;
       font-weight: 900;
