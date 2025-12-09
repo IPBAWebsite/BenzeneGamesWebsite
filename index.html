@@ -68,7 +68,7 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;                 
+      font-size: 22px;                
       line-height: 150px;              
       font-family: "Poppins", "Stack Sans Text", sans-serif;
       font-optical-sizing: auto;
@@ -89,6 +89,7 @@
       content: "";
       position: absolute;
       left: 50%;
+     
       bottom: 28px;                    
       transform: translateX(-50%) scaleX(0);
       transform-origin: center;
@@ -116,7 +117,7 @@
         line-height: 60px;
       }
 
-     
+      
       .topnav a::after {
         bottom: 12px;
       }
@@ -264,27 +265,12 @@
       border-radius: 8px;
     }
 
-   
-    .hero-title .brand-highlight {
-      display: inline-block;
-      font-weight: 900;
-      font-size: 1.03em;
-      background: linear-gradient(90deg, #fff7d6 0%, #ffd36c 35%, #ff6b3d 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 6px 22px rgba(0,0,0,0.65);
-      transition: text-shadow .18s ease, transform .18s ease;
-      letter-spacing: 0.02em;
-      padding: 0 0.08em;
-    }
-    /* extra glow only when that slide is active */
-    .hero-slide:nth-of-type(1).active .brand-highlight {
-      text-shadow:
-        0 6px 30px rgba(253,57,45,0.45),
-        0 0 34px rgba(255,200,120,0.20),
-        0 2px 12px rgba(0,0,0,0.7);
-      transform: translateY(-1px);
+    
+    .hero-slider .hero-slide:nth-of-type(1) .hero-title span,
+    .hero-slider .hero-slide:nth-of-type(1).active .hero-title span {
+      color: #ffcc66;
+      text-shadow: 0 6px 22px rgba(0,0,0,0.85), 0 0 18px rgba(255,120,50,0.14);
+      transition: color .18s ease, text-shadow .18s ease;
     }
 
     .hero-desc {
@@ -354,7 +340,7 @@
       width: 0%;
       height: 100%;
       background: linear-gradient(90deg,#fff 0%, #ffd36c 60%, #ff6b3d 100%);
-     
+      transition: width 6s linear;
     }
 
     @media (max-width: 900px) {
@@ -365,7 +351,7 @@
       .hero-content { padding: 8vh 16px 6vh; }
       .hero-prev, .hero-next { width: 34px; height: 46px; }
       .hero-title { font-size: clamp(1.3rem, 6vw, 2.2rem); }
-      .brand-label { font-size: 0.85rem; padding: 6px 10px; }
+      .brand-label { font-size: 0.75rem; padding: 5px 9px; }
     }
 
     @media (max-width: 600px) {
@@ -445,7 +431,7 @@
       min-height: 0 !important;
     }
 
-    
+    /* footer overlay (kept subtle) */
     .footerOverlay {
       position: absolute;
       left: 0; top: 0;
@@ -455,17 +441,17 @@
       pointer-events: none;
     }
 
-    
+ 
     .footerGlass {
       position: absolute;
-      left: 6%;
-      right: 6%;
-      top: 8px;
-      bottom: 8px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.06); /* light */
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 0;
+      background: rgba(255,255,255,0.045); 
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.06);
       z-index: 2;
       pointer-events: none;
@@ -483,6 +469,7 @@
       align-items: center;
       gap: 12px;
     }
+
     .socialIcons{
       display: flex;
       justify-content: center;
@@ -498,17 +485,19 @@
       align-items: center;
       justify-content: center;
     }
+    
+    .socialIcons a i {
+      font-size: 5em;
+      line-height: 1;
+    }
     .socialIcons a:nth-child(1) i {
-      font-size: 2.2em;
       color: #FF0000;
     }
     .socialIcons a:nth-child(2) i {
-      font-size: 2.2em;
       color: #3b5998;
       opacity: 0.9;
     }
     .socialIcons a:nth-child(3) i {
-      font-size: 2.2em;
       color: black;
     }
     .socialIcons a:hover{
@@ -683,9 +672,7 @@
     slides[current].classList.remove('active');
     current = (index + slideCount) % slideCount;
     slides[current].classList.add('active');
-   
     resetProgress();
-    // Also update pagination
     updatePagination(current);
   }
 
@@ -694,7 +681,6 @@
 
   function startAuto() {
     stopAuto();
-   
     progressStart = performance.now();
     progressTimer = requestAnimationFrame(updateProgress);
     timer = setInterval(nextSlide, intervalMs);
@@ -703,31 +689,23 @@
   function stopAuto() {
     if (timer) { clearInterval(timer); timer = null; }
     if (progressTimer) { cancelAnimationFrame(progressTimer); progressTimer = null; }
-  
   }
 
   function resetProgress() {
-   
-    if (!progress) return;
     progress.style.transition = 'none';
     progress.style.width = '0%';
     progressStart = performance.now();
   }
 
   function updateProgress(ts) {
-    if (!progress) return;
     if (!progressStart) progressStart = ts || performance.now();
     const elapsed = (ts || performance.now()) - progressStart;
     const pct = Math.min(100, (elapsed / intervalMs) * 100);
     progress.style.width = pct + '%';
-
     if (pct >= 100) {
-      
       nextSlide();
-      
       progressStart = ts || performance.now();
     }
-
     progressTimer = requestAnimationFrame(updateProgress);
   }
   
@@ -762,12 +740,9 @@
   slides.forEach((s,i) => {
     if (i !== current) s.classList.remove('active');
   });
-
-  // initial start
   resetProgress();
   startAuto();
 
-  // expose for pagination module
   window.show = show;
   window.startAuto = startAuto;
   window.updatePagination = updatePagination;
@@ -787,9 +762,8 @@
 
     btn.addEventListener('click', (e) => {
       const idx = Number(e.currentTarget.dataset.index);
-      // use the globally exposed show() which resets progress
-      if (typeof window.show === 'function') window.show(idx);
-      if (typeof window.startAuto === 'function') window.startAuto();
+      show(idx);
+      startAuto();
     });
     pagination.appendChild(btn);
   });
