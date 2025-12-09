@@ -63,35 +63,35 @@
 
     
     .topnav a {
-      display: inline-flex;
-      align-items: center;
-      height: 100%;
+      display: block;
       color: #FFFFFF;
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 22px;                 /* increased nav text size */
+      line-height: 150px;              
       font-family: "Poppins", "Stack Sans Text", sans-serif;
       font-optical-sizing: auto;
       font-weight: 600;
       font-style: normal;
-      position: relative;
+      position: relative;              
       transition: color .12s ease;
     }
 
+   
     .topnav a:hover,
     .topnav a:focus {
       color: #FFFFFF;
       outline: none;
     }
 
-   
     .topnav a::after {
       content: "";
       position: absolute;
       left: 50%;
-      top: 50%; /* anchor center */
-      transform: translateX(-50%) translateY(14px) scaleX(0);
+      /* Position underline closer to the text (was too far down). */
+      bottom: 28px;                    /* adjusted so underline sits near the text */
+      transform: translateX(-50%) scaleX(0);
       transform-origin: center;
       width: 56%;
       height: 3px;
@@ -102,7 +102,7 @@
     }
     .topnav a:hover::after,
     .topnav a:focus::after {
-      transform: translateX(-50%) translateY(14px) scaleX(1);
+      transform: translateX(-50%) scaleX(1);
       opacity: 1;
     }
 
@@ -113,16 +113,13 @@
 
       .topnav a {
         padding: 0 10px;
-        font-size: 18px;
+        font-size: 18px;               /* responsive nav size */
+        line-height: 60px;
       }
 
-      
+      /* move underline up a bit for the shorter nav bar on smaller screens */
       .topnav a::after {
-        transform: translateX(-50%) translateY(9px) scaleX(0);
-      }
-      .topnav a:hover::after,
-      .topnav a:focus::after {
-        transform: translateX(-50%) translateY(9px) scaleX(1);
+        bottom: 12px;
       }
     }
 
@@ -269,33 +266,11 @@
     }
 
     
-    .hero-title .brand-highlight {
-      display: inline-block;
-      font-weight: 900;
-      font-size: clamp(1.05rem, 3.2vw, 1.5rem);
-      color: #ff3333;
-      -webkit-text-stroke: 0.6px rgba(0,0,0,0.35);
-      text-shadow:
-        0 0 6px rgba(255,60,60,0.95),
-        0 0 18px rgba(255,40,40,0.85),
-        0 0 34px rgba(255,30,30,0.6),
-        0 8px 28px rgba(255,8,8,0.12),
-        0 2px 10px rgba(0,0,0,0.6);
-      transition: text-shadow .18s ease, transform .18s ease;
-      padding: 0 0.08em;
-      background: none;
-      -webkit-background-clip: initial;
-      background-clip: initial;
-    }
-    .hero-slide:nth-of-type(1).active .brand-highlight {
-      transform: translateY(-2px) scale(1.02);
-      /* intensify glow when slide is active */
-      text-shadow:
-        0 0 10px rgba(255,80,80,1),
-        0 0 28px rgba(255,60,60,0.95),
-        0 0 54px rgba(255,30,30,0.7),
-        0 10px 40px rgba(255,10,10,0.12),
-        0 4px 14px rgba(0,0,0,0.6);
+    .hero-slider .hero-slide:nth-of-type(1) .hero-title span,
+    .hero-slider .hero-slide:nth-of-type(1).active .hero-title span {
+      color: #ffcc66;
+      text-shadow: 0 6px 22px rgba(0,0,0,0.85), 0 0 18px rgba(255,120,50,0.14);
+      transition: color .18s ease, text-shadow .18s ease;
     }
 
     .hero-desc {
@@ -331,9 +306,6 @@
       background: #222;
       color: #fff;
     }
-
-    /* rest of CSS unchanged... (footer, progress, pagination, etc) */
-
     .hero-arrow {
       position: absolute;
       top: 50%;
@@ -390,16 +362,53 @@
       .hero-overlay { background: rgba(11,11,11,0.55); }
       .hero-content { padding-top: 6vh; padding-bottom: 4vh; }
       .hero-prev, .hero-next { display: none; }
-      /* slightly reduce the neon glow on tiny screens so it doesn't look oversized */
-      .hero-title .brand-highlight {
-        text-shadow:
-          0 0 6px rgba(255,60,60,0.9),
-          0 0 14px rgba(255,40,40,0.7),
-          0 4px 14px rgba(0,0,0,0.6);
-      }
     }
 
-    /* Footer + frosted glass kept as before (full coverage); social icons restored to original large size */
+    .hero-pagination {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      z-index: 5;
+      padding: 0 6px;
+      pointer-events: auto;
+    }
+
+    .hero-page {
+      display: inline-block;
+      width: 46px;
+      height: 6px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: transform .18s ease, background .25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18) inset;
+    }
+    .hero-page:hover,
+    .hero-page:focus {
+      transform: translateY(-2px) scale(1.02);
+      outline: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+    }
+    .hero-page.active {
+      background: linear-gradient(90deg,#fff 0%, #ffd36c 60%, #ff6b3d 100%);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.36);
+    }
+    .hero-page.done {
+      background: rgba(255,255,255,0.95);
+      opacity: 0.6;
+    }
+    @media (max-width: 700px) {
+      .hero-page { width: 34px; height: 5px; }
+      .hero-pagination { gap: 8px; bottom: 12px; }
+    }
+
+   
     footer {
       min-height: 0;
       height: auto;
@@ -416,11 +425,13 @@
       box-sizing: border-box;
     }
 
+  
     footer > div[style] {
       height: 1vh !important;
       min-height: 0 !important;
     }
 
+    /* footer overlay (kept subtle) */
     .footerOverlay {
       position: absolute;
       left: 0; top: 0;
@@ -430,6 +441,7 @@
       pointer-events: none;
     }
 
+    /* FULL-COVERAGE frosted glass: now covers the whole footer background */
     .footerGlass {
       position: absolute;
       left: 0;
@@ -437,7 +449,7 @@
       top: 0;
       bottom: 0;
       border-radius: 0;
-      background: rgba(255,255,255,0.045);
+      background: rgba(255,255,255,0.045); /* very light */
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.06);
@@ -473,6 +485,7 @@
       align-items: center;
       justify-content: center;
     }
+    /* restored original large icon sizing you had (5em) */
     .socialIcons a i {
       font-size: 5em;
       line-height: 1;
@@ -495,7 +508,6 @@
       color: black;
       transition: 0.5s;
     }
-
     .footerNav{
       margin: 8px 0;
     }
@@ -762,7 +774,5 @@
   }
 })();
 </script>
-</body>
-</html>
 </body>
 </html>
