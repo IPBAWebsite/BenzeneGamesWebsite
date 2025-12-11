@@ -187,123 +187,175 @@
       text-shadow: 0 2px 6px rgba(0,0,0,0.7);
       font-family: "Stack Sans Text", sans-serif;
     }
-    /* ===== Expandable Cards Section ===== */
-    .cards-section {
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      gap: 2.5rem;
-      padding: 2.5rem 2vw 2rem 2vw;
-      margin: 0 auto;
-      max-width: 1120px;
-      position: relative;
-      z-index: 13;
-      flex-wrap: wrap;
-    }
-    .expand-card {
-      background: rgba(34,34,43,0.37);
-      border-radius: 22px;
-      box-shadow: 0 4px 36px rgba(0,0,0,0.15), 0 2px 80px 4px #fd392d22;
-      overflow: hidden;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      min-width: 250px;
-      max-width: 340px;
-      width: 32%;
-      transition: width 0.44s cubic-bezier(.50,.99,.21,1), box-shadow 0.29s;
-      cursor: pointer;
-      color: #fff;
-      border: 1.8px solid rgba(255,255,255,0.14);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-height: 250px;
-      position: relative;
-    }
-    .expand-card .card-title {
-      font-size: 1.33rem;
-      font-family: 'Orbitron','Stack Sans Text',sans-serif;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      margin: 1.3rem 0 0.6rem 2rem;
-      padding-bottom: 3px;
-      text-shadow: 0 2px 8px #222, 0 1px 1px #fd392d77;
-      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-      user-select: none;
-    }
-    .expand-card .card-content {
-      opacity: 0;
-      max-height: 0;
-      transition: max-height 0.48s cubic-bezier(.50,.99,.21,1), opacity 0.36s;
-      padding: 0 2rem;
-      pointer-events: none;
-      font-size: 1.09rem;
-      width: 100%;
-    }
-    .expand-card.active .card-content, .expand-card:hover .card-content, .expand-card:focus-within .card-content {
-      opacity: 1;
-      max-height: 600px;
-      padding-bottom: 1.2rem;
-      pointer-events: auto;
-    }
-    .expand-card.active, .expand-card:hover, .expand-card:focus-within {
-      width: 440px;
-      box-shadow: 0 6px 40px 2px #fd392d55, 0 0 80px #ff531333;
-      border-color: #ff5313;
-      z-index: 14;
-    }
-    .expand-card .line {
-      margin: 0.92rem 0 0.5rem 0;
-      background: rgba(255,255,255,0.13);
-      height: 2px;
-      border-radius: 8px;
-      border: none;
-      width: 80%;
-    }
-    .stream-date, .stream-time, .stream-countdown {
-      font-family: 'Poppins', 'Stack Sans Text', sans-serif;
-      margin-bottom: 0.8em;
-      font-size: 1.09em;
-      letter-spacing: .5px;
-    }
-    .stream-label {
-      font-weight: 600;
-      color: #ffd36c;
-      text-shadow: 0 1px 8px #111;
-      font-size: .98em;
-      margin-right: 7px;
-    }
-    .watch-live-btn {
-      margin: 1.5rem auto 0 auto;
-      display: block;
-      padding: 13px 40px;
-      font-size: 1.11rem;
-      font-weight: bold;
-      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-      color: #141313;
-      border-radius: 34px;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      box-shadow: 0 4px 9px #ff741c55;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      text-shadow: 0 0 8px #ffd36c77;
-      letter-spacing: 1px;
-    }
-    .watch-live-btn:hover, .watch-live-btn:focus {
-      background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
-      color: #fff;
-      box-shadow: 0 7px 18px #fd392d77;
-    }
-    @media (max-width: 1023px) {
-      .cards-section { flex-direction: column; gap: 2rem; align-items: stretch; }
-      .expand-card, .expand-card.active, .expand-card:hover { width: 96%; max-width: 99vw; margin: 0 auto; }
-    }
-    /* ===== Footer Unchanged ===== */
+.expand-cards-container {
+  display: flex;
+  gap: 1.7vw;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2vw auto 1vw auto;
+  max-width: 1140px;
+  z-index: 11;
+  position: relative;
+  min-height: 150px;
+  width: 97vw;
+  flex-wrap: wrap;
+}
+.expand-card {
+  background: rgba(40,40,63,0.36);
+  border-radius: 42px;
+  box-shadow: 0 4px 36px 0 #fd392d11, 0 0 90px 2px #ff480022;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.6px solid rgba(255,255,255,0.09);
+  color: #ede9df;
+  min-width: 120px;
+  max-width: 390px;
+  width: 16vw;
+  height: 70px;
+  transition:
+    width .49s cubic-bezier(.7,1,.3,1),
+    min-width .49s cubic-bezier(.7,1,.3,1),
+    height .55s cubic-bezier(.7,1,.3,1),
+    box-shadow .3s,
+    background .23s,
+    flex .57s cubic-bezier(.94,0,.44,1),
+    margin .32s;
+  margin: 0 0.6vw 0 0.6vw;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 12;
+}
+.expand-card .card-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.9em 2em 0.6em 2em;
+  font-size: 1.16em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: "Orbitron", "Stack Sans Text", sans-serif;
+  background: none;
+  color: #ffa764;
+  text-shadow: 0 1px 9px #fd392d88;
+  border-radius: 40px 40px 0px 0px;
+  position: relative;
+  z-index: 3;
+  user-select: none;
+}
+.expand-card .fa-gamepad, .expand-card .fa-calendar, .expand-card .fa-youtube, .expand-card .fa-twitch {
+  font-size: 1.4em;
+  text-shadow: 0 1px 9px #fd392d58, 0 1px 1px #ffd36c33;
+}
+.expand-card .card-content {
+  opacity: 0;
+  max-height: 0;
+  padding: 0 2em;
+  pointer-events: none;
+  font-size: 1.07em;
+  transition: max-height .39s, opacity .32s;
+  width: 94%;
+  color: #fffbea;
+  font-family: "Poppins","Stack Sans Text",sans-serif;
+  position: relative;
+}
+.expand-card.active {
+  min-width: 350px; /* pill expands horizontally! */
+  width: 34vw;
+  height: 240px;
+  background: rgba(38,38,60,0.59);
+  box-shadow: 0 10px 68px 2px #fd392d77, 0 0 105px #ff531188;
+  border-color: #ff5313;
+  z-index: 15;
+  margin-top: -20px;
+}
+.expand-card.active .card-content {
+  opacity: 1;
+  max-height: 500px;
+  padding-bottom: 2.5em;
+  pointer-events: auto;
+  transition: max-height .39s, opacity .32s;
+}
+.expand-card:not(.active):hover {
+  box-shadow: 0 6px 32px 0px #ffd36c33, 0 0 60px #fd392d21;
+  border-color: #ffd36c;
+  background: rgba(44,44,58,0.34);
+}
+.expand-card:not(.active) {
+  min-width: 110px;
+  width: 10vw;
+  height: 70px;
+  opacity: .74;
+  box-shadow: 0 4px 28px 0 #fd392d08;
+  margin-top: 0;
+}
+@media (max-width: 1000px) {
+  .expand-cards-container {
+    flex-direction: column;
+    gap: 2.2vw;
+    align-items: center;
+    min-width: 80vw;
+    width: 97vw;
+  }
+  .expand-card, .expand-card.active {
+    width: 96vw;
+    min-width: 66vw;
+    max-width: 99vw;
+    margin: 0.8em auto;
+    height: 70px;
+    border-radius: 45px;
+  }
+  .expand-card.active { height: 246px; }
+}
+.watch-live-btn {
+  margin: 1.4rem auto 0 auto;
+  display: block;
+  padding: 11px 35px;
+  font-size: 1.07rem;
+  font-family: "Orbitron", "Stack Sans Text", sans-serif;
+  font-weight: bold;
+  background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+  color: #191919;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 9px #ff741c55;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  text-shadow: 0 0 8px #ffd36c77;
+  letter-spacing: 1px;
+}
+.watch-live-btn:hover, .watch-live-btn:focus {
+  background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
+  color: #fff;
+  box-shadow: 0 7px 18px #fd392d77;
+}
+.expand-card .stream-countdown {
+  margin-top: 0.7em;
+  font-size: 1.09em;
+  font-family: "Orbitron", "Stack Sans Text", sans-serif;
+}
+.expand-card .card-tab i {
+  margin-right: 7px;
+}
+.expand-card ul {
+  margin-top: 4px;
+}
+.expand-card ul li {
+  margin-bottom: 6px;
+}
+.expand-card ul li a {
+  color: #ffd36c;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color .11s;
+}
+.expand-card ul li a:hover {
+  color: #ff5313;
+}
     footer{
       background: #1f1e1e;
       padding-top: 50px;
@@ -440,67 +492,47 @@
      <h1 class="comingsoon-title">UPCOMING Stream</h1>
      <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
+    <div class="expand-cards-container">
+  <div class="expand-card when active">
+    <div class="card-tab">
+      <i class="fa-regular fa-calendar"></i>
+      <span>When</span>
+    </div>
+    <div class="card-content">
+      <div><b>Stream Date:</b> December 16, 2025</div>
+      <div><b>Time:</b> 8:00 PM <span style="opacity:.7;">EST</span></div>
+      <div class="stream-countdown"><b>Countdown:</b> <span id="card-countdown"></span></div>
+      <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+        <i class="fa-solid fa-play"></i> Watch Live
+      </button>
+    </div>
+  </div>
+       <div class="expand-card where">
+    <div class="card-tab">
+      <i class="fa-brands fa-youtube"></i>
+      <span>Where</span>
+    </div>
+    <div class="card-content">
+      <div>Watch us live on:</div>
+      <ul style="margin:8px 0 0 0;padding:0;list-style:none;">
+        <li><a target="_blank" href="https://www.youtube.com/@BenzeneGamesOfficial/live"><i class="fa-brands fa-youtube"></i> <b>YouTube</b></a></li>
+        <li><a target="_blank" href="https://www.twitch.tv/benzenegames"><i class="fa-brands fa-twitch"></i> <b>Twitch</b></a></li>
+      </ul>
+    </div>
+  </div>
+      <div class="expand-card what">
+    <div class="card-tab">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>What</span>
+    </div>
+    <div class="card-content">
+      <div><b>Game:</b> League of Legends</div>
+      <div><b>Mode:</b> Ranked Adventure</div>
+      <div><b>Details:</b> Commentary, Q&A, and chill chat!</div>
+    </div>
+  </div>
+</div>
   </section>
-  
-  <!-- ==== Expandable Cards Inserted Here ==== -->
-  <section class="cards-section">
-    <!-- Card 1: When -->
-    <div class="expand-card" tabindex="0">
-      <div class="card-title">When</div>
-      <div class="card-content">
-        <hr class="line">
-        <div class="stream-date">
-          <span class="stream-label">Stream Date:</span>
-          <span id="card-stream-date">December 16, 2025</span>
-        </div>
-        <div class="stream-time">
-          <span class="stream-label">Time:</span>
-          <span id="card-stream-time">8:00 PM</span>
-          <span class="stream-tz-label">EST (GMT-5)</span>
-        </div>
-        <div class="stream-countdown">
-          <span class="stream-label">Countdown:</span>
-          <span id="card-countdown"></span>
-        </div>
-        <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-          <i class="fa-solid fa-play"></i> Watch Live
-        </button>
-      </div>
-    </div>
-    <!-- Card 2: Where -->
-    <div class="expand-card" tabindex="0">
-      <div class="card-title">Where</div>
-      <div class="card-content">
-        <hr class="line">
-        <div style="font-family:'Poppins','Stack Sans Text',sans-serif;margin-bottom:1em;font-size:1.1em;">
-          Catch us live on:
-          <ul style="margin-top:0.7em;margin-bottom:1em;padding-left:1.35em;">
-            <li><a href="https://www.youtube.com/@BenzeneGamesOfficial/live" target="_blank" style="color:#ffd36c;text-decoration:none;"><i class="fab fa-youtube"></i> YouTube</a></li>
-            <li><a href="https://www.twitch.tv/benzenegames" target="_blank" style="color:#ab8cff;padding-left:6px;text-decoration:none;"><i class="fab fa-twitch"></i> Twitch</a></li>
-          </ul>
-        </div>
-        <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-          <i class="fa-solid fa-play"></i> Watch Live
-        </button>
-      </div>
-    </div>
-    <!-- Card 3: What -->
-    <div class="expand-card" tabindex="0">
-      <div class="card-title">What</div>
-      <div class="card-content">
-        <hr class="line">
-        <div style="font-family:Poppins,sans-serif;font-size:1.08em;margin-bottom:1em;">
-          <strong>Game:</strong> League of Legends &ndash; "Ranked Adventure"<br>
-          <strong>Details:</strong> Join us for gameplay, commentary, and chat with our community!<br>
-          <strong>Special:</strong> Q&A session at halftime.
-        </div>
-        <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-          <i class="fa-solid fa-play"></i> Watch Live
-        </button>
-      </div>
-    </div>
-  </section>
-  <!-- ==== End Expandable Cards ==== -->
 
   <footer id="footer">
     <div class="container">
@@ -582,6 +614,43 @@
       this.classList.remove('active');
     });
   });
+
+  document.querySelectorAll('.expand-card').forEach(card => {
+    card.addEventListener('click', function() {
+      document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+    });
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+
+  // Countdown for both main hero and card
+  const targetDate = new Date("December 16, 2025 20:00:00").getTime();
+  const countdownElement = document.getElementById("countdown-inline");
+  const cardCountdown = document.getElementById("card-countdown");
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    if (distance < 0) {
+      if(countdownElement) countdownElement.innerHTML = "Live now!";
+      if(cardCountdown) cardCountdown.innerHTML = "Live now!";
+      clearInterval(interval);
+      return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(countdownElement) countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if(cardCountdown) cardCountdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+  const interval = setInterval(updateCountdown, 1000);
+  updateCountdown();
 </script>
+  <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
 </body>
 </html>
