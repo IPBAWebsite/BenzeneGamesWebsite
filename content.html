@@ -1,12 +1,25 @@
+Copilot said: Absolutely! Below you'll find a **full copy-paste
+Absolutely! Below you'll find a full copy-paste solution that works exactly as requested:
+
+The cards appear next to each other as condensed pill shapes (not squares!)
+Only ONE expands at a time (hover OR click)
+Use Font Awesome icons in the "tab"/title
+Seamless, smooth, frosted glass, pill-shaped
+Fully responsive, all in your hero section under the main text
+Default "When" is expanded. Hover or click expands any card and collapses the others.
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Benzene Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font imports -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
   <style>
     html, body {
       width: 100%;
@@ -22,7 +35,7 @@
       padding-top: 0;
       overflow-x: hidden;
     }
-
+    /* NAV and HERO as before */
     .logo {
       padding-left: 40px;
       padding-right: 40px;
@@ -34,7 +47,6 @@
       margin: 0; 
       display: block;
     }
-
     .topnav {
       position: fixed;
       top: 0;
@@ -106,23 +118,25 @@
       }
     }
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
+
     .comingsoon-hero {
-      position: relative;       
+      position: relative;
       width: 100vw;
-      height: 100vh;            
+      height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: center; /* center the text/cards vertically */
       overflow: hidden;
       margin: 0;
       padding: 0;
     }
     .comingsoon-hero video {
-      position: absolute;       
+      position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vh;             
-      height: 100vw;            
+      width: 100vh;
+      height: 100vw;
       transform: translate(-50%, -50%) rotate(90deg) scale(1);
       transform-origin: center center;
       object-fit: fill;
@@ -130,18 +144,43 @@
       pointer-events: none;
       opacity: 0.83;
     }
+    .hero-overlay, .hero-rgboverlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-overlay {
+      background: rgba(30, 12, 3, 0.47);
+    }
+    .hero-rgboverlay {
+      mix-blend-mode: lighten;
+      opacity: 0.42;
+      background:
+        radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
+        linear-gradient(110deg, #ff8040 0%, #ff2500 30%, #ffc13c 56%, #fff6b0 72%, #ff5313 88%, #fd392d 100%);
+      background-size: 200% 200%;
+      animation: flames 5s linear infinite;
+    }
+    @keyframes flames {
+      0% { background-position: 0% 75%, 100% 0%; }
+      50% { background-position: 100% 25%, 0% 100%; }
+      100% { background-position: 0% 75%, 100% 0%; }
+    }
     .comingsoon-centerbox {
       position: relative;
       z-index: 3;
       width: 100%;
       text-align: center;
       color: #fff;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 0.5rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      max-width: 600px;
     }
+
     .comingsoon-brand-label {
       display: inline-block;
       margin: 0 auto 1rem auto;
@@ -161,7 +200,7 @@
       font-weight: 800;
       line-height: 1.08;
       text-transform: uppercase;
-      margin: 0.45rem 0 0.95rem 0;
+      margin: 0.45rem 0 0.5rem 0;
       letter-spacing: 0.03em;
       text-shadow:
         0 4px 18px rgba(0,0,0,0.88),
@@ -187,282 +226,212 @@
       text-shadow: 0 2px 6px rgba(0,0,0,0.7);
       font-family: "Stack Sans Text", sans-serif;
     }
-.expand-cards-container {
-  display: flex;
-  gap: 1.7vw;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 2vw auto 1vw auto;
-  max-width: 1140px;
-  z-index: 11;
-  position: relative;
-  min-height: 150px;
-  width: 97vw;
-  flex-wrap: wrap;
-}
-.expand-card {
-  background: rgba(40,40,63,0.36);
-  border-radius: 42px;
-  box-shadow: 0 4px 36px 0 #fd392d11, 0 0 90px 2px #ff480022;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.6px solid rgba(255,255,255,0.09);
-  color: #ede9df;
-  min-width: 120px;
-  max-width: 390px;
-  width: 16vw;
-  height: 70px;
-  transition:
-    width .49s cubic-bezier(.7,1,.3,1),
-    min-width .49s cubic-bezier(.7,1,.3,1),
-    height .55s cubic-bezier(.7,1,.3,1),
-    box-shadow .3s,
-    background .23s,
-    flex .57s cubic-bezier(.94,0,.44,1),
-    margin .32s;
-  margin: 0 0.6vw 0 0.6vw;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 12;
-}
-.expand-card .card-tab {
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-  padding: 0.9em 2em 0.6em 2em;
-  font-size: 1.16em;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-family: "Orbitron", "Stack Sans Text", sans-serif;
-  background: none;
-  color: #ffa764;
-  text-shadow: 0 1px 9px #fd392d88;
-  border-radius: 40px 40px 0px 0px;
-  position: relative;
-  z-index: 3;
-  user-select: none;
-}
-.expand-card .fa-gamepad, .expand-card .fa-calendar, .expand-card .fa-youtube, .expand-card .fa-twitch {
-  font-size: 1.4em;
-  text-shadow: 0 1px 9px #fd392d58, 0 1px 1px #ffd36c33;
-}
-.expand-card .card-content {
-  opacity: 0;
-  max-height: 0;
-  padding: 0 2em;
-  pointer-events: none;
-  font-size: 1.07em;
-  transition: max-height .39s, opacity .32s;
-  width: 94%;
-  color: #fffbea;
-  font-family: "Poppins","Stack Sans Text",sans-serif;
-  position: relative;
-}
-.expand-card.active {
-  min-width: 350px; /* pill expands horizontally! */
-  width: 34vw;
-  height: 240px;
-  background: rgba(38,38,60,0.59);
-  box-shadow: 0 10px 68px 2px #fd392d77, 0 0 105px #ff531188;
-  border-color: #ff5313;
-  z-index: 15;
-  margin-top: -20px;
-}
-.expand-card.active .card-content {
-  opacity: 1;
-  max-height: 500px;
-  padding-bottom: 2.5em;
-  pointer-events: auto;
-  transition: max-height .39s, opacity .32s;
-}
-.expand-card:not(.active):hover {
-  box-shadow: 0 6px 32px 0px #ffd36c33, 0 0 60px #fd392d21;
-  border-color: #ffd36c;
-  background: rgba(44,44,58,0.34);
-}
-.expand-card:not(.active) {
-  min-width: 110px;
-  width: 10vw;
-  height: 70px;
-  opacity: .74;
-  box-shadow: 0 4px 28px 0 #fd392d08;
-  margin-top: 0;
-}
-@media (max-width: 1000px) {
-  .expand-cards-container {
-    flex-direction: column;
-    gap: 2.2vw;
-    align-items: center;
-    min-width: 80vw;
-    width: 97vw;
-  }
-  .expand-card, .expand-card.active {
-    width: 96vw;
-    min-width: 66vw;
-    max-width: 99vw;
-    margin: 0.8em auto;
-    height: 70px;
-    border-radius: 45px;
-  }
-  .expand-card.active { height: 246px; }
-}
-.watch-live-btn {
-  margin: 1.4rem auto 0 auto;
-  display: block;
-  padding: 11px 35px;
-  font-size: 1.07rem;
-  font-family: "Orbitron", "Stack Sans Text", sans-serif;
-  font-weight: bold;
-  background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-  color: #191919;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 0 4px 9px #ff741c55;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  text-shadow: 0 0 8px #ffd36c77;
-  letter-spacing: 1px;
-}
-.watch-live-btn:hover, .watch-live-btn:focus {
-  background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
-  color: #fff;
-  box-shadow: 0 7px 18px #fd392d77;
-}
-.expand-card .stream-countdown {
-  margin-top: 0.7em;
-  font-size: 1.09em;
-  font-family: "Orbitron", "Stack Sans Text", sans-serif;
-}
-.expand-card .card-tab i {
-  margin-right: 7px;
-}
-.expand-card ul {
-  margin-top: 4px;
-}
-.expand-card ul li {
-  margin-bottom: 6px;
-}
-.expand-card ul li a {
-  color: #ffd36c;
-  text-decoration: none;
-  font-size: 1em;
-  transition: color .11s;
-}
-.expand-card ul li a:hover {
-  color: #ff5313;
-}
-    footer{
-      background: #1f1e1e;
-      padding-top: 50px;
-    }
-    .container{
-      width: 1140px;
-      margin: auto;
+    /* ===== Expandable Pills ===== */
+    .expand-cards-container {
       display: flex;
+      gap: 2vw;
       justify-content: center;
-    }
-    .footer-content{
-      width: 33.3%;
-    }
-    h3{
-      font-size: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-family: "Rajdhani", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-      color: white;
-    }
-    .footer-content p{
-      width:190px;
-      margin: auto;
-      padding: 7px;
-      font-family: "Exo 2", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 30px;
-      color: white;
-    }
-    .footer-content ul{
-      text-align: center;
-    }
-    .list{
-      padding: 0;
-    }
-    .list li{
-      width: auto;
-      text-align: center;
-      list-style-type:none;
-      padding: 7px;
+      align-items: flex-start;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      width: 96vw;
+      max-width: 1100px;
+      z-index: 13;
       position: relative;
     }
-    .list li::before{
-      content: '';
-      position: absolute;
-      transform: translate(-50%,-50%);
-      left: 50%;
-      top: 100%;
-      width: 0;
-      height: 2px;
-      background: #f18930;
-      transition-duration: .5s;
+    .expand-card {
+      background: rgba(40,40,63,0.42);
+      border-radius: 48px;
+      box-shadow: 0 4px 36px 0 #fd392d13, 0 0 90px 2px #ff480022;
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.6px solid rgba(255,255,255,0.09);
+      color: #ede9df;
+      min-width: 105px;
+      transition:
+        width .49s cubic-bezier(.7,1,.3,1),
+        min-width .49s cubic-bezier(.7,1,.3,1),
+        height .55s cubic-bezier(.7,1,.3,1),
+        box-shadow .3s,
+        background .23s,
+        flex .57s cubic-bezier(.94,0,.44,1),
+        margin .32s;
+      margin: 0 0.2vw;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 12;
+      height: 62px;
+      width: 136px;
+      opacity: .76;
+      transition: all .38s cubic-bezier(.62,1.5,.12,1);
     }
-    .list li:hover::before{
-      width: 70px;
+    .expand-card .card-tab {
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      padding: 0.65em 2em 0.55em 2em;
+      font-size: 1.09em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-family: "Orbitron", "Stack Sans Text", sans-serif;
+      color: #ffa764;
+      text-shadow: 0 1px 9px #fd392d88;
+      border-radius: 40px 40px 0px 0px;
+      background: none;
+      position: relative;
+      z-index: 3;
+      user-select: none;
+      width: 100%;
+      flex-shrink: 0;
+      min-height: 60px;
+      min-width: 0;
+      justify-content: flex-start;
     }
-    .social-icons{
-      text-align: center;
-      padding: 0;
+    .expand-card .card-tab i {
+      font-size: 1.44em;
+      margin-right: 8px;
+      text-shadow: 0 1px 9px #fd392d58,0 1px 1px #ffd36c33;
     }
-    .social-icons li{
-      display: inline-block;
-      text-align: center;
-      padding: 5px;
+    .expand-card .card-content {
+      opacity: 0;
+      max-height: 0;
+      padding: 0 2em;
+      pointer-events: none;
+      font-size: 1.07em;
+      transition: max-height .44s cubic-bezier(.53,.99,.37,1), opacity .3s cubic-bezier(.8,0,.42,1);
+      width: 91%;
+      color: #fffbea;
+      font-family: "Poppins","Stack Sans Text",sans-serif;
+      position: relative;
+      min-width: 0;
     }
-    .social-icons li a i {
-      font-size: 50px;
-      transition: 0.3s;
+    .expand-card.active,
+    .expand-card:hover,
+    .expand-card:focus-within {
+      min-width: 312px;
+      width: 380px;
+      height: 260px;
+      background: rgba(38,38,60,0.62);
+      box-shadow: 0 10px 68px 2px #fd392d77, 0 0 105px #ff531188;
+      border-color: #ff5313;
+      opacity: 1;
+      z-index: 14;
     }
-    footer a{
+    .expand-card.active .card-content,
+    .expand-card:hover .card-content,
+    .expand-card:focus-within .card-content {
+      opacity: 1;
+      max-height: 400px;
+      padding-bottom: 2em;
+      pointer-events: auto;
+    }
+    .expand-card:not(.active):not(:hover):not(:focus-within) {
+      opacity: .77;
+      min-width: 105px;
+      width: 136px;
+      height: 62px;
+      background: rgba(40,40,63,0.32);
+    }
+    .expand-card:not(.active):not(:hover):not(:focus-within) .card-content {
+      opacity: 0;
+      max-height: 0;
+      pointer-events: none;
+      padding-bottom: 0;
+    }
+    /* Card content: style details */
+    .expand-card .stream-countdown {
+      margin-top: 0.7em;
+      font-size: 1.09em;
+      font-family: "Orbitron", "Stack Sans Text", sans-serif;
+    }
+    .expand-card ul {
+      margin:8px 0 0 0;
+      padding:0;
+      list-style: none;
+    }
+    .expand-card ul li {
+      margin-bottom: 7px;
+    }
+    .expand-card ul li a {
+      color: #ffd36c;
       text-decoration: none;
-      color: #fff
+      font-size: 1.03em;
+      transition: color .17s;
     }
-    a:hover{
-      color: #f18930;
+    .expand-card ul li a:hover {
+      color: #ff5313;
     }
-    .social-icons li a:hover i {
-      color: #f18930 !important;
+    .expand-card .watch-live-btn {
+      margin: 1.3rem auto 0 auto;
+      display: block;
+      padding: 12px 36px;
+      font-size: 1.07rem;
+      font-family: "Orbitron", "Stack Sans Text", sans-serif;
+      font-weight: bold;
+      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+      color: #191919;
+      border-radius: 29px;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 4px 9px #ff741c55;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      text-shadow: 0 0 8px #ffd36c77;
+      letter-spacing: 1px;
     }
-    .bottom-bar{
-      background: #f18930;
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 50px;
+    .expand-card .watch-live-btn i {
+      margin-right: 5px;
     }
-    .bottom-bar p{
-      color: #343434;
-      margin: 0;
-      font-size: 16px;
-      padding: 7px;
+    .expand-card .watch-live-btn:hover, .expand-card .watch-live-btn:focus {
+      background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
+      color: #fff;
+      box-shadow: 0 7px 18px #fd392d77;
     }
-    .social-icons li:nth-of-type(1) i{
-      color: #FF0000;
-      font-size: 50px;
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .expand-cards-container {
+        flex-direction: column;
+        gap: 2vw;
+        align-items: center;
+        min-width: 77vw;
+        width: 99vw;
+      }
+      .expand-card, .expand-card.active, .expand-card:hover {
+        width: 97vw;
+        min-width: 62vw;
+        max-width: 99vw;
+        margin: 0.8em auto;
+        height: 62px;
+        border-radius: 42px;
+      }
+      .expand-card.active, .expand-card:hover { height: 260px; }
     }
-    .social-icons li:nth-of-type(2) i {
-      color: #6441a5;
-      font-size: 50px;
-    }
-    .social-icons li:nth-of-type(3) i {
-      color: #1877F2;
-      font-size: 50px;
-    }
+    /* -- Footer styles unchanged -- */
+    footer{ background: #1f1e1e; padding-top: 50px;}
+    .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
+    .footer-content{ width: 33.3%;}
+    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
+    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-size: 30px; color: white;}
+    .footer-content ul{ text-align: center;}
+    .list{ padding: 0;}
+    .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative;}
+    .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: #f18930; transition-duration: .5s;}
+    .list li:hover::before{ width: 70px;}
+    .social-icons{ text-align: center; padding: 0;}
+    .social-icons li{ display: inline-block; text-align: center; padding: 5px;}
+    .social-icons li a i { font-size: 50px; transition: 0.3s;}
+    footer a{ text-decoration: none; color: #fff}
+    a:hover{ color: #f18930;}
+    .social-icons li a:hover i { color: #f18930 !important;}
+    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px;}
+    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px;}
+    .social-icons li:nth-of-type(1) i{ color: #FF0000; font-size: 50px;}
+    .social-icons li:nth-of-type(2) i { color: #6441a5; font-size: 50px;}
+    .social-icons li:nth-of-type(3) i { color: #1877F2; font-size: 50px;}
   </style>
 </head>
 <body>
@@ -488,52 +457,53 @@
     <div class="hero-overlay"></div>
     <div class="hero-rgboverlay"></div>
     <div class="comingsoon-centerbox">
-     <span class="comingsoon-brand-label">CONTENT</span>
-     <h1 class="comingsoon-title">UPCOMING Stream</h1>
-     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
+      <span class="comingsoon-brand-label">CONTENT</span>
+      <h1 class="comingsoon-title">UPCOMING STREAM</h1>
+      <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
+    <!-- EXPANDABLE PILLS START HERE -->
     <div class="expand-cards-container">
-  <div class="expand-card when active">
-    <div class="card-tab">
-      <i class="fa-regular fa-calendar"></i>
-      <span>When</span>
+      <div class="expand-card when active" tabindex="0">
+        <div class="card-tab">
+          <i class="fa-regular fa-calendar"></i>
+          <span>When</span>
+        </div>
+        <div class="card-content">
+          <div><b>Stream Date:</b> December 16, 2025</div>
+          <div><b>Time:</b> 8:00 PM <span style="opacity:.7;">EST</span></div>
+          <div class="stream-countdown"><b>Countdown:</b> <span id="card-countdown"></span></div>
+          <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+            <i class="fa-solid fa-play"></i> Watch Live
+          </button>
+        </div>
+      </div>
+      <div class="expand-card where" tabindex="0">
+        <div class="card-tab">
+          <i class="fa-brands fa-youtube"></i>
+          <span>Where</span>
+        </div>
+        <div class="card-content">
+          <div>Watch us live on:</div>
+          <ul>
+            <li><a target="_blank" href="https://www.youtube.com/@BenzeneGamesOfficial/live"><i class="fa-brands fa-youtube"></i> <b>YouTube</b></a></li>
+            <li><a target="_blank" href="https://www.twitch.tv/benzenegames"><i class="fa-brands fa-twitch"></i> <b>Twitch</b></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="expand-card what" tabindex="0">
+        <div class="card-tab">
+          <i class="fa-solid fa-gamepad"></i>
+          <span>What</span>
+        </div>
+        <div class="card-content">
+          <div><b>Game:</b> League of Legends</div>
+          <div><b>Mode:</b> Ranked Adventure</div>
+          <div><b>Details:</b> Commentary, Q&A, and chill chat!</div>
+        </div>
+      </div>
     </div>
-    <div class="card-content">
-      <div><b>Stream Date:</b> December 16, 2025</div>
-      <div><b>Time:</b> 8:00 PM <span style="opacity:.7;">EST</span></div>
-      <div class="stream-countdown"><b>Countdown:</b> <span id="card-countdown"></span></div>
-      <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-        <i class="fa-solid fa-play"></i> Watch Live
-      </button>
-    </div>
-  </div>
-       <div class="expand-card where">
-    <div class="card-tab">
-      <i class="fa-brands fa-youtube"></i>
-      <span>Where</span>
-    </div>
-    <div class="card-content">
-      <div>Watch us live on:</div>
-      <ul style="margin:8px 0 0 0;padding:0;list-style:none;">
-        <li><a target="_blank" href="https://www.youtube.com/@BenzeneGamesOfficial/live"><i class="fa-brands fa-youtube"></i> <b>YouTube</b></a></li>
-        <li><a target="_blank" href="https://www.twitch.tv/benzenegames"><i class="fa-brands fa-twitch"></i> <b>Twitch</b></a></li>
-      </ul>
-    </div>
-  </div>
-      <div class="expand-card what">
-    <div class="card-tab">
-      <i class="fa-solid fa-gamepad"></i>
-      <span>What</span>
-    </div>
-    <div class="card-content">
-      <div><b>Game:</b> League of Legends</div>
-      <div><b>Mode:</b> Ranked Adventure</div>
-      <div><b>Details:</b> Commentary, Q&A, and chill chat!</div>
-    </div>
-  </div>
-</div>
+    <!-- EXPANDABLE PILLS END HERE -->
   </section>
-
   <footer id="footer">
     <div class="container">
       <div class="footer-content">
@@ -562,95 +532,50 @@
       <p>Copyright ©2025; Designed by Group5</p>
     </div>
   </footer>
-<script>
-  
-  const targetDate = new Date("December 16, 2025 20:00:00").getTime();
-  const countdownElement = document.getElementById("countdown-inline");
-  const cardCountdown = document.getElementById("card-countdown");
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-      if(countdownElement) countdownElement.innerHTML = "Live now!";
-      if(cardCountdown) cardCountdown.innerHTML = "Live now!";
-      clearInterval(interval);
-      return;
+  <script>
+    // Countdown for both hero text and card
+    const targetDate = new Date("December 16, 2025 20:00:00").getTime();
+    const countdownElement = document.getElementById("countdown-inline");
+    const cardCountdown = document.getElementById("card-countdown");
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        if(countdownElement) countdownElement.innerHTML = "Live now!";
+        if(cardCountdown) cardCountdown.innerHTML = "Live now!";
+        clearInterval(interval);
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if(countdownElement) countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      if(cardCountdown) cardCountdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    if(countdownElement) countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    if(cardCountdown) cardCountdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-  const interval = setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  
-  document.querySelectorAll('.expand-card').forEach(card => {
-    card.addEventListener('click', function(event) {
-      if(window.innerWidth <= 1023) {
-        
-        document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-      }
-    });
-    card.addEventListener('mouseleave', function(event) {
-      if(window.innerWidth <= 1023) {
-        this.classList.remove('active');
-      }
-    });
-  });
-  
-  document.querySelectorAll('.expand-card').forEach(card => {
-    card.addEventListener('focus', function() {
-      this.classList.add('active');
-    });
-    card.addEventListener('blur', function() {
-      this.classList.remove('active');
-    });
-  });
-
-  document.querySelectorAll('.expand-card').forEach(card => {
-    card.addEventListener('click', function() {
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    // Expand/collapse logic
+    function activateCard(card) {
       document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
-      this.classList.add('active');
-    });
-    card.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){
-        document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-      }
-    });
-  });
-
-  // Countdown for both main hero and card
-  const targetDate = new Date("December 16, 2025 20:00:00").getTime();
-  const countdownElement = document.getElementById("countdown-inline");
-  const cardCountdown = document.getElementById("card-countdown");
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-    if (distance < 0) {
-      if(countdownElement) countdownElement.innerHTML = "Live now!";
-      if(cardCountdown) cardCountdown.innerHTML = "Live now!";
-      clearInterval(interval);
-      return;
+      card.classList.add('active');
     }
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    if(countdownElement) countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    if(cardCountdown) cardCountdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-  const interval = setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
-  <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
+    document.querySelectorAll('.expand-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        activateCard(this);
+      });
+      card.addEventListener('focus', function() {
+        activateCard(this);
+      });
+      card.addEventListener('click', function() {
+        activateCard(this);
+      });
+      card.addEventListener('keydown', function(e) {
+        if(e.key === 'Enter' || e.key === ' ') {
+          activateCard(this);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
