@@ -27,6 +27,7 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
+
     .logo { padding-left: 40px; padding-right: 40px; }
     .logo img { width: 130px; height: auto; display:block; }
     .topnav {
@@ -167,12 +168,18 @@
     }
     #countdown-inline { font-weight: bold; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); font-family: "Stack Sans Text", sans-serif; }
 
- 
+    /* ===== ONLY CHANGED / REDONE: expandable cards CSS and HTML usage =====
+       The rest of the file is kept as you had it. This section updates the
+       look so character PNGs peek behind the frosted glass in collapsed state,
+       keeps the title centered when collapsed, and animates cards in a smooth,
+       non-linear fashion when one expands.
+    */
+
     .expand-cards-container {
       --gap: 2vw;
       display: flex;
       justify-content: center;
-      align-items: center; 
+      align-items: center; /* collapsed cards center the title vertically */
       gap: var(--gap);
       margin-top: 1.5rem;
       z-index: 13;
@@ -185,9 +192,8 @@
 
     .expand-card {
       --collapsed-width: 110px;
-      --collapsed-height: 320px; 
+      --collapsed-height: 320px;
       --card-radius: 22px;
-      --glass-bg: rgba(40,40,63,0.42);
 
       position: relative;
       display: flex;
@@ -195,91 +201,126 @@
       align-items: stretch;
       width: var(--collapsed-width);
       min-width: 90px;
-     
       height: var(--card-height, var(--collapsed-height));
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--glass-bg);
+      background: linear-gradient(180deg, rgba(18,18,24,0.78), rgba(28,18,20,0.64)); /* darker horror glass */
       border-radius: var(--card-radius);
-      box-shadow: 0 4px 36px 0 #fd392d13, 0 0 90px 2px #ff480022;
+      box-shadow: 0 6px 36px rgba(0,0,0,0.7), inset 0 0 40px rgba(255,56,56,0.02);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
-      border: 1.5px solid rgba(255,255,255,0.09);
-      color: #ede9df;
+      border: 1.5px solid rgba(255,80,70,0.07);
+      color: #efe9df;
       transition:
         width 650ms cubic-bezier(.2,.95,.2,1),
         height 450ms cubic-bezier(.25,.9,.15,1),
         transform 420ms cubic-bezier(.2,.9,.2,1),
         box-shadow 320ms ease,
-        background 320ms ease,
         border-color 320ms ease,
         opacity 320ms ease;
       cursor: pointer;
       overflow: hidden;
       z-index: 12;
       justify-content: flex-start;
-      opacity: .94;
+      opacity: .95;
       will-change: transform, height, width;
     }
 
-    
-    .expand-card:not(.active) {
-      width: var(--collapsed-width);
-      transform: translateY(8px) scale(0.98);
-      filter: saturate(.85) blur(.0px);
-      opacity: .92;
-      justify-content: center; 
-    }
-
-    
-    .expand-card:hover:not(.active),
-    .expand-card:focus-within:not(.active) {
-      transform: translateY(0px) scale(0.99);
-      box-shadow: 0 8px 46px 2px #ff531155;
-      opacity: 1;
-    }
-
-    
-    .expand-card.active {
-      width: clamp(300px, 38%, 520px);
-      transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
-      box-shadow: 0 14px 88px 6px #fd392d77, 0 0 130px #ff531188;
-      border-color: #ff5313;
-      z-index: 14;
-      opacity: 1;
-      justify-content: flex-start; 
-    }
-
-    
+    /* Visual thumbnail layer inside collapsed tab.
+       We use an inline CSS variable (--thumb) on each .card-tab element
+       like: style="--thumb: url('images/Untitled design (3).png')"
+       The ::after on .card-tab draws that background image behind the text.
+    */
     .expand-card .card-tab {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; 
-      gap: 0.4em;
+      justify-content: center; /* centered when collapsed */
+      gap: 0.35em;
       width: 100%;
       padding: 26px 14px;
       font-size: 1.21em;
       font-weight: 600;
       letter-spacing: 1px;
       font-family: "Orbitron", "Stack Sans Text", sans-serif;
-      color: #ffa764;
-      text-shadow: 0 1px 9px #fd392d88;
+      color: #ffb07a;
+      text-shadow: 0 1px 9px rgba(0,0,0,0.75);
       user-select: none;
       text-align: center;
       transition: padding 300ms ease, transform 300ms ease;
       flex: 0 0 auto;
       box-sizing: border-box;
+      z-index: 3;
     }
-    .expand-card .card-tab i { font-size: 1.5em; display: block; margin-bottom: 0.42em; }
 
-    
+    /* thumbnail image (behind text) */
+    .expand-card .card-tab::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--thumb, none);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      filter: saturate(.95) contrast(.95);
+      transform: scale(1.03);
+      border-radius: inherit;
+      z-index: 1;
+      transition: opacity 420ms ease, transform 420ms ease;
+      pointer-events: none;
+    }
+
+    /* soft dark overlay above thumbnail */
+    .expand-card .card-tab::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.35));
+      z-index: 2;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .expand-card:not(.active) {
+      width: var(--collapsed-width);
+      transform: translateY(8px) scale(0.985);
+      filter: saturate(.85);
+      opacity: .92;
+      justify-content: center; /* keep title vertically centered when collapsed */
+    }
+
+    .expand-card:hover:not(.active),
+    .expand-card:focus-within:not(.active) {
+      transform: translateY(0px) scale(1);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.8);
+      opacity: 1;
+    }
+
+    .expand-card.active {
+      width: clamp(300px, 38%, 520px);
+      transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
+      box-shadow: 0 14px 88px 6px rgba(255,35,35,0.08), 0 0 130px rgba(255,80,40,0.06);
+      border-color: rgba(255,80,60,0.18);
+      z-index: 14;
+      opacity: 1;
+      justify-content: flex-start;
+    }
+
+    /* when active, move the tab layout to top-left and reduce thumbnail opacity */
     .expand-card.active .card-tab {
       justify-content: flex-start;
       align-items: flex-start;
       text-align: left;
       padding: 20px 22px;
     }
+    .expand-card.active .card-tab::after {
+      opacity: 0.08;
+      transform: scale(1);
+    }
 
-    
+    .expand-card .card-tab i { font-size: 1.5em; display: block; margin-bottom: 0.32em; z-index: 4; color: #ff8c6b; }
+    .expand-card .card-tab span { z-index: 4; display: block; text-align: center; }
+
+    /* content: hidden by default, animated open via JS (height px) */
     .expand-card .card-content {
       box-sizing: border-box;
       padding: 0 1.6rem 1.3rem 1.6rem;
@@ -292,14 +333,15 @@
       transform: translateY(8px);
       transition: height 420ms cubic-bezier(.25,.9,.15,1), opacity 260ms ease, transform 360ms cubic-bezier(.25,.9,.15,1);
       width: 100%;
+      z-index: 3;
     }
 
-    
     .expand-card.active .card-content {
       opacity: 1;
       transform: translateY(0px);
     }
 
+    /* keep watch button in all cards */
     .expand-card .watch-live-btn {
       margin: 1.1rem auto 0 auto;
       display: block;
@@ -313,15 +355,16 @@
       border: none;
       cursor: pointer;
       outline: none;
-      box-shadow: 0 4px 9px #ff741c55;
+      box-shadow: 0 4px 9px rgba(255,116,28,0.34);
       transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      text-shadow: 0 0 8px #ffd36c77;
+      text-shadow: 0 0 8px rgba(255,211,140,0.32);
       letter-spacing: 1px;
+      z-index: 4;
     }
     .expand-card .watch-live-btn:hover, .expand-card .watch-live-btn:focus {
       background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
       color: #fff;
-      box-shadow: 0 7px 18px #fd392d77;
+      box-shadow: 0 7px 18px rgba(253,57,45,0.33);
     }
 
     .expand-card ul { margin:8px 0 0 0; padding:0; list-style: none; }
@@ -329,7 +372,6 @@
     .expand-card ul li a { color: #ffd36c; text-decoration: none; font-size: 1.03em; transition: color .17s; }
     .expand-card ul li a:hover { color: #ff5313; }
 
-    
     @media (max-width: 1000px) {
       .topnav { height: 60px; }
       .expand-cards-container {
@@ -350,12 +392,13 @@
       .expand-card .card-content { padding: 0.8rem 1rem 1.1rem 1rem; }
     }
 
-    
+    /* ===== end only-changed expanding-cards section ===== */
+
     footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
     .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
     .footer-content{ width: 33.3%;}
-    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; color: white;}
-    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-weight: 400; font-size: 30px; color: white;}
+    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
+    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-size: 30px; color: white;}
     .footer-content ul{ text-align: center;}
     .list{ padding: 0;}
     .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative;}
@@ -405,7 +448,8 @@
     
     <div class="expand-cards-container" id="cardsContainer" role="list" aria-label="Stream details">
       <div class="expand-card when active" tabindex="0" role="listitem" aria-expanded="true">
-        <div class="card-tab" aria-hidden="false">
+        <!-- collapsed tab shows a character in the background (ensure file path matches exactly) -->
+        <div class="card-tab" style="--thumb: url('images/Untitled design (3).png');" aria-hidden="false">
           <i class="fa-regular fa-calendar" aria-hidden="true"></i>
           <span>When</span>
         </div>
@@ -419,30 +463,34 @@
         </div>
       </div>
 
-      <div class="expand-card where" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" aria-hidden="false">
-          <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-          <span>Where</span>
+      <!-- REPLACED Where -> Game (kept only card changes) -->
+      <div class="expand-card game" tabindex="0" role="listitem" aria-expanded="false">
+        <div class="card-tab" style="--thumb: url('images/Untitled design (4).png');" aria-hidden="false">
+          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+          <span>Game</span>
         </div>
         <div class="card-content" aria-hidden="true">
-          <div>Watch us live on:</div>
-          <ul>
-            <li><a target="_blank" rel="noopener" href="https://www.youtube.com/@BenzeneGamesOfficial/live"><i class="fa-brands fa-youtube" aria-hidden="true"></i> <b>YouTube</b></a></li>
-            <li><a target="_blank" rel="noopener" href="https://www.twitch.tv/benzenegames"><i class="fa-brands fa-twitch" aria-hidden="true"></i> <b>Twitch</b></a></li>
-          </ul>
+          <div>Watch us play Ophelia — thumbnail below:</div>
+          <img src="images/ophelia_thumb.jpg" alt="Ophelia thumbnail" style="width:100%;border-radius:10px;margin-top:.6rem;box-shadow:0 8px 30px rgba(0,0,0,0.6);">
+          <div style="margin-top:.6rem"><b>Title:</b> Ophelia</div>
+          <div><b>Genre:</b> Psychological Horror</div>
+          <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+            <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
+          </button>
         </div>
       </div>
 
       <div class="expand-card what" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" aria-hidden="false">
+        <div class="card-tab" style="--thumb: url('images/Untitled design (2).png');" aria-hidden="false">
           <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
           <span>What</span>
         </div>
         <div class="card-content" aria-hidden="true">
-          <div><b>Game:</b> League of Legends</div>
-          <div style="margin-top:.25rem;"><b>Mode:</b> Ranked Adventure</div>
-          <div style="margin-top:.25rem;"><b>Details:</b> Commentary, Q&A, and chill chat!</div>
-          <!-- Example: later you can place images here; height calculations will update -->
+          <div><b>Mode:</b> Single-player story</div>
+          <div style="margin-top:.25rem;"><b>Details:</b> Commentary, reactions, and viewer interaction</div>
+          <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+            <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
+          </button>
         </div>
       </div>
     </div>
