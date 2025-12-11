@@ -4,30 +4,21 @@
   <meta charset="utf-8" />
   <title>Benzene Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fonts: horror / title feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
-  <style>
-    html, body {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: white;
-      padding-top: 0;
-      overflow-x: hidden;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
 
+  <style>
+    
+    html, body { width:100%; height:100%; margin:0; padding:0; box-sizing:border-box; overflow-x:hidden; background: #080608; color:#efe9df; }
+    body { font-family: Poppins, Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+    
     .logo { padding-left: 40px; padding-right: 40px; }
     .logo img { width: 130px; height: auto; display:block; }
     .topnav {
@@ -49,45 +40,9 @@
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
-    .topnav a {
-      display: inline-flex;
-      align-items: center;
-      height: 100%;
-      color: #FFFFFF;
-      text-align: center;
-      padding: 0 20px;
-      text-decoration: none;
-      font-size: 22px;
-      font-family: "Orbitron", sans-serif;
-      font-weight: 500;
-      position: relative;
-      transition: color .12s ease;
-    }
-    .topnav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(14px) scaleX(0);
-      transform-origin: center;
-      width: 56%;
-      height: 3px;
-      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-      border-radius: 3px;
-      transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
-      opacity: 0;
-    }
-    .topnav a:hover::after,
-    .topnav a:focus::after {
-      transform: translateX(-50%) translateY(14px) scaleX(1);
-      opacity: 1;
-    }
-    @media screen and (max-width: 1000px) {
-      .topnav { height: 60px; }
-      .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
-    }
+    .topnav a { color:#fff; text-decoration:none; padding:0 12px; font-family:"Orbitron",sans-serif; font-size:20px; }
 
+   
     .comingsoon-hero {
       position: relative;
       width: 100vw;
@@ -127,59 +82,24 @@
       max-width: 900px;
       margin: 0 auto;
     }
-    .comingsoon-brand-label {
-      display: inline-block;
-      margin: 0 auto 1rem auto;
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.85);
-      background: rgba(255,255,255,0.07);
-      padding: 6px 14px;
-      border-radius: 18px;
-      font-weight: bold;
-      text-shadow: 0 2px 8px #000;
-      font-family: "Stack Sans Text", Arial, sans-serif;
-    }
-    .comingsoon-title {
-      font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
-      font-size: clamp(2rem, 6vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.08;
-      text-transform: uppercase;
-      margin: 0.45rem 0 0.5rem 0;
-      letter-spacing: 0.03em;
-      text-shadow:
-        0 4px 18px rgba(0,0,0,0.88),
-        0 0 22px #fd392d,
-        0 0 10px #ffc13c;
-      display: inline-block;
-      padding: 0.09em 0.29em;
-      border-radius: 10px;
-      background: rgba(0,0,0,0.13);
-    }
-    .comingsoon-desc {
-      font-family: "Stack Sans Text", Arial, sans-serif;
-      margin-top: 0.1em;
-      margin-bottom: 1.2em;
-      font-size: 1.17rem;
-      color: #fffbe9;
-      text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
-      max-width: 600px;
-    }
-    #countdown-inline { font-weight: bold; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); font-family: "Stack Sans Text", sans-serif; }
+    .comingsoon-brand-label { display:inline-block; margin:0 auto 1rem; background: rgba(255,255,255,0.03); padding:6px 12px; border-radius:12px; font-weight:700; color:#ffeedd; }
+    .comingsoon-title { font-family: "Nosifer", "Stack Sans Text", Arial, sans-serif; font-size: clamp(2rem,6vw,3.6rem); color:#f7e7d8; text-transform:uppercase; text-shadow:0 6px 24px rgba(0,0,0,0.9); background: rgba(0,0,0,0.15); padding:.12em .35em; border-radius:8px; }
+    .comingsoon-desc { margin-top:.5rem; color:#fff6e8; text-shadow:0 2px 8px rgba(0,0,0,0.8); }
 
-    /* ===== ONLY CHANGED / REDONE: expandable cards CSS and HTML usage =====
-       The rest of the file is kept as you had it. This section updates the
-       look so character PNGs peek behind the frosted glass in collapsed state,
-       keeps the title centered when collapsed, and animates cards in a smooth,
-       non-linear fashion when one expands.
-    */
+    :root {
+      --card-bg-rgba: rgba(20, 12, 12, 0.72);   
+      --card-border-rgba: rgba(180, 40, 40, 0.12);
+      --card-accent: #ff8b43;   
+      --card-accent-2: #ffbe6a;
+      --card-title-color: #ffb88a;
+      --card-icon-color: #ffb88a;
+    }
 
     .expand-cards-container {
       --gap: 2vw;
       display: flex;
       justify-content: center;
-      align-items: center; /* collapsed cards center the title vertically */
+      align-items: center; 
       gap: var(--gap);
       margin-top: 1.5rem;
       z-index: 13;
@@ -188,6 +108,7 @@
       max-width: 1100px;
       padding: 1rem;
       box-sizing: border-box;
+      pointer-events: auto;
     }
 
     .expand-card {
@@ -201,58 +122,117 @@
       align-items: stretch;
       width: var(--collapsed-width);
       min-width: 90px;
+     
       height: var(--card-height, var(--collapsed-height));
-      background: linear-gradient(180deg, rgba(18,18,24,0.78), rgba(28,18,20,0.64)); /* darker horror glass */
+      background: linear-gradient(180deg, rgba(14,10,10,0.70), var(--card-bg-rgba)); /* unified */
       border-radius: var(--card-radius);
-      box-shadow: 0 6px 36px rgba(0,0,0,0.7), inset 0 0 40px rgba(255,56,56,0.02);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1.5px solid rgba(255,80,70,0.07);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.72), inset 0 6px 40px rgba(255,90,40,0.02);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid var(--card-border-rgba);
       color: #efe9df;
       transition:
-        width 650ms cubic-bezier(.2,.95,.2,1),
-        height 450ms cubic-bezier(.25,.9,.15,1),
+        width 640ms cubic-bezier(.2,.95,.2,1),
+        height 420ms cubic-bezier(.25,.9,.15,1),
         transform 420ms cubic-bezier(.2,.9,.2,1),
-        box-shadow 320ms ease,
-        border-color 320ms ease,
-        opacity 320ms ease;
+        box-shadow 300ms ease,
+        border-color 300ms ease,
+        opacity 300ms ease;
       cursor: pointer;
-      overflow: hidden;
+      overflow: visible; 
       z-index: 12;
       justify-content: flex-start;
-      opacity: .95;
+      opacity: .98;
       will-change: transform, height, width;
     }
 
-    /* Visual thumbnail layer inside collapsed tab.
-       We use an inline CSS variable (--thumb) on each .card-tab element
-       like: style="--thumb: url('images/Untitled design (3).png')"
-       The ::after on .card-tab draws that background image behind the text.
-    */
+
     .expand-card .card-tab {
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* centered when collapsed */
+      justify-content: center; 
       gap: 0.35em;
       width: 100%;
       padding: 26px 14px;
-      font-size: 1.21em;
-      font-weight: 600;
-      letter-spacing: 1px;
-      font-family: "Orbitron", "Stack Sans Text", sans-serif;
-      color: #ffb07a;
-      text-shadow: 0 1px 9px rgba(0,0,0,0.75);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      font-family: 'Creepster', 'Orbitron', sans-serif; 
+      color: var(--card-title-color);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
       user-select: none;
       text-align: center;
-      transition: padding 300ms ease, transform 300ms ease;
+      transition: padding 260ms ease, transform 260ms ease;
       flex: 0 0 auto;
       box-sizing: border-box;
-      z-index: 3;
+      z-index: 4;
+      overflow: visible; 
     }
 
-    /* thumbnail image (behind text) */
+    
+    .expand-card .card-tab i { font-size: 1.35rem; color: var(--card-icon-color); z-index:5; margin-bottom:6px; text-shadow: 0 4px 14px rgba(0,0,0,0.7); }
+
+    
+    .expand-card .card-tab span { z-index:5; display:block; color:var(--card-title-color); font-size:1.06rem; }
+
+  
+    .card-tab .char-peek {
+      position: absolute;
+      bottom: -20%; 
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      width: 150%;                
+      max-width: 260px;
+      pointer-events: none;
+      z-index: 2;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.65)) saturate(.9) contrast(.95);
+      transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 360ms ease;
+      opacity: 0.98;
+    }
+
+    
+    .expand-card.active .card-tab .char-peek {
+      transform: translateX(-50%) translateY(30%);
+      opacity: 0.14;
+    }
+
+    
+    .expand-card:not(.active) {
+      width: var(--collapsed-width);
+      transform: translateY(8px) scale(0.985);
+      filter: saturate(.85);
+      opacity: .94;
+      justify-content: center; 
+    }
+
+    .expand-card:hover:not(.active),
+    .expand-card:focus-within:not(.active) {
+      transform: translateY(0px) scale(1);
+      box-shadow: 0 16px 80px rgba(0,0,0,0.8);
+      opacity: 1;
+    }
+
+   
+    .expand-card.active {
+      width: clamp(320px, 38%, 520px);
+      transform: translateY(-8px) scale(1.02) rotate(-0.6deg);
+      box-shadow: 0 18px 120px rgba(0,0,0,0.88), 0 0 120px rgba(255,80,40,0.06);
+      border-color: rgba(200,80,50,0.28);
+      z-index: 14;
+      opacity: 1;
+      justify-content: flex-start;
+    }
+
+    .expand-card.active .card-tab {
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align:left;
+      padding: 18px 20px;
+    }
+
+    
     .expand-card .card-tab::after {
       content: "";
       position: absolute;
@@ -260,177 +240,91 @@
       background-image: var(--thumb, none);
       background-size: cover;
       background-position: center;
-      opacity: 0.18;
-      filter: saturate(.95) contrast(.95);
-      transform: scale(1.03);
-      border-radius: inherit;
-      z-index: 1;
-      transition: opacity 420ms ease, transform 420ms ease;
-      pointer-events: none;
-    }
-
-    /* soft dark overlay above thumbnail */
-    .expand-card .card-tab::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.35));
-      z-index: 2;
-      border-radius: inherit;
-      pointer-events: none;
-    }
-
-    .expand-card:not(.active) {
-      width: var(--collapsed-width);
-      transform: translateY(8px) scale(0.985);
-      filter: saturate(.85);
-      opacity: .92;
-      justify-content: center; /* keep title vertically centered when collapsed */
-    }
-
-    .expand-card:hover:not(.active),
-    .expand-card:focus-within:not(.active) {
-      transform: translateY(0px) scale(1);
-      box-shadow: 0 12px 60px rgba(0,0,0,0.8);
-      opacity: 1;
-    }
-
-    .expand-card.active {
-      width: clamp(300px, 38%, 520px);
-      transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
-      box-shadow: 0 14px 88px 6px rgba(255,35,35,0.08), 0 0 130px rgba(255,80,40,0.06);
-      border-color: rgba(255,80,60,0.18);
-      z-index: 14;
-      opacity: 1;
-      justify-content: flex-start;
-    }
-
-    /* when active, move the tab layout to top-left and reduce thumbnail opacity */
-    .expand-card.active .card-tab {
-      justify-content: flex-start;
-      align-items: flex-start;
-      text-align: left;
-      padding: 20px 22px;
-    }
-    .expand-card.active .card-tab::after {
       opacity: 0.08;
-      transform: scale(1);
+      filter: contrast(.95) saturate(.85);
+      border-radius: inherit;
+      z-index:1;
+      pointer-events: none;
+      transform: scale(1.02);
+      transition: opacity 420ms ease, transform 420ms ease;
     }
+    .expand-card.active .card-tab::after { opacity: 0.04; transform: scale(1); }
 
-    .expand-card .card-tab i { font-size: 1.5em; display: block; margin-bottom: 0.32em; z-index: 4; color: #ff8c6b; }
-    .expand-card .card-tab span { z-index: 4; display: block; text-align: center; }
-
-    /* content: hidden by default, animated open via JS (height px) */
+    
     .expand-card .card-content {
       box-sizing: border-box;
-      padding: 0 1.6rem 1.3rem 1.6rem;
+      padding: 0 1.6rem 1.2rem 1.6rem;
       font-size: 1.02em;
-      color: #fffbea;
-      font-family: "Poppins","Stack Sans Text",sans-serif;
+      color: #fffbe9;
+      font-family: Poppins, "Stack Sans Text", sans-serif;
       overflow: hidden;
-      height: 0;           
+      height: 0;
       opacity: 0;
       transform: translateY(8px);
       transition: height 420ms cubic-bezier(.25,.9,.15,1), opacity 260ms ease, transform 360ms cubic-bezier(.25,.9,.15,1);
       width: 100%;
       z-index: 3;
+      background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.06));
     }
 
-    .expand-card.active .card-content {
-      opacity: 1;
-      transform: translateY(0px);
-    }
+    .expand-card.active .card-content { opacity: 1; transform: translateY(0); }
 
-    /* keep watch button in all cards */
+    
     .expand-card .watch-live-btn {
-      margin: 1.1rem auto 0 auto;
-      display: block;
-      padding: 12px 36px;
-      font-size: 1.07rem;
-      font-family: "Orbitron", "Stack Sans Text", sans-serif;
-      font-weight: bold;
-      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-      color: #191919;
-      border-radius: 29px;
+      margin: 1rem auto 0 auto;
+      display: inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.6rem;
+      padding: 12px 34px;
+      font-size: 1.02rem;
+      font-weight:700;
+      color:#111;
+      background: linear-gradient(90deg, var(--card-accent-2) 0%, var(--card-accent) 100%);
+      border-radius: 28px;
       border: none;
-      cursor: pointer;
-      outline: none;
-      box-shadow: 0 4px 9px rgba(255,116,28,0.34);
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      text-shadow: 0 0 8px rgba(255,211,140,0.32);
-      letter-spacing: 1px;
+      box-shadow: 0 8px 28px rgba(255,100,40,0.18);
+      cursor:pointer;
+      font-family: 'Creepster', Poppins, sans-serif;
+      transition: transform 160ms ease, box-shadow 160ms ease;
       z-index: 4;
     }
-    .expand-card .watch-live-btn:hover, .expand-card .watch-live-btn:focus {
-      background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
-      color: #fff;
-      box-shadow: 0 7px 18px rgba(253,57,45,0.33);
+    .expand-card .watch-live-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(255,80,40,0.26); }
+
+    
+    .meta-line{ margin:0.4rem 0; line-height:1.2; font-size:.98rem; }
+    .meta-line b{ color:#fff; }
+
+    
+    @media (max-width:1000px) {
+      .expand-cards-container { flex-direction: column; gap:1rem; align-items:center; padding:0 1rem 1rem; }
+      .expand-card { width: 96vw !important; max-width: 99vw; border-radius:14px; }
+      .card-tab .char-peek { display:none; } 
+      .expand-card .card-content { padding: .8rem 1rem 1.1rem 1rem; }
+      .topnav { height:60px; }
+      .comingsoon-hero{ height: calc(100vh - 60px); }
     }
 
-    .expand-card ul { margin:8px 0 0 0; padding:0; list-style: none; }
-    .expand-card ul li { margin-bottom: 7px; }
-    .expand-card ul li a { color: #ffd36c; text-decoration: none; font-size: 1.03em; transition: color .17s; }
-    .expand-card ul li a:hover { color: #ff5313; }
+    
 
-    @media (max-width: 1000px) {
-      .topnav { height: 60px; }
-      .expand-cards-container {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        padding: 0 1rem 1.5rem;
-      }
-      .expand-card {
-        width: 97vw;
-        min-width: unset;
-        max-width: 99vw;
-        border-radius: 14px;
-      }
-      .expand-card:not(.active) {
-        transform: translateY(0) scale(1);
-      }
-      .expand-card .card-content { padding: 0.8rem 1rem 1.1rem 1rem; }
-    }
-
-    /* ===== end only-changed expanding-cards section ===== */
-
+    
     footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
     .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
     .footer-content{ width: 33.3%;}
-    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
-    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-size: 30px; color: white;}
-    .footer-content ul{ text-align: center;}
-    .list{ padding: 0;}
-    .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative;}
-    .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: #f18930; transition-duration: .5s;}
-    .list li:hover::before{ width: 70px;}
-    .social-icons{ text-align: center; padding: 0;}
-    .social-icons li{ display: inline-block; text-align: center; padding: 5px;}
-    .social-icons li a i { font-size: 50px; transition: 0.3s;}
-    footer a{ text-decoration: none; color: #fff}
-    a:hover{ color: #f18930;}
-    .social-icons li a:hover i { color: #f18930 !important;}
-    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px;}
-    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px;}
-    .social-icons li:nth-of-type(1) i{ color: #FF0000; font-size: 50px;}
-    .social-icons li:nth-of-type(2) i { color: #6441a5; font-size: 50px;}
-    .social-icons li:nth-of-type(3) i { color: #1877F2; font-size: 50px;}
+    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; color: white;}
+    .bottom-bar{ background: #2f1b13; text-align: center; padding: 10px 0; margin-top: 22px; color:#f2d9c8; }
   </style>
 </head>
 <body>
   <div class="topnav" id="myTopnav">
     <div class="logo">
-      <a href="index.html">
-        <img src="Benzene.JPG" alt="Logo">
-      </a>
+      <a href="index.html"><img src="Benzene.JPG" alt="Logo"></a>
     </div>
     <ul>
-      <li><a href="index.html"><span id="nav-home">Home</span></a></li>
-      <li><a href="about.html"><span id="nav-about">About</span></a></li>
-      <li><a href="content.html"><span id="nav-product">Content</span></a></li>
-      <li class="socialiconnav">
-        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      </li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="content.html">Content</a></li>
+      <li><a href="https://www.youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
     </ul>
   </div>
 
@@ -442,57 +336,67 @@
     <div class="comingsoon-centerbox">
       <span class="comingsoon-brand-label">CONTENT</span>
       <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING STREAM</h1>
-      <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
+      <p class="comingsoon-desc">Starting in: <span id="countdown-inline"></span></p>
     </div>
 
     
     <div class="expand-cards-container" id="cardsContainer" role="list" aria-label="Stream details">
+
+      
       <div class="expand-card when active" tabindex="0" role="listitem" aria-expanded="true">
-        <!-- collapsed tab shows a character in the background (ensure file path matches exactly) -->
-        <div class="card-tab" style="--thumb: url('images/Untitled design (3).png');" aria-hidden="false">
+        <div class="card-tab" style="--thumb: url('images/Untitled%20design%20(3).png');" aria-hidden="false">
           <i class="fa-regular fa-calendar" aria-hidden="true"></i>
           <span>When</span>
+          
+          <img class="char-peek" src="images/Untitled%20design%20(3).png" alt="" aria-hidden="true">
         </div>
+
         <div class="card-content" aria-hidden="false">
-          <div><b>Stream Date:</b> December 16, 2025</div>
-          <div style="margin-top:.35rem;"><b>Time:</b> 8:00 PM <span style="opacity:.7;">EST</span></div>
-          <div class="stream-countdown" style="margin-top:.6rem;"><b>Countdown:</b> <span id="card-countdown"></span></div>
+          <div class="meta-line"><b>Stream Date:</b> December 16, 2025</div>
+          <div class="meta-line"><b>Time:</b> 8:00 PM <span style="opacity:.7">EST</span></div>
+          <div class="meta-line"><b>Countdown:</b> <span id="card-countdown"></span></div>
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
             <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
         </div>
       </div>
 
-      <!-- REPLACED Where -> Game (kept only card changes) -->
+      
       <div class="expand-card game" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" style="--thumb: url('images/Untitled design (4).png');" aria-hidden="false">
+        <div class="card-tab" style="--thumb: url('images/Untitled%20design%20(4).png');" aria-hidden="false">
           <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
           <span>Game</span>
+          <img class="char-peek" src="images/Untitled%20design%20(4).png" alt="" aria-hidden="true">
         </div>
+
         <div class="card-content" aria-hidden="true">
-          <div>Watch us play Ophelia — thumbnail below:</div>
+          <div class="meta-line">Watch us play Ophelia — thumbnail below:</div>
           <img src="images/ophelia_thumb.jpg" alt="Ophelia thumbnail" style="width:100%;border-radius:10px;margin-top:.6rem;box-shadow:0 8px 30px rgba(0,0,0,0.6);">
-          <div style="margin-top:.6rem"><b>Title:</b> Ophelia</div>
-          <div><b>Genre:</b> Psychological Horror</div>
+          <div class="meta-line" style="margin-top:.6rem"><b>Title:</b> Ophelia</div>
+          <div class="meta-line"><b>Genre:</b> Psychological Horror</div>
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
             <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
         </div>
       </div>
 
+      
       <div class="expand-card what" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" style="--thumb: url('images/Untitled design (2).png');" aria-hidden="false">
-          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+        <div class="card-tab" style="--thumb: url('images/Untitled%20design%20(2).png');" aria-hidden="false">
+          <i class="fa-solid fa-ghost" aria-hidden="true"></i>
           <span>What</span>
+          <img class="char-peek" src="images/Untitled%20design%20(2).png" alt="" aria-hidden="true">
         </div>
+
         <div class="card-content" aria-hidden="true">
-          <div><b>Mode:</b> Single-player story</div>
-          <div style="margin-top:.25rem;"><b>Details:</b> Commentary, reactions, and viewer interaction</div>
+          <div class="meta-line"><b>Mode:</b> Single-player story</div>
+          <div class="meta-line" style="margin-top:.25rem;"><b>Details:</b> Commentary, reactions, and viewer interaction</div>
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
             <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
         </div>
       </div>
+
     </div>
     
 
@@ -533,7 +437,7 @@
     const countdownElement = document.getElementById("countdown-inline");
     const cardCountdown = document.getElementById("card-countdown");
     function updateCountdown() {
-      const now = new Date().getTime();
+      const now = Date.now();
       const distance = targetDate - now;
       if (distance < 0) {
         if(countdownElement) countdownElement.textContent = "Live now!";
@@ -553,31 +457,26 @@
 
     
     (function () {
-      const cardsContainer = document.getElementById('cardsContainer');
-      if (!cardsContainer) return;
-      const cards = Array.from(cardsContainer.querySelectorAll('.expand-card'));
+      const container = document.getElementById('cardsContainer');
+      if (!container) return;
+      const cards = Array.from(container.querySelectorAll('.expand-card'));
 
-      
-      function setAria(card, expanded) {
-        card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        const content = card.querySelector('.card-content');
+      function setAria(c, expanded){
+        c.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        const content = c.querySelector('.card-content');
         if (content) content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
       }
 
-      
-      function measureCardFullHeight(card) {
+      function measureFullOuterHeight(card){
         const content = card.querySelector('.card-content');
-        if (!content) return card.scrollHeight;
-        const previousHeight = content.style.height;
-        // temporarily expand content to measure
+        const prev = content.style.height;
         content.style.height = 'auto';
-        const fullHeight = card.scrollHeight;
-        content.style.height = previousHeight; // restore
-        return fullHeight;
+        const full = card.scrollHeight;
+        content.style.height = prev;
+        return full;
       }
 
-      
-      function measureInnerContentHeight(card) {
+      function measureInnerContent(card){
         const content = card.querySelector('.card-content');
         if (!content) return 0;
         const prev = content.style.height;
@@ -587,23 +486,17 @@
         return h;
       }
 
-      
-      let activeCard = cards.find(c => c.classList.contains('active')) || cards[0];
-      if (!activeCard && cards.length) activeCard = cards[0];
+      let active = cards.find(c => c.classList.contains('active')) || cards[0] || null;
+      const FALLBACK = 120;
 
-      
-      const COLLAPSED_HEIGHT = 120;
-
-     
-      function syncHeights() {
-        const activeFull = activeCard ? measureCardFullHeight(activeCard) : COLLAPSED_HEIGHT;
+      function sync(){
+        const activeFull = active ? measureFullOuterHeight(active) : FALLBACK;
         cards.forEach((c, idx) => {
-          // Stall transition delay for nicer stagger:
-          c.style.transitionDelay = `${Math.abs(cards.indexOf(activeCard) - idx) * 40}ms`;
+          c.style.transitionDelay = `${Math.abs(cards.indexOf(active) - idx) * 40}ms`;
           c.style.height = activeFull + 'px';
           const content = c.querySelector('.card-content');
-          if (c === activeCard) {
-            const innerH = measureInnerContentHeight(c);
+          if (c === active){
+            const innerH = measureInnerContent(c);
             if (content) content.style.height = innerH + 'px';
             c.classList.add('active');
             setAria(c, true);
@@ -615,66 +508,36 @@
         });
       }
 
-      
-      function activateCard(targetCard) {
-        if (!targetCard || targetCard === activeCard) {
-          syncHeights();
-          return;
-        }
-        activeCard = targetCard;
-        syncHeights();
+      function activateCard(card){
+        if (!card || card === active) { sync(); return; }
+        active = card;
+        sync();
       }
 
-      
-      cards.forEach((card) => {
+      cards.forEach(card => {
         card.addEventListener('mouseenter', () => activateCard(card));
         card.addEventListener('click', () => activateCard(card));
         card.addEventListener('focus', () => activateCard(card));
         card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            activateCard(card);
-          }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateCard(card); }
         });
       });
 
-      
-      let resizeId;
-      function handleResize() {
-        clearTimeout(resizeId);
-        resizeId = setTimeout(() => {
-          syncHeights();
-        }, 100);
-      }
-      window.addEventListener('resize', handleResize);
-
-      
-      function watchImages() {
-        const imgs = cardsContainer.querySelectorAll('img');
+      function watchImages(){
+        const imgs = container.querySelectorAll('img');
         imgs.forEach(img => {
-          if (!img.__heightSyncAttached) {
-            img.addEventListener('load', syncHeights);
-            img.__heightSyncAttached = true;
+          if (!img.__attached) {
+            img.addEventListener('load', sync);
+            img.__attached = true;
           }
         });
       }
+      const mo = new MutationObserver(()=> { watchImages(); sync(); });
+      mo.observe(container, { childList:true, subtree:true, characterData:true });
 
-      
-      const mo = new MutationObserver(() => {
-        watchImages();
-        syncHeights();
-      });
-      mo.observe(cardsContainer, { childList: true, subtree: true, characterData: true });
-
-      
-      setTimeout(() => {
-        watchImages();
-        cards.forEach(c => setAria(c, c.classList.contains('active')));
-        syncHeights();
-      }, 60);
-
-      
-      window.__benzene_card_sync = { syncHeights, activateCard };
+      window.addEventListener('resize', () => { clearTimeout(window.__cardResize); window.__cardResize = setTimeout(sync, 120); });
+      setTimeout(()=>{ watchImages(); sync(); }, 60);
+      window.__benzene_card_sync = { sync, activateCard };
     })();
   </script>
 </body>
