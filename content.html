@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <title>Benzene Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font imports -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
@@ -12,7 +11,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
   <style>
-    /* --- PAGE RESET --- */
     html, body {
       width: 100%;
       margin: 0;
@@ -29,8 +27,6 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
-
-    /* --- TOP NAV --- */
     .logo { padding-left: 40px; padding-right: 40px; }
     .logo img { width: 130px; height: auto; display:block; }
     .topnav {
@@ -91,7 +87,6 @@
       .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
     }
 
-    /* --- HERO / BACKGROUND VIDEO --- */
     .comingsoon-hero {
       position: relative;
       width: 100vw;
@@ -172,12 +167,12 @@
     }
     #countdown-inline { font-weight: bold; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); font-family: "Stack Sans Text", sans-serif; }
 
-    /* --- EXPANDABLE CARDS --- */
+ 
     .expand-cards-container {
       --gap: 2vw;
       display: flex;
       justify-content: center;
-      align-items: center; /* center so collapsed titles are vertical-middle */
+      align-items: center; 
       gap: var(--gap);
       margin-top: 1.5rem;
       z-index: 13;
@@ -190,7 +185,7 @@
 
     .expand-card {
       --collapsed-width: 110px;
-      --collapsed-height: 320px; /* fallback for initial render */
+      --collapsed-height: 320px; 
       --card-radius: 22px;
       --glass-bg: rgba(40,40,63,0.42);
 
@@ -200,7 +195,7 @@
       align-items: stretch;
       width: var(--collapsed-width);
       min-width: 90px;
-      /* height is controlled by JS to keep all cards the same outer height */
+     
       height: var(--card-height, var(--collapsed-height));
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--glass-bg);
       border-radius: var(--card-radius);
@@ -225,16 +220,16 @@
       will-change: transform, height, width;
     }
 
-    /* default collapsed card look */
+    
     .expand-card:not(.active) {
       width: var(--collapsed-width);
       transform: translateY(8px) scale(0.98);
       filter: saturate(.85) blur(.0px);
       opacity: .92;
-      justify-content: center; /* center tab vertically when collapsed */
+      justify-content: center; 
     }
 
-    /* slight emphasis on hovered (for interaction) */
+    
     .expand-card:hover:not(.active),
     .expand-card:focus-within:not(.active) {
       transform: translateY(0px) scale(0.99);
@@ -242,7 +237,7 @@
       opacity: 1;
     }
 
-    /* active - wider and more pronounced */
+    
     .expand-card.active {
       width: clamp(300px, 38%, 520px);
       transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
@@ -250,15 +245,15 @@
       border-color: #ff5313;
       z-index: 14;
       opacity: 1;
-      justify-content: flex-start; /* when expanded keep content at top */
+      justify-content: flex-start; 
     }
 
-    /* Card tab - the visible title area */
+    
     .expand-card .card-tab {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* centered by default (collapsed look) */
+      justify-content: center; 
       gap: 0.4em;
       width: 100%;
       padding: 26px 14px;
@@ -276,7 +271,7 @@
     }
     .expand-card .card-tab i { font-size: 1.5em; display: block; margin-bottom: 0.42em; }
 
-    /* When active we move the tab slightly up so content follows naturally */
+    
     .expand-card.active .card-tab {
       justify-content: flex-start;
       align-items: flex-start;
@@ -284,8 +279,7 @@
       padding: 20px 22px;
     }
 
-    /* content area - hidden by default, revealed for active card.
-       Use JS to animate height (height transitions don't work to/from auto) */
+    
     .expand-card .card-content {
       box-sizing: border-box;
       padding: 0 1.6rem 1.3rem 1.6rem;
@@ -293,14 +287,14 @@
       color: #fffbea;
       font-family: "Poppins","Stack Sans Text",sans-serif;
       overflow: hidden;
-      height: 0;           /* JS will set px height for smooth animation */
+      height: 0;           
       opacity: 0;
       transform: translateY(8px);
       transition: height 420ms cubic-bezier(.25,.9,.15,1), opacity 260ms ease, transform 360ms cubic-bezier(.25,.9,.15,1);
       width: 100%;
     }
 
-    /* when active, JS will set proper px height and this class is used to toggle visuals */
+    
     .expand-card.active .card-content {
       opacity: 1;
       transform: translateY(0px);
@@ -335,7 +329,7 @@
     .expand-card ul li a { color: #ffd36c; text-decoration: none; font-size: 1.03em; transition: color .17s; }
     .expand-card ul li a:hover { color: #ff5313; }
 
-    /* responsive - stacked cards (mobile) */
+    
     @media (max-width: 1000px) {
       .topnav { height: 60px; }
       .expand-cards-container {
@@ -356,7 +350,7 @@
       .expand-card .card-content { padding: 0.8rem 1rem 1.1rem 1rem; }
     }
 
-    /* footer */
+    
     footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
     .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
     .footer-content{ width: 33.3%;}
@@ -408,7 +402,7 @@
       <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
 
-    <!-- EXPANDABLE PILLS START HERE -->
+    
     <div class="expand-cards-container" id="cardsContainer" role="list" aria-label="Stream details">
       <div class="expand-card when active" tabindex="0" role="listitem" aria-expanded="true">
         <div class="card-tab" aria-hidden="false">
@@ -452,7 +446,7 @@
         </div>
       </div>
     </div>
-    <!-- EXPANDABLE PILLS END HERE -->
+    
 
   </section>
 
@@ -486,7 +480,7 @@
   </footer>
 
   <script>
-    // ---- Countdown (unchanged except safe guards) ----
+    
     const targetDate = new Date("December 16, 2025 20:00:00").getTime();
     const countdownElement = document.getElementById("countdown-inline");
     const cardCountdown = document.getElementById("card-countdown");
@@ -509,20 +503,20 @@
     const interval = setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // ---- Expand/collapse with smooth, unified height logic ----
+    
     (function () {
       const cardsContainer = document.getElementById('cardsContainer');
       if (!cardsContainer) return;
       const cards = Array.from(cardsContainer.querySelectorAll('.expand-card'));
 
-      // helper: set aria-expanded on cards
+      
       function setAria(card, expanded) {
         card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         const content = card.querySelector('.card-content');
         if (content) content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
       }
 
-      // compute natural heights for a card's full content (tab + content)
+      
       function measureCardFullHeight(card) {
         const content = card.querySelector('.card-content');
         if (!content) return card.scrollHeight;
@@ -534,7 +528,7 @@
         return fullHeight;
       }
 
-      // compute the inner content height for active card - used to animate content area
+      
       function measureInnerContentHeight(card) {
         const content = card.querySelector('.card-content');
         if (!content) return 0;
@@ -545,14 +539,14 @@
         return h;
       }
 
-      // current active card (if any)
+      
       let activeCard = cards.find(c => c.classList.contains('active')) || cards[0];
       if (!activeCard && cards.length) activeCard = cards[0];
 
-      // default collapsed outer height (fallback)
+      
       const COLLAPSED_HEIGHT = 120;
 
-      // Apply heights so all cards share the same outer height.
+     
       function syncHeights() {
         const activeFull = activeCard ? measureCardFullHeight(activeCard) : COLLAPSED_HEIGHT;
         cards.forEach((c, idx) => {
@@ -573,7 +567,7 @@
         });
       }
 
-      // Activate a clicked/focused card
+      
       function activateCard(targetCard) {
         if (!targetCard || targetCard === activeCard) {
           syncHeights();
@@ -583,7 +577,7 @@
         syncHeights();
       }
 
-      // Event bindings
+      
       cards.forEach((card) => {
         card.addEventListener('mouseenter', () => activateCard(card));
         card.addEventListener('click', () => activateCard(card));
@@ -596,7 +590,7 @@
         });
       });
 
-      // Recompute heights on window resize or when images load
+      
       let resizeId;
       function handleResize() {
         clearTimeout(resizeId);
@@ -606,7 +600,7 @@
       }
       window.addEventListener('resize', handleResize);
 
-      // When images inside cards load, we should re-sync heights.
+      
       function watchImages() {
         const imgs = cardsContainer.querySelectorAll('img');
         imgs.forEach(img => {
@@ -617,21 +611,21 @@
         });
       }
 
-      // observe content changes (in case you add images or content dynamically)
+      
       const mo = new MutationObserver(() => {
         watchImages();
         syncHeights();
       });
       mo.observe(cardsContainer, { childList: true, subtree: true, characterData: true });
 
-      // initial run (after a microtask to allow fonts/images to layout)
+      
       setTimeout(() => {
         watchImages();
         cards.forEach(c => setAria(c, c.classList.contains('active')));
         syncHeights();
       }, 60);
 
-      // expose for debug if needed
+      
       window.__benzene_card_sync = { syncHeights, activateCard };
     })();
   </script>
