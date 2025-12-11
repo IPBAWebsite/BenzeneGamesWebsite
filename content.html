@@ -115,16 +115,17 @@
       padding: 0;
      
     }
-   .comingsoon-hero video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.83;
-}
+   .comingsoon-hero video { 
+     position: absolute; 
+     top: 0; left: 0; 
+     width: 100%; 
+     height: 100%; 
+     object-fit: cover; 
+     z-index: 0; 
+     pointer-events: none; 
+     opacity: 0.83; 
+   }
+    
     .comingsoon-centerbox {
       position: relative;
       z-index: 3;
@@ -176,6 +177,13 @@
       text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
       max-width: 600px;
     }
+
+    #countdown-inline {
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  font-family: "Stack Sans Text", sans-serif;
+}
     footer{
       background: #1f1e1e;
       padding-top: 50px;
@@ -303,14 +311,14 @@
   </div>
   <section class="comingsoon-hero">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="VID_20251211_112828.mp4" type="video/mp4" />
+      <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-rgboverlay"></div>
     <div class="comingsoon-centerbox">
-      <span class="comingsoon-brand-label">CONTENT</span>
-      <h1 class="comingsoon-title">COMING SOON</h1>
-      <p class="comingsoon-desc">Our creator content will be revealed soon. Stay tuned!</p>
+     <span class="comingsoon-brand-label">CONTENT</span>
+     <h1 class="comingsoon-title">UPCOMING Stream</h1>
+     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
   </section>
   <footer id="footer">
@@ -342,4 +350,31 @@
     </div>
   </footer>
 </body>
+  <script>
+  const targetDate = new Date("December 16, 2025 20:00:00").getTime();
+
+const countdownElement = document.getElementById("countdown-inline");
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if (distance < 0) {
+    countdownElement.innerHTML = "Live now!";
+    clearInterval(interval);
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+
+const interval = setInterval(updateCountdown, 1000);
+updateCountdown(); 
+    </script>
 </html>
