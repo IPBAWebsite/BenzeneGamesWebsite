@@ -4,11 +4,9 @@
   <title>Benzene Games</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       width: 100%;
@@ -24,6 +22,7 @@
       padding-top: 0;
       overflow-x: hidden;
     }
+
     .logo {
       padding-left: 40px;
       padding-right: 40px;
@@ -35,6 +34,7 @@
       margin: 0; 
       display: block;
     }
+
     .topnav {
       position: fixed;
       top: 0;
@@ -107,31 +107,29 @@
     }
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
     .comingsoon-hero {
-  position: relative;       
-  width: 100vw;
-  height: 100vh;            
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.comingsoon-hero video {
-  position: absolute;       
-  top: 50%;
-  left: 50%;
-  width: 100vh;             
-  height: 100vw;            
-  transform: translate(-50%, -50%) rotate(90deg) scale(1);
-  transform-origin: center center;
-  object-fit: fill;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.83;
-}
-    
+      position: relative;       
+      width: 100vw;
+      height: 100vh;            
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .comingsoon-hero video {
+      position: absolute;       
+      top: 50%;
+      left: 50%;
+      width: 100vh;             
+      height: 100vw;            
+      transform: translate(-50%, -50%) rotate(90deg) scale(1);
+      transform-origin: center center;
+      object-fit: fill;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.83;
+    }
     .comingsoon-centerbox {
       position: relative;
       z-index: 3;
@@ -183,13 +181,129 @@
       text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
       max-width: 600px;
     }
-
     #countdown-inline {
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-  font-family: "Stack Sans Text", sans-serif;
-}
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      font-family: "Stack Sans Text", sans-serif;
+    }
+    /* ===== Expandable Cards Section ===== */
+    .cards-section {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 2.5rem;
+      padding: 2.5rem 2vw 2rem 2vw;
+      margin: 0 auto;
+      max-width: 1120px;
+      position: relative;
+      z-index: 13;
+      flex-wrap: wrap;
+    }
+    .expand-card {
+      background: rgba(34,34,43,0.37);
+      border-radius: 22px;
+      box-shadow: 0 4px 36px rgba(0,0,0,0.15), 0 2px 80px 4px #fd392d22;
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      min-width: 250px;
+      max-width: 340px;
+      width: 32%;
+      transition: width 0.44s cubic-bezier(.50,.99,.21,1), box-shadow 0.29s;
+      cursor: pointer;
+      color: #fff;
+      border: 1.8px solid rgba(255,255,255,0.14);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 250px;
+      position: relative;
+    }
+    .expand-card .card-title {
+      font-size: 1.33rem;
+      font-family: 'Orbitron','Stack Sans Text',sans-serif;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      margin: 1.3rem 0 0.6rem 2rem;
+      padding-bottom: 3px;
+      text-shadow: 0 2px 8px #222, 0 1px 1px #fd392d77;
+      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+    }
+    .expand-card .card-content {
+      opacity: 0;
+      max-height: 0;
+      transition: max-height 0.48s cubic-bezier(.50,.99,.21,1), opacity 0.36s;
+      padding: 0 2rem;
+      pointer-events: none;
+      font-size: 1.09rem;
+      width: 100%;
+    }
+    .expand-card.active .card-content, .expand-card:hover .card-content, .expand-card:focus-within .card-content {
+      opacity: 1;
+      max-height: 600px;
+      padding-bottom: 1.2rem;
+      pointer-events: auto;
+    }
+    .expand-card.active, .expand-card:hover, .expand-card:focus-within {
+      width: 440px;
+      box-shadow: 0 6px 40px 2px #fd392d55, 0 0 80px #ff531333;
+      border-color: #ff5313;
+      z-index: 14;
+    }
+    .expand-card .line {
+      margin: 0.92rem 0 0.5rem 0;
+      background: rgba(255,255,255,0.13);
+      height: 2px;
+      border-radius: 8px;
+      border: none;
+      width: 80%;
+    }
+    .stream-date, .stream-time, .stream-countdown {
+      font-family: 'Poppins', 'Stack Sans Text', sans-serif;
+      margin-bottom: 0.8em;
+      font-size: 1.09em;
+      letter-spacing: .5px;
+    }
+    .stream-label {
+      font-weight: 600;
+      color: #ffd36c;
+      text-shadow: 0 1px 8px #111;
+      font-size: .98em;
+      margin-right: 7px;
+    }
+    .watch-live-btn {
+      margin: 1.5rem auto 0 auto;
+      display: block;
+      padding: 13px 40px;
+      font-size: 1.11rem;
+      font-weight: bold;
+      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+      color: #141313;
+      border-radius: 34px;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 4px 9px #ff741c55;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      text-shadow: 0 0 8px #ffd36c77;
+      letter-spacing: 1px;
+    }
+    .watch-live-btn:hover, .watch-live-btn:focus {
+      background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
+      color: #fff;
+      box-shadow: 0 7px 18px #fd392d77;
+    }
+    @media (max-width: 1023px) {
+      .cards-section { flex-direction: column; gap: 2rem; align-items: stretch; }
+      .expand-card, .expand-card.active, .expand-card:hover { width: 96%; max-width: 99vw; margin: 0 auto; }
+    }
+    /* ===== Footer Unchanged ===== */
     footer{
       background: #1f1e1e;
       padding-top: 50px;
@@ -327,6 +441,67 @@
      <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
   </section>
+  
+  <!-- ==== Expandable Cards Inserted Here ==== -->
+  <section class="cards-section">
+    <!-- Card 1: When -->
+    <div class="expand-card" tabindex="0">
+      <div class="card-title">When</div>
+      <div class="card-content">
+        <hr class="line">
+        <div class="stream-date">
+          <span class="stream-label">Stream Date:</span>
+          <span id="card-stream-date">December 16, 2025</span>
+        </div>
+        <div class="stream-time">
+          <span class="stream-label">Time:</span>
+          <span id="card-stream-time">8:00 PM</span>
+          <span class="stream-tz-label">EST (GMT-5)</span>
+        </div>
+        <div class="stream-countdown">
+          <span class="stream-label">Countdown:</span>
+          <span id="card-countdown"></span>
+        </div>
+        <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+          <i class="fa-solid fa-play"></i> Watch Live
+        </button>
+      </div>
+    </div>
+    <!-- Card 2: Where -->
+    <div class="expand-card" tabindex="0">
+      <div class="card-title">Where</div>
+      <div class="card-content">
+        <hr class="line">
+        <div style="font-family:'Poppins','Stack Sans Text',sans-serif;margin-bottom:1em;font-size:1.1em;">
+          Catch us live on:
+          <ul style="margin-top:0.7em;margin-bottom:1em;padding-left:1.35em;">
+            <li><a href="https://www.youtube.com/@BenzeneGamesOfficial/live" target="_blank" style="color:#ffd36c;text-decoration:none;"><i class="fab fa-youtube"></i> YouTube</a></li>
+            <li><a href="https://www.twitch.tv/benzenegames" target="_blank" style="color:#ab8cff;padding-left:6px;text-decoration:none;"><i class="fab fa-twitch"></i> Twitch</a></li>
+          </ul>
+        </div>
+        <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+          <i class="fa-solid fa-play"></i> Watch Live
+        </button>
+      </div>
+    </div>
+    <!-- Card 3: What -->
+    <div class="expand-card" tabindex="0">
+      <div class="card-title">What</div>
+      <div class="card-content">
+        <hr class="line">
+        <div style="font-family:Poppins,sans-serif;font-size:1.08em;margin-bottom:1em;">
+          <strong>Game:</strong> League of Legends &ndash; "Ranked Adventure"<br>
+          <strong>Details:</strong> Join us for gameplay, commentary, and chat with our community!<br>
+          <strong>Special:</strong> Q&A session at halftime.
+        </div>
+        <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
+          <i class="fa-solid fa-play"></i> Watch Live
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- ==== End Expandable Cards ==== -->
+
   <footer id="footer">
     <div class="container">
       <div class="footer-content">
@@ -355,32 +530,58 @@
       <p>Copyright ©2025; Designed by Group5</p>
     </div>
   </footer>
-</body>
-  <script>
+<script>
+  
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
+  const countdownElement = document.getElementById("countdown-inline");
+  const cardCountdown = document.getElementById("card-countdown");
 
-const countdownElement = document.getElementById("countdown-inline");
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+    if (distance < 0) {
+      if(countdownElement) countdownElement.innerHTML = "Live now!";
+      if(cardCountdown) cardCountdown.innerHTML = "Live now!";
+      clearInterval(interval);
+      return;
+    }
 
-  if (distance < 0) {
-    countdownElement.innerHTML = "Live now!";
-    clearInterval(interval);
-    return;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if(countdownElement) countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if(cardCountdown) cardCountdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
+  const interval = setInterval(updateCountdown, 1000);
+  updateCountdown();
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-
-const interval = setInterval(updateCountdown, 1000);
-updateCountdown(); 
-    </script>
+  
+  document.querySelectorAll('.expand-card').forEach(card => {
+    card.addEventListener('click', function(event) {
+      if(window.innerWidth <= 1023) {
+        
+        document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+    card.addEventListener('mouseleave', function(event) {
+      if(window.innerWidth <= 1023) {
+        this.classList.remove('active');
+      }
+    });
+  });
+  
+  document.querySelectorAll('.expand-card').forEach(card => {
+    card.addEventListener('focus', function() {
+      this.classList.add('active');
+    });
+    card.addEventListener('blur', function() {
+      this.classList.remove('active');
+    });
+  });
+</script>
+</body>
 </html>
