@@ -1,3 +1,8 @@
+Copilot said: Certainly! Below is your **content.html** updated with
+Certainly! Below is your content.html updated with a background video under the navbar and above the footer, with overlays and your "COMING SOON" messaging on top.
+Replace "YOUR-VIDEO-FILE.mp4" with your own video file name or path.
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +12,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -35,7 +39,7 @@
       margin: 0; 
       display: block;
     }
-     .topnav {
+    .topnav {
       position: fixed;
       top: 0;
       left: 0;
@@ -54,8 +58,6 @@
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
-
-    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -70,8 +72,6 @@
       position: relative;              
       transition: color .12s ease;
     }
-
-    
     .topnav a::after {
       content: "";
       position: absolute;
@@ -96,7 +96,6 @@
       color: #fff; 
       outline: none;
     }
-
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
@@ -108,220 +107,222 @@
         transform: translateX(-50%) translateY(9px) scaleX(1);
       }
     }
-
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
-
-.comingsoon-hero {
-  position: relative;
-  width: 100vw;
-  min-height: 68vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('download (5).jpg') center center / cover no-repeat fixed;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(30, 12, 3, 0.47);
-  pointer-events: none;
-  z-index: 1;
-}
-.hero-rgboverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  mix-blend-mode: lighten;
-  opacity: 0.42;
-  background:
-    radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
-    linear-gradient(
-      110deg,
-      #ff8040 0%,    
-      #ff2500 30%,   
-      #ffc13c 56%,   
-      #fff6b0 72%,   
-      #ff5313 88%,   
-      #fd392d 100%  
-    );
-  background-size: 200% 200%;
-  animation: flames 5s linear infinite;
-}
-@keyframes flames {
-  0% { background-position: 0% 75%, 100% 0%; }
-  50% { background-position: 100% 25%, 0% 100%; }
-  100% { background-position: 0% 75%, 100% 0%; }
-}
-
-.comingsoon-centerbox {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.comingsoon-brand-label {
-  display: inline-block;
-  margin: 0 auto 1rem auto;
-  font-size: 0.8rem;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.85);
-  background: rgba(255,255,255,0.07);
-  padding: 6px 14px;
-  border-radius: 18px;
-  font-weight: bold;
-  text-shadow: 0 2px 8px #000;
-  font-family: "Stack Sans Text", Arial, sans-serif;
-}
-
-.comingsoon-title {
-  font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
-  font-size: clamp(2rem, 6vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.08;
-  text-transform: uppercase;
-  margin: 0.45rem 0 0.95rem 0;
-  letter-spacing: 0.03em;
-  text-shadow:
-    0 4px 18px rgba(0,0,0,0.88),
-    0 0 22px #fd392d,
-    0 0 10px #ffc13c;
-  background: rgba(0,0,0,0.13);
-  display: inline-block;
-  padding: 0.09em 0.29em;
-  border-radius: 10px;
-}
-
-.comingsoon-desc {
-  font-family: "Stack Sans Text", Arial, sans-serif;
-  margin-top: 0.1em;
-  margin-bottom: 1.2em;
-  font-size: 1.17rem;
-  color: #fffbe9;
-  text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
-  max-width: 600px;
-}
-    
-  footer{
-        background: #1f1e1e;
-        padding-top: 50px;
+    .comingsoon-hero {
+      position: relative;
+      width: 100vw;
+      min-height: 68vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+     
+    }
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.83;  
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 12, 3, 0.47);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-rgboverlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: lighten;
+      opacity: 0.42;
+      background:
+        radial-gradient(ellipse at 60% 70%, rgba(255,200,80,0.45) 0%, rgba(255,60,0,0.29) 45%, rgba(255,0,0,0.20) 78%, rgba(0,0,0,0.00) 97%),
+        linear-gradient(
+          110deg,
+          #ff8040 0%,    
+          #ff2500 30%,   
+          #ffc13c 56%,   
+          #fff6b0 72%,   
+          #ff5313 88%,   
+          #fd392d 100%  
+        );
+      background-size: 200% 200%;
+      animation: flames 5s linear infinite;
+    }
+    @keyframes flames {
+      0% { background-position: 0% 75%, 100% 0%; }
+      50% { background-position: 100% 25%, 0% 100%; }
+      100% { background-position: 0% 75%, 100% 0%; }
+    }
+    .comingsoon-centerbox {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .comingsoon-brand-label {
+      display: inline-block;
+      margin: 0 auto 1rem auto;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.07);
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-weight: bold;
+      text-shadow: 0 2px 8px #000;
+      font-family: "Stack Sans Text", Arial, sans-serif;
+    }
+    .comingsoon-title {
+      font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      text-transform: uppercase;
+      margin: 0.45rem 0 0.95rem 0;
+      letter-spacing: 0.03em;
+      text-shadow:
+        0 4px 18px rgba(0,0,0,0.88),
+        0 0 22px #fd392d,
+        0 0 10px #ffc13c;
+      background: rgba(0,0,0,0.13);
+      display: inline-block;
+      padding: 0.09em 0.29em;
+      border-radius: 10px;
+    }
+    .comingsoon-desc {
+      font-family: "Stack Sans Text", Arial, sans-serif;
+      margin-top: 0.1em;
+      margin-bottom: 1.2em;
+      font-size: 1.17rem;
+      color: #fffbe9;
+      text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
+      max-width: 600px;
+    }
+    footer{
+      background: #1f1e1e;
+      padding-top: 50px;
     }
     .container{
-        width: 1140px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
+      width: 1140px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
     }
     .footer-content{
-        width: 33.3%;
+      width: 33.3%;
     }
     h3{
-        font-size: 40px;
-        margin-bottom: 15px;
-        text-align: center;
-       font-family: "Rajdhani", sans-serif;
+      font-size: 40px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: "Rajdhani", sans-serif;
       font-weight: 700;
       font-style: normal;
       color: white;
     }
     .footer-content p{
-        width:190px;
-        margin: auto;
-        padding: 7px;
-        font-family: "Exo 2", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
+      width:190px;
+      margin: auto;
+      padding: 7px;
+      font-family: "Exo 2", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
       font-size: 30px;
       color: white;
     }
     .footer-content ul{
-        text-align: center;
+      text-align: center;
     }
     .list{
-        padding: 0;
+      padding: 0;
     }
     .list li{
-        width: auto;
-        text-align: center;
-        list-style-type:none;
-        padding: 7px;
-        position: relative;
+      width: auto;
+      text-align: center;
+      list-style-type:none;
+      padding: 7px;
+      position: relative;
     }
     .list li::before{
-        content: '';
-        position: absolute;
-        transform: translate(-50%,-50%);
-        left: 50%;
-        top: 100%;
-        width: 0;
-        height: 2px;
-        background: #f18930;
-        transition-duration: .5s;
+      content: '';
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 100%;
+      width: 0;
+      height: 2px;
+      background: #f18930;
+      transition-duration: .5s;
     }
     .list li:hover::before{
-        width: 70px;
+      width: 70px;
     }
     .social-icons{
-        text-align: center;
-        padding: 0;
+      text-align: center;
+      padding: 0;
     }
     .social-icons li{
-        display: inline-block;
-        text-align: center;
-        padding: 5px;
+      display: inline-block;
+      text-align: center;
+      padding: 5px;
     }
     .social-icons li a i {
-    font-size: 50px;
-    transition: 0.3s;
-}
+      font-size: 50px;
+      transition: 0.3s;
+    }
     footer a{
-        text-decoration: none;
+      text-decoration: none;
       color: #fff
     }
     a:hover{
-        color: #f18930;
+      color: #f18930;
     }
-.social-icons li a:hover i {
-    color: #f18930 !important;
-}
+    .social-icons li a:hover i {
+      color: #f18930 !important;
+    }
     .bottom-bar{
-        background: #f18930;
-        text-align: center;
-        padding: 10px 0;
-        margin-top: 50px;
+      background: #f18930;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 50px;
     }
     .bottom-bar p{
-        color: #343434;
-        margin: 0;
-        font-size: 16px;
-        padding: 7px;
+      color: #343434;
+      margin: 0;
+      font-size: 16px;
+      padding: 7px;
     }
-  .social-icons li:nth-of-type(1) i{
-        color: #FF0000;
-        font-size: 50px;
+    .social-icons li:nth-of-type(1) i{
+      color: #FF0000;
+      font-size: 50px;
     }
-      .social-icons li:nth-of-type(2) i {
-        color: #6441a5;
-        font-size: 50px;
+    .social-icons li:nth-of-type(2) i {
+      color: #6441a5;
+      font-size: 50px;
     }
-      .social-icons li:nth-of-type(3) i {
-        color: #1877F2;
-        font-size: 50px;
+    .social-icons li:nth-of-type(3) i {
+      color: #1877F2;
+      font-size: 50px;
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="topnav" id="myTopnav">
@@ -340,43 +341,44 @@
     </ul>
   </div>
   <section class="comingsoon-hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-rgboverlay"></div>
-  <div class="comingsoon-centerbox">
-    <span class="comingsoon-brand-label">CONTENT</span>
-    <h1 class="comingsoon-title">COMING SOON</h1>
-    <p class="comingsoon-desc">Our creator content will be revealed soon. Stay tuned!</p>
-  </div>
-</section>
-<footer id="footer">
-        <div class="container">
-            <div class="footer-content">
-                <h3>Contact Us</h3>
-                <p>Email: benzenegames.io@gmail.com</p>
-                
-
-            </div>
-            <div class="footer-content">
-                <h3>Quick Links</h3>
-                 <ul class="list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="content.html">Content</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                 </ul>
-            </div>
-            <div class="footer-content">
-                <h3>Follow Us</h3>
-                <ul class="social-icons">
-                 <li><a href="https://www.youtube.com/@BenzeneGamesOfficial"><i class="fab fa-youtube"></i></a></li>
-                 <li><a href="https://www.twitch.tv/benzenegames"><i class="fab fa-twitch"></i></a></li>
-                 <li><a href=""><i class="fab fa-facebook"></i></a></li>
-                </ul>
-                </div>
-        </div>
-        <div class="bottom-bar">
-            <p>Copyright ©2025; Designed by Group5</p>
-        </div>
-    </footer>
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="VID_20251211_112828.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-rgboverlay"></div>
+    <div class="comingsoon-centerbox">
+      <span class="comingsoon-brand-label">CONTENT</span>
+      <h1 class="comingsoon-title">COMING SOON</h1>
+      <p class="comingsoon-desc">Our creator content will be revealed soon. Stay tuned!</p>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <h3>Contact Us</h3>
+        <p>Email: benzenegames.io@gmail.com</p>
+      </div>
+      <div class="footer-content">
+        <h3>Quick Links</h3>
+        <ul class="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="content.html">Content</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h3>Follow Us</h3>
+        <ul class="social-icons">
+          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="https://www.twitch.tv/benzenegames"><i class="fab fa-twitch"></i></a></li>
+          <li><a href=""><i class="fab fa-facebook"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>Copyright ©2025; Designed by Group5</p>
+    </div>
+  </footer>
 </body>
 </html>
