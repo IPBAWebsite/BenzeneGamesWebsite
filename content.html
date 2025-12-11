@@ -11,12 +11,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
-
   <style>
-    
-    html, body { width:100%; height:100%; margin:0; padding:0; box-sizing:border-box; overflow-x:hidden; background: #080608; color:#efe9df; }
-    body { font-family: Poppins, Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    html, body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      background: #080608;
+      color: #efe9df;
+    }
+    body {
+      font-family: Poppins, Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
     
     .logo { padding-left: 40px; padding-right: 40px; }
@@ -39,10 +48,9 @@
       z-index: 1100;
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
-    .topnav li { display: inline-block; }
     .topnav a { color:#fff; text-decoration:none; padding:0 12px; font-family:"Orbitron",sans-serif; font-size:20px; }
 
-   
+  
     .comingsoon-hero {
       position: relative;
       width: 100vw;
@@ -82,135 +90,109 @@
       max-width: 900px;
       margin: 0 auto;
     }
-    .comingsoon-brand-label { display:inline-block; margin:0 auto 1rem; background: rgba(255,255,255,0.03); padding:6px 12px; border-radius:12px; font-weight:700; color:#ffeedd; }
+    .comingsoon-brand-label { display:inline-block; background: rgba(255,255,255,0.03); padding:6px 12px; border-radius:12px; font-weight:700; color:#ffeedd; }
     .comingsoon-title { font-family: "Nosifer", "Stack Sans Text", Arial, sans-serif; font-size: clamp(2rem,6vw,3.6rem); color:#f7e7d8; text-transform:uppercase; text-shadow:0 6px 24px rgba(0,0,0,0.9); background: rgba(0,0,0,0.15); padding:.12em .35em; border-radius:8px; }
     .comingsoon-desc { margin-top:.5rem; color:#fff6e8; text-shadow:0 2px 8px rgba(0,0,0,0.8); }
 
+
+
     :root {
-      --card-bg-rgba: rgba(20, 12, 12, 0.72);   
-      --card-border-rgba: rgba(180, 40, 40, 0.12);
-      --card-accent: #ff8b43;   
-      --card-accent-2: #ffbe6a;
-      --card-title-color: #ffb88a;
-      --card-icon-color: #ffb88a;
+      --collapsed-width: 170px;   
+      --collapsed-height: 320px;  
+      --card-radius: 20px;
+      --card-bg-rgba: rgba(14,10,10,0.78);
+      --card-border-rgba: rgba(160,40,40,0.12);
+      --accent: #ff8b43;
+      --accent-2: #ffbe6a;
+      --title-color: #ffb88a;
+      --icon-color: #ffb88a;
     }
 
     .expand-cards-container {
-      --gap: 2vw;
-      display: flex;
-      justify-content: center;
-      align-items: center; 
-      gap: var(--gap);
-      margin-top: 1.5rem;
-      z-index: 13;
-      position: relative;
-      width: 100%;
-      max-width: 1100px;
-      padding: 1rem;
-      box-sizing: border-box;
-      pointer-events: auto;
+      display:flex;
+      gap:2vw;
+      justify-content:center;
+      align-items:center; 
+      margin-top:1.5rem;
+      width:100%;
+      max-width:1100px;
+      padding:1rem;
+      box-sizing:border-box;
+      z-index: 6;
     }
 
     .expand-card {
-      --collapsed-width: 110px;
-      --collapsed-height: 320px;
-      --card-radius: 22px;
-
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      width: var(--collapsed-width);
-      min-width: 90px;
-     
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      width:var(--collapsed-width);
+      min-width:90px;
       height: var(--card-height, var(--collapsed-height));
-      background: linear-gradient(180deg, rgba(14,10,10,0.70), var(--card-bg-rgba)); /* unified */
       border-radius: var(--card-radius);
-      box-shadow: 0 10px 34px rgba(0,0,0,0.72), inset 0 6px 40px rgba(255,90,40,0.02);
+      background: linear-gradient(180deg, rgba(12,8,8,0.84), var(--card-bg-rgba));
+      border: 1.5px solid var(--card-border-rgba);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.75), inset 0 6px 30px rgba(255,80,40,0.02);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1.5px solid var(--card-border-rgba);
-      color: #efe9df;
-      transition:
-        width 640ms cubic-bezier(.2,.95,.2,1),
-        height 420ms cubic-bezier(.25,.9,.15,1),
-        transform 420ms cubic-bezier(.2,.9,.2,1),
-        box-shadow 300ms ease,
-        border-color 300ms ease,
-        opacity 300ms ease;
-      cursor: pointer;
-      overflow: visible; 
+      transition: width 640ms cubic-bezier(.2,.95,.2,1), height 420ms cubic-bezier(.25,.9,.15,1), transform 420ms ease, box-shadow 300ms ease, border-color 300ms ease;
+      cursor:pointer;
+      overflow: hidden; 
       z-index: 12;
       justify-content: flex-start;
-      opacity: .98;
-      will-change: transform, height, width;
+      will-change: width,height,transform;
     }
 
-
+  
     .expand-card .card-tab {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; 
-      gap: 0.35em;
-      width: 100%;
-      padding: 26px 14px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      font-family: 'Creepster', 'Orbitron', sans-serif; 
-      color: var(--card-title-color);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-      user-select: none;
-      text-align: center;
-      transition: padding 260ms ease, transform 260ms ease;
-      flex: 0 0 auto;
-      box-sizing: border-box;
+      display:flex;
+      align-items:center;
+      justify-content:center; 
+      gap:.45em;
+      width:100%;
+      padding:12px 10px;
+      box-sizing:border-box;
+    
+      height: calc(var(--collapsed-height) - 48px);
+      text-align:center;
+      font-family: 'Creepster', 'Orbitron', sans-serif;
+      color: var(--title-color);
       z-index: 4;
-      overflow: visible; 
     }
-
-    
-    .expand-card .card-tab i { font-size: 1.35rem; color: var(--card-icon-color); z-index:5; margin-bottom:6px; text-shadow: 0 4px 14px rgba(0,0,0,0.7); }
-
-    
-    .expand-card .card-tab span { z-index:5; display:block; color:var(--card-title-color); font-size:1.06rem; }
 
   
     .card-tab .char-peek {
       position: absolute;
-      bottom: -20%; 
-      left: 50%;
-      transform: translateX(-50%) translateY(0);
-      width: 150%;                
-      max-width: 260px;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      object-fit: cover;        
+      border-radius: calc(var(--card-radius) - 6px);
+      transform: none;
+      opacity: 0.75;            
+      filter: saturate(.95) contrast(.95);
+      transition: opacity 360ms ease, transform 420ms cubic-bezier(.2,.9,.2,1), top 420ms ease, height 420ms ease, width 420ms ease;
+      z-index: 1;
       pointer-events: none;
-      z-index: 2;
-      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.65)) saturate(.9) contrast(.95);
-      transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 360ms ease;
-      opacity: 0.98;
     }
 
-    
-    .expand-card.active .card-tab .char-peek {
-      transform: translateX(-50%) translateY(30%);
-      opacity: 0.14;
-    }
+   
+    .card-tab i { z-index: 5; color: var(--icon-color); font-size:1.2rem; text-shadow: 0 6px 18px rgba(0,0,0,0.8); margin-bottom:6px; }
+    .card-tab span { z-index: 6; display:block; font-size:1.02rem; color:var(--title-color); text-shadow:0 3px 10px rgba(0,0,0,0.8); }
 
-    
+   
     .expand-card:not(.active) {
-      width: var(--collapsed-width);
-      transform: translateY(8px) scale(0.985);
-      filter: saturate(.85);
-      opacity: .94;
+      transform: translateY(8px) scale(.99);
+      opacity: .95;
       justify-content: center; 
     }
-
     .expand-card:hover:not(.active),
     .expand-card:focus-within:not(.active) {
-      transform: translateY(0px) scale(1);
-      box-shadow: 0 16px 80px rgba(0,0,0,0.8);
+      transform: translateY(0) scale(1);
+      box-shadow: 0 18px 80px rgba(0,0,0,0.85);
       opacity: 1;
     }
 
@@ -218,44 +200,41 @@
     .expand-card.active {
       width: clamp(320px, 38%, 520px);
       transform: translateY(-8px) scale(1.02) rotate(-0.6deg);
-      box-shadow: 0 18px 120px rgba(0,0,0,0.88), 0 0 120px rgba(255,80,40,0.06);
-      border-color: rgba(200,80,50,0.28);
-      z-index: 14;
+      border-color: rgba(200,70,50,0.26);
+      box-shadow: 0 20px 120px rgba(0,0,0,0.9), 0 0 120px rgba(255,80,40,0.06);
       opacity: 1;
       justify-content: flex-start;
     }
 
+    
     .expand-card.active .card-tab {
-      align-items: flex-start;
-      justify-content: flex-start;
+      height: auto; 
+      padding: 18px 18px 8px 18px;
+      align-items:flex-start;
+      justify-content:flex-start;
       text-align:left;
-      padding: 18px 20px;
     }
 
-    
-    .expand-card .card-tab::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--thumb, none);
-      background-size: cover;
-      background-position: center;
-      opacity: 0.08;
-      filter: contrast(.95) saturate(.85);
-      border-radius: inherit;
-      z-index:1;
-      pointer-events: none;
-      transform: scale(1.02);
-      transition: opacity 420ms ease, transform 420ms ease;
+    .expand-card.active .card-tab .char-peek {
+      
+      position: relative;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 86%;
+      height: 220px; 
+      opacity: 0.18; 
+      z-index: 1;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
-    .expand-card.active .card-tab::after { opacity: 0.04; transform: scale(1); }
 
     
     .expand-card .card-content {
       box-sizing: border-box;
-      padding: 0 1.6rem 1.2rem 1.6rem;
+      padding: 0 1.6rem 1.3rem 1.6rem;
       font-size: 1.02em;
-      color: #fffbe9;
+      color: #fffbea;
       font-family: Poppins, "Stack Sans Text", sans-serif;
       overflow: hidden;
       height: 0;
@@ -264,51 +243,38 @@
       transition: height 420ms cubic-bezier(.25,.9,.15,1), opacity 260ms ease, transform 360ms cubic-bezier(.25,.9,.15,1);
       width: 100%;
       z-index: 3;
-      background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.06));
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.04));
+    }
+    .expand-card.active .card-content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .expand-card.active .card-content { opacity: 1; transform: translateY(0); }
-
-    
-    .expand-card .watch-live-btn {
-      margin: 1rem auto 0 auto;
-      display: inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.6rem;
-      padding: 12px 34px;
-      font-size: 1.02rem;
-      font-weight:700;
-      color:#111;
-      background: linear-gradient(90deg, var(--card-accent-2) 0%, var(--card-accent) 100%);
-      border-radius: 28px;
-      border: none;
-      box-shadow: 0 8px 28px rgba(255,100,40,0.18);
-      cursor:pointer;
+ 
+    .watch-live-btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      padding: 12px 34px; border-radius: 28px; border:none;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent));
+      color:#111; font-weight:700; cursor:pointer; box-shadow: 0 8px 28px rgba(255,90,40,0.18);
       font-family: 'Creepster', Poppins, sans-serif;
       transition: transform 160ms ease, box-shadow 160ms ease;
-      z-index: 4;
+      margin-top: 12px;
     }
-    .expand-card .watch-live-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(255,80,40,0.26); }
+    .watch-live-btn:hover { transform: translateY(-3px); box-shadow:0 14px 44px rgba(255,80,40,0.26); }
 
-    
-    .meta-line{ margin:0.4rem 0; line-height:1.2; font-size:.98rem; }
-    .meta-line b{ color:#fff; }
+    .meta-line { margin: .35rem 0; }
+    .meta-line b { color:#fff; }
 
-    
-    @media (max-width:1000px) {
-      .expand-cards-container { flex-direction: column; gap:1rem; align-items:center; padding:0 1rem 1rem; }
+   
+    @media (max-width: 1000px) {
+      .expand-cards-container { flex-direction: column; gap:1rem; padding: 0 1rem 1rem; align-items:center; }
       .expand-card { width: 96vw !important; max-width: 99vw; border-radius:14px; }
-      .card-tab .char-peek { display:none; } 
-      .expand-card .card-content { padding: .8rem 1rem 1.1rem 1rem; }
-      .topnav { height:60px; }
+      .card-tab .char-peek { display:none; } /* hide peek to prevent overflow issues on small screens */
       .comingsoon-hero{ height: calc(100vh - 60px); }
+      .topnav { height: 60px; }
     }
 
-    
-
-    
-    footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
+     footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
     .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
     .footer-content{ width: 33.3%;}
     h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
@@ -333,9 +299,7 @@
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <div class="logo">
-      <a href="index.html"><img src="Benzene.JPG" alt="Logo"></a>
-    </div>
+    <div class="logo"><a href="index.html"><img src="Benzene.JPG" alt="Logo"></a></div>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -355,58 +319,61 @@
       <p class="comingsoon-desc">Starting in: <span id="countdown-inline"></span></p>
     </div>
 
-    
+  
     <div class="expand-cards-container" id="cardsContainer" role="list" aria-label="Stream details">
 
-      
+   
       <div class="expand-card when active" tabindex="0" role="listitem" aria-expanded="true">
-        <div class="card-tab" style="--thumb: url('Untitled design (3).png');" aria-hidden="false">
+        <div class="card-tab" aria-hidden="false">
           <i class="fa-regular fa-calendar" aria-hidden="true"></i>
           <span>When</span>
-          
-          <img class="char-peek" src="Untitled design (3).png" alt="" aria-hidden="true">
+         
+          <img class="char-peek" src="images/Untitled%20design%20(3).png" alt="" aria-hidden="true">
         </div>
 
         <div class="card-content" aria-hidden="false">
           <div class="meta-line"><b>Stream Date:</b> December 16, 2025</div>
-          <div class="meta-line"><b>Time:</b> 8:00 PM <span style="opacity:.7">EST</span></div>
+          <div class="meta-line"><b>Time:</b> 8:00 PM <span style="opacity:.75">EST</span></div>
           <div class="meta-line"><b>Countdown:</b> <span id="card-countdown"></span></div>
+
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
             <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
         </div>
       </div>
 
-      
+     
       <div class="expand-card game" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" style="--thumb: url('Untitled design (4).png');" aria-hidden="false">
+        <div class="card-tab" aria-hidden="false">
           <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
           <span>Game</span>
-          <img class="char-peek" src="Untitled design (4).png" alt="" aria-hidden="true">
+          <img class="char-peek" src="images/Untitled%20design%20(4).png" alt="" aria-hidden="true">
         </div>
 
         <div class="card-content" aria-hidden="true">
-          <div class="meta-line">Watch us play Ophelia</div>
-          <img src="noFilter.webp" style="width:100%;border-radius:10px;margin-top:.6rem;box-shadow:0 8px 30px rgba(0,0,0,0.6);">
+          <div class="meta-line">Watch us play Ophelia — thumbnail below:</div>
+          <img src="images/ophelia_thumb.jpg" alt="Ophelia thumbnail" style="width:100%;border-radius:10px;margin-top:.6rem;box-shadow:0 8px 30px rgba(0,0,0,0.6);">
           <div class="meta-line" style="margin-top:.6rem"><b>Title:</b> Ophelia</div>
-          <div class="meta-line"><b>Genre:</b> Adventure</div>
+          <div class="meta-line"><b>Genre:</b> Psychological Horror</div>
+
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
             <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
         </div>
       </div>
 
-      
+ 
       <div class="expand-card what" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" style="--thumb: url('Untitled design (2).png');" aria-hidden="false">
+        <div class="card-tab" aria-hidden="false">
           <i class="fa-solid fa-ghost" aria-hidden="true"></i>
           <span>What</span>
-          <img class="char-peek" src="Untitled design (2).png" alt="" aria-hidden="true">
+          <img class="char-peek" src="images/Untitled%20design%20(2).png" alt="" aria-hidden="true">
         </div>
 
         <div class="card-content" aria-hidden="true">
           <div class="meta-line"><b>Mode:</b> Single-player story</div>
           <div class="meta-line" style="margin-top:.25rem;"><b>Details:</b> Commentary, reactions, and viewer interaction</div>
+
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
             <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
@@ -414,7 +381,7 @@
       </div>
 
     </div>
-    
+   
 
   </section>
 
@@ -448,7 +415,7 @@
   </footer>
 
   <script>
-    
+    // countdown (unchanged)
     const targetDate = new Date("December 16, 2025 20:00:00").getTime();
     const countdownElement = document.getElementById("countdown-inline");
     const cardCountdown = document.getElementById("card-countdown");
@@ -471,7 +438,7 @@
     const interval = setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    
+    // unified height & expand logic (unchanged)
     (function () {
       const container = document.getElementById('cardsContainer');
       if (!container) return;
