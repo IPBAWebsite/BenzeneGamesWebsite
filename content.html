@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <title>Benzene Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Fonts: horror / title feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- 
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+ <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
 
   <style>
@@ -311,8 +311,24 @@
     footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
     .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
     .footer-content{ width: 33.3%;}
-    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; color: white;}
-    .bottom-bar{ background: #2f1b13; text-align: center; padding: 10px 0; margin-top: 22px; color:#f2d9c8; }
+    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
+    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-size: 30px; color: white;}
+    .footer-content ul{ text-align: center;}
+    .list{ padding: 0;}
+    .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative;}
+    .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: #f18930; transition-duration: .5s;}
+    .list li:hover::before{ width: 70px;}
+    .social-icons{ text-align: center; padding: 0;}
+    .social-icons li{ display: inline-block; text-align: center; padding: 5px;}
+    .social-icons li a i { font-size: 50px; transition: 0.3s;}
+    footer a{ text-decoration: none; color: #fff}
+    a:hover{ color: #f18930;}
+    .social-icons li a:hover i { color: #f18930 !important;}
+    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px;}
+    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px;}
+    .social-icons li:nth-of-type(1) i{ color: #FF0000; font-size: 50px;}
+    .social-icons li:nth-of-type(2) i { color: #6441a5; font-size: 50px;}
+    .social-icons li:nth-of-type(3) i { color: #1877F2; font-size: 50px;}
   </style>
 </head>
 <body>
