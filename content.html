@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
   <title>Benzene Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font imports -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/3e87cddc20.js" crossorigin="anonymous"></script>
   <style>
+ 
     html, body {
       width: 100%;
       margin: 0;
@@ -24,25 +26,19 @@
       background: white;
       padding-top: 0;
       overflow-x: hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    
-    .logo {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-    .logo img {
-      width: 130px;
-      height: auto;
-      vertical-align: middle;
-      margin: 0; 
-      display: block;
-    }
+
+ 
+    .logo { padding-left: 40px; padding-right: 40px; }
+    .logo img { width: 130px; height: auto; display:block; }
     .topnav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45); 
+      background: rgba(0,0,0,0.45);
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
@@ -52,7 +48,7 @@
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100; 
+      z-index: 1100;
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
@@ -64,12 +60,10 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;                 
+      font-size: 22px;
       font-family: "Orbitron", sans-serif;
-      font-optical-sizing: auto;
       font-weight: 500;
-      font-style: normal;
-      position: relative;              
+      position: relative;
       transition: color .12s ease;
     }
     .topnav a::after {
@@ -91,24 +85,13 @@
       transform: translateX(-50%) translateY(14px) scaleX(1);
       opacity: 1;
     }
-    .topnav a:hover,
-    .topnav a:focus {
-      color: #fff; 
-      outline: none;
-    }
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after {
-        transform: translateX(-50%) translateY(9px) scaleX(0);
-      }
-      .topnav a:hover::after,
-      .topnav a:focus::after {
-        transform: translateX(-50%) translateY(9px) scaleX(1);
-      }
+      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
     }
-    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
 
+  
     .comingsoon-hero {
       position: relative;
       width: 100vw;
@@ -121,20 +104,19 @@
       margin: 0;
       padding: 0;
     }
-    .comingsoon-hero video {
+    .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vh;
-      height: 100vw;
+      width: 120vh;
+      height: 120vw;
       transform: translate(-50%, -50%) rotate(90deg) scale(1);
       transform-origin: center center;
-      object-fit: fill;
+      object-fit: cover;
       z-index: 0;
       pointer-events: none;
       opacity: 0.83;
     }
-  
     .comingsoon-centerbox {
       position: relative;
       z-index: 3;
@@ -146,9 +128,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      max-width: 600px;
+      max-width: 900px;
+      margin: 0 auto;
     }
-
     .comingsoon-brand-label {
       display: inline-block;
       margin: 0 auto 1rem auto;
@@ -174,10 +156,10 @@
         0 4px 18px rgba(0,0,0,0.88),
         0 0 22px #fd392d,
         0 0 10px #ffc13c;
-      background: rgba(0,0,0,0.13);
       display: inline-block;
       padding: 0.09em 0.29em;
       border-radius: 10px;
+      background: rgba(0,0,0,0.13);
     }
     .comingsoon-desc {
       font-family: "Stack Sans Text", Arial, sans-serif;
@@ -188,202 +170,193 @@
       text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
       max-width: 600px;
     }
-    #countdown-inline {
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-      font-family: "Stack Sans Text", sans-serif;
+    #countdown-inline { font-weight: bold; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); font-family: "Stack Sans Text", sans-serif; }
+
+   
+    .expand-cards-container {
+      --gap: 2vw;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--gap);
+      margin-top: 1.5rem;
+      z-index: 13;
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      padding: 1rem;
+      box-sizing: border-box;
     }
-    
-.expand-cards-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 2vw;
-  margin-top: 1.5rem;
-  z-index: 13;
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-}
 
-.expand-card {
-  background: rgba(40,40,63,0.42);
-  border-radius: 26px;
-  box-shadow: 0 4px 36px 0 #fd392d13, 0 0 90px 2px #ff480022;
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border: 1.5px solid rgba(255,255,255,0.09);
-  color: #ede9df;
-  width: 110px;
-  min-width: 90px;
-  height: 320px;
-  transition:
-    width .5s cubic-bezier(.67,.14,.48,1.14),
-    box-shadow .25s,
-    background .21s,
-    margin .35s cubic-bezier(.8,.13,.47,1.18);
-  margin: 0 0.5vw;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 12;
-  justify-content: flex-start;
-  opacity: .90;
-}
+    .expand-card {
+      --collapsed-width: 110px;
+      --collapsed-height: 320px; 
+      --card-radius: 22px;
+      --glass-bg: rgba(40,40,63,0.42);
 
-.expand-card .card-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.3em;
-  width: 100%;
-  padding: 26px 10px 4px 10px;
-  font-size: 1.21em;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-family: "Orbitron", "Stack Sans Text", sans-serif;
-  color: #ffa764;
-  text-shadow: 0 1px 9px #fd392d88;
-  user-select: none;
-  text-align: center;
-  transition: padding .22s;
-}
-.expand-card .card-tab i {
-  font-size: 1.5em;
-  display: block;
-  margin-bottom: 0.42em;
-}
-.expand-card .card-tab span {
-  display: block;
-  text-align: center;
-}
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: var(--collapsed-width);
+      min-width: 90px;
 
-.expand-card .card-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  opacity: 0;
-  max-height: 0;
-  pointer-events: none;
-  font-size: 1.07em;
-  color: #fffbea;
-  font-family: "Poppins","Stack Sans Text",sans-serif;
-  padding: 0 2em;
-  transition: max-height .42s cubic-bezier(.53,.99,.37,1), opacity .22s;
-  width: 100%;
-  margin-top: 0;
-}
-.expand-card.active,
-.expand-card:focus-within,
-.expand-card:hover {
-  width: 350px;
-  background: rgba(38,38,60,0.62);
-  box-shadow: 0 10px 68px 2px #fd392d77, 0 0 105px #ff531188;
-  border-color: #ff5313;
-  opacity: 1;
-  z-index: 14;
-}
-.expand-card.active .card-content,
-.expand-card:focus-within .card-content,
-.expand-card:hover .card-content {
-  opacity: 1;
-  max-height: 400px;
-  pointer-events: auto;
-  margin-top: 15px;
-}
-.expand-card.active .card-tab,
-.expand-card:focus-within .card-tab,
-.expand-card:hover .card-tab {
-  padding-bottom: 0;
-}
-.expand-card:not(.active):not(:focus-within):not(:hover) .card-content {
-  opacity: 0;
-  max-height: 0;
-  pointer-events: none;
-  margin-top: 0;
-}
-.expand-card:not(.active):not(:focus-within):not(:hover) .card-tab {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+      height: var(--card-height, var(--collapsed-height));
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--glass-bg);
+      border-radius: var(--card-radius);
+      box-shadow: 0 4px 36px 0 #fd392d13, 0 0 90px 2px #ff480022;
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid rgba(255,255,255,0.09);
+      color: #ede9df;
+      transition:
+        width 650ms cubic-bezier(.2,.95,.2,1),
+        height 450ms cubic-bezier(.25,.9,.15,1),
+        transform 420ms cubic-bezier(.2,.9,.2,1),
+        box-shadow 320ms ease,
+        background 320ms ease,
+        border-color 320ms ease,
+        opacity 320ms ease;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 12;
+      justify-content: flex-start;
+      opacity: .94;
+      will-change: transform, height, width;
 
-@media (max-width: 1000px) {
-  .expand-cards-container {
-    flex-direction: column;
-    gap: 2vw;
-    align-items: center;
-    width: 100%;
-  }
-  .expand-card, .expand-card.active, .expand-card:hover, .expand-card:focus-within {
-    width: 97vw;
-    min-width: 60vw;
-    max-width: 99vw;
-    margin: 0.7em auto;
-    height: 120px;
-    border-radius: 20px;
-  }
-  .expand-card.active, .expand-card:focus-within, .expand-card:hover {
-    height: 320px;
-  }
-}
+    .expand-card:not(.active) {
+      width: var(--collapsed-width);
+      transform: translateY(8px) scale(0.98);
+      filter: saturate(.85) blur(.0px);
+      opacity: .92;
+    }
 
-.expand-card .watch-live-btn {
-  margin: 1.1rem auto 0 auto;
-  display: block;
-  padding: 12px 36px;
-  font-size: 1.07rem;
-  font-family: "Orbitron", "Stack Sans Text", sans-serif;
-  font-weight: bold;
-  background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-  color: #191919;
-  border-radius: 29px;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 0 4px 9px #ff741c55;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  text-shadow: 0 0 8px #ffd36c77;
-  letter-spacing: 1px;
-}
-.expand-card .watch-live-btn i { margin-right: 5px; }
-.expand-card .watch-live-btn:hover, .expand-card .watch-live-btn:focus {
-  background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
-  color: #fff;
-  box-shadow: 0 7px 18px #fd392d77;
-}
-.expand-card .stream-countdown {
-  margin-top: 0.7em;
-  font-size: 1.07em;
-  font-family: "Orbitron", "Stack Sans Text", sans-serif;
-}
-.expand-card ul {
-  margin:8px 0 0 0;
-  padding:0;
-  list-style: none;
-}
-.expand-card ul li {
-  margin-bottom: 7px;
-}
-.expand-card ul li a {
-  color: #ffd36c;
-  text-decoration: none;
-  font-size: 1.03em;
-  transition: color .17s;
-}
-.expand-card ul li a:hover {
-  color: #ff5313;
-}
-    footer{ background: #1f1e1e; padding-top: 50px;}
+
+    .expand-card:hover:not(.active),
+    .expand-card:focus-within:not(.active) {
+      transform: translateY(0px) scale(0.99);
+      box-shadow: 0 8px 46px 2px #ff531155;
+      opacity: 1;
+    }
+
+   
+    .expand-card.active {
+      width: clamp(300px, 38%, 520px);
+      transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
+      box-shadow: 0 14px 88px 6px #fd392d77, 0 0 130px #ff531188;
+      border-color: #ff5313;
+      z-index: 14;
+      opacity: 1;
+    }
+
+  
+    .expand-card .card-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      gap: 0.4em;
+      width: 100%;
+      padding: 26px 14px;
+      font-size: 1.21em;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-family: "Orbitron", "Stack Sans Text", sans-serif;
+      color: #ffa764;
+      text-shadow: 0 1px 9px #fd392d88;
+      user-select: none;
+      text-align: center;
+      transition: padding 300ms ease, transform 300ms ease;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+    }
+    .expand-card .card-tab i { font-size: 1.5em; display: block; margin-bottom: 0.42em; }
+
+
+    .expand-card.active .card-tab {
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+      padding: 20px 22px;
+    }
+
+
+    .expand-card .card-content {
+      box-sizing: border-box;
+      padding: 0 1.6rem 1.3rem 1.6rem;
+      font-size: 1.02em;
+      color: #fffbea;
+      font-family: "Poppins","Stack Sans Text",sans-serif;
+      overflow: hidden;
+      height: 0;           
+      opacity: 0;
+      transform: translateY(8px);
+      transition: height 420ms cubic-bezier(.25,.9,.15,1), opacity 260ms ease, transform 360ms cubic-bezier(.25,.9,.15,1);
+      width: 100%;
+    }
+
+
+    .expand-card.active .card-content {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .expand-card .watch-live-btn {
+      margin: 1.1rem auto 0 auto;
+      display: block;
+      padding: 12px 36px;
+      font-size: 1.07rem;
+      font-family: "Orbitron", "Stack Sans Text", sans-serif;
+      font-weight: bold;
+      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+      color: #191919;
+      border-radius: 29px;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 4px 9px #ff741c55;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      text-shadow: 0 0 8px #ffd36c77;
+      letter-spacing: 1px;
+    }
+    .expand-card .watch-live-btn:hover, .expand-card .watch-live-btn:focus {
+      background: linear-gradient(90deg,#ff5313 0%, #ffd36c 100%);
+      color: #fff;
+      box-shadow: 0 7px 18px #fd392d77;
+    }
+
+    .expand-card ul { margin:8px 0 0 0; padding:0; list-style: none; }
+    .expand-card ul li { margin-bottom: 7px; }
+    .expand-card ul li a { color: #ffd36c; text-decoration: none; font-size: 1.03em; transition: color .17s; }
+    .expand-card ul li a:hover { color: #ff5313; }
+
+ 
+    @media (max-width: 1000px) {
+      .topnav { height: 60px; }
+      .expand-cards-container {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding: 0 1rem 1.5rem;
+      }
+      .expand-card {
+        width: 97vw;
+        min-width: unset;
+        max-width: 99vw;
+        border-radius: 14px;
+      }
+      .expand-card:not(.active) {
+        transform: translateY(0) scale(1);
+      }
+      .expand-card .card-content { padding: 0.8rem 1rem 1.1rem 1rem; }
+    }
+
+ 
+    footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
     .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
     .footer-content{ width: 33.3%;}
-    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
-    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-size: 30px; color: white;}
+    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; color: white;}
+    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-weight: 400; font-size: 30px; color: white;}
     .footer-content ul{ text-align: center;}
     .list{ padding: 0;}
     .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative;}
@@ -414,64 +387,70 @@
       <li><a href="about.html"><span id="nav-about">About</span></a></li>
       <li><a href="content.html"><span id="nav-product">Content</span></a></li>
       <li class="socialiconnav">
-        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </li>
     </ul>
   </div>
-  <section class="comingsoon-hero">
-    <video autoplay muted loop playsinline class="bg-video">
+
+  <section class="comingsoon-hero" aria-labelledby="upcoming-heading">
+    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true">
       <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
     </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-rgboverlay"></div>
+
     <div class="comingsoon-centerbox">
       <span class="comingsoon-brand-label">CONTENT</span>
-      <h1 class="comingsoon-title">UPCOMING STREAM</h1>
+      <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING STREAM</h1>
       <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
-    <!-- EXPANDABLE PILLS START HERE -->
-    <div class="expand-cards-container">
-      <div class="expand-card when active" tabindex="0">
-        <div class="card-tab">
-          <i class="fa-regular fa-calendar"></i>
+
+
+    <div class="expand-cards-container" id="cardsContainer" role="list" aria-label="Stream details">
+      <div class="expand-card when active" tabindex="0" role="listitem" aria-expanded="true">
+        <div class="card-tab" aria-hidden="false">
+          <i class="fa-regular fa-calendar" aria-hidden="true"></i>
           <span>When</span>
         </div>
-        <div class="card-content">
+        <div class="card-content" aria-hidden="false">
           <div><b>Stream Date:</b> December 16, 2025</div>
-          <div><b>Time:</b> 8:00 PM <span style="opacity:.7;">EST</span></div>
-          <div class="stream-countdown"><b>Countdown:</b> <span id="card-countdown"></span></div>
+          <div style="margin-top:.35rem;"><b>Time:</b> 8:00 PM <span style="opacity:.7;">EST</span></div>
+          <div class="stream-countdown" style="margin-top:.6rem;"><b>Countdown:</b> <span id="card-countdown"></span></div>
           <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-            <i class="fa-solid fa-play"></i> Watch Live
+            <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
           </button>
         </div>
       </div>
-      <div class="expand-card where" tabindex="0">
-        <div class="card-tab">
-          <i class="fa-brands fa-youtube"></i>
+
+      <div class="expand-card where" tabindex="0" role="listitem" aria-expanded="false">
+        <div class="card-tab" aria-hidden="false">
+          <i class="fa-brands fa-youtube" aria-hidden="true"></i>
           <span>Where</span>
         </div>
-        <div class="card-content">
+        <div class="card-content" aria-hidden="true">
           <div>Watch us live on:</div>
           <ul>
-            <li><a target="_blank" href="https://www.youtube.com/@BenzeneGamesOfficial/live"><i class="fa-brands fa-youtube"></i> <b>YouTube</b></a></li>
-            <li><a target="_blank" href="https://www.twitch.tv/benzenegames"><i class="fa-brands fa-twitch"></i> <b>Twitch</b></a></li>
+            <li><a target="_blank" rel="noopener" href="https://www.youtube.com/@BenzeneGamesOfficial/live"><i class="fa-brands fa-youtube" aria-hidden="true"></i> <b>YouTube</b></a></li>
+            <li><a target="_blank" rel="noopener" href="https://www.twitch.tv/benzenegames"><i class="fa-brands fa-twitch" aria-hidden="true"></i> <b>Twitch</b></a></li>
           </ul>
         </div>
       </div>
-      <div class="expand-card what" tabindex="0">
-        <div class="card-tab">
-          <i class="fa-solid fa-gamepad"></i>
+
+      <div class="expand-card what" tabindex="0" role="listitem" aria-expanded="false">
+        <div class="card-tab" aria-hidden="false">
+          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
           <span>What</span>
         </div>
-        <div class="card-content">
+        <div class="card-content" aria-hidden="true">
           <div><b>Game:</b> League of Legends</div>
-          <div><b>Mode:</b> Ranked Adventure</div>
-          <div><b>Details:</b> Commentary, Q&A, and chill chat!</div>
+          <div style="margin-top:.25rem;"><b>Mode:</b> Ranked Adventure</div>
+          <div style="margin-top:.25rem;"><b>Details:</b> Commentary, Q&A, and chill chat!</div>
+          <!-- Example: later you can place images here; height calculations will update -->
         </div>
       </div>
     </div>
-    <!-- EXPANDABLE PILLS END HERE -->
+   
+
   </section>
+
   <footer id="footer">
     <div class="container">
       <div class="footer-content">
@@ -490,9 +469,9 @@
       <div class="footer-content">
         <h3>Follow Us</h3>
         <ul class="social-icons">
-          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial"><i class="fab fa-youtube"></i></a></li>
-          <li><a href="https://www.twitch.tv/benzenegames"><i class="fab fa-twitch"></i></a></li>
-          <li><a href=""><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="https://www.twitch.tv/benzenegames" aria-label="Twitch"><i class="fab fa-twitch"></i></a></li>
+          <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
         </ul>
       </div>
     </div>
@@ -500,8 +479,9 @@
       <p>Copyright ©2025; Designed by Group5</p>
     </div>
   </footer>
+
   <script>
-    // Countdown for both hero text and card
+  
     const targetDate = new Date("December 16, 2025 20:00:00").getTime();
     const countdownElement = document.getElementById("countdown-inline");
     const cardCountdown = document.getElementById("card-countdown");
@@ -509,8 +489,8 @@
       const now = new Date().getTime();
       const distance = targetDate - now;
       if (distance < 0) {
-        if(countdownElement) countdownElement.innerHTML = "Live now!";
-        if(cardCountdown) cardCountdown.innerHTML = "Live now!";
+        if(countdownElement) countdownElement.textContent = "Live now!";
+        if(cardCountdown) cardCountdown.textContent = "Live now!";
         clearInterval(interval);
         return;
       }
@@ -518,32 +498,151 @@
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      if(countdownElement) countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      if(cardCountdown) cardCountdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      if(countdownElement) countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      if(cardCountdown) cardCountdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
     const interval = setInterval(updateCountdown, 1000);
     updateCountdown();
-    // Expand/collapse logic
-    function activateCard(card) {
-      document.querySelectorAll('.expand-card').forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-    }
-    document.querySelectorAll('.expand-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        activateCard(this);
-      });
-      card.addEventListener('focus', function() {
-        activateCard(this);
-      });
-      card.addEventListener('click', function() {
-        activateCard(this);
-      });
-      card.addEventListener('keydown', function(e) {
-        if(e.key === 'Enter' || e.key === ' ') {
-          activateCard(this);
+
+   
+    (function () {
+      const cardsContainer = document.getElementById('cardsContainer');
+      const cards = Array.from(cardsContainer.querySelectorAll('.expand-card'));
+
+   
+      function setAria(card, expanded) {
+        card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        const content = card.querySelector('.card-content');
+        if (content) content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+      }
+
+      function measureCardFullHeight(card) {
+        
+        const content = card.querySelector('.card-content');
+        if (!content) return card.scrollHeight;
+        const previousHeight = content.style.height;
+        content.style.height = 'auto';
+        const fullHeight = card.scrollHeight;
+        content.style.height = previousHeight; // restore
+        return fullHeight;
+      }
+
+    
+      function measureInnerContentHeight(card) {
+        const content = card.querySelector('.card-content');
+        if (!content) return 0;
+        // Make sure it's measured as full
+        const prev = content.style.height;
+        content.style.height = 'auto';
+        const h = content.scrollHeight;
+        content.style.height = prev;
+        return h;
+      }
+
+  
+      let activeCard = cards.find(c => c.classList.contains('active')) || cards[0];
+      if (!activeCard && cards.length) activeCard = cards[0];
+
+   
+      const COLLAPSED_HEIGHT = 120;
+
+    
+      function syncHeights() {
+        
+        const activeFull = activeCard ? measureCardFullHeight(activeCard) : COLLAPSED_HEIGHT;
+        
+        cards.forEach((c, idx) => {
+          
+          c.style.transitionDelay = `${Math.abs(cards.indexOf(activeCard) - idx) * 40}ms`;
+          c.style.height = activeFull + 'px';
+         
+          const content = c.querySelector('.card-content');
+          if (c === activeCard) {
+            const innerH = measureInnerContentHeight(c);
+      
+            content.style.height = innerH + 'px';
+            c.classList.add('active');
+            setAria(c, true);
+          } else {
+          
+            if (content) content.style.height = '0px';
+            c.classList.remove('active');
+            setAria(c, false);
+          }
+        });
+      }
+
+      // Activate a clicked/focused card
+      function activateCard(targetCard) {
+        if (!targetCard || targetCard === activeCard) {
+       
+          syncHeights();
+          return;
         }
+        activeCard = targetCard;
+     
+        syncHeights();
+      }
+
+     
+      cards.forEach((card) => {
+        
+        card.addEventListener('mouseenter', () => activateCard(card));
+        
+        card.addEventListener('click', () => activateCard(card));
+        card.addEventListener('focus', () => activateCard(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateCard(card);
+          }
+        });
       });
-    });
+
+      
+      let resizeId;
+      function handleResize() {
+        clearTimeout(resizeId);
+        resizeId = setTimeout(() => {
+         
+          cards.forEach(c => {
+            const content = c.querySelector('.card-content');
+            if (content) content.style.height = content.classList.contains('measuring') ? content.style.height : content.style.height;
+          });
+          syncHeights();
+        }, 100);
+      }
+      window.addEventListener('resize', handleResize);
+
+     
+      function watchImages() {
+        const imgs = cardsContainer.querySelectorAll('img');
+        imgs.forEach(img => {
+          if (!img.__heightSyncAttached) {
+            img.addEventListener('load', syncHeights);
+            img.__heightSyncAttached = true;
+          }
+        });
+      }
+
+      // observe content changes (in case you add images or content dynamically)
+      const mo = new MutationObserver((mutations) => {
+        watchImages();
+        syncHeights();
+      });
+      mo.observe(cardsContainer, { childList: true, subtree: true, characterData: true });
+
+      
+      setTimeout(() => {
+        watchImages();
+        
+        cards.forEach(c => setAria(c, c.classList.contains('active')));
+        syncHeights();
+      }, 60);
+
+      
+      window.__benzene_card_sync = { syncHeights, activateCard };
+    })();
   </script>
 </body>
 </html>
