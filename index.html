@@ -461,13 +461,16 @@
         background: #1f1e1e;
         padding-top: 50px;
     }
-    .container{
-        width: 1140px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-    }
+ .container{
+  width: 100%;
+  max-width: 1140px;   /* keeps same desktop max width */
+  margin: 0 auto;      /* centers it */
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 16px;     /* adds horizontal breathing room on phones */
+  box-sizing: border-box;
+}
 
     /* responsive footer: stack on smaller screens without altering content markup */
 @media (max-width: 880px) {
