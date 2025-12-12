@@ -128,22 +128,21 @@
 
     
 .comingsoon-centerbox {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      max-width: 1100px;
-      text-align: center;
-      color: #fff;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 20%;
-      min-height: 120px; 
-      max-height: 220px;
-      box-sizing: border-box;
-      pointer-events: none; 
+    position: absolute;
+    top: 10%;          
+    z-index: 3;
+    width: 80%;       
+    max-width: 1100px;
+    text-align: center;
+    color: #fff;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    box-sizing: border-box;
+    pointer-events: none;
+    font-size: 1.5vw; 
 }
     .comingsoon-brand-label {
       display: inline-block;
@@ -195,36 +194,33 @@
 
     
     .hero-cards {
-      position: absolute;
-      z-index: 4;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 6%; 
-      width: 86%; 
-      max-width: 1200px;
-      height: 28%;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr 1fr;
-      gap: 2%;
-      align-items: stretch;
-      pointer-events: auto;
-    }
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 40%;         
+    transform: translateX(-50%);
+    width: 85%;       
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 2%;
+    align-items: stretch;
+    pointer-events: auto;
+}
+
 
     
     .card {
-      background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
-      border: 1px solid rgba(255, 130, 40, 0.12);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 24px rgba(255,80,20,0.04) inset;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      color: #fff;
-      position: relative;
-      transition: transform .16s ease, box-shadow .16s ease;
-      min-height: 0; 
-    }
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
+    border: 1px solid rgba(255,130,40,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    color: #fff;
+    transition: transform .16s ease, box-shadow .16s ease;
+}
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 48px rgba(0,0,0,0.6);
