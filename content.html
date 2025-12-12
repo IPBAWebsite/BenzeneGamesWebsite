@@ -129,9 +129,9 @@
     
 .comingsoon-centerbox {
     position: absolute;
-    top: 10%;          
+    top: calc(150px + 2%); 
     z-index: 3;
-    width: 80%;       
+    width: 80%;
     max-width: 1100px;
     text-align: center;
     color: #fff;
@@ -193,23 +193,32 @@
     }
 
     
-    .hero-cards {
+.hero-cards {
     position: absolute;
     z-index: 4;
     left: 50%;
-    top: 40%;         
+    top: calc(150px + 30%); 
     transform: translateX(-50%);
-    width: 85%;       
+    width: 85%;
     max-width: 1200px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
     gap: 2%;
     align-items: stretch;
     pointer-events: auto;
 }
 
-
+@media (max-width: 1000px) {
+    .comingsoon-centerbox {
+        top: calc(60px + 2%); 
+        font-size: 2.5vw;
+    }
+    .hero-cards {
+        top: calc(60px + 35%);
+        width: 90%;
+    }
+}
     
     .card {
     display: flex;
