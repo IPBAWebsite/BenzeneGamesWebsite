@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
   
@@ -236,13 +236,13 @@
      Overlay constrained and scrollable so stacked cards remain reachable. */
   .hero-overlay {
     position: absolute;
-    top: calc(var(--nav-height) + 2vh);
+    top: calc(var(--nav-height, 150px) + 2vh);
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
     max-width: 1200px;
     /* constrain overlay so it cannot exceed viewport height */
-    max-height: calc(100vh - var(--nav-height) - 2vh);
+    max-height: calc(100vh - var(--nav-height, 150px) - 2vh);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -263,7 +263,7 @@
     z-index: 500; /* higher than cards so it stays visually above them */
     width: 100%;
     color: #fff;
-    padding: 0.6rem 1rem;
+    padding: 0.9rem 1rem; /* slightly bigger padding so countdown doesn't overlap */
     display: flex;
     flex-direction: column;
     align-items: center; /* center horizontally */
@@ -277,13 +277,41 @@
     background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.04));
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.04);
-    margin-bottom: 4px;
+    margin-bottom: 1rem; /* increased so cards are pushed down and nothing overlaps */
+    flex: 0 0 auto; /* ensure the centerbox occupies its own space in the flow */
+    overflow: hidden; /* keep its content contained */
   }
   /* center the brand label and title */
-  .comingsoon-brand-label { display:inline-block; margin:6px auto; font-size:0.78rem; letter-spacing:1.5px; color:rgba(255,255,255,0.95); background:rgba(255,255,255,0.06); padding:6px 14px; border-radius:18px; font-weight:bold; text-shadow:0 2px 8px #000; font-family:"Stack Sans Text", Arial, sans-serif; }
+  .comingsoon-brand-label { 
+    display:inline-block; 
+    margin:6px auto; 
+    font-size:0.78rem; 
+    letter-spacing:1.5px; 
+    color:rgba(255,255,255,0.95); 
+    background:rgba(255,255,255,0.06); 
+    padding:6px 14px; 
+    border-radius:18px; 
+    font-weight:bold; 
+    text-shadow:0 2px 8px #000; 
+    font-family:"Stack Sans Text", Arial, sans-serif; 
+    position: relative; 
+    z-index: 600; /* ensure it's above cards */
+  }
   .comingsoon-title { font-family:"Stack Sans Text","Science Gothic",Arial,sans-serif; font-size:clamp(1.6rem,3.8vw,3rem); font-weight:800; margin:6px 0 8px 0; background:rgba(0,0,0,0.13); padding:0.09em 0.29em; border-radius:10px; display:block; }
   .comingsoon-desc { font-family:"Stack Sans Text",Arial,sans-serif; margin-top:0.15rem; font-size:clamp(0.95rem,1.5vw,1.05rem); color:#fffbe9; text-shadow:0 2px 9px #000; max-width:100%; }
-  #countdown-inline { font-weight:700; color:#fff; display:block; margin-top:6px; }
+  /* make the inline countdown more robust: background, wrap, and avoid overflowing the centerbox */
+  #countdown-inline { 
+    font-weight:700; 
+    color:#fff; 
+    display:inline-block; 
+    margin-top:6px;
+    background: rgba(0,0,0,0.36);
+    padding: 6px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   /* HERO CARDS: grid inside overlay
      Use min-content rows so when stacked the grid doesn't force taller rows that break overlay height. */
@@ -297,6 +325,7 @@
     box-sizing: border-box;
     position: relative;
     z-index: 100;
+    margin-top: 0; /* keep a small gap; centerbox margin-bottom already provides spacing */
   }
 
   .card {
@@ -419,6 +448,9 @@
     .hero-overlay { top: calc(var(--nav-height) + 1.5vh); width: 94%; max-height: calc(100vh - var(--nav-height) - 1.5vh); padding-bottom: 0.5rem; }
     .hero-cards { grid-template-columns: 1fr; grid-auto-rows: min-content; gap: 1rem; }
     .card--large .card-body { max-height: calc(60vh - var(--centerbox-h)); } /* gives the body a scrollable area on tablets */
+    /* on smaller widths reduce centerbox height so it doesn't push too far */
+    .comingsoon-centerbox { height: auto; max-height: 28vh; }
+    #countdown-inline { white-space: normal; }
   }
 
   /* Mobile: stack and ensure overlay + card bodies are scrollable and visible.
@@ -434,6 +466,7 @@
     /* adjust side hint positions on small screens */
     .side-scroll-hint { right: -12px; top: 25%; height: 50%; }
     .side-scroll-hint-card { right: -10px; top: 20%; height: 40%; }
+    #countdown-inline { white-space: normal; display: block; margin-top: 8px; }
   }
 
     footer{
