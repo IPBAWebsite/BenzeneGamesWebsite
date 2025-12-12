@@ -29,19 +29,22 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.45); 
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       color: #ffffff;
       height: 150px;
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100;
+      z-index: 1100; 
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
+
+    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -50,18 +53,23 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 22px;                 
       font-family: "Orbitron", sans-serif;
+      font-optical-sizing: auto;
       font-weight: 500;
-      position: relative;
+      font-style: normal;
+      position: relative;              
       transition: color .12s ease;
     }
+
+    
     .topnav a::after {
       content: "";
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(14px) scaleX(0);
+      transform-origin: center;
       width: 56%;
       height: 3px;
       background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
@@ -69,51 +77,60 @@
       transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
       opacity: 0;
     }
-    .topnav a:hover::after, .topnav a:focus::after {
+    .topnav a:hover::after,
+    .topnav a:focus::after {
       transform: translateX(-50%) translateY(14px) scaleX(1);
       opacity: 1;
     }
+    .topnav a:hover,
+    .topnav a:focus {
+      color: #fff; 
+      outline: none;
+    }
+
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
-      .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
+      .topnav a::after {
+        transform: translateX(-50%) translateY(9px) scaleX(0);
+      }
+      .topnav a:hover::after,
+      .topnav a:focus::after {
+        transform: translateX(-50%) translateY(9px) scaleX(1);
+      }
     }
 
-    /* HERO */
+    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
     .comingsoon-hero {
       position: relative;
       width: 100vw;
-      height: calc(100vh - 150px); /* full viewport height minus nav height */
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       overflow: hidden;
       margin: 0;
       padding: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
-      box-sizing: border-box;
-      padding-top: 1.5rem; /* some top padding below nav */
-    }
+}
     .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vw;
-      height: 100vh;
-      transform: translate(-50%, -50%);
+      width: 100vh;
+      height: 100vw;
+      transform: translate(-50%, -50%) rotate(90deg) scale(1);
       object-fit: cover;
       z-index: 0;
       pointer-events: none;
       opacity: 0.83;
     }
 
-    /* center heading constrained to ~25% of hero height */
-    .comingsoon-centerbox {
+    
+.comingsoon-centerbox {
       position: relative;
       z-index: 3;
-      width: 80%; /* relative width inside hero */
+      width: 100%;
       max-width: 1100px;
       text-align: center;
       color: #fff;
@@ -122,13 +139,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 25%; /* proportional height */
-      min-height: 120px;
+      height: 20%;
+      min-height: 120px; 
       max-height: 220px;
       box-sizing: border-box;
-      pointer-events: none;
-      margin-bottom: 1rem;
-    }
+      pointer-events: none; 
+}
     .comingsoon-brand-label {
       display: inline-block;
       margin: 0 auto 0.5rem auto;
@@ -177,24 +193,25 @@
       font-family: "Stack Sans Text", sans-serif;
     }
 
-    /* HERO CARDS: below centerbox, take remaining height */
+    
     .hero-cards {
-      position: relative; /* no absolute */
+      position: absolute;
       z-index: 4;
-      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 6%; 
+      width: 86%; 
       max-width: 1200px;
-      height: 65%; /* fill remaining height */
+      height: 28%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr 1fr;
       gap: 2%;
       align-items: stretch;
       pointer-events: auto;
-      box-sizing: border-box;
-      margin-bottom: 1rem;
     }
 
-    /* small card (top-left and top-right) */
+    
     .card {
       background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
       border: 1px solid rgba(255, 130, 40, 0.12);
@@ -206,7 +223,7 @@
       color: #fff;
       position: relative;
       transition: transform .16s ease, box-shadow .16s ease;
-      min-height: 0; /* allow child overflow to work correctly */
+      min-height: 0; 
     }
     .card:hover {
       transform: translateY(-4px);
@@ -215,7 +232,7 @@
     .card .card-inner {
       padding: 12px 14px;
       flex: 1 1 auto;
-      min-height: 0; /* allow scrolling children */
+      min-height: 0; 
       display: flex;
       flex-direction: column;
     }
@@ -237,7 +254,7 @@
       -webkit-overflow-scrolling: touch;
       padding-right: 6px;
     }
-    /* subtle custom scrollbar for corp aesthetic */
+   
     .card .card-body::-webkit-scrollbar { width: 8px; }
     .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
     .card .card-footer {
@@ -250,7 +267,7 @@
       color: rgba(255,255,255,0.75);
     }
 
-    /* big card spans both columns on second row */
+    
     .card--large {
       grid-column: 1 / -1;
       display: flex;
@@ -278,28 +295,35 @@
       margin-bottom: 6px;
     }
 
-    /* Responsive: stack cards on small screens */
+    
     @media (max-width: 880px) {
+.hero-cards {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 6%; 
+      width: 86%; 
+      max-width: 1200px;
+      height: 28%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 2%;
+      align-items: stretch;
+      pointer-events: auto;
+}
+   
       .comingsoon-centerbox {
-        width: 90%;
         height: auto;
         padding-top: 2rem;
         padding-bottom: 1rem;
-        margin-bottom: 1rem;
-      }
-      .hero-cards {
-        width: 90%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 12px;
       }
       .card--large { grid-column: auto; }
       .card { min-height: 120px; }
     }
 
-    /* small tweaks for accessibility and clarity */
+    
     .sr-only {
       position: absolute;
       width: 1px;
@@ -312,60 +336,115 @@
       border: 0;
     }
 
-    /* Footer (kept mostly the same) */
+   
     footer{
-      background: #1f1e1e;
-      padding-top: 50px;
+        background: #1f1e1e;
+        padding-top: 50px;
     }
     .container{
-      width: 1140px;
-      margin: auto;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+        width: 1140px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
     }
     .footer-content{
-      width: 33.3%;
+        width: 33.3%;
     }
     h3{
-      font-size: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-family: "Rajdhani", sans-serif;
+        font-size: 40px;
+        margin-bottom: 15px;
+        text-align: center;
+       font-family: "Rajdhani", sans-serif;
       font-weight: 700;
+      font-style: normal;
       color: white;
     }
     .footer-content p{
-      width:190px;
-      margin: auto;
-      padding: 7px;
-      font-family: "Exo 2", sans-serif;
-      font-weight: 400;
-      font-size: 16px;
+        width:190px;
+        margin: auto;
+        padding: 7px;
+        font-family: "Exo 2", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      font-size: 30px;
       color: white;
     }
-    .list{ padding: 0; }
-    .list li{ text-align: center; list-style-type:none; padding: 7px; position: relative; }
-    .list li::before{
-      content: '';
-      position: absolute;
-      transform: translate(-50%,-50%);
-      left: 50%;
-      top: 100%;
-      width: 0;
-      height: 2px;
-      background: #f18930;
-      transition-duration: .5s;
+    .footer-content ul{
+        text-align: center;
     }
-    .list li:hover::before{ width: 70px; }
-    .social-icons{ text-align: center; padding: 0; }
-    .social-icons li{ display: inline-block; text-align: center; padding: 5px; }
-    .social-icons li a i { font-size: 50px; transition: 0.3s; }
-    footer a{ text-decoration: none; color: #fff }
-    a:hover{ color: #f18930; }
-    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px; }
-    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px; }
+    .list{
+        padding: 0;
+    }
+    .list li{
+        width: auto;
+        text-align: center;
+        list-style-type:none;
+        padding: 7px;
+        position: relative;
+    }
+    .list li::before{
+        content: '';
+        position: absolute;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 100%;
+        width: 0;
+        height: 2px;
+        background: #f18930;
+        transition-duration: .5s;
+    }
+    .list li:hover::before{
+        width: 70px;
+    }
+    .social-icons{
+        text-align: center;
+        padding: 0;
+    }
+    .social-icons li{
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+    }
+    .social-icons li a i {
+    font-size: 50px;
+    transition: 0.3s;
+}
+    footer a{
+        text-decoration: none;
+      color: #fff
+    }
+    a:hover{
+        color: #f18930;
+    }
+.social-icons li a:hover i {
+    color: #f18930 !important;
+}
+    .bottom-bar{
+        background: #f18930;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 50px;
+    }
+    .bottom-bar p{
+        color: #343434;
+        margin: 0;
+        font-size: 16px;
+        padding: 7px;
+    }
+  .social-icons li:nth-of-type(1) i{
+        color: #FF0000;
+        font-size: 50px;
+    }
+      .social-icons li:nth-of-type(2) i {
+        color: #6441a5;
+        font-size: 50px;
+    }
+      .social-icons li:nth-of-type(3) i {
+        color: #1877F2;
+        font-size: 50px;
+    }
+
   </style>
 </head>
 <body>
@@ -396,7 +475,9 @@
      <p class="comingsoon-desc"> Starting in: <span id="countdown-inline" aria-live="polite"></span> </p>
     </div>
 
+   
     <div class="hero-cards" role="region" aria-label="Upcoming stream details">
+      <!-- Card 1: When -->
       <article class="card" role="article" aria-labelledby="card-when-title">
         <div class="card-inner">
           <div id="card-when-title" class="card-title">When</div>
@@ -405,6 +486,7 @@
             <p><strong>Time:</strong> 20:00 (local)</p>
             <p><small>Join early for warm-up and community chat.</small></p>
             <p><small>Reminder: Schedule subject to change — check channel updates.</small></p>
+            <!-- more content will scroll inside this area if needed -->
           </div>
           <div class="card-footer" aria-hidden="true">
             <span class="meta">Countdown visible above</span>
@@ -412,62 +494,71 @@
         </div>
       </article>
 
+      <!-- Card 2: What -->
       <article class="card" role="article" aria-labelledby="card-what-title">
         <div class="card-inner">
           <div id="card-what-title" class="card-title">What</div>
           <div class="card-body" tabindex="0">
-            <p><strong>Game:</strong> Polygon Adventure</p>
-            <p><strong>Genre:</strong> Action / Puzzle</p>
-            <p><strong>Platform:</strong> PC & Console</p>
-            <p><small>Join us for an immersive polygonal world experience.</small></p>
+            <p><strong>Stream Focus:</strong> Casual multiplayer co-op and community Q&A</p>
+            <p><strong>Segments:</strong> Playthrough, tips & tricks, chat, and giveaways</p>
+            <p><strong>Expect:</strong> high-energy gameplay, friendly commentary, occasional mod challenges.</p>
+            <p><small>Bring questions for the Q&A — we'll answer live.</small></p>
           </div>
           <div class="card-footer" aria-hidden="true">
-            <span class="meta">Featuring game details</span>
+            <span class="meta">Moderated chat</span>
           </div>
         </div>
       </article>
 
-      <article class="card card--large" role="article" aria-labelledby="card-large-title">
-        <img src="https://cdn.wallpapersafari.com/53/0/cgnyXz.jpg" alt="Polygon Adventure game artwork" class="game-art" />
-        <div class="card-inner">
-          <div id="card-large-title" class="game-title">Polygon Adventure</div>
-          <div class="card-body" tabindex="0">
-            <p>Explore the vibrant polygonal landscapes in this action-packed puzzle game. Join us for a livestream as we dive deep into gameplay, secrets, and walkthroughs.</p>
+      <!-- Large Card: Game (spans both columns) -->
+      <article class="card card--large" role="article" aria-labelledby="card-game-title">
+        <div class="card-inner" style="padding:10px;">
+          <div id="card-game-title" class="game-title">Game: "Neon Rift"</div>
+          <!-- Replace with actual game art -->
+          <img class="game-art" src="placeholder-game-art.jpg" alt="Game art for Neon Rift (placeholder)">
+          <div class="card-body" tabindex="0" style="margin-top:8px;">
+            <p><strong>About the Game:</strong> Neon Rift is a fast-paced sci-fi arena shooter with cooperative objectives and PvE elements. Expect tight movement, flashy visuals, and tense boss encounters.</p>
+            <p><strong>Planned Activities:</strong> We'll push through the Storm Bastion raid, try new loadouts, and experiment with community-suggested builds.</p>
+            <p><strong>Notes:</strong> Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
+            <p><small>Game art & details will be updated as we finalize the event.</small></p>
           </div>
         </div>
       </article>
     </div>
   </section>
 
-  <footer>
+  <footer id="footer">
     <div class="container">
       <div class="footer-content">
         <h3>Contact Us</h3>
-        <p>info@benzenegames.com</p>
+        <p>Email: benzenegames.io@gmail.com</p>
+      </div>
+      <div class="footer-content">
+        <h3>Quick Links</h3>
+        <ul class="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="content.html">Content</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </div>
       <div class="footer-content">
         <h3>Follow Us</h3>
         <ul class="social-icons">
-          <li><a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
-          <li><a href="https://twitter.com/benzenegames" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
-          <li><a href="https://discord.gg/benzenegames" aria-label="Discord"><i class="fa-brands fa-discord"></i></a></li>
-        </ul>
-      </div>
-      <div class="footer-content">
-        <h3>About</h3>
-        <ul class="list">
-          <li><a href="about.html">Our Story</a></li>
-          <li><a href="content.html">Content</a></li>
-          <li><a href="terms.html">Terms & Privacy</a></li>
+          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="https://www.twitch.tv/benzenegames"><i class="fab fa-twitch"></i></a></li>
+          <li><a href=""><i class="fab fa-facebook"></i></a></li>
         </ul>
       </div>
     </div>
     <div class="bottom-bar">
-      <p>&copy; 2025 Benzene Games. All rights reserved.</p>
+      <p>Copyright ©2025; Designed by Group5</p>
     </div>
   </footer>
+
+</body>
 <script>
-  
+  // Countdown (keeps original logic)
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
   const countdownElement = document.getElementById("countdown-inline");
 
@@ -492,7 +583,6 @@
   const interval = setInterval(updateCountdown, 1000);
   updateCountdown();
 
-
+  // Accessibility note: ensure card images have meaningful alt text or aria-hidden if purely decorative.
 </script>
-</body>
 </html>
