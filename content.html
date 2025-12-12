@@ -1,3 +1,24 @@
+Copilot said: Thanks — I made the targeted changes
+Thanks — I made the targeted changes you asked for and kept everything else intact. Summary of what I changed in this version (v9):
+
+Centerbox stays above the cards:
+set the centerbox to position: relative and higher z-index than cards so it no longer appears "under" the cards.
+Phone scrolling fixed and made obvious:
+ensured the large card body has a dependable max-height on phones and tablets so it always gets a computed height and can scroll.
+left -webkit-overflow-scrolling: touch and touch-action: pan-y to make scrolling reliable on iOS.
+Replaced the bottom "scroll hint" with a vertical side indicator beside the box:
+removed the bottom hints and added a visible vertical bar (side-scroll-hint-card) to the right of each card. The bar appears only when that card's body is scrollable.
+also a side scroll indicator for the entire overlay appears when the overlay itself can scroll.
+the hint is more visually prominent (tall vertical bar) as you requested.
+Kept all of your original markup, fonts, links, and the rotated background video unchanged except for the additions above.
+Kept the countdown JS and the scroll-detection logic, adjusted to toggle the new side hints (it already toggles .scrollable on elements).
+Paste the full file below (this is the complete index.html — all unchanged parts were left in place). Test on the phone / iPad and tell me:
+
+device + orientation if anything still gets cut off, and
+whether you want the overlay to always stack cards earlier (e.g., at 1100px) instead of the current breakpoints — I can make that one-line change.
+Full file (v9):
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,8 +176,10 @@
   .hero-overlay::-webkit-scrollbar { width: 8px; }
   .hero-overlay::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.12); border-radius: 6px; }
 
-  /* CENTERBOX: top of overlay; uses variable and clamp so it shrinks on shorter viewports */
+  /* CENTERBOX: top of overlay; z-index above cards so it never goes under them */
   .comingsoon-centerbox {
+    position: relative;
+    z-index: 105;
     width: 100%;
     color: #fff;
     padding: 0.6rem 1rem;
@@ -188,9 +211,13 @@
     align-items: stretch;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 100;
   }
 
   .card {
+    position: relative;
+    z-index: 101;
     background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
     border: 1px solid rgba(255, 130, 40, 0.12);
     box-shadow: 0 8px 30px rgba(0,0,0,0.6), inset 0 0 24px rgba(255,80,20,0.04);
@@ -199,7 +226,6 @@
     display: flex;
     flex-direction: column;
     color: #fff;
-    position: relative;
     transition: transform .16s ease, box-shadow .16s ease;
     min-height: 0;
   }
@@ -220,7 +246,7 @@
   .card .card-footer { margin-top:8px; display:flex; gap:8px; align-items:center; font-size:0.85rem; color:rgba(255,255,255,0.75); }
 
   /* Watch badge */
-  .live-badge { position:absolute; right:14px; top:12px; background:linear-gradient(90deg,#ff3b3b,#ff7a3b); color:#fff; font-weight:700; padding:6px 12px; border-radius:18px; font-size:0.95rem; display:inline-flex; align-items:center; gap:8px; z-index:12; box-shadow:0 6px 18px rgba(0,0,0,0.45); text-decoration:none; }
+  .live-badge { position:absolute; right:14px; top:12px; background:linear-gradient(90deg,#ff3b3b,#ff7a3b); color:#fff; font-weight:700; padding:6px 12px; border-radius:18px; font-size:0.95rem; display:inline-flex; align-items:center; gap:8px; z-index:120; box-shadow:0 6px 18px rgba(0,0,0,0.45); text-decoration:none; }
   .live-badge:focus, .live-badge:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.6); }
 
   /* Large game card: flex so body can grow and scroll */
@@ -257,6 +283,45 @@
   }
   .game-title { font-family:"Orbitron",sans-serif; font-size:1.05rem; font-weight:800; color:#ffb870; margin:8px 0; padding:0 12px; }
 
+  /* SIDE scroll indicator styles (beside the box) */
+  .side-scroll-hint {
+    position: absolute;
+    right: -18px;
+    top: 20%;
+    width: 6px;
+    height: 60%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+    border-radius: 99px;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity .22s ease, transform .22s ease;
+    z-index: 130;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .hero-overlay.scrollable .side-scroll-hint {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  /* per-card side hint (placed just outside right edge of each card) */
+  .side-scroll-hint-card {
+    position: absolute;
+    right: -14px;
+    top: 18%;
+    width: 6px;
+    height: 48%;
+    background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+    border-radius: 99px;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity .22s ease, transform .22s ease;
+    z-index: 130;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .card.scrollable .side-scroll-hint-card {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   /* Tablet adjustments - stack cards so large card is visible and scrollable */
   @media (max-width: 1024px) {
     .hero-overlay { top: calc(var(--nav-height) + 1.5vh); width: 94%; max-height: calc(100vh - var(--nav-height) - 1.5vh); padding-bottom: 0.5rem; }
@@ -274,32 +339,10 @@
     /* force the large card body to have a visible scroll area on phones */
     .card--large .card-body { max-height: calc(56vh - var(--centerbox-h)); }
     .game-art { height: 180px; margin: 0 0 10px 0; }
+    /* adjust side hint positions on small screens */
+    .side-scroll-hint { right: -12px; top: 25%; height: 50%; }
+    .side-scroll-hint-card { right: -10px; top: 20%; height: 40%; }
   }
-
-  /* Scroll hint (visible when element has .scrollable) */
-  .scroll-hint {
-    position: absolute;
-    right: 12px;
-    bottom: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 6px 10px;
-    background: rgba(0,0,0,0.36);
-    color: #fff;
-    border-radius: 999px;
-    font-size: 12px;
-    opacity: 0;
-    transform: translateY(6px);
-    pointer-events: none;
-    transition: opacity .22s ease, transform .22s ease;
-    z-index: 20;
-  }
-  .scroll-hint svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 2; opacity: .95; }
-  .scrollable .scroll-hint { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-  .card .scroll-hint { right: 14px; bottom: 12px; }
 
   /* footer (unchanged) */
   footer{ background: #1f1e1e; padding-top: 50px; }
@@ -353,8 +396,14 @@
         <p class="comingsoon-desc">Starting in: <span id="countdown-inline" aria-live="polite"></span></p>
       </div>
 
+      <!-- overlay-level side scroll hint (shows if overlay is scrollable) -->
+      <div class="side-scroll-hint" aria-hidden="true"></div>
+
       <div class="hero-cards" role="region" aria-label="Upcoming stream details">
         <article class="card" role="article" aria-labelledby="card-when-title">
+          <!-- per-card side hint (shows if this card body is scrollable) -->
+          <div class="side-scroll-hint-card" aria-hidden="true"></div>
+
           <a class="live-badge" href="https://www.youtube.com/@BenzeneGamesOfficial" target="_blank" rel="noopener" aria-label="Watch Live Now"><i class="fa-solid fa-eye"></i> Watch Live Now</a>
           <div class="card-inner">
             <div id="card-when-title" class="card-title"><i class="fa-solid fa-calendar-days"></i> When</div>
@@ -368,11 +417,12 @@
             <div class="card-footer" aria-hidden="true">
               <span class="meta">Countdown visible above</span>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>Scroll</span></div>
           </div>
         </article>
 
         <article class="card" role="article" aria-labelledby="card-what-title">
+          <div class="side-scroll-hint-card" aria-hidden="true"></div>
+
           <a class="live-badge" href="https://www.youtube.com/@BenzeneGamesOfficial" target="_blank" rel="noopener" aria-label="Watch Live Now"><i class="fa-solid fa-eye"></i> Watch Live Now</a>
           <div class="card-inner">
             <div id="card-what-title" class="card-title"><i class="fa-solid fa-list"></i> What</div>
@@ -385,11 +435,12 @@
             <div class="card-footer" aria-hidden="true">
               <span class="meta">Moderated chat</span>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>Scroll</span></div>
           </div>
         </article>
 
         <article class="card card--large" role="article" aria-labelledby="card-game-title">
+          <div class="side-scroll-hint-card" aria-hidden="true"></div>
+
           <div class="card-inner">
             <div id="card-game-title" class="game-title"><i class="fa-solid fa-gamepad"></i> Game: "Ophelia"</div>
             <img class="game-art" src="noFilter.webp" alt="Game artwork">
@@ -399,7 +450,6 @@
               <p><i class="fa-solid fa-lightbulb"></i><strong>Notes:</strong>&nbsp; Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
               <p><i class="fa-solid fa-image"></i><small>Game art & details will be updated as we finalize the event.</small></p>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>Scroll</span></div>
           </div>
         </article>
       </div>
@@ -466,58 +516,58 @@
   const interval = setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // Helper to detect overflow and add .scrollable so CSS can show the scroll hint
+  // Helper to detect overflow and add .scrollable so CSS can show the side hints
   function updateScrollableHints() {
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-
     // overlay
     const overlay = document.querySelector('.hero-overlay');
     if (overlay) {
-      // on small phones we set overlay to visible; only mark scrollable if it actually scrolls
-      if (overlay.scrollHeight > overlay.clientHeight) overlay.classList.add('scrollable');
+      if (overlay.scrollHeight > overlay.clientHeight + 2) overlay.classList.add('scrollable');
       else overlay.classList.remove('scrollable');
     }
 
     // each scrollable card-body
-    document.querySelectorAll('.card .card-body').forEach(el => {
-      const parentCard = el.closest('.card');
-      // compute whether inner scrolling is possible (use scrollHeight > clientHeight)
+    document.querySelectorAll('.card').forEach(card => {
+      const el = card.querySelector('.card-body');
+      if (!el) { card.classList.remove('scrollable'); return; }
       if (el.scrollHeight > el.clientHeight + 2) {
         el.classList.add('scrollable');
-        if (parentCard) parentCard.classList.add('scrollable'); // show hint anchored to parent
+        card.classList.add('scrollable'); // show per-card side hint
       } else {
         el.classList.remove('scrollable');
-        if (parentCard) parentCard.classList.remove('scrollable');
+        card.classList.remove('scrollable');
       }
     });
   }
 
+  // debounce helper
+  function debounce(fn, delay) {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), delay);
+    };
+  }
+  const debouncedUpdate = debounce(updateScrollableHints, 120);
+
   // Run on load, resize, orientation change, and after fonts/video may have loaded
-  window.addEventListener('load', () => {
-    setTimeout(updateScrollableHints, 350);
-  });
-  window.addEventListener('resize', () => setTimeout(updateScrollableHints, 120));
+  window.addEventListener('load', () => setTimeout(updateScrollableHints, 350));
+  window.addEventListener('resize', debouncedUpdate);
   window.addEventListener('orientationchange', () => setTimeout(updateScrollableHints, 350));
 
   // Observe changes that might affect layout
-  const resizeObserver = new ResizeObserver(() => {
-    // debounce
-    clearTimeout(window.__updateScrollableHintsTimer);
-    window.__updateScrollableHintsTimer = setTimeout(updateScrollableHints, 120);
-  });
+  const resizeObserver = new ResizeObserver(debouncedUpdate);
   document.querySelectorAll('.card .card-body, .hero-overlay, .game-art').forEach(node => {
     resizeObserver.observe(node);
   });
 
-  // Small UX: when user starts touching a card-body, ensure that scroll hint fades out after they scroll
+  // UX: when user touches a card-body, hide its side hint after they start interaction
   document.addEventListener('pointerdown', (e) => {
     const body = e.target.closest('.card .card-body');
     if (body) {
-      // after short delay, hide hint
-      setTimeout(() => {
-        const parent = body.closest('.card');
-        if (parent) parent.classList.remove('scrollable');
-      }, 400);
+      const parent = body.closest('.card');
+      // temporarily hide hint to reduce distraction; it will reappear if needed via resize detection
+      if (parent) parent.classList.remove('scrollable');
+      setTimeout(() => updateScrollableHints(), 500);
     }
   });
 </script>
