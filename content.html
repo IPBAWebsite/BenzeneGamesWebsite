@@ -57,72 +57,156 @@
   }
 
   /* NAV */
-  .logo { padding-left: 40px; padding-right: 40px; }
-  .logo img { width: 130px; height: auto; display: block; }
-  .topnav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.45);
-    border: 1.5px solid rgba(255,255,255,0.06);
-    box-shadow: 0 6px 32px rgba(0,0,0,0.45);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    color: #ffffff;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    z-index: 1100;
-  }
-  .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
-  .topnav li { display: inline-block; }
-  .topnav a {
-    display: inline-flex;
-    align-items: center;
-    height: 100%;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 0 20px;
-    text-decoration: none;
-    font-size: 22px;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 500;
-    position: relative;
-    transition: color .12s ease;
-  }
-  .topnav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(14px) scaleX(0);
-    transform-origin: center;
-    width: 56%;
-    height: 3px;
-    background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-    border-radius: 3px;
-    transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
-    opacity: 0;
-  }
-  .topnav a:hover::after,
-  .topnav a:focus::after {
-    transform: translateX(-50%) translateY(14px) scaleX(1);
-    opacity: 1;
-  }
-  .topnav a:hover,
-  .topnav a:focus { color: #fff; outline: none; }
+  .logo {
+      padding-left: 40px;
+      padding-right: 40px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .logo img {
+      /* ensure logo never taller than nav */
+      max-height: calc(var(--nav-height, 150px) - 30px);
+      width: auto;
+      height: auto;
+      vertical-align: middle;
+      margin: 0;
+      display: block;
+    }
 
-  @media screen and (max-width: 1000px) {
-    .topnav { height: 60px; }
-    .topnav a { font-size: 16px; padding: 0 10px; }
-    .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
-    .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
-  }
+   .topnav {
+      --nav-height: 150px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.45); 
+      border: 1.5px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 32px rgba(0,0,0,0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #ffffff;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 1100; 
+      gap: 12px;
+    }
+    /* nav toggle (hamburger) */
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .nav-toggle .bar {
+      display:block;
+      width:22px;
+      height:2px;
+      background:#fff;
+      margin:4px 0;
+      border-radius:2px;
+      transition: transform .18s ease, opacity .12s ease;
+    }
 
-  .socialiconnav a i { font-size: 2em; vertical-align: middle; }
+    /* navigation list */
+    .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
+    .topnav li { display: inline-block; }
 
+    .topnav a {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 0 20px;
+      text-decoration: none;
+      font-size: 22px;                 
+      font-family: "Orbitron", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      position: relative;              
+      transition: color .12s ease;
+    }
+
+    .topnav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(14px) scaleX(0);
+      transform-origin: center;
+      width: 56%;
+      height: 3px;
+      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+      border-radius: 3px;
+      transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
+      opacity: 0;
+    }
+    .topnav a:hover::after,
+    .topnav a:focus::after {
+      transform: translateX(-50%) translateY(14px) scaleX(1);
+      opacity: 1;
+    }
+    .topnav a:hover,
+    .topnav a:focus {
+      color: #fff; 
+      outline: none;
+    }
+
+    @media screen and (max-width: 1000px) {
+      :root { --nav-height: 60px; }
+      .topnav { height: var(--nav-height); padding: 0 12px; }
+      .logo { padding-left: 12px; padding-right: 12px; }
+      .logo img { max-height: calc(var(--nav-height) - 16px); }
+
+      .nav-toggle { display: inline-flex; align-items:center; justify-content:center; }
+      /* hide standard nav list by default on small screens */
+      .topnav ul {
+        display: none;
+      }
+
+      /* when nav is open show full-screen / dropdown menu */
+      .topnav.open ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(var(--nav-height));
+        background: rgba(0,0,0,0.9);
+        padding: 12px 12px 18px;
+        align-items: stretch;
+        z-index: 1099;
+      }
+      .topnav.open ul li { display: block; border-bottom: 1px solid rgba(255,255,255,0.04); }
+      .topnav.open ul li:last-child { border-bottom: 0; }
+      .topnav.open ul a { padding: 12px 16px; font-size: 18px; display:block; width:100%; }
+    }
+
+    .nav-toggle i {
+  font-size: 22px;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+      
+}
+
+/* If any old .nav-toggle .bar rules remain, hide them to avoid stray lines */
+.nav-toggle .bar { display:none !important; }
+
+    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
   /* HERO (background video rotated as requested) */
   .comingsoon-hero {
     position: relative;
