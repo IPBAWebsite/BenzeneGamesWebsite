@@ -1,24 +1,3 @@
-Copilot said: Thanks — I made the targeted changes
-Thanks — I made the targeted changes you asked for and kept everything else intact. Summary of what I changed in this version (v9):
-
-Centerbox stays above the cards:
-set the centerbox to position: relative and higher z-index than cards so it no longer appears "under" the cards.
-Phone scrolling fixed and made obvious:
-ensured the large card body has a dependable max-height on phones and tablets so it always gets a computed height and can scroll.
-left -webkit-overflow-scrolling: touch and touch-action: pan-y to make scrolling reliable on iOS.
-Replaced the bottom "scroll hint" with a vertical side indicator beside the box:
-removed the bottom hints and added a visible vertical bar (side-scroll-hint-card) to the right of each card. The bar appears only when that card's body is scrollable.
-also a side scroll indicator for the entire overlay appears when the overlay itself can scroll.
-the hint is more visually prominent (tall vertical bar) as you requested.
-Kept all of your original markup, fonts, links, and the rotated background video unchanged except for the additions above.
-Kept the countdown JS and the scroll-detection logic, adjusted to toggle the new side hints (it already toggles .scrollable on elements).
-Paste the full file below (this is the complete index.html — all unchanged parts were left in place). Test on the phone / iPad and tell me:
-
-device + orientation if anything still gets cut off, and
-whether you want the overlay to always stack cards earlier (e.g., at 1100px) instead of the current breakpoints — I can make that one-line change.
-Full file (v9):
-
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
