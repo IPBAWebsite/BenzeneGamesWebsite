@@ -29,19 +29,22 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.45); 
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       color: #ffffff;
       height: 150px;
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100;
+      z-index: 1100; 
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
+
+    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -50,18 +53,23 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 22px;                 
       font-family: "Orbitron", sans-serif;
+      font-optical-sizing: auto;
       font-weight: 500;
-      position: relative;
+      font-style: normal;
+      position: relative;              
       transition: color .12s ease;
     }
+
+    
     .topnav a::after {
       content: "";
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(14px) scaleX(0);
+      transform-origin: center;
       width: 56%;
       height: 3px;
       background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
@@ -69,18 +77,30 @@
       transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
       opacity: 0;
     }
-    .topnav a:hover::after, .topnav a:focus::after {
+    .topnav a:hover::after,
+    .topnav a:focus::after {
       transform: translateX(-50%) translateY(14px) scaleX(1);
       opacity: 1;
     }
+    .topnav a:hover,
+    .topnav a:focus {
+      color: #fff; 
+      outline: none;
+    }
+
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
-      .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
+      .topnav a::after {
+        transform: translateX(-50%) translateY(9px) scaleX(0);
+      }
+      .topnav a:hover::after,
+      .topnav a:focus::after {
+        transform: translateX(-50%) translateY(9px) scaleX(1);
+      }
     }
 
-    /* HERO */
+    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
     .comingsoon-hero {
       position: relative;
       width: 100vw;
@@ -92,7 +112,7 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
-    }
+}
     .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
@@ -106,8 +126,8 @@
       opacity: 0.83;
     }
 
-    /* center heading constrained to 20% of hero height */
-    .comingsoon-centerbox {
+    
+.comingsoon-centerbox {
       position: relative;
       z-index: 3;
       width: 100%;
@@ -119,13 +139,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      /* constrain to 20% of the hero height */
       height: 20%;
-      min-height: 120px; /* fallback to avoid too small on short viewports */
+      min-height: 120px; 
       max-height: 220px;
       box-sizing: border-box;
-      pointer-events: none; /* avoid interfering with card interactions */
-    }
+      pointer-events: none; 
+}
     .comingsoon-brand-label {
       display: inline-block;
       margin: 0 auto 0.5rem auto;
@@ -174,16 +193,15 @@
       font-family: "Stack Sans Text", sans-serif;
     }
 
-    /* HERO CARDS: absolutely positioned so they don't push centerbox */
+    
     .hero-cards {
       position: absolute;
       z-index: 4;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 6%; /* distance from bottom of hero */
-      width: 86%; /* relative width of hero */
+      bottom: 6%; 
+      width: 86%; 
       max-width: 1200px;
-      /* height is percentage of hero; adjust as needed */
       height: 28%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -193,7 +211,7 @@
       pointer-events: auto;
     }
 
-    /* small card (top-left and top-right) */
+    
     .card {
       background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
       border: 1px solid rgba(255, 130, 40, 0.12);
@@ -205,7 +223,7 @@
       color: #fff;
       position: relative;
       transition: transform .16s ease, box-shadow .16s ease;
-      min-height: 0; /* allow child overflow to work correctly */
+      min-height: 0; 
     }
     .card:hover {
       transform: translateY(-4px);
@@ -214,7 +232,7 @@
     .card .card-inner {
       padding: 12px 14px;
       flex: 1 1 auto;
-      min-height: 0; /* allow scrolling children */
+      min-height: 0; 
       display: flex;
       flex-direction: column;
     }
@@ -236,7 +254,7 @@
       -webkit-overflow-scrolling: touch;
       padding-right: 6px;
     }
-    /* subtle custom scrollbar for corp aesthetic */
+   
     .card .card-body::-webkit-scrollbar { width: 8px; }
     .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
     .card .card-footer {
@@ -249,7 +267,7 @@
       color: rgba(255,255,255,0.75);
     }
 
-    /* big card spans both columns on second row */
+    
     .card--large {
       grid-column: 1 / -1;
       display: flex;
@@ -277,20 +295,25 @@
       margin-bottom: 6px;
     }
 
-    /* Responsive: stack cards on small screens */
+    
     @media (max-width: 880px) {
-      .hero-cards {
-        width: 92%;
-        bottom: 4%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 12px;
-        position: static; /* stacked beneath centerbox when small screens; doesn't push because overall layout will flow */
-        transform: none;
-        left: auto;
-      }
+.hero-cards {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 6%; 
+      width: 86%; 
+      max-width: 1200px;
+      height: 28%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 2%;
+      align-items: stretch;
+      pointer-events: auto;
+}
+   
       .comingsoon-centerbox {
         height: auto;
         padding-top: 2rem;
@@ -300,7 +323,7 @@
       .card { min-height: 120px; }
     }
 
-    /* small tweaks for accessibility and clarity */
+    
     .sr-only {
       position: absolute;
       width: 1px;
@@ -313,60 +336,115 @@
       border: 0;
     }
 
-    /* Footer (kept mostly the same) */
+   
     footer{
-      background: #1f1e1e;
-      padding-top: 50px;
+        background: #1f1e1e;
+        padding-top: 50px;
     }
     .container{
-      width: 1140px;
-      margin: auto;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+        width: 1140px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
     }
     .footer-content{
-      width: 33.3%;
+        width: 33.3%;
     }
     h3{
-      font-size: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-family: "Rajdhani", sans-serif;
+        font-size: 40px;
+        margin-bottom: 15px;
+        text-align: center;
+       font-family: "Rajdhani", sans-serif;
       font-weight: 700;
+      font-style: normal;
       color: white;
     }
     .footer-content p{
-      width:190px;
-      margin: auto;
-      padding: 7px;
-      font-family: "Exo 2", sans-serif;
-      font-weight: 400;
-      font-size: 16px;
+        width:190px;
+        margin: auto;
+        padding: 7px;
+        font-family: "Exo 2", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      font-size: 30px;
       color: white;
     }
-    .list{ padding: 0; }
-    .list li{ text-align: center; list-style-type:none; padding: 7px; position: relative; }
-    .list li::before{
-      content: '';
-      position: absolute;
-      transform: translate(-50%,-50%);
-      left: 50%;
-      top: 100%;
-      width: 0;
-      height: 2px;
-      background: #f18930;
-      transition-duration: .5s;
+    .footer-content ul{
+        text-align: center;
     }
-    .list li:hover::before{ width: 70px; }
-    .social-icons{ text-align: center; padding: 0; }
-    .social-icons li{ display: inline-block; text-align: center; padding: 5px; }
-    .social-icons li a i { font-size: 50px; transition: 0.3s; }
-    footer a{ text-decoration: none; color: #fff }
-    a:hover{ color: #f18930; }
-    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px; }
-    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px; }
+    .list{
+        padding: 0;
+    }
+    .list li{
+        width: auto;
+        text-align: center;
+        list-style-type:none;
+        padding: 7px;
+        position: relative;
+    }
+    .list li::before{
+        content: '';
+        position: absolute;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 100%;
+        width: 0;
+        height: 2px;
+        background: #f18930;
+        transition-duration: .5s;
+    }
+    .list li:hover::before{
+        width: 70px;
+    }
+    .social-icons{
+        text-align: center;
+        padding: 0;
+    }
+    .social-icons li{
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+    }
+    .social-icons li a i {
+    font-size: 50px;
+    transition: 0.3s;
+}
+    footer a{
+        text-decoration: none;
+      color: #fff
+    }
+    a:hover{
+        color: #f18930;
+    }
+.social-icons li a:hover i {
+    color: #f18930 !important;
+}
+    .bottom-bar{
+        background: #f18930;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 50px;
+    }
+    .bottom-bar p{
+        color: #343434;
+        margin: 0;
+        font-size: 16px;
+        padding: 7px;
+    }
+  .social-icons li:nth-of-type(1) i{
+        color: #FF0000;
+        font-size: 50px;
+    }
+      .social-icons li:nth-of-type(2) i {
+        color: #6441a5;
+        font-size: 50px;
+    }
+      .social-icons li:nth-of-type(3) i {
+        color: #1877F2;
+        font-size: 50px;
+    }
+
   </style>
 </head>
 <body>
@@ -397,7 +475,7 @@
      <p class="comingsoon-desc"> Starting in: <span id="countdown-inline" aria-live="polite"></span> </p>
     </div>
 
-    <!-- HERO CARDS: 2 small cards (same row) + 1 large card (spans full width) -->
+   
     <div class="hero-cards" role="region" aria-label="Upcoming stream details">
       <!-- Card 1: When -->
       <article class="card" role="article" aria-labelledby="card-when-title">
