@@ -112,13 +112,14 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
-}
+    }
     .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vh;
-      height: 100vw;
+      /* FIXED: swap width and height for correct orientation */
+      width: 100vw;
+      height: 100vh;
       transform: translate(-50%, -50%) rotate(90deg) scale(1);
       object-fit: cover;
       z-index: 0;
@@ -127,23 +128,23 @@
     }
 
     
-.comingsoon-centerbox {
-    position: absolute;
-    top: calc(150px + 2%); 
-    z-index: 3;
-    width: 80%;
-    max-width: 1100px;
-    text-align: center;
-    color: #fff;
-    padding: 1%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; 
-    box-sizing: border-box;
-    pointer-events: none;
-    font-size: 1.5vw; 
-}
+    .comingsoon-centerbox {
+      position: absolute;
+      top: calc(150px + 2%); 
+      z-index: 3;
+      width: 80%;
+      max-width: 1100px;
+      text-align: center;
+      color: #fff;
+      padding: 1%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; 
+      box-sizing: border-box;
+      pointer-events: none;
+      font-size: 1.5vw; 
+    }
     .comingsoon-brand-label {
       display: inline-block;
       margin: 0 auto 0.5rem auto;
@@ -193,281 +194,281 @@
     }
 
     
-.hero-cards {
-  position: absolute;
-  z-index: 4;
-  left: 50%;
-  top: calc(var(--nav-height) + 30%);
-  transform: translateX(-50%);
-  width: 85%;
-  max-width: 1200px;
-  height: 50vh;  
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 25vh 25vh;  
-  gap: 2%;
-  align-items: stretch;
-  pointer-events: auto;
-}
-
-@media (max-width: 1000px) {
-  .comingsoon-centerbox {
-    top: calc(60px + 2%); 
-    font-size: 2.5vw;
-  }
-  .hero-cards {
-    top: calc(60px + 35%);
-    width: 90%;
-  }
-}
-    @media (max-width: 880px) {
-  .hero-cards {
-    position: absolute;
-    z-index: 4;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 6%; 
-    width: 86%; 
-    max-width: 1200px;
-    height: 28vh;  /* changed from % to vh */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 1fr;
-    gap: 2%;
-    align-items: stretch;
-    pointer-events: auto;
-  }
-    
-    .card {
-  height: 100%; 
-  display: flex;
-  flex-direction: column;
-    background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
-    border: 1px solid rgba(255,130,40,0.12);
-    border-radius: 12px;
-    overflow: hidden;
-    color: #fff;
-    transition: transform .16s ease, box-shadow .16s ease;
-}
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
-    }
-    .card .card-inner {
-      padding: 12px 14px;
-      flex: 1 1 auto;
-      min-height: 0; 
-      display: flex;
-      flex-direction: column;
-    }
-    .card .card-title {
-      font-family: "Orbitron", sans-serif;
-      font-weight: 700;
-      color: #ffd36c;
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .card .card-body {
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      font-size: 0.95rem;
-      line-height: 1.3;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-right: 6px;
-    }
-   
-    .card .card-body::-webkit-scrollbar { width: 8px; }
-    .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
-    .card .card-footer {
-      margin-top: 8px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.75);
-    }
-
-    
-    .card--large {
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(180deg, rgba(8,8,8,0.8), rgba(18,18,18,0.6));
-      border: 1px solid rgba(255,120,30,0.12);
-      border-radius: 14px;
-      padding: 10px;
-      min-height: 0;
-    }
-    .game-art {
-      width: 100%;
-      height: 100%;
-      border-radius: 8px;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 8px;
-      background: linear-gradient(90deg,#2e2e2e,#141414);
-    }
-    .game-title {
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #ffb870;
-      margin-bottom: 6px;
-    }
-
-    
-    @media (max-width: 880px) {
-.hero-cards {
+    .hero-cards {
       position: absolute;
       z-index: 4;
       left: 50%;
+      top: calc(var(--nav-height) + 30%);
       transform: translateX(-50%);
-      bottom: 6%; 
-      width: 86%; 
+      width: 85%;
       max-width: 1200px;
-      height: 28%;
+      height: 50vh;  
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: 25vh 25vh;  
       gap: 2%;
       align-items: stretch;
       pointer-events: auto;
-}
-   
-  .comingsoon-centerbox {
-    height: auto;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-  }
-  .card--large { grid-column: auto; }
-  .card { min-height: 120px; }
-}
-
-    
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
     }
 
-   
-    footer{
-        background: #1f1e1e;
-        padding-top: 50px;
+    @media (max-width: 1000px) {
+      .comingsoon-centerbox {
+        top: calc(60px + 2%); 
+        font-size: 2.5vw;
+      }
+      .hero-cards {
+        top: calc(60px + 35%);
+        width: 90%;
+      }
     }
-    .container{
-        width: 1140px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-    }
-    .footer-content{
-        width: 33.3%;
-    }
-    h3{
-        font-size: 40px;
-        margin-bottom: 15px;
-        text-align: center;
-       font-family: "Rajdhani", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-      color: white;
-    }
-    .footer-content p{
-        width:190px;
-        margin: auto;
-        padding: 7px;
-        font-family: "Exo 2", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      font-size: 30px;
-      color: white;
-    }
-    .footer-content ul{
-        text-align: center;
-    }
-    .list{
-        padding: 0;
-    }
-    .list li{
-        width: auto;
-        text-align: center;
-        list-style-type:none;
-        padding: 7px;
-        position: relative;
-    }
-    .list li::before{
-        content: '';
+    @media (max-width: 880px) {
+      .hero-cards {
         position: absolute;
-        transform: translate(-50%,-50%);
+        z-index: 4;
         left: 50%;
-        top: 100%;
-        width: 0;
-        height: 2px;
-        background: #f18930;
-        transition-duration: .5s;
-    }
-    .list li:hover::before{
-        width: 70px;
-    }
-    .social-icons{
-        text-align: center;
+        transform: translateX(-50%);
+        bottom: 6%; 
+        width: 86%; 
+        max-width: 1200px;
+        height: 28vh;  /* changed from % to vh */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 1fr;
+        gap: 2%;
+        align-items: stretch;
+        pointer-events: auto;
+      }
+      
+      .card {
+        height: 100%; 
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
+        border: 1px solid rgba(255,130,40,0.12);
+        border-radius: 12px;
+        overflow: hidden;
+        color: #fff;
+        transition: transform .16s ease, box-shadow .16s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+      }
+      .card .card-inner {
+        padding: 12px 14px;
+        flex: 1 1 auto;
+        min-height: 0; 
+        display: flex;
+        flex-direction: column;
+      }
+      .card .card-title {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 700;
+        color: #ffd36c;
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .card .card-body {
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        font-size: 0.95rem;
+        line-height: 1.3;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 6px;
+      }
+     
+      .card .card-body::-webkit-scrollbar { width: 8px; }
+      .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
+      .card .card-footer {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.75);
+      }
+
+      
+      .card--large {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(180deg, rgba(8,8,8,0.8), rgba(18,18,18,0.6));
+        border: 1px solid rgba(255,120,30,0.12);
+        border-radius: 14px;
+        padding: 10px;
+        min-height: 0;
+      }
+      .game-art {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 8px;
+        background: linear-gradient(90deg,#2e2e2e,#141414);
+      }
+      .game-title {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #ffb870;
+        margin-bottom: 6px;
+      }
+
+      
+      @media (max-width: 880px) {
+        .hero-cards {
+          position: absolute;
+          z-index: 4;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 6%; 
+          width: 86%; 
+          max-width: 1200px;
+          height: 28%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: 1fr 1fr;
+          gap: 2%;
+          align-items: stretch;
+          pointer-events: auto;
+        }
+       
+        .comingsoon-centerbox {
+          height: auto;
+          padding-top: 2rem;
+          padding-bottom: 1rem;
+        }
+        .card--large { grid-column: auto; }
+        .card { min-height: 120px; }
+      }
+
+      
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
         padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+     
+      footer{
+          background: #1f1e1e;
+          padding-top: 50px;
+      }
+      .container{
+          width: 1140px;
+          margin: auto;
+          display: flex;
+          justify-content: center;
+      }
+      .footer-content{
+          width: 33.3%;
+      }
+      h3{
+          font-size: 40px;
+          margin-bottom: 15px;
+          text-align: center;
+         font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: white;
+      }
+      .footer-content p{
+          width:190px;
+          margin: auto;
+          padding: 7px;
+          font-family: "Exo 2", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 400;
+          font-style: normal;
+        font-size: 30px;
+        color: white;
+      }
+      .footer-content ul{
+          text-align: center;
+      }
+      .list{
+          padding: 0;
+      }
+      .list li{
+          width: auto;
+          text-align: center;
+          list-style-type:none;
+          padding: 7px;
+          position: relative;
+      }
+      .list li::before{
+          content: '';
+          position: absolute;
+          transform: translate(-50%,-50%);
+          left: 50%;
+          top: 100%;
+          width: 0;
+          height: 2px;
+          background: #f18930;
+          transition-duration: .5s;
+      }
+      .list li:hover::before{
+          width: 70px;
+      }
+      .social-icons{
+          text-align: center;
+          padding: 0;
+      }
+      .social-icons li{
+          display: inline-block;
+          text-align: center;
+          padding: 5px;
+      }
+      .social-icons li a i {
+      font-size: 50px;
+      transition: 0.3s;
     }
-    .social-icons li{
-        display: inline-block;
-        text-align: center;
-        padding: 5px;
+      footer a{
+          text-decoration: none;
+        color: #fff
+      }
+      a:hover{
+          color: #f18930;
+      }
+    .social-icons li a:hover i {
+      color: #f18930 !important;
     }
-    .social-icons li a i {
-    font-size: 50px;
-    transition: 0.3s;
-}
-    footer a{
-        text-decoration: none;
-      color: #fff
-    }
-    a:hover{
-        color: #f18930;
-    }
-.social-icons li a:hover i {
-    color: #f18930 !important;
-}
-    .bottom-bar{
-        background: #f18930;
-        text-align: center;
-        padding: 10px 0;
-        margin-top: 50px;
-    }
-    .bottom-bar p{
-        color: #343434;
-        margin: 0;
-        font-size: 16px;
-        padding: 7px;
-    }
-  .social-icons li:nth-of-type(1) i{
-        color: #FF0000;
-        font-size: 50px;
-    }
-      .social-icons li:nth-of-type(2) i {
-        color: #6441a5;
-        font-size: 50px;
-    }
-      .social-icons li:nth-of-type(3) i {
-        color: #1877F2;
-        font-size: 50px;
-    }
+      .bottom-bar{
+          background: #f18930;
+          text-align: center;
+          padding: 10px 0;
+          margin-top: 50px;
+      }
+      .bottom-bar p{
+          color: #343434;
+          margin: 0;
+          font-size: 16px;
+          padding: 7px;
+      }
+    .social-icons li:nth-of-type(1) i{
+          color: #FF0000;
+          font-size: 50px;
+      }
+        .social-icons li:nth-of-type(2) i {
+          color: #6441a5;
+          font-size: 50px;
+      }
+        .social-icons li:nth-of-type(3) i {
+          color: #1877F2;
+          font-size: 50px;
+      }
 
   </style>
 </head>
@@ -489,98 +490,73 @@
   </div>
 
   <section class="comingsoon-hero" aria-labelledby="upcoming-heading">
-    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true">
-      <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true" tabindex="-1" preload="auto">
+      <source src="file_example_MP4_480_1_5MG.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
     </video>
-
     <div class="comingsoon-centerbox">
-     <span class="comingsoon-brand-label">CONTENT</span>
-     <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING Stream</h1>
-     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline" aria-live="polite"></span> </p>
+      <div class="comingsoon-brand-label" aria-label="Content">
+        Content
+      </div>
+      <h1 id="upcoming-heading" class="comingsoon-title">Upcoming Stream</h1>
+      <p id="countdown-inline" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
+        Starting in: <span id="countdown-timer">4d 6h 16m 55s</span>
+      </p>
     </div>
 
-   
-    <div class="hero-cards" role="region" aria-label="Upcoming stream details">
-      <!-- Card 1: When -->
-      <article class="card" role="article" aria-labelledby="card-when-title">
+    <div class="hero-cards">
+      <article class="card card--large" aria-label="Game preview">
         <div class="card-inner">
-          <div id="card-when-title" class="card-title">When</div>
-          <div class="card-body" tabindex="0">
-            <p><strong>Date:</strong> December 16, 2025</p>
-            <p><strong>Time:</strong> 20:00 (local)</p>
-            <p><small>Join early for warm-up and community chat.</small></p>
-            <p><small>Reminder: Schedule subject to change — check channel updates.</small></p>
-            <!-- more content will scroll inside this area if needed -->
-          </div>
-          <div class="card-footer" aria-hidden="true">
-            <span class="meta">Countdown visible above</span>
-          </div>
+          <p style="text-align:left;">
+            <strong>When</strong><br>
+            <strong>Date:</strong> December 16, 2025<br>
+            <strong>Time:</strong> 20:00 (local)<br><br>
+            Join early for warm-up and community chat.<br>
+            <strong>Reminder:</strong> Schedule subject to change — check channel updates.<br><br>
+            Countdown visible above
+          </p>
+          <p><strong>Game:</strong> "Ophelia"</p>
+          <img src="ophelia_game_image.png" alt="Game Ophelia character" class="game-art" />
         </div>
       </article>
 
-      <!-- Card 2: What -->
-      <article class="card" role="article" aria-labelledby="card-what-title">
+      <article class="card" aria-label="Stream focus and details">
         <div class="card-inner">
-          <div id="card-what-title" class="card-title">What</div>
-          <div class="card-body" tabindex="0">
-            <p><strong>Stream Focus:</strong> Casual multiplayer co-op and community Q&A</p>
-            <p><strong>Segments:</strong> Playthrough, tips & tricks, chat, and giveaways</p>
-            <p><strong>Expect:</strong> high-energy gameplay, friendly commentary, occasional mod challenges.</p>
-            <p><small>Bring questions for the Q&A — we'll answer live.</small></p>
+          <h3 class="card-title">Stream Focus</h3>
+          <div class="card-body">
+            Casual multiplayer co-op and community Q&amp;A
           </div>
-          <div class="card-footer" aria-hidden="true">
-            <span class="meta">Moderated chat</span>
+          <h3 class="card-title">Segments</h3>
+          <div class="card-body">
+            Playthrough, tips &amp; tricks, chat, and giveaways
           </div>
-        </div>
-      </article>
-
-      <!-- Large Card: Game (spans both columns) -->
-      <article class="card card--large" role="article" aria-labelledby="card-game-title">
-        <div class="card-inner" style="padding:10px;">
-          <div id="card-game-title" class="game-title">Game: "Ophelia"</div>
-          <!-- Replace with actual game art -->
-          <img class="game-art" src="noFilter.webp">
-          <div class="card-body" tabindex="0" style="margin-top:8px;">
-            <p><strong>About the Game:</strong> Neon Rift is a fast-paced sci-fi arena shooter with cooperative objectives and PvE elements. Expect tight movement, flashy visuals, and tense boss encounters.</p>
-            <p><strong>Planned Activities:</strong> We'll push through the Storm Bastion raid, try new loadouts, and experiment with community-suggested builds.</p>
-            <p><strong>Notes:</strong> Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
-            <p><small>Game art & details will be updated as we finalize the event.</small></p>
+          <h3 class="card-title">Expect</h3>
+          <div class="card-body">
+            High-energy gameplay, friendly commentary, occasional mod challenges.
           </div>
+          <p>Bring questions for the Q&amp;A — we'll answer live.</p>
+          <p>Moderated chat</p>
         </div>
       </article>
     </div>
   </section>
 
-  <footer id="footer">
+  <footer>
     <div class="container">
       <div class="footer-content">
-        <h3>Contact Us</h3>
-        <p>Email: benzenegames.io@gmail.com</p>
-      </div>
-      <div class="footer-content">
-        <h3>Quick Links</h3>
-        <ul class="list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="content.html">Content</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-content">
-        <h3>Follow Us</h3>
+        <h3>Contact</h3>
+        <p>Email us at: info@benzenegames.com</p>
         <ul class="social-icons">
-          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial"><i class="fab fa-youtube"></i></a></li>
-          <li><a href="https://www.twitch.tv/benzenegames"><i class="fab fa-twitch"></i></a></li>
-          <li><a href=""><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-twitch"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
         </ul>
       </div>
     </div>
     <div class="bottom-bar">
-      <p>Copyright ©2025; Designed by Group5</p>
+      <p>© 2025 Benzene Games. All rights reserved.</p>
     </div>
   </footer>
-
-</body>
 <script>
   
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
@@ -609,4 +585,5 @@
 
 
 </script>
+</body>
 </html>
