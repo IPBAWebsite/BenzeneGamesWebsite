@@ -705,6 +705,46 @@
     </div>
   </footer>
 
+  <script>
+  (function(){
+    const nav = document.getElementById('myTopnav');
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('navMenu');
+
+    function setOpen(open){
+      if(open){
+        nav.classList.add('open');
+        toggle.setAttribute('aria-expanded','true');
+      } else {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    }
+
+    // toggle on click
+    toggle.addEventListener('click', () => {
+      setOpen(!nav.classList.contains('open'));
+    });
+
+    // close menu when a link is clicked (mobile)
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if(nav.classList.contains('open')) setOpen(false);
+      });
+    });
+
+    // ensure menu is closed when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1000) setOpen(false);
+    });
+
+    // close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  })();
+</script>
+
 <script>
   // Shared target date and countdown
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
