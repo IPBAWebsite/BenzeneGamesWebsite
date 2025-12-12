@@ -11,333 +11,440 @@
    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <style>
-    /* layout variables */
-    :root{
-      --nav-height: 150px;       /* keep in sync with .topnav height */
-      --centerbox-h: 18vh;       /* visual height of the center box (adjust if needed) */
-      --card-gap: 2%;
-    }
-    @media screen and (max-width:1000px){
-      :root { --nav-height: 60px; --centerbox-h: 20vh; }
-    }
+<style>
+  /* layout variables */
+  :root{
+    --nav-height: 150px;       /* keep in sync with .topnav height */
+    --centerbox-h: 18vh;       /* visual height of the center box (adjust if needed) */
+    --card-gap: 2%;
+  }
+  @media screen and (max-width:1000px){
+    :root { --nav-height: 60px; --centerbox-h: 20vh; }
+  }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      background: #000;
-    }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #050406;
-      color: #fff;
-    }
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background: #000;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050406;
+    color: #fff;
+  }
 
-    /* NAV */
-    .logo { padding-left: 40px; padding-right: 40px; }
-    .logo img { width: 130px; height: auto; display: block; }
-    .topnav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.45);
-      border: 1.5px solid rgba(255,255,255,0.06);
-      box-shadow: 0 6px 32px rgba(0,0,0,0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      color: #ffffff;
-      height: 150px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      z-index: 1100;
-    }
-    .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
-    .topnav li { display: inline-block; }
-    .topnav a {
-      display: inline-flex;
-      align-items: center;
-      height: 100%;
-      color: #FFFFFF;
-      text-align: center;
-      padding: 0 20px;
-      text-decoration: none;
-      font-size: 22px;
-      font-family: "Orbitron", sans-serif;
-      font-weight: 500;
-      position: relative;
-      transition: color .12s ease;
-    }
-    .topnav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(14px) scaleX(0);
-      transform-origin: center;
-      width: 56%;
-      height: 3px;
-      background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
-      border-radius: 3px;
-      transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
-      opacity: 0;
-    }
-    .topnav a:hover::after,
-    .topnav a:focus::after {
-      transform: translateX(-50%) translateY(14px) scaleX(1);
-      opacity: 1;
-    }
-    .topnav a:hover,
-    .topnav a:focus { color: #fff; outline: none; }
+  /* NAV */
+  .logo { padding-left: 40px; padding-right: 40px; }
+  .logo img { width: 130px; height: auto; display: block; }
+  .topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.45);
+    border: 1.5px solid rgba(255,255,255,0.06);
+    box-shadow: 0 6px 32px rgba(0,0,0,0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #ffffff;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1100;
+  }
+  .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
+  .topnav li { display: inline-block; }
+  .topnav a {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0 20px;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 500;
+    position: relative;
+    transition: color .12s ease;
+  }
+  .topnav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(14px) scaleX(0);
+    transform-origin: center;
+    width: 56%;
+    height: 3px;
+    background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
+    border-radius: 3px;
+    transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
+    opacity: 0;
+  }
+  .topnav a:hover::after,
+  .topnav a:focus::after {
+    transform: translateX(-50%) translateY(14px) scaleX(1);
+    opacity: 1;
+  }
+  .topnav a:hover,
+  .topnav a:focus { color: #fff; outline: none; }
 
-    @media screen and (max-width: 1000px) {
-      .topnav { height: 60px; }
-      .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
-      .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
-    }
+  @media screen and (max-width: 1000px) {
+    .topnav { height: 60px; }
+    .topnav a { font-size: 16px; padding: 0 10px; }
+    .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
+    .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
+  }
 
-    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
+  .socialiconnav a i { font-size: 2em; vertical-align: middle; }
 
-    /* HERO (background video unchanged rotation as requested) */
-    .comingsoon-hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
-    }
+  /* HERO (background video unchanged rotation as requested) */
+  .comingsoon-hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  }
 
-    /* Keep the 90deg rotated video — restored per your request */
-    .comingsoon-hero video.bg-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vh;
-      height: 100vw;
-      transform: translate(-50%, -50%) rotate(90deg) scale(1);
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.83;
-    }
+  /* Keep the 90deg rotated video — restored per your request */
+  .comingsoon-hero video.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1);
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.83;
+  }
 
-    /* HERO OVERLAY: a single overlay box that contains the centerbox + cards.
-       This makes centerbox and cards scale in proportion and ensures the centerbox stays above the cards. */
+  /* HERO OVERLAY: a single overlay box that contains the centerbox + cards.
+     This makes centerbox and cards scale in proportion and ensures the centerbox stays above the cards. */
+  .hero-overlay {
+    position: absolute;
+    top: calc(var(--nav-height) + 4vh); /* sit below the nav */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    max-width: 1200px;
+    height: calc(100vh - var(--nav-height) - 8vh); /* remaining vertical space */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 100; /* below the nav (1100) but above video (0) */
+    pointer-events: auto;
+  }
+
+  /* CENTERBOX inside overlay — not vertically centered, sits at the top of the overlay */
+  .comingsoon-centerbox {
+    width: 100%;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* left aligned so cards can be taller */
+    justify-content: center;
+    text-align: left;
+    height: var(--centerbox-h); /* scales with viewport via var */
+    min-height: 80px;
+    max-height: 32vh;
+    box-sizing: border-box;
+    pointer-events: auto; /* allow interactions if needed */
+    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.04));
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .comingsoon-brand-label {
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.06);
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-weight: bold;
+    text-shadow: 0 2px 8px #000;
+    font-family: "Stack Sans Text", Arial, sans-serif;
+  }
+  .comingsoon-title {
+    font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
+    font-size: clamp(1.6rem, 3.8vw, 3rem);
+    font-weight: 800;
+    line-height: 1.08;
+    text-transform: uppercase;
+    margin: 6px 0 8px 0;
+    letter-spacing: 0.03em;
+    background: rgba(0,0,0,0.13);
+    padding: 0.09em 0.29em;
+    border-radius: 10px;
+  }
+  .comingsoon-desc {
+    font-family: "Stack Sans Text", Arial, sans-serif;
+    margin-top: 0.15rem;
+    font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+    color: #fffbe9;
+    text-shadow: 0 2px 9px #000, 0 0 6px rgba(253,57,45,0.12);
+    max-width: 100%;
+  }
+  #countdown-inline { font-weight: 700; color: #fff; }
+
+  /* HERO CARDS occupy the remaining space inside the overlay and will scale with it */
+  .hero-cards {
+    flex: 1 1 auto;           /* grow to fill overlay */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: var(--card-gap);
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
+    border: 1px solid rgba(255, 130, 40, 0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 24px rgba(255,80,20,0.04) inset;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+    transition: transform .16s ease, box-shadow .16s ease;
+    min-height: 0;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(0,0,0,0.6); }
+
+  .card .card-inner {
+    padding: 12px 14px;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .card .card-title {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    color: #ffd36c;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card .card-body {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 6px;
+  }
+  .card .card-body p { margin: 0 0 0.7rem 0; }
+  .card .card-body::-webkit-scrollbar { width: 8px; }
+  .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.12); border-radius: 6px; }
+  .card .card-footer { margin-top: 8px; display:flex; gap:8px; align-items:center; font-size:0.85rem; color:rgba(255,255,255,0.75); }
+
+  /* clickable watch badge for first-row cards (keeps them accessible and focusable) */
+  .live-badge {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    background: linear-gradient(90deg,#ff3b3b,#ff7a3b);
+    color: #fff;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 12;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    text-decoration: none;
+  }
+  .live-badge:focus, .live-badge:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.6); }
+
+  /* Make large game card content scrollable while keeping the image a fixed visual element
+     (UPDATED: flex rules + min-height:0 ensure internal scrolling works) */
+  .card--large {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 100%;
+    min-height: 0; /* allow flex children to size correctly */
+  }
+
+  /* ensure .card-inner inside large card is a flexible container so .card-body can grow and scroll */
+  .card--large .card-inner {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0; /* important so children can shrink */
+    padding: 0; /* inner padding handled by .card-inner if needed; keep consistent */
+  }
+
+  .game-art {
+    width: 100%;
+    height: clamp(160px, 20vh, 320px);
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 8px;
+    flex: 0 0 auto; /* keep image a fixed visual block */
+  }
+
+  /* Make the large card body flexible and scrollable when content overflows */
+  .card--large .card-body {
+    flex: 1 1 auto;
+    min-height: 0; /* critical for WebKit/Blink to allow proper scrolling */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px; /* consistent inner spacing */
+  }
+
+  .game-title { font-family:"Orbitron",sans-serif; font-size:1.05rem; font-weight:800; color:#ffb870; margin:8px 0; padding:0 12px; }
+
+  /* responsive adjustments */
+  @media (max-width: 880px) {
     .hero-overlay {
-      position: absolute;
-      top: calc(var(--nav-height) + 4vh); /* sit below the nav */
+      top: calc(var(--nav-height) + 3vh);
+      width: 94%;
+      height: auto;
       left: 50%;
       transform: translateX(-50%);
-      width: 86%;
-      max-width: 1200px;
-      height: calc(100vh - var(--nav-height) - 8vh); /* remaining vertical space */
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 100; /* below the nav (1100) but above video (0) */
-      pointer-events: auto;
     }
+    .comingsoon-centerbox { width: 100%; height: auto; padding: 1rem; }
+    .hero-cards { display: grid; grid-template-columns: 1fr; grid-auto-rows: min-content; gap: 1rem; }
+    .card--large { grid-column: auto; }
+    .card--large .card-body { max-height: 36vh; }
+    .game-art { height: 220px; }
+  }
 
-    /* CENTERBOX inside overlay — not vertically centered, sits at the top of the overlay */
-    .comingsoon-centerbox {
-      width: 100%;
-      color: #fff;
-      padding: 0.6rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start; /* left aligned so cards can be taller */
-      justify-content: center;
-      text-align: left;
-      height: var(--centerbox-h); /* scales with viewport via var */
-      min-height: 80px;
-      max-height: 32vh;
-      box-sizing: border-box;
-      pointer-events: auto; /* allow interactions if needed */
-      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.04));
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.04);
+    footer{
+        background: #1f1e1e;
+        padding-top: 50px;
     }
-    .comingsoon-brand-label {
-      display: inline-block;
-      margin: 6px 0;
-      font-size: 0.78rem;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.95);
-      background: rgba(255,255,255,0.06);
-      padding: 6px 14px;
-      border-radius: 18px;
-      font-weight: bold;
-      text-shadow: 0 2px 8px #000;
-      font-family: "Stack Sans Text", Arial, sans-serif;
+    .container{
+        width: 1140px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
     }
-    .comingsoon-title {
-      font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
-      font-size: clamp(1.6rem, 3.8vw, 3rem);
-      font-weight: 800;
-      line-height: 1.08;
-      text-transform: uppercase;
-      margin: 6px 0 8px 0;
-      letter-spacing: 0.03em;
-      background: rgba(0,0,0,0.13);
-      padding: 0.09em 0.29em;
-      border-radius: 10px;
+    .footer-content{
+        width: 33.3%;
     }
-    .comingsoon-desc {
-      font-family: "Stack Sans Text", Arial, sans-serif;
-      margin-top: 0.15rem;
-      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
-      color: #fffbe9;
-      text-shadow: 0 2px 9px #000, 0 0 6px rgba(253,57,45,0.12);
-      max-width: 100%;
-    }
-    #countdown-inline { font-weight: 700; color: #fff; }
-
-    /* HERO CARDS occupy the remaining space inside the overlay and will scale with it */
-    .hero-cards {
-      flex: 1 1 auto;           /* grow to fill overlay */
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 1fr;
-      gap: var(--card-gap);
-      align-items: stretch;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
-      border: 1px solid rgba(255, 130, 40, 0.12);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 24px rgba(255,80,20,0.04) inset;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      color: #fff;
-      position: relative;
-      transition: transform .16s ease, box-shadow .16s ease;
-      min-height: 0;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(0,0,0,0.6); }
-
-    .card .card-inner {
-      padding: 12px 14px;
-      flex: 1 1 auto;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .card .card-title {
-      font-family: "Orbitron", sans-serif;
+    h3{
+        font-size: 40px;
+        margin-bottom: 15px;
+        text-align: center;
+       font-family: "Rajdhani", sans-serif;
       font-weight: 700;
-      color: #ffd36c;
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-style: normal;
+      color: white;
     }
-    .card .card-body {
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      font-size: 0.98rem;
-      line-height: 1.35;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-right: 6px;
+    .footer-content p{
+        width:190px;
+        margin: auto;
+        padding: 7px;
+        font-family: "Exo 2", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      font-size: 30px;
+      color: white;
     }
-    .card .card-body p { margin: 0 0 0.7rem 0; }
-    .card .card-body::-webkit-scrollbar { width: 8px; }
-    .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.12); border-radius: 6px; }
-    .card .card-footer { margin-top: 8px; display:flex; gap:8px; align-items:center; font-size:0.85rem; color:rgba(255,255,255,0.75); }
-
-    /* clickable watch badge for first-row cards (keeps them accessible and focusable) */
-    .live-badge {
-      position: absolute;
-      right: 14px;
-      top: 12px;
-      background: linear-gradient(90deg,#ff3b3b,#ff7a3b);
-      color: #fff;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 18px;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 12;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-      text-decoration: none;
+    .footer-content ul{
+        text-align: center;
     }
-    .live-badge:focus, .live-badge:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.6); }
-
-    /* Make large game card content scrollable while keeping the image a fixed visual element */
-    .card--large {
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
+    .list{
+        padding: 0;
     }
-    .game-art {
-      width: 100%;
-      height: clamp(160px, 20vh, 320px);
-      border-radius: 8px;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 8px;
-      flex: 0 0 auto;
+    .list li{
+        width: auto;
+        text-align: center;
+        list-style-type:none;
+        padding: 7px;
+        position: relative;
     }
-    .card--large .card-body {
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      max-height: calc(100% - (var(--centerbox-h) + 40px)); /* ensure it won't overflow the overlay */
-    }
-    .game-title { font-family:"Orbitron",sans-serif; font-size:1.05rem; font-weight:800; color:#ffb870; margin-bottom:6px; }
-
-    /* responsive adjustments */
-    @media (max-width: 880px) {
-      .hero-overlay {
-        top: calc(var(--nav-height) + 3vh);
-        width: 94%;
-        height: auto;
+    .list li::before{
+        content: '';
+        position: absolute;
+        transform: translate(-50%,-50%);
         left: 50%;
-        transform: translateX(-50%);
-      }
-      .comingsoon-centerbox { width: 100%; height: auto; padding: 1rem; }
-      .hero-cards { display: grid; grid-template-columns: 1fr; grid-auto-rows: min-content; gap: 1rem; }
-      .card--large { grid-column: auto; }
-      .card--large .card-body { max-height: 36vh; }
-      .game-art { height: 220px; }
+        top: 100%;
+        width: 0;
+        height: 2px;
+        background: #f18930;
+        transition-duration: .5s;
+    }
+    .list li:hover::before{
+        width: 70px;
+    }
+    .social-icons{
+        text-align: center;
+        padding: 0;
+    }
+    .social-icons li{
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+    }
+    .social-icons li a i {
+    font-size: 50px;
+    transition: 0.3s;
+}
+    footer a{
+        text-decoration: none;
+      color: #fff
+    }
+    a:hover{
+        color: #f18930;
+    }
+.social-icons li a:hover i {
+    color: #f18930 !important;
+}
+    .bottom-bar{
+        background: #f18930;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 50px;
+    }
+    .bottom-bar p{
+        color: #343434;
+        margin: 0;
+        font-size: 16px;
+        padding: 7px;
+    }
+  .social-icons li:nth-of-type(1) i{
+        color: #FF0000;
+        font-size: 50px;
+    }
+      .social-icons li:nth-of-type(2) i {
+        color: #6441a5;
+        font-size: 50px;
+    }
+      .social-icons li:nth-of-type(3) i {
+        color: #1877F2;
+        font-size: 50px;
     }
 
-    /* footer styles unchanged */
-    footer{ background: #1f1e1e; padding-top: 50px; }
-    .container{ width: 1140px; margin: auto; display: flex; justify-content: center; }
-    .footer-content{ width: 33.3%; }
-    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; color: white; }
-    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-weight: 400; font-size: 18px; color: white; }
-    .footer-content ul{ text-align: center; padding: 0; }
-    .list{ padding: 0; }
-    .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative; }
-    .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: #f18930; transition-duration: .5s; }
-    .list li:hover::before{ width: 70px; }
-    .social-icons{ text-align: center; padding: 0; }
-    .social-icons li{ display: inline-block; text-align: center; padding: 5px; }
-    .social-icons li a i { font-size: 50px; transition: 0.3s; }
-    footer a{ text-decoration: none; color: #fff }
-    a:hover{ color: #f18930; }
-    .social-icons li a:hover i { color: #f18930 !important; }
-    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px; }
-    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px; }
   </style>
 </head>
 <body>
