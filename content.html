@@ -258,29 +258,29 @@
 
   /* CENTERBOX: top of overlay; keep in flow and ensure it is always above the cards
      and center its contents horizontally */
-  .comingsoon-centerbox {
-    position: relative;
-    z-index: 500; /* higher than cards so it stays visually above them */
-    width: 100%;
-    color: #fff;
-    padding: 0.9rem 1rem; /* slightly bigger padding so countdown doesn't overlap */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* center horizontally */
-    justify-content: center;
-    text-align: center;  /* center text */
-    height: var(--centerbox-h);
-    min-height: 64px;
-    max-height: 32vh;
-    box-sizing: border-box;
-    pointer-events: auto;
-    background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.04));
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.04);
-    margin-bottom: 1rem; /* increased so cards are pushed down and nothing overlaps */
-    flex: 0 0 auto; /* ensure the centerbox occupies its own space in the flow */
-    overflow: hidden; /* keep its content contained */
-  }
+.comingsoon-centerbox {
+  position: relative;
+  z-index: 1200;              
+  width: 100%;
+  color: #fff;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: var(--centerbox-h); /* allow the box to grow taller when content needs it */
+  /* remove forced height so content won't overflow underneath cards */
+  max-height: 40vh;          /* optional: prevent it from growing excessively on very tall screens */
+  box-sizing: border-box;
+  pointer-events: auto;
+  background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.04));
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 1rem;       /* ensures cards are pushed down */
+  flex: 0 0 auto;
+  overflow: visible;         /* allow the countdown/content to remain visible */
+}
   /* center the brand label and title */
   .comingsoon-brand-label { 
     display:inline-block; 
@@ -310,8 +310,9 @@
   white-space: nowrap;         
 }
 #countdown-inline {
-  display: inline-block;       
-  vertical-align: middle;
+  display: inline-block;
+  position: relative;      
+  z-index: 1250;           
   font-weight: 700;
   color: #fff;
   background: rgba(0,0,0,0.6);
@@ -320,8 +321,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: min(420px, 90%);
   box-sizing: border-box;
+  margin-left: 0.4rem;      
 }
 
   /* HERO CARDS: grid inside overlay
