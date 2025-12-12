@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
   <title>Benzene Games</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       width: 100%;
@@ -19,15 +16,14 @@
       padding: 0;
       box-sizing: border-box;
       overflow-x: hidden;
-      background: #080608;
-      color: #efe9df;
     }
     body {
-      font-family: Poppins, Arial, Helvetica, sans-serif;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: white;
+      padding-top: 0;
+      overflow-x: hidden;
     }
-
     .logo {
       padding-left: 40px;
       padding-right: 40px;
@@ -36,11 +32,10 @@
       width: 130px;
       height: auto;
       vertical-align: middle;
-      margin: 0;
+      margin: 0; 
       display: block;
     }
-
-   .topnav {
+    .topnav {
       position: fixed;
       top: 0;
       left: 0;
@@ -59,8 +54,6 @@
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
-
-    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -77,8 +70,6 @@
       position: relative;              
       transition: color .12s ease;
     }
-
-    
     .topnav a::after {
       content: "";
       position: absolute;
@@ -103,7 +94,6 @@
       color: #fff; 
       outline: none;
     }
-
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
@@ -115,341 +105,228 @@
         transform: translateX(-50%) translateY(9px) scaleX(1);
       }
     }
-
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
-
     .comingsoon-hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-    .comingsoon-hero video.bg-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 120vh;
-      height: 120vw;
-      transform: translate(-50%, -50%) rotate(90deg) scale(1);
-      transform-origin: center center;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.83;
-    }
+  position: relative;       
+  width: 100vw;
+  height: 100vh;            
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.comingsoon-hero video {
+  position: absolute;       
+  top: 50%;
+  left: 50%;
+  width: 100vh;             
+  height: 100vw;            
+  transform: translate(-50%, -50%) rotate(90deg) scale(1);
+  transform-origin: center center;
+  object-fit: fill;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.83;
+}
+    
     .comingsoon-centerbox {
       position: relative;
       z-index: 3;
       width: 100%;
       text-align: center;
       color: #fff;
-      padding: 2rem 1rem 0.5rem 1rem;
+      padding: 2rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      max-width: 900px;
-      margin: 0 auto;
     }
-    .comingsoon-brand-label { display:inline-block; background: rgba(255,255,255,0.03); padding:6px 12px; border-radius:12px; font-weight:700; color:#ffeedd; }
-    .comingsoon-title { font-family: "Nosifer", "Stack Sans Text", Arial, sans-serif; font-size: clamp(2rem,6vw,3.6rem); color:#f7e7d8; text-transform:uppercase; text-shadow:0 6px 24px rgba(0,0,0,0.9); background: rgba(0,0,0,0.15); padding:.12em .35em; border-radius:8px; }
-    .comingsoon-desc { margin-top:.5rem; color:#fff6e8; text-shadow:0 2px 8px rgba(0,0,0,0.8); }
-
-    :root {
-      --collapsed-width: 170px;
-      --collapsed-height: 320px;
-      --card-radius: 20px;
-      --card-bg-rgba: rgba(14,10,10,0.78);
-      --card-border-rgba: rgba(160,40,40,0.12);
-      --accent: #ff8b43;
-      --accent-2: #ffbe6a;
-      --title-color: #ffb88a;
-      --icon-color: #ffb88a;
+    .comingsoon-brand-label {
+      display: inline-block;
+      margin: 0 auto 1rem auto;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.07);
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-weight: bold;
+      text-shadow: 0 2px 8px #000;
+      font-family: "Stack Sans Text", Arial, sans-serif;
     }
-
-    .expand-cards-container {
-      display:flex;
-      gap:2vw;
-      justify-content:center;
-      align-items:center;
-      margin-top:1.5rem;
-      width:100%;
-      max-width:1100px;
-      padding:1rem;
-      box-sizing:border-box;
-      z-index: 6;
+    .comingsoon-title {
+      font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      text-transform: uppercase;
+      margin: 0.45rem 0 0.95rem 0;
+      letter-spacing: 0.03em;
+      text-shadow:
+        0 4px 18px rgba(0,0,0,0.88),
+        0 0 22px #fd392d,
+        0 0 10px #ffc13c;
+      background: rgba(0,0,0,0.13);
+      display: inline-block;
+      padding: 0.09em 0.29em;
+      border-radius: 10px;
     }
-
-    /* CARD */
-    .expand-card {
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      width:var(--collapsed-width);
-      min-width:90px;
-      height: var(--card-height, var(--collapsed-height));
-      border-radius: var(--card-radius);
-      background: linear-gradient(180deg, rgba(12,8,8,0.84), var(--card-bg-rgba));
-      border: 1.5px solid var(--card-border-rgba);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.75), inset 0 6px 30px rgba(255,80,40,0.02);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      transition: width 640ms cubic-bezier(.2,.95,.2,1), height 420ms cubic-bezier(.25,.9,.15,1), transform 420ms ease, box-shadow 300ms ease, border-color 300ms ease;
-      cursor:pointer;
-      overflow: hidden; /* ensure image never leaves card */
-      z-index: 12;
-      justify-content: flex-start;
-      will-change: width,height,transform;
+    .comingsoon-desc {
+      font-family: "Stack Sans Text", Arial, sans-serif;
+      margin-top: 0.1em;
+      margin-bottom: 1.2em;
+      font-size: 1.17rem;
+      color: #fffbe9;
+      text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
+      max-width: 600px;
     }
 
-    /* TAB area */
-    .expand-card .card-tab {
-      position: relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:.45em;
-      width:100%;
-      padding:12px 10px;
-      box-sizing:border-box;
-      /* collapsed tab height so image fits nicely */
-      height: calc(var(--collapsed-height) - 48px);
-      text-align:center;
-      font-family: 'Creepster', 'Orbitron', sans-serif;
-      color: var(--title-color);
-      z-index: 4;
+    #countdown-inline {
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  font-family: "Stack Sans Text", sans-serif;
+}
+    footer{
+      background: #1f1e1e;
+      padding-top: 50px;
     }
-
-    /*
-      CHAR PEEK (updated)
-      - Positioned absolutely relative to the card (.expand-card) so it is always inside the card.
-      - In collapsed state it fills the tab area (reduced opacity).
-      - In expanded state it becomes a centered, smaller, low-opacity decorative background inside the card top area,
-        and importantly sits behind the content so it does not affect text/layout.
-    */
-    .expand-card .char-peek {
-      position: absolute;
-      /* place inside the tab area by default */
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(var(--collapsed-width) - 16px);
-      height: calc(var(--collapsed-height) - 16px - 32px); /* fills tab roughly */
-      object-fit: cover;
-      border-radius: calc(var(--card-radius) - 6px);
-      opacity: 0.65; /* reduced opacity collapsed */
-      filter: saturate(.95) contrast(.95);
-      transition: opacity 360ms ease, transform 420ms cubic-bezier(.2,.9,.2,1), top 420ms ease, height 420ms ease, width 420ms ease;
-      z-index: 1; /* behind tab text (tab text z-index is 5/6) but inside card */
-      pointer-events: none;
-      will-change: width,height,transform,opacity;
-    }
-
-    /* Tab icon/title above the image */
-    .card-tab i { z-index: 5; color: var(--icon-color); font-size:1.2rem; text-shadow: 0 6px 18px rgba(0,0,0,0.8); margin-bottom:6px; }
-    .card-tab span { z-index: 6; display:block; font-size:1.02rem; color:var(--title-color); text-shadow:0 3px 10px rgba(0,0,0,0.8); }
-
-    /* collapsed card behaviour */
-    .expand-card:not(.active) {
-      transform: translateY(8px) scale(.99);
-      opacity: .95;
+    .container{
+      width: 1140px;
+      margin: auto;
+      display: flex;
       justify-content: center;
     }
-    .expand-card:hover:not(.active),
-    .expand-card:focus-within:not(.active) {
-      transform: translateY(0) scale(1);
-      box-shadow: 0 18px 80px rgba(0,0,0,0.85);
-      opacity: 1;
+    .footer-content{
+      width: 33.3%;
     }
-
-    /* expanded card */
-    .expand-card.active {
-      width: clamp(320px, 38%, 520px);
-      transform: translateY(-8px) scale(1.02) rotate(-0.6deg);
-      border-color: rgba(200,70,50,0.26);
-      box-shadow: 0 20px 120px rgba(0,0,0,0.9), 0 0 120px rgba(255,80,40,0.06);
-      opacity: 1;
-      justify-content: flex-start;
+    h3{
+      font-size: 40px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      color: white;
     }
-
-    /* When active: tab resizes and the image becomes smaller, centered, and faint,
-       and it MUST sit behind the content (so content is not affected). */
-    .expand-card.active .card-tab {
-      height: auto;
-      padding: 18px 18px 8px 18px;
-      align-items:flex-start;
-      justify-content:flex-start;
-      text-align:left;
+    .footer-content p{
+      width:190px;
+      margin: auto;
+      padding: 7px;
+      font-family: "Exo 2", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 30px;
+      color: white;
     }
-
-    .expand-card.active .char-peek {
-      top: 18px; /* slightly lower */
+    .footer-content ul{
+      text-align: center;
+    }
+    .list{
+      padding: 0;
+    }
+    .list li{
+      width: auto;
+      text-align: center;
+      list-style-type:none;
+      padding: 7px;
+      position: relative;
+    }
+    .list li::before{
+      content: '';
+      position: absolute;
+      transform: translate(-50%,-50%);
       left: 50%;
-      transform: translateX(-50%);
-      width: 86%;
-      height: 220px; /* fixed visual area for expanded image */
-      opacity: 0.12;  /* very faint when expanded */
-      z-index: 1;     /* ensure it's behind tab text and content */
-      border-radius: 10px;
-      margin-bottom: 10px;
+      top: 100%;
+      width: 0;
+      height: 2px;
+      background: #f18930;
+      transition-duration: .5s;
     }
-
-    /* card content should be above the char-peek, so give it a higher z-index */
-    .expand-card .card-content {
-      box-sizing: border-box;
-      padding: 0 1.6rem 1.3rem 1.6rem;
-      font-size: 1.02em;
-      color: #fffbea;
-      font-family: Poppins, "Stack Sans Text", sans-serif;
-      overflow: hidden;
-      height: 0;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: height 420ms cubic-bezier(.25,.9,.15,1), opacity 260ms ease, transform 360ms cubic-bezier(.25,.9,.15,1);
-      width: 100%;
-      z-index: 6; /* above char-peek so image doesn't push content */
-      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.04));
+    .list li:hover::before{
+      width: 70px;
     }
-    .expand-card.active .card-content {
-      opacity: 1;
-      transform: translateY(0);
+    .social-icons{
+      text-align: center;
+      padding: 0;
     }
-
-    .watch-live-btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
-      padding: 12px 34px; border-radius: 28px; border:none;
-      background: linear-gradient(90deg, var(--accent-2), var(--accent));
-      color:#111; font-weight:700; cursor:pointer; box-shadow: 0 8px 28px rgba(255,90,40,0.18);
-      font-family: 'Creepster', Poppins, sans-serif;
-      transition: transform 160ms ease, box-shadow 160ms ease;
-      margin-top: 12px;
-      z-index: 7;
+    .social-icons li{
+      display: inline-block;
+      text-align: center;
+      padding: 5px;
     }
-    .watch-live-btn:hover { transform: translateY(-3px); box-shadow:0 14px 44px rgba(255,80,40,0.26); }
-
-    .meta-line { margin: .35rem 0; }
-    .meta-line b { color:#fff; }
-
-    @media (max-width: 1000px) {
-      .expand-cards-container { flex-direction: column; gap:1rem; padding: 0 1rem 1rem; align-items:center; }
-      .expand-card { width: 96vw !important; max-width: 99vw; border-radius:14px; }
-      .card-tab .char-peek { display:none; } /* hide peek on small screens to avoid layout issues */
-      .comingsoon-hero{ height: calc(100vh - 60px); }
-      .topnav { height: 60px; }
+    .social-icons li a i {
+      font-size: 50px;
+      transition: 0.3s;
     }
-
-    footer{ background: #1f1e1e; padding-top: 50px; margin-top: 2rem;}
-    .container{ width: 1140px; margin: auto; display: flex; justify-content: center;}
-    .footer-content{ width: 33.3%;}
-    h3{ font-size: 40px; margin-bottom: 15px; text-align: center; font-family: "Rajdhani", sans-serif; font-weight: 700; font-style: normal; color: white;}
-    .footer-content p{ width:190px; margin: auto; padding: 7px; font-family: "Exo 2", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-size: 30px; color: white;}
-    .footer-content ul{ text-align: center;}
-    .list{ padding: 0;}
-    .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative;}
-    .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: #f18930; transition-duration: .5s;}
-    .list li:hover::before{ width: 70px;}
-    .social-icons{ text-align: center; padding: 0;}
-    .social-icons li{ display: inline-block; text-align: center; padding: 5px;}
-    .social-icons li a i { font-size: 50px; transition: 0.3s;}
-    footer a{ text-decoration: none; color: #fff}
-    a:hover{ color: #f18930;}
-    .social-icons li a:hover i { color: #f18930 !important;}
-    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px;}
-    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px;}
-    .social-icons li:nth-of-type(1) i{ color: #FF0000; font-size: 50px;}
-    .social-icons li:nth-of-type(2) i { color: #6441a5; font-size: 50px;}
-    .social-icons li:nth-of-type(3) i { color: #1877F2; font-size: 50px;}
+    footer a{
+      text-decoration: none;
+      color: #fff
+    }
+    a:hover{
+      color: #f18930;
+    }
+    .social-icons li a:hover i {
+      color: #f18930 !important;
+    }
+    .bottom-bar{
+      background: #f18930;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 50px;
+    }
+    .bottom-bar p{
+      color: #343434;
+      margin: 0;
+      font-size: 16px;
+      padding: 7px;
+    }
+    .social-icons li:nth-of-type(1) i{
+      color: #FF0000;
+      font-size: 50px;
+    }
+    .social-icons li:nth-of-type(2) i {
+      color: #6441a5;
+      font-size: 50px;
+    }
+    .social-icons li:nth-of-type(3) i {
+      color: #1877F2;
+      font-size: 50px;
+    }
   </style>
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <div class="logo"><a href="index.html"><img src="Benzene.JPG" alt="Logo"></a></div>
+    <div class="logo">
+      <a href="index.html">
+        <img src="Benzene.JPG" alt="Logo">
+      </a>
+    </div>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="content.html">Content</a></li>
-      <li><a href="https://www.youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
+      <li><a href="index.html"><span id="nav-home">Brand</span></a></li>
+      <li><a href="about.html"><span id="nav-about">About</span></a></li>
+      <li><a href="content.html"><span id="nav-product">Content</span></a></li>
+      <li class="socialiconnav">
+        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a>
+      </li>
     </ul>
   </div>
-
-  <section class="comingsoon-hero" aria-labelledby="upcoming-heading">
-    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true">
+  <section class="comingsoon-hero">
+    <video autoplay muted loop playsinline class="bg-video">
       <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
     </video>
-
+    <div class="hero-overlay"></div>
+    <div class="hero-rgboverlay"></div>
     <div class="comingsoon-centerbox">
-      <span class="comingsoon-brand-label">CONTENT</span>
-      <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING STREAM</h1>
-      <p class="comingsoon-desc">Starting in: <span id="countdown-inline"></span></p>
+     <span class="comingsoon-brand-label">CONTENT</span>
+     <h1 class="comingsoon-title">UPCOMING Stream</h1>
+     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
     </div>
-
-    <div class="expand-cards-container" id="cardsContainer" role="list" aria-label="Stream details">
-
-      <div class="expand-card when active" tabindex="0" role="listitem" aria-expanded="true">
-        <div class="card-tab" aria-hidden="false">
-          <i class="fa-regular fa-calendar" aria-hidden="true"></i>
-          <span>When</span>
-          <!-- image stays inside card; ensure file path is correct relative to this HTML -->
-          <img class="char-peek" src="Untitled_design__3_-removebg-preview.png" alt="" aria-hidden="true">
-        </div>
-
-        <div class="card-content" aria-hidden="false">
-          <div class="meta-line"><b>Stream Date:</b> December 16, 2025</div>
-          <div class="meta-line"><b>Time:</b> 8:00 PM <span style="opacity:.75">EST</span></div>
-          <div class="meta-line"><b>Countdown:</b> <span id="card-countdown"></span></div>
-
-          <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-            <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
-          </button>
-        </div>
-      </div>
-
-      <div class="expand-card game" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" aria-hidden="false">
-          <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
-          <span>Game</span>
-          <img class="char-peek" src="Untitled_design__4_-removebg-preview.png" alt="" aria-hidden="true">
-        </div>
-
-        <div class="card-content" aria-hidden="true">
-          <div class="meta-line">Watch us play Ophelia — thumbnail below:</div>
-          <img src="noFilter.webp" style="width:100%;border-radius:10px;margin-top:.6rem;box-shadow:0 8px 30px rgba(0,0,0,0.6);" alt="Ophelia thumbnail">
-          <div class="meta-line" style="margin-top:.6rem"><b>Title:</b> Ophelia</div>
-          <div class="meta-line"><b>Genre:</b> Psychological Horror</div>
-
-          <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-            <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
-          </button>
-        </div>
-      </div>
-
-      <div class="expand-card what" tabindex="0" role="listitem" aria-expanded="false">
-        <div class="card-tab" aria-hidden="false">
-          <i class="fa-solid fa-ghost" aria-hidden="true"></i>
-          <span>What</span>
-          <img class="char-peek" src="Untitled_design__2_-removebg-preview.png" alt="" aria-hidden="true">
-        </div>
-
-        <div class="card-content" aria-hidden="true">
-          <div class="meta-line"><b>Mode:</b> Single-player story</div>
-          <div class="meta-line" style="margin-top:.25rem;"><b>Details:</b> Commentary, reactions, and viewer interaction</div>
-
-          <button class="watch-live-btn" onclick="window.open('https://www.youtube.com/@BenzeneGamesOfficial/live','_blank')">
-            <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Live
-          </button>
-        </div>
-      </div>
-
-    </div>
-
   </section>
-
   <footer id="footer">
     <div class="container">
       <div class="footer-content">
@@ -468,9 +345,9 @@
       <div class="footer-content">
         <h3>Follow Us</h3>
         <ul class="social-icons">
-          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-          <li><a href="https://www.twitch.tv/benzenegames" aria-label="Twitch"><i class="fab fa-twitch"></i></a></li>
-          <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://www.youtube.com/@BenzeneGamesOfficial"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="https://www.twitch.tv/benzenegames"><i class="fab fa-twitch"></i></a></li>
+          <li><a href=""><i class="fab fa-facebook"></i></a></li>
         </ul>
       </div>
     </div>
@@ -478,115 +355,32 @@
       <p>Copyright ©2025; Designed by Group5</p>
     </div>
   </footer>
-
-  <script>
-    // countdown (unchanged)
-    const targetDate = new Date("December 16, 2025 20:00:00").getTime();
-    const countdownElement = document.getElementById("countdown-inline");
-    const cardCountdown = document.getElementById("card-countdown");
-    function updateCountdown() {
-      const now = Date.now();
-      const distance = targetDate - now;
-      if (distance < 0) {
-        if(countdownElement) countdownElement.textContent = "Live now!";
-        if(cardCountdown) cardCountdown.textContent = "Live now!";
-        clearInterval(interval);
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      if(countdownElement) countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      if(cardCountdown) cardCountdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-    const interval = setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // unified height & expand logic (unchanged)
-    (function () {
-      const container = document.getElementById('cardsContainer');
-      if (!container) return;
-      const cards = Array.from(container.querySelectorAll('.expand-card'));
-
-      function setAria(c, expanded){
-        c.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        const content = c.querySelector('.card-content');
-        if (content) content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
-      }
-
-      function measureFullOuterHeight(card){
-        const content = card.querySelector('.card-content');
-        const prev = content.style.height;
-        content.style.height = 'auto';
-        const full = card.scrollHeight;
-        content.style.height = prev;
-        return full;
-      }
-
-      function measureInnerContent(card){
-        const content = card.querySelector('.card-content');
-        if (!content) return 0;
-        const prev = content.style.height;
-        content.style.height = 'auto';
-        const h = content.scrollHeight;
-        content.style.height = prev;
-        return h;
-      }
-
-      let active = cards.find(c => c.classList.contains('active')) || cards[0] || null;
-      const FALLBACK = 120;
-
-      function sync(){
-        const activeFull = active ? measureFullOuterHeight(active) : FALLBACK;
-        cards.forEach((c, idx) => {
-          c.style.transitionDelay = `${Math.abs(cards.indexOf(active) - idx) * 40}ms`;
-          c.style.height = activeFull + 'px';
-          const content = c.querySelector('.card-content');
-          if (c === active){
-            const innerH = measureInnerContent(c);
-            if (content) content.style.height = innerH + 'px';
-            c.classList.add('active');
-            setAria(c, true);
-          } else {
-            if (content) content.style.height = '0px';
-            c.classList.remove('active');
-            setAria(c, false);
-          }
-        });
-      }
-
-      function activateCard(card){
-        if (!card || card === active) { sync(); return; }
-        active = card;
-        sync();
-      }
-
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', () => activateCard(card));
-        card.addEventListener('click', () => activateCard(card));
-        card.addEventListener('focus', () => activateCard(card));
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateCard(card); }
-        });
-      });
-
-      function watchImages(){
-        const imgs = container.querySelectorAll('img');
-        imgs.forEach(img => {
-          if (!img.__attached) {
-            img.addEventListener('load', sync);
-            img.__attached = true;
-          }
-        });
-      }
-      const mo = new MutationObserver(()=> { watchImages(); sync(); });
-      mo.observe(container, { childList:true, subtree:true, characterData:true });
-
-      window.addEventListener('resize', () => { clearTimeout(window.__cardResize); window.__cardResize = setTimeout(sync, 120); });
-      setTimeout(()=>{ watchImages(); sync(); }, 60);
-      window.__benzene_card_sync = { sync, activateCard };
-    })();
-  </script>
 </body>
+  <script>
+  const targetDate = new Date("December 16, 2025 20:00:00").getTime();
+
+const countdownElement = document.getElementById("countdown-inline");
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if (distance < 0) {
+    countdownElement.innerHTML = "Live now!";
+    clearInterval(interval);
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+
+const interval = setInterval(updateCountdown, 1000);
+updateCountdown(); 
+    </script>
 </html>
