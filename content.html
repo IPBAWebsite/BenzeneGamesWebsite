@@ -11,6 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
+    /* NAV height variable so we can keep center content visible under fixed nav */
+    :root{
+      --nav-height: 150px;
+    }
+    @media screen and (max-width: 1000px) {
+      :root { --nav-height: 60px; }
+    }
+
     html, body {
       width: 100%;
       height: 100%;
@@ -52,7 +60,7 @@
       display: inline-flex;
       align-items: center;
       height: 100%;
-      color: #FFFFFF;
+      color: #WHITE;
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
@@ -115,7 +123,7 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
-}
+    }
     .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
@@ -129,8 +137,8 @@
       opacity: 0.83;
     }
 
-    
-.comingsoon-centerbox {
+    /* CENTERBOX: ensure it's visible below the fixed nav by pushing it down inside the hero */
+    .comingsoon-centerbox {
       position: relative;
       z-index: 3;
       width: 100%;
@@ -141,13 +149,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* top align content inside box */
       height: 20%;
       min-height: 120px; 
       max-height: 220px;
       box-sizing: border-box;
-      pointer-events: none; 
-}
+      pointer-events: none;
+      /* push the centerbox down so nav doesn't cover it (nav is fixed/overlay) */
+      margin-top: calc(var(--nav-height) + 6px);
+    }
     .comingsoon-brand-label {
       display: inline-block;
       margin: 0 auto 0.5rem auto;
@@ -196,7 +206,7 @@
       font-family: "Stack Sans Text", sans-serif;
     }
 
-    
+    /* Make cards larger and responsive */
     .hero-cards {
       position: absolute;
       z-index: 4;
@@ -205,7 +215,7 @@
       bottom: 6%; 
       width: 86%; 
       max-width: 1200px;
-      height: 28%;
+      height: 36%; /* increased for larger cards */
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr 1fr;
@@ -214,7 +224,6 @@
       pointer-events: auto;
     }
 
-    
     .card {
       background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
       border: 1px solid rgba(255, 130, 40, 0.12);
@@ -243,23 +252,29 @@
       font-family: "Orbitron", sans-serif;
       font-weight: 700;
       color: #ffd36c;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    .card .card-title i { color: #ffd36c; font-size: 1.05rem; margin-right: 6px; }
+
     .card .card-body {
       font-family: "Poppins", sans-serif;
       color: #fff;
-      font-size: 0.95rem;
-      line-height: 1.3;
+      font-size: 0.98rem;
+      line-height: 1.35;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       padding-right: 6px;
     }
-   
+    .card .card-body p { margin: 0 0 0.7rem 0; display: flex; gap: 8px; align-items: flex-start; }
+    .card .card-body p i { color: rgba(255,180,110,0.95); min-width: 18px; margin-top: 3px; font-size: 0.9rem; }
     .card .card-body::-webkit-scrollbar { width: 8px; }
-    .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
+    .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.12); border-radius: 6px; }
     .card .card-footer {
       margin-top: 8px;
       display: flex;
@@ -270,7 +285,24 @@
       color: rgba(255,255,255,0.75);
     }
 
-    
+    /* Live/watch badge style */
+    .live-badge {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      background: linear-gradient(90deg,#ff3b3b,#ff7a3b);
+      color: #fff;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 6;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+
     .card--large {
       grid-column: 1 / -1;
       display: flex;
@@ -296,6 +328,9 @@
       font-weight: 800;
       color: #ffb870;
       margin-bottom: 6px;
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
 
     
@@ -321,6 +356,7 @@
         height: auto;
         padding-top: 2rem;
         padding-bottom: 1rem;
+        margin-top: calc(var(--nav-height) + 6px);
       }
       .card--large { grid-column: auto; }
       .card { min-height: 120px; }
@@ -480,16 +516,17 @@
 
    
     <div class="hero-cards" role="region" aria-label="Upcoming stream details">
-      <!-- Card 1: When -->
+      
       <article class="card" role="article" aria-labelledby="card-when-title">
+        <div class="live-badge" aria-hidden="true"><i class="fa-solid fa-eye"></i> Watch Live</div>
         <div class="card-inner">
-          <div id="card-when-title" class="card-title">When</div>
+          <div id="card-when-title" class="card-title"><i class="fa-solid fa-calendar-days"></i> When</div>
           <div class="card-body" tabindex="0">
-            <p><strong>Date:</strong> December 16, 2025</p>
-            <p><strong>Time:</strong> 20:00 (local)</p>
-            <p><small>Join early for warm-up and community chat.</small></p>
-            <p><small>Reminder: Schedule subject to change — check channel updates.</small></p>
-            <!-- more content will scroll inside this area if needed -->
+            <p><i class="fa-solid fa-calendar"></i><strong>Date:</strong>&nbsp; December 16, 2025</p>
+            <p><i class="fa-solid fa-clock"></i><strong>Time:</strong>&nbsp; 20:00 (local)</p>
+            <p><i class="fa-solid fa-user-clock"></i><small>Join early for warm-up and community chat.</small></p>
+            <p><i class="fa-solid fa-stopwatch"></i><small>Reminder: Schedule subject to change — check channel updates.</small></p>
+            <p><i class="fa-solid fa-hourglass-start"></i><small>Card countdown: <strong id="card-countdown" aria-live="polite"></strong></small></p>
           </div>
           <div class="card-footer" aria-hidden="true">
             <span class="meta">Countdown visible above</span>
@@ -497,15 +534,16 @@
         </div>
       </article>
 
-      <!-- Card 2: What -->
+      
       <article class="card" role="article" aria-labelledby="card-what-title">
+        <div class="live-badge" aria-hidden="true"><i class="fa-solid fa-eye"></i> Watch Live</div>
         <div class="card-inner">
-          <div id="card-what-title" class="card-title">What</div>
+          <div id="card-what-title" class="card-title"><i class="fa-solid fa-list"></i> What</div>
           <div class="card-body" tabindex="0">
-            <p><strong>Stream Focus:</strong> Casual multiplayer co-op and community Q&A</p>
-            <p><strong>Segments:</strong> Playthrough, tips & tricks, chat, and giveaways</p>
-            <p><strong>Expect:</strong> high-energy gameplay, friendly commentary, occasional mod challenges.</p>
-            <p><small>Bring questions for the Q&A — we'll answer live.</small></p>
+            <p><i class="fa-solid fa-people-roof"></i><strong>Stream Focus:</strong>&nbsp; Casual multiplayer co-op and community Q&A</p>
+            <p><i class="fa-solid fa-clapperboard"></i><strong>Segments:</strong>&nbsp; Playthrough, tips & tricks, chat, and giveaways</p>
+            <p><i class="fa-solid fa-bolt"></i><strong>Expect:</strong>&nbsp; high-energy gameplay, friendly commentary, occasional mod challenges.</p>
+            <p><i class="fa-solid fa-question-circle"></i><small>Bring questions for the Q&A — we'll answer live.</small></p>
           </div>
           <div class="card-footer" aria-hidden="true">
             <span class="meta">Moderated chat</span>
@@ -513,17 +551,17 @@
         </div>
       </article>
 
-      <!-- Large Card: Game (spans both columns) -->
+      
       <article class="card card--large" role="article" aria-labelledby="card-game-title">
         <div class="card-inner" style="padding:10px;">
-          <div id="card-game-title" class="game-title">Game: "Neon Rift"</div>
-          <!-- Replace with actual game art -->
-          <img class="game-art" src="placeholder-game-art.jpg" alt="Game art for Neon Rift (placeholder)">
+          <div id="card-game-title" class="game-title"><i class="fa-solid fa-gamepad"></i> Game: "Ophelia"</div>
+          
+          <img class="game-art" src="noFilter.webp" alt="Game artwork">
           <div class="card-body" tabindex="0" style="margin-top:8px;">
-            <p><strong>About the Game:</strong> Neon Rift is a fast-paced sci-fi arena shooter with cooperative objectives and PvE elements. Expect tight movement, flashy visuals, and tense boss encounters.</p>
-            <p><strong>Planned Activities:</strong> We'll push through the Storm Bastion raid, try new loadouts, and experiment with community-suggested builds.</p>
-            <p><strong>Notes:</strong> Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
-            <p><small>Game art & details will be updated as we finalize the event.</small></p>
+            <p><i class="fa-solid fa-info-circle"></i><strong>About the Game:</strong>&nbsp; Ophelia is a horror game in Roblox sci-fi arena shooter with cooperative objectives and PvE elements. Expect tight movement, flashy visuals, and tense boss encounters.</p>
+            <p><i class="fa-solid fa-rocket"></i><strong>Planned Activities:</strong>&nbsp; We'll push through the Storm Bastion raid, try new loadouts, and experiment with community-suggested builds.</p>
+            <p><i class="fa-solid fa-lightbulb"></i><strong>Notes:</strong>&nbsp; Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
+            <p><i class="fa-solid fa-image"></i><small>Game art & details will be updated as we finalize the event.</small></p>
           </div>
         </div>
       </article>
@@ -561,16 +599,18 @@
 
 </body>
 <script>
-  // Countdown (keeps original logic)
+  
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
   const countdownElement = document.getElementById("countdown-inline");
+  const cardCountdownElement = document.getElementById("card-countdown");
 
   function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
     if (distance < 0) {
-      countdownElement.innerHTML = "Live now!";
+      if (countdownElement) countdownElement.innerHTML = "Live now!";
+      if (cardCountdownElement) cardCountdownElement.innerHTML = "Live now!";
       clearInterval(interval);
       return;
     }
@@ -580,12 +620,14 @@
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    const formatted = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if (countdownElement) countdownElement.innerHTML = formatted;
+    if (cardCountdownElement) cardCountdownElement.innerHTML = formatted;
   }
 
   const interval = setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // Accessibility note: ensure card images have meaningful alt text or aria-hidden if purely decorative.
+  
 </script>
 </html>
