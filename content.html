@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
   <title>Benzene Games</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,12 +12,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
-    /* NAV height variable so we can keep center content visible under fixed nav */
+    /* layout variables */
     :root{
-      --nav-height: 150px;
+      --nav-height: 150px;       /* keep synced with .topnav height */
+      --centerbox-h: 18vh;       /* visual height of the center box (adjust if needed) */
+      --card-gap: 2%;
     }
-    @media screen and (max-width: 1000px) {
-      :root { --nav-height: 60px; }
+    @media screen and (max-width:1000px){
+      :root { --nav-height: 60px; --centerbox-h: 20vh; }
     }
 
     html, body {
@@ -40,7 +43,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45); 
+      background: rgba(0,0,0,0.45);
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
@@ -50,30 +53,24 @@
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100; 
+      z-index: 1100;
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
-
-    
     .topnav a {
       display: inline-flex;
       align-items: center;
       height: 100%;
-      color: #WHITE;
+      color: #FFFFFF; /* FIXED: valid white color */
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;                 
+      font-size: 22px;
       font-family: "Orbitron", sans-serif;
-      font-optical-sizing: auto;
       font-weight: 500;
-      font-style: normal;
-      position: relative;              
+      position: relative;
       transition: color .12s ease;
     }
-
-    
     .topnav a::after {
       content: "";
       position: absolute;
@@ -95,7 +92,7 @@
     }
     .topnav a:hover,
     .topnav a:focus {
-      color: #fff; 
+      color: #fff;
       outline: none;
     }
 
@@ -112,56 +109,62 @@
     }
 
     .socialiconnav a i { font-size: 2em; vertical-align: middle; }
+
+    /* hero stays full viewport; background video covers behind everything */
     .comingsoon-hero {
       position: relative;
       width: 100vw;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       overflow: hidden;
       margin: 0;
       padding: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
     }
+
     .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vh;
-      height: 100vw;
-      transform: translate(-50%, -50%) rotate(90deg) scale(1);
+      width: auto;
+      height: 140%;
+      transform: translate(-50%, -50%);
       object-fit: cover;
       z-index: 0;
       pointer-events: none;
       opacity: 0.83;
     }
 
-    /* CENTERBOX: ensure it's visible below the fixed nav by pushing it down inside the hero */
+    /* CENTERBOX: placed near top of hero so it's always above the cards and never under the nav */
     .comingsoon-centerbox {
-      position: relative;
-      z-index: 3;
-      width: 100%;
+      position: absolute;
+      top: calc(var(--nav-height) + 8px); /* always below the fixed nav */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1090; /* below nav (1100) but above cards */
+      width: 92%;
       max-width: 1100px;
-      text-align: center;
       color: #fff;
-      padding: 1rem;
+      padding: 0.75rem 1rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start; /* top align content inside box */
-      height: 20%;
-      min-height: 120px; 
-      max-height: 220px;
+      align-items: flex-start;    /* prefer content aligned to the left inside the box */
+      justify-content: flex-start; /* top align */
+      text-align: left;
+      height: var(--centerbox-h);
+      min-height: 88px;
+      max-height: 28vh;
       box-sizing: border-box;
-      pointer-events: none;
-      /* push the centerbox down so nav doesn't cover it (nav is fixed/overlay) */
-      margin-top: calc(var(--nav-height) + 6px);
+      pointer-events: none; /* keep non-interactive; elements inside (links) can override */
+      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.04));
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+      padding-left: 1.25rem;
     }
     .comingsoon-brand-label {
       display: inline-block;
-      margin: 0 auto 0.5rem auto;
-      font-size: 0.8rem;
+      margin: 6px 0;
+      font-size: 0.78rem;
       letter-spacing: 1.5px;
       color: rgba(255,255,255,0.95);
       background: rgba(255,255,255,0.06);
@@ -178,7 +181,7 @@
       font-weight: 800;
       line-height: 1.08;
       text-transform: uppercase;
-      margin: 0.2rem 0 0.45rem 0;
+      margin: 6px 0 8px 0;
       letter-spacing: 0.03em;
       text-shadow:
         0 4px 18px rgba(0,0,0,0.88),
@@ -192,11 +195,11 @@
     }
     .comingsoon-desc {
       font-family: "Stack Sans Text", Arial, sans-serif;
-      margin-top: 0.15rem;
-      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+      margin-top: 0.25rem;
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       color: #fffbe9;
       text-shadow: 0 2px 9px #000, 0 0 6px rgba(253,57,45,0.12);
-      max-width: 700px;
+      max-width: 900px;
       pointer-events: auto;
     }
     #countdown-inline {
@@ -204,22 +207,24 @@
       color: #fff;
       text-shadow: 0 2px 6px rgba(0,0,0,0.7);
       font-family: "Stack Sans Text", sans-serif;
+      display: inline-block;
+      margin-left: 6px;
     }
 
-    /* Make cards larger and responsive */
+    /* HERO CARDS positioned below the centerbox and sized from remaining space */
     .hero-cards {
       position: absolute;
-      z-index: 4;
+      z-index: 1080;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 6%; 
-      width: 86%; 
+      top: calc(var(--nav-height) + var(--centerbox-h) + 2vh); /* always below centerbox */
+      width: 86%;
       max-width: 1200px;
-      height: 36%; /* increased for larger cards */
+      bottom: 6%; /* allow it to shrink from bottom */
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr 1fr;
-      gap: 2%;
+      grid-auto-rows: 1fr;
+      gap: var(--card-gap);
       align-items: stretch;
       pointer-events: auto;
     }
@@ -235,16 +240,16 @@
       color: #fff;
       position: relative;
       transition: transform .16s ease, box-shadow .16s ease;
-      min-height: 0; 
+      min-height: 0;
     }
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 48px rgba(0,0,0,0.6);
     }
     .card .card-inner {
-      padding: 12px 14px;
+      padding: 14px;
       flex: 1 1 auto;
-      min-height: 0; 
+      min-height: 0;
       display: flex;
       flex-direction: column;
     }
@@ -252,8 +257,8 @@
       font-family: "Orbitron", sans-serif;
       font-weight: 700;
       color: #ffd36c;
-      font-size: 0.95rem;
-      margin-bottom: 6px;
+      font-size: 1rem;
+      margin-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 1px;
       display: flex;
@@ -271,8 +276,8 @@
       -webkit-overflow-scrolling: touch;
       padding-right: 6px;
     }
-    .card .card-body p { margin: 0 0 0.7rem 0; display: flex; gap: 8px; align-items: flex-start; }
-    .card .card-body p i { color: rgba(255,180,110,0.95); min-width: 18px; margin-top: 3px; font-size: 0.9rem; }
+    .card .card-body p { margin: 0 0 0.75rem 0; display: flex; gap: 10px; align-items: flex-start; }
+    .card .card-body p i { color: rgba(255,180,110,0.95); min-width: 20px; margin-top: 3px; font-size: 0.95rem; }
     .card .card-body::-webkit-scrollbar { width: 8px; }
     .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.12); border-radius: 6px; }
     .card .card-footer {
@@ -285,7 +290,7 @@
       color: rgba(255,255,255,0.75);
     }
 
-    /* Live/watch badge style */
+    /* clickable watch badge */
     .live-badge {
       position: absolute;
       right: 14px;
@@ -293,15 +298,18 @@
       background: linear-gradient(90deg,#ff3b3b,#ff7a3b);
       color: #fff;
       font-weight: 700;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 18px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      z-index: 6;
+      z-index: 12;
       box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+      text-decoration: none;
     }
+    .live-badge i { transform: translateY(1px); }
+    .live-badge:focus, .live-badge:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.6); }
 
     .card--large {
       grid-column: 1 / -1;
@@ -333,36 +341,29 @@
       gap:8px;
     }
 
-    
     @media (max-width: 880px) {
-.hero-cards {
-      position: absolute;
-      z-index: 4;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 6%; 
-      width: 86%; 
-      max-width: 1200px;
-      height: 28%;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr 1fr;
-      gap: 2%;
-      align-items: stretch;
-      pointer-events: auto;
-}
-   
       .comingsoon-centerbox {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 94%;
         height: auto;
-        padding-top: 2rem;
-        padding-bottom: 1rem;
+        padding: 1rem;
         margin-top: calc(var(--nav-height) + 6px);
       }
+      .hero-cards {
+        top: calc(var(--nav-height) + var(--centerbox-h) + 2vh);
+        width: 94%;
+        grid-template-columns: 1fr;
+        grid-auto-rows: min-content;
+        gap: 1rem;
+        bottom: 4%;
+      }
       .card--large { grid-column: auto; }
-      .card { min-height: 120px; }
+      .card { min-height: 140px; }
+      .game-art { height: 220px; }
     }
 
-    
+    /* small helpers */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -375,7 +376,7 @@
       border: 0;
     }
 
-   
+    /* footer (unchanged) */
     footer{
         background: #1f1e1e;
         padding-top: 50px;
@@ -508,17 +509,16 @@
       <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
     </video>
 
-    <div class="comingsoon-centerbox">
+    <div class="comingsoon-centerbox" role="region" aria-label="Upcoming summary">
      <span class="comingsoon-brand-label">CONTENT</span>
      <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING Stream</h1>
-     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline" aria-live="polite"></span> </p>
+     <p class="comingsoon-desc">Starting in: <span id="countdown-inline" aria-live="polite"></span></p>
     </div>
 
-   
     <div class="hero-cards" role="region" aria-label="Upcoming stream details">
       
       <article class="card" role="article" aria-labelledby="card-when-title">
-        <div class="live-badge" aria-hidden="true"><i class="fa-solid fa-eye"></i> Watch Live</div>
+        <a class="live-badge" href="https://www.youtube.com/@BenzeneGamesOfficial" target="_blank" rel="noopener" aria-label="Watch Live Now"><i class="fa-solid fa-eye"></i> Watch Live Now</a>
         <div class="card-inner">
           <div id="card-when-title" class="card-title"><i class="fa-solid fa-calendar-days"></i> When</div>
           <div class="card-body" tabindex="0">
@@ -536,7 +536,7 @@
 
       
       <article class="card" role="article" aria-labelledby="card-what-title">
-        <div class="live-badge" aria-hidden="true"><i class="fa-solid fa-eye"></i> Watch Live</div>
+        <a class="live-badge" href="https://www.youtube.com/@BenzeneGamesOfficial" target="_blank" rel="noopener" aria-label="Watch Live Now"><i class="fa-solid fa-eye"></i> Watch Live Now</a>
         <div class="card-inner">
           <div id="card-what-title" class="card-title"><i class="fa-solid fa-list"></i> What</div>
           <div class="card-body" tabindex="0">
@@ -599,35 +599,35 @@
 
 </body>
 <script>
-  
+  // Shared target date
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
   const countdownElement = document.getElementById("countdown-inline");
   const cardCountdownElement = document.getElementById("card-countdown");
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-      if (countdownElement) countdownElement.innerHTML = "Live now!";
-      if (cardCountdownElement) cardCountdownElement.innerHTML = "Live now!";
-      clearInterval(interval);
-      return;
-    }
-
+  function formatCountdown(distance){
+    if (distance < 0) return null;
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
 
-    const formatted = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    if (countdownElement) countdownElement.innerHTML = formatted;
-    if (cardCountdownElement) cardCountdownElement.innerHTML = formatted;
+  function updateCountdown() {
+    const now = Date.now();
+    const distance = targetDate - now;
+    if (distance < 0) {
+      if (countdownElement) countdownElement.textContent = "Live now!";
+      if (cardCountdownElement) cardCountdownElement.textContent = "Live now!";
+      clearInterval(interval);
+      return;
+    }
+    const formatted = formatCountdown(distance);
+    if (countdownElement) countdownElement.textContent = formatted;
+    if (cardCountdownElement) cardCountdownElement.textContent = formatted;
   }
 
   const interval = setInterval(updateCountdown, 1000);
   updateCountdown();
-
-  
 </script>
 </html>
