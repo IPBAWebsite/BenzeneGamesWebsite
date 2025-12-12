@@ -14,9 +14,11 @@
   <style>
   /* layout variables */
   :root{
-    --nav-height: 150px;       /* keep in sync with .topnav height */
+    --nav-height: 150px;       /* keep synced with .topnav height */
     --centerbox-h: clamp(9vh, 14vh, 18vh); /* adaptive centerbox height */
     --card-gap: 2%;
+    --accent: #ffb870;
+    --accent-strong: #f18930;
   }
   @media screen and (max-width:1000px){
     :root { --nav-height: 60px; --centerbox-h: 14vh; }
@@ -148,6 +150,7 @@
     padding: 0.5rem 0;
     overflow-y: auto; /* allow overlay to scroll if content taller than available area */
     -webkit-overflow-scrolling: touch;
+    background: linear-gradient(transparent, rgba(0,0,0,0.02)); /* subtle backdrop so overlay edges read on phone */
   }
   .hero-overlay::-webkit-scrollbar { width: 8px; }
   .hero-overlay::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.12); border-radius: 6px; }
@@ -167,7 +170,7 @@
     max-height: 32vh;
     box-sizing: border-box;
     pointer-events: auto;
-    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.04));
+    background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.04));
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.04);
   }
@@ -253,14 +256,14 @@
   }
   .game-title { font-family:"Orbitron",sans-serif; font-size:1.05rem; font-weight:800; color:#ffb870; margin:8px 0; padding:0 12px; }
 
-  /* Table/Tablet adjustments (iPad) - stack cards so each gets full width and the large card is visible */
+  /* Tablet adjustments - stack cards so large card is visible and scrollable */
   @media (max-width: 1024px) {
     .hero-overlay { top: calc(var(--nav-height) + 1.5vh); width: 94%; max-height: calc(100vh - var(--nav-height) - 1.5vh); padding-bottom: 0.5rem; }
     .hero-cards { grid-template-columns: 1fr; grid-auto-rows: min-content; gap: 1rem; }
     .card--large .card-body { max-height: calc(60vh - 120px); } /* gives the body a scrollable area on tablets */
   }
 
-  /* Mobile/smaller: stack, constrain large card body */
+  /* Mobile: stack and ensure overlay + card bodies are scrollable and visible */
   @media (max-width: 880px) {
     .hero-overlay { top: calc(var(--nav-height) + 2vh); width: 94%; max-height: none; }
     .comingsoon-centerbox { width: 100%; height: auto; padding: 1rem; }
@@ -268,6 +271,32 @@
     .card--large .card-body { max-height: 36vh; }
     .game-art { height: 220px; margin: 0 0 12px 0; }
   }
+
+  /* Scroll hint (visible when element has .scrollable) */
+  .scroll-hint {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.36);
+    color: #fff;
+    border-radius: 999px;
+    font-size: 12px;
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    transition: opacity .22s ease, transform .22s ease;
+    z-index: 20;
+  }
+  .scroll-hint svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 2; opacity: .95; }
+  .scrollable .scroll-hint { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+  /* for card-body scroll hint positions */
+  .card .scroll-hint { right: 14px; bottom: 12px; }
 
   /* footer (unchanged) */
   footer{ background: #1f1e1e; padding-top: 50px; }
@@ -278,16 +307,17 @@
   .footer-content ul{ text-align: center; padding: 0; }
   .list{ padding: 0; }
   .list li{ width: auto; text-align: center; list-style-type:none; padding: 7px; position: relative; }
-  .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: #f18930; transition-duration: .5s; }
+  .list li::before{ content: ''; position: absolute; transform: translate(-50%,-50%); left: 50%; top: 100%; width: 0; height: 2px; background: var(--accent-strong); transition-duration: .5s; }
   .list li:hover::before{ width: 70px; }
   .social-icons{ text-align: center; padding: 0; }
   .social-icons li{ display: inline-block; text-align: center; padding: 5px; }
   .social-icons li a i { font-size: 50px; transition: 0.3s; }
   footer a{ text-decoration: none; color: #fff }
-  a:hover{ color: #f18930; }
-  .social-icons li a:hover i { color: #f18930 !important; }
-  .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px; }
+  a:hover{ color: var(--accent-strong); }
+  .social-icons li a:hover i { color: var(--accent-strong) !important; }
+  .bottom-bar{ background: var(--accent-strong); text-align: center; padding: 10px 0; margin-top: 50px; }
   .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px; }
+
   </style>
 </head>
 <body>
@@ -335,6 +365,7 @@
             <div class="card-footer" aria-hidden="true">
               <span class="meta">Countdown visible above</span>
             </div>
+            <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>Scroll</span></div>
           </div>
         </article>
 
@@ -351,6 +382,7 @@
             <div class="card-footer" aria-hidden="true">
               <span class="meta">Moderated chat</span>
             </div>
+            <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>Scroll</span></div>
           </div>
         </article>
 
@@ -364,6 +396,7 @@
               <p><i class="fa-solid fa-lightbulb"></i><strong>Notes:</strong>&nbsp; Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
               <p><i class="fa-solid fa-image"></i><small>Game art & details will be updated as we finalize the event.</small></p>
             </div>
+            <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>Scroll</span></div>
           </div>
         </article>
       </div>
@@ -399,9 +432,8 @@
     </div>
   </footer>
 
-</body>
 <script>
-  // Shared target date
+  // Shared target date and countdown
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
   const countdownElement = document.getElementById("countdown-inline");
   const cardCountdownElement = document.getElementById("card-countdown");
@@ -428,8 +460,44 @@
     if (countdownElement) countdownElement.textContent = formatted;
     if (cardCountdownElement) cardCountdownElement.textContent = formatted;
   }
-
   const interval = setInterval(updateCountdown, 1000);
   updateCountdown();
+
+  // Helper to detect overflow and add .scrollable so CSS can show the scroll hint
+  function updateScrollableHints() {
+    // overlay
+    const overlay = document.querySelector('.hero-overlay');
+    if (overlay) {
+      if (overlay.scrollHeight > overlay.clientHeight) overlay.classList.add('scrollable');
+      else overlay.classList.remove('scrollable');
+    }
+
+    // each scrollable card-body
+    document.querySelectorAll('.card .card-body').forEach(el => {
+      const parentCard = el.closest('.card');
+      if (el.scrollHeight > el.clientHeight) {
+        el.classList.add('scrollable');
+        if (parentCard) parentCard.classList.add('scrollable'); // show hint anchored to parent
+      } else {
+        el.classList.remove('scrollable');
+        if (parentCard) parentCard.classList.remove('scrollable');
+      }
+    });
+  }
+
+  // Run on load, resize, orientation change, and after fonts/video may have loaded
+  window.addEventListener('load', () => {
+    // small delay to allow layout settle
+    setTimeout(updateScrollableHints, 300);
+  });
+  window.addEventListener('resize', updateScrollableHints);
+  window.addEventListener('orientationchange', () => setTimeout(updateScrollableHints, 300));
+
+  // If dynamic content or images change size, observe resize
+  const resizeObserver = new ResizeObserver(updateScrollableHints);
+  document.querySelectorAll('.card .card-body, .hero-overlay').forEach(node => {
+    resizeObserver.observe(node);
+  });
 </script>
+</body>
 </html>
