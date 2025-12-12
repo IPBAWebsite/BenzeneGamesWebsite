@@ -471,34 +471,74 @@
 
     /* responsive footer: stack on smaller screens without altering content markup */
 @media (max-width: 880px) {
+  /* increase base size for mobile so text isn't tiny */
+  html, body {
+    font-size: 18px; /* adjust to 17/19 if you prefer */
+  }
+
+  /* responsive container: full width with padding so footer columns stack properly */
   .container {
-    width: auto;
+    width: 100%;
+    max-width: 1140px;
     margin: 0 auto;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
     padding: 0 16px 16px;
+    box-sizing: border-box;
   }
 
   .footer-content {
     width: 100%;
     margin-bottom: 16px;
-    text-align: center;     
+    text-align: center;
   }
 
   .footer-content p {
-    width: auto;            
-    margin: 0 auto;
+    width: auto;
+    margin: 0.25rem auto;
+    font-size: 1rem; /* ~18px */
+    line-height: 1.35;
   }
 
   .footer-content ul {
-    display: inline-block;  
+    display: inline-block;
     padding: 0;
     margin: 6px 0 0 0;
+    font-size: 1rem;
   }
 
   .social-icons {
-    display: inline-block; 
+    display: inline-block;
     margin: 6px auto 0;
+  }
+
+  /* make nav touch-friendly */
+  .topnav a {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
+
+  /* ensure hero title scales up a bit on small phones */
+  .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  /* bump body/card/hero copy for mobile readability */
+  .card .card-body,
+  .hero-desc {
+    font-size: 1rem;
+  }
+
+  /* ensure footer bottom bar text remains legible */
+  .bottom-bar p {
+    font-size: 0.95rem;
+    padding: 10px 8px;
+  }
+
+  /* reduce large fixed paddings that can push layout off-screen */
+  .hero-content {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
