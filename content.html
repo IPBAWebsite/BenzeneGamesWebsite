@@ -29,22 +29,19 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45); 
+      background: rgba(0,0,0,0.45);
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       color: #ffffff;
       height: 150px;
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100; 
+      z-index: 1100;
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
-
-    
     .topnav a {
       display: inline-flex;
       align-items: center;
@@ -53,23 +50,18 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;                 
+      font-size: 22px;
       font-family: "Orbitron", sans-serif;
-      font-optical-sizing: auto;
       font-weight: 500;
-      font-style: normal;
-      position: relative;              
+      position: relative;
       transition: color .12s ease;
     }
-
-    
     .topnav a::after {
       content: "";
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(14px) scaleX(0);
-      transform-origin: center;
       width: 56%;
       height: 3px;
       background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
@@ -77,73 +69,65 @@
       transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
       opacity: 0;
     }
-    .topnav a:hover::after,
-    .topnav a:focus::after {
+    .topnav a:hover::after, .topnav a:focus::after {
       transform: translateX(-50%) translateY(14px) scaleX(1);
       opacity: 1;
     }
-    .topnav a:hover,
-    .topnav a:focus {
-      color: #fff; 
-      outline: none;
-    }
-
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after {
-        transform: translateX(-50%) translateY(9px) scaleX(0);
-      }
-      .topnav a:hover::after,
-      .topnav a:focus::after {
-        transform: translateX(-50%) translateY(9px) scaleX(1);
-      }
+      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
+      .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
     }
 
-    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
+    /* HERO */
     .comingsoon-hero {
       position: relative;
       width: 100vw;
-      height: 100vh;
+      height: calc(100vh - 150px); /* full viewport height minus nav height */
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow: hidden;
       margin: 0;
       padding: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+      box-sizing: border-box;
+      padding-top: 1.5rem; /* some top padding below nav */
     }
     .comingsoon-hero video.bg-video {
       position: absolute;
       top: 50%;
       left: 50%;
-      /* FIXED: swap width and height for correct orientation */
       width: 100vw;
       height: 100vh;
-      transform: translate(-50%, -50%) rotate(90deg) scale(1);
+      transform: translate(-50%, -50%);
       object-fit: cover;
       z-index: 0;
       pointer-events: none;
       opacity: 0.83;
     }
 
-    
+    /* center heading constrained to ~25% of hero height */
     .comingsoon-centerbox {
-      position: absolute;
-      top: calc(150px + 2%); 
+      position: relative;
       z-index: 3;
-      width: 80%;
+      width: 80%; /* relative width inside hero */
       max-width: 1100px;
       text-align: center;
       color: #fff;
-      padding: 1%;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; 
+      justify-content: center;
+      height: 25%; /* proportional height */
+      min-height: 120px;
+      max-height: 220px;
       box-sizing: border-box;
       pointer-events: none;
-      font-size: 1.5vw; 
+      margin-bottom: 1rem;
     }
     .comingsoon-brand-label {
       display: inline-block;
@@ -193,283 +177,195 @@
       font-family: "Stack Sans Text", sans-serif;
     }
 
-    
+    /* HERO CARDS: below centerbox, take remaining height */
     .hero-cards {
-      position: absolute;
+      position: relative; /* no absolute */
       z-index: 4;
-      left: 50%;
-      top: calc(var(--nav-height) + 30%);
-      transform: translateX(-50%);
-      width: 85%;
+      width: 80%;
       max-width: 1200px;
-      height: 50vh;  
+      height: 65%; /* fill remaining height */
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 25vh 25vh;  
+      grid-template-rows: 1fr 1fr;
       gap: 2%;
       align-items: stretch;
       pointer-events: auto;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
     }
 
-    @media (max-width: 1000px) {
-      .comingsoon-centerbox {
-        top: calc(60px + 2%); 
-        font-size: 2.5vw;
-      }
-      .hero-cards {
-        top: calc(60px + 35%);
-        width: 90%;
-      }
+    /* small card (top-left and top-right) */
+    .card {
+      background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
+      border: 1px solid rgba(255, 130, 40, 0.12);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 24px rgba(255,80,20,0.04) inset;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      position: relative;
+      transition: transform .16s ease, box-shadow .16s ease;
+      min-height: 0; /* allow child overflow to work correctly */
     }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+    }
+    .card .card-inner {
+      padding: 12px 14px;
+      flex: 1 1 auto;
+      min-height: 0; /* allow scrolling children */
+      display: flex;
+      flex-direction: column;
+    }
+    .card .card-title {
+      font-family: "Orbitron", sans-serif;
+      font-weight: 700;
+      color: #ffd36c;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .card .card-body {
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 6px;
+    }
+    /* subtle custom scrollbar for corp aesthetic */
+    .card .card-body::-webkit-scrollbar { width: 8px; }
+    .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
+    .card .card-footer {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* big card spans both columns on second row */
+    .card--large {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, rgba(8,8,8,0.8), rgba(18,18,18,0.6));
+      border: 1px solid rgba(255,120,30,0.12);
+      border-radius: 14px;
+      padding: 10px;
+      min-height: 0;
+    }
+    .game-art {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg,#2e2e2e,#141414);
+    }
+    .game-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffb870;
+      margin-bottom: 6px;
+    }
+
+    /* Responsive: stack cards on small screens */
     @media (max-width: 880px) {
+      .comingsoon-centerbox {
+        width: 90%;
+        height: auto;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
       .hero-cards {
-        position: absolute;
-        z-index: 4;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 6%; 
-        width: 86%; 
-        max-width: 1200px;
-        height: 28vh;  /* changed from % to vh */
+        width: 90%;
+        height: auto;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr 1fr;
-        gap: 2%;
-        align-items: stretch;
-        pointer-events: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 12px;
       }
-      
-      .card {
-        height: 100%; 
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
-        border: 1px solid rgba(255,130,40,0.12);
-        border-radius: 12px;
-        overflow: hidden;
-        color: #fff;
-        transition: transform .16s ease, box-shadow .16s ease;
-      }
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 48px rgba(0,0,0,0.6);
-      }
-      .card .card-inner {
-        padding: 12px 14px;
-        flex: 1 1 auto;
-        min-height: 0; 
-        display: flex;
-        flex-direction: column;
-      }
-      .card .card-title {
-        font-family: "Orbitron", sans-serif;
-        font-weight: 700;
-        color: #ffd36c;
-        font-size: 0.9rem;
-        margin-bottom: 6px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      .card .card-body {
-        font-family: "Poppins", sans-serif;
-        color: #fff;
-        font-size: 0.95rem;
-        line-height: 1.3;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-right: 6px;
-      }
-     
-      .card .card-body::-webkit-scrollbar { width: 8px; }
-      .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
-      .card .card-footer {
-        margin-top: 8px;
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        justify-content: flex-start;
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.75);
-      }
-
-      
-      .card--large {
-        grid-column: 1 / -1;
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(180deg, rgba(8,8,8,0.8), rgba(18,18,18,0.6));
-        border: 1px solid rgba(255,120,30,0.12);
-        border-radius: 14px;
-        padding: 10px;
-        min-height: 0;
-      }
-      .game-art {
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-        object-fit: cover;
-        display: block;
-        margin-bottom: 8px;
-        background: linear-gradient(90deg,#2e2e2e,#141414);
-      }
-      .game-title {
-        font-family: "Orbitron", sans-serif;
-        font-size: 1.1rem;
-        font-weight: 800;
-        color: #ffb870;
-        margin-bottom: 6px;
-      }
-
-      
-      @media (max-width: 880px) {
-        .hero-cards {
-          position: absolute;
-          z-index: 4;
-          left: 50%;
-          transform: translateX(-50%);
-          bottom: 6%; 
-          width: 86%; 
-          max-width: 1200px;
-          height: 28%;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: 1fr 1fr;
-          gap: 2%;
-          align-items: stretch;
-          pointer-events: auto;
-        }
-       
-        .comingsoon-centerbox {
-          height: auto;
-          padding-top: 2rem;
-          padding-bottom: 1rem;
-        }
-        .card--large { grid-column: auto; }
-        .card { min-height: 120px; }
-      }
-
-      
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-     
-      footer{
-          background: #1f1e1e;
-          padding-top: 50px;
-      }
-      .container{
-          width: 1140px;
-          margin: auto;
-          display: flex;
-          justify-content: center;
-      }
-      .footer-content{
-          width: 33.3%;
-      }
-      h3{
-          font-size: 40px;
-          margin-bottom: 15px;
-          text-align: center;
-         font-family: "Rajdhani", sans-serif;
-        font-weight: 700;
-        font-style: normal;
-        color: white;
-      }
-      .footer-content p{
-          width:190px;
-          margin: auto;
-          padding: 7px;
-          font-family: "Exo 2", sans-serif;
-          font-optical-sizing: auto;
-          font-weight: 400;
-          font-style: normal;
-        font-size: 30px;
-        color: white;
-      }
-      .footer-content ul{
-          text-align: center;
-      }
-      .list{
-          padding: 0;
-      }
-      .list li{
-          width: auto;
-          text-align: center;
-          list-style-type:none;
-          padding: 7px;
-          position: relative;
-      }
-      .list li::before{
-          content: '';
-          position: absolute;
-          transform: translate(-50%,-50%);
-          left: 50%;
-          top: 100%;
-          width: 0;
-          height: 2px;
-          background: #f18930;
-          transition-duration: .5s;
-      }
-      .list li:hover::before{
-          width: 70px;
-      }
-      .social-icons{
-          text-align: center;
-          padding: 0;
-      }
-      .social-icons li{
-          display: inline-block;
-          text-align: center;
-          padding: 5px;
-      }
-      .social-icons li a i {
-      font-size: 50px;
-      transition: 0.3s;
+      .card--large { grid-column: auto; }
+      .card { min-height: 120px; }
     }
-      footer a{
-          text-decoration: none;
-        color: #fff
-      }
-      a:hover{
-          color: #f18930;
-      }
-    .social-icons li a:hover i {
-      color: #f18930 !important;
-    }
-      .bottom-bar{
-          background: #f18930;
-          text-align: center;
-          padding: 10px 0;
-          margin-top: 50px;
-      }
-      .bottom-bar p{
-          color: #343434;
-          margin: 0;
-          font-size: 16px;
-          padding: 7px;
-      }
-    .social-icons li:nth-of-type(1) i{
-          color: #FF0000;
-          font-size: 50px;
-      }
-        .social-icons li:nth-of-type(2) i {
-          color: #6441a5;
-          font-size: 50px;
-      }
-        .social-icons li:nth-of-type(3) i {
-          color: #1877F2;
-          font-size: 50px;
-      }
 
+    /* small tweaks for accessibility and clarity */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Footer (kept mostly the same) */
+    footer{
+      background: #1f1e1e;
+      padding-top: 50px;
+    }
+    .container{
+      width: 1140px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-content{
+      width: 33.3%;
+    }
+    h3{
+      font-size: 40px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 700;
+      color: white;
+    }
+    .footer-content p{
+      width:190px;
+      margin: auto;
+      padding: 7px;
+      font-family: "Exo 2", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: white;
+    }
+    .list{ padding: 0; }
+    .list li{ text-align: center; list-style-type:none; padding: 7px; position: relative; }
+    .list li::before{
+      content: '';
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 100%;
+      width: 0;
+      height: 2px;
+      background: #f18930;
+      transition-duration: .5s;
+    }
+    .list li:hover::before{ width: 70px; }
+    .social-icons{ text-align: center; padding: 0; }
+    .social-icons li{ display: inline-block; text-align: center; padding: 5px; }
+    .social-icons li a i { font-size: 50px; transition: 0.3s; }
+    footer a{ text-decoration: none; color: #fff }
+    a:hover{ color: #f18930; }
+    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px; }
+    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px; }
   </style>
 </head>
 <body>
@@ -490,52 +386,54 @@
   </div>
 
   <section class="comingsoon-hero" aria-labelledby="upcoming-heading">
-    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true" tabindex="-1" preload="auto">
-      <source src="file_example_MP4_480_1_5MG.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
+    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true">
+      <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
     </video>
+
     <div class="comingsoon-centerbox">
-      <div class="comingsoon-brand-label" aria-label="Content">
-        Content
-      </div>
-      <h1 id="upcoming-heading" class="comingsoon-title">Upcoming Stream</h1>
-      <p id="countdown-inline" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
-        Starting in: <span id="countdown-timer">4d 6h 16m 55s</span>
-      </p>
+     <span class="comingsoon-brand-label">CONTENT</span>
+     <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING Stream</h1>
+     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline" aria-live="polite"></span> </p>
     </div>
 
-    <div class="hero-cards">
-      <article class="card card--large" aria-label="Game preview">
+    <div class="hero-cards" role="region" aria-label="Upcoming stream details">
+      <article class="card" role="article" aria-labelledby="card-when-title">
         <div class="card-inner">
-          <p style="text-align:left;">
-            <strong>When</strong><br>
-            <strong>Date:</strong> December 16, 2025<br>
-            <strong>Time:</strong> 20:00 (local)<br><br>
-            Join early for warm-up and community chat.<br>
-            <strong>Reminder:</strong> Schedule subject to change — check channel updates.<br><br>
-            Countdown visible above
-          </p>
-          <p><strong>Game:</strong> "Ophelia"</p>
-          <img src="ophelia_game_image.png" alt="Game Ophelia character" class="game-art" />
+          <div id="card-when-title" class="card-title">When</div>
+          <div class="card-body" tabindex="0">
+            <p><strong>Date:</strong> December 16, 2025</p>
+            <p><strong>Time:</strong> 20:00 (local)</p>
+            <p><small>Join early for warm-up and community chat.</small></p>
+            <p><small>Reminder: Schedule subject to change — check channel updates.</small></p>
+          </div>
+          <div class="card-footer" aria-hidden="true">
+            <span class="meta">Countdown visible above</span>
+          </div>
         </div>
       </article>
 
-      <article class="card" aria-label="Stream focus and details">
+      <article class="card" role="article" aria-labelledby="card-what-title">
         <div class="card-inner">
-          <h3 class="card-title">Stream Focus</h3>
-          <div class="card-body">
-            Casual multiplayer co-op and community Q&amp;A
+          <div id="card-what-title" class="card-title">What</div>
+          <div class="card-body" tabindex="0">
+            <p><strong>Game:</strong> Polygon Adventure</p>
+            <p><strong>Genre:</strong> Action / Puzzle</p>
+            <p><strong>Platform:</strong> PC & Console</p>
+            <p><small>Join us for an immersive polygonal world experience.</small></p>
           </div>
-          <h3 class="card-title">Segments</h3>
-          <div class="card-body">
-            Playthrough, tips &amp; tricks, chat, and giveaways
+          <div class="card-footer" aria-hidden="true">
+            <span class="meta">Featuring game details</span>
           </div>
-          <h3 class="card-title">Expect</h3>
-          <div class="card-body">
-            High-energy gameplay, friendly commentary, occasional mod challenges.
+        </div>
+      </article>
+
+      <article class="card card--large" role="article" aria-labelledby="card-large-title">
+        <img src="https://cdn.wallpapersafari.com/53/0/cgnyXz.jpg" alt="Polygon Adventure game artwork" class="game-art" />
+        <div class="card-inner">
+          <div id="card-large-title" class="game-title">Polygon Adventure</div>
+          <div class="card-body" tabindex="0">
+            <p>Explore the vibrant polygonal landscapes in this action-packed puzzle game. Join us for a livestream as we dive deep into gameplay, secrets, and walkthroughs.</p>
           </div>
-          <p>Bring questions for the Q&amp;A — we'll answer live.</p>
-          <p>Moderated chat</p>
         </div>
       </article>
     </div>
@@ -544,17 +442,28 @@
   <footer>
     <div class="container">
       <div class="footer-content">
-        <h3>Contact</h3>
-        <p>Email us at: info@benzenegames.com</p>
+        <h3>Contact Us</h3>
+        <p>info@benzenegames.com</p>
+      </div>
+      <div class="footer-content">
+        <h3>Follow Us</h3>
         <ul class="social-icons">
-          <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-twitch"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
+          <li><a href="https://twitter.com/benzenegames" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+          <li><a href="https://discord.gg/benzenegames" aria-label="Discord"><i class="fa-brands fa-discord"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h3>About</h3>
+        <ul class="list">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="content.html">Content</a></li>
+          <li><a href="terms.html">Terms & Privacy</a></li>
         </ul>
       </div>
     </div>
     <div class="bottom-bar">
-      <p>© 2025 Benzene Games. All rights reserved.</p>
+      <p>&copy; 2025 Benzene Games. All rights reserved.</p>
     </div>
   </footer>
 <script>
