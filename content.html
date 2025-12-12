@@ -2,55 +2,43 @@
 <html lang="en">
 <head>
   <title>Benzene Games</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&family=Noto+Serif+Ethiopic:wght@100..900&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wght@100..900&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Noto+Serif+Ethiopic:wght@100..900&family=Orbitron:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Science+Gothic:wdth,wght@50,200&family=Stack+Sans+Notch&family=Stack+Sans+Text:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       width: 100%;
+      height: 100%;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       overflow-x: hidden;
+      background: #000;
     }
     body {
-      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: white;
-      padding-top: 0;
-      overflow-x: hidden;
+      background: #050406;
+      color: #fff;
     }
-    .logo {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-    .logo img {
-      width: 130px;
-      height: auto;
-      vertical-align: middle;
-      margin: 0; 
-      display: block;
-    }
+    .logo { padding-left: 40px; padding-right: 40px; }
+    .logo img { width: 130px; height: auto; display: block; }
     .topnav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.45); 
+      background: rgba(0,0,0,0.45);
       border: 1.5px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 32px rgba(0,0,0,0.45);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       color: #ffffff;
       height: 150px;
       display: flex;
       align-items: center;
       padding: 0 20px;
-      z-index: 1100; 
+      z-index: 1100;
     }
     .topnav ul { margin-left: auto; margin: 0; padding: 0; list-style: none; display: flex; align-items: center; gap: 8px; }
     .topnav li { display: inline-block; }
@@ -62,12 +50,10 @@
       text-align: center;
       padding: 0 20px;
       text-decoration: none;
-      font-size: 22px;                 
+      font-size: 22px;
       font-family: "Orbitron", sans-serif;
-      font-optical-sizing: auto;
       font-weight: 500;
-      font-style: normal;
-      position: relative;              
+      position: relative;
       transition: color .12s ease;
     }
     .topnav a::after {
@@ -76,7 +62,6 @@
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(14px) scaleX(0);
-      transform-origin: center;
       width: 56%;
       height: 3px;
       background: linear-gradient(90deg,#ffd36c 0%, #ff5313 100%);
@@ -84,112 +69,251 @@
       transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
       opacity: 0;
     }
-    .topnav a:hover::after,
-    .topnav a:focus::after {
+    .topnav a:hover::after, .topnav a:focus::after {
       transform: translateX(-50%) translateY(14px) scaleX(1);
       opacity: 1;
-    }
-    .topnav a:hover,
-    .topnav a:focus {
-      color: #fff; 
-      outline: none;
     }
     @media screen and (max-width: 1000px) {
       .topnav { height: 60px; }
       .topnav a { font-size: 16px; padding: 0 10px; }
-      .topnav a::after {
-        transform: translateX(-50%) translateY(9px) scaleX(0);
-      }
-      .topnav a:hover::after,
-      .topnav a:focus::after {
-        transform: translateX(-50%) translateY(9px) scaleX(1);
-      }
+      .topnav a::after { transform: translateX(-50%) translateY(9px) scaleX(0); }
+      .topnav a:hover::after, .topnav a:focus::after { transform: translateX(-50%) translateY(9px) scaleX(1); }
     }
-    .socialiconnav a i { font-size: 2em; vertical-align: middle; }
-    .comingsoon-hero {
-  position: relative;       
-  width: 100vw;
-  height: 100vh;            
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
 
-.comingsoon-hero video {
-  position: absolute;       
-  top: 50%;
-  left: 50%;
-  width: 100vh;             
-  height: 100vw;            
-  transform: translate(-50%, -50%) rotate(90deg) scale(1);
-  transform-origin: center center;
-  object-fit: fill;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.83;
-}
-    
+    /* HERO */
+    .comingsoon-hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+    }
+    .comingsoon-hero video.bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vh;
+      height: 100vw;
+      transform: translate(-50%, -50%) rotate(90deg) scale(1);
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.83;
+    }
+
+    /* center heading constrained to 20% of hero height */
     .comingsoon-centerbox {
       position: relative;
       z-index: 3;
       width: 100%;
+      max-width: 1100px;
       text-align: center;
       color: #fff;
-      padding: 2rem 1rem;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      /* constrain to 20% of the hero height */
+      height: 20%;
+      min-height: 120px; /* fallback to avoid too small on short viewports */
+      max-height: 220px;
+      box-sizing: border-box;
+      pointer-events: none; /* avoid interfering with card interactions */
     }
     .comingsoon-brand-label {
       display: inline-block;
-      margin: 0 auto 1rem auto;
+      margin: 0 auto 0.5rem auto;
       font-size: 0.8rem;
       letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.85);
-      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.06);
       padding: 6px 14px;
       border-radius: 18px;
       font-weight: bold;
       text-shadow: 0 2px 8px #000;
       font-family: "Stack Sans Text", Arial, sans-serif;
+      pointer-events: auto;
     }
     .comingsoon-title {
       font-family: "Stack Sans Text", "Science Gothic", Arial, sans-serif;
-      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-size: clamp(1.6rem, 3.8vw, 3rem);
       font-weight: 800;
       line-height: 1.08;
       text-transform: uppercase;
-      margin: 0.45rem 0 0.95rem 0;
+      margin: 0.2rem 0 0.45rem 0;
       letter-spacing: 0.03em;
       text-shadow:
         0 4px 18px rgba(0,0,0,0.88),
-        0 0 22px #fd392d,
-        0 0 10px #ffc13c;
+        0 0 18px rgba(253,57,45,0.18),
+        0 0 10px rgba(255,193,60,0.08);
       background: rgba(0,0,0,0.13);
       display: inline-block;
       padding: 0.09em 0.29em;
       border-radius: 10px;
+      pointer-events: auto;
     }
     .comingsoon-desc {
       font-family: "Stack Sans Text", Arial, sans-serif;
-      margin-top: 0.1em;
-      margin-bottom: 1.2em;
-      font-size: 1.17rem;
+      margin-top: 0.15rem;
+      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
       color: #fffbe9;
-      text-shadow: 0 2px 9px #000, 0 0 8px #fd392d;
-      max-width: 600px;
+      text-shadow: 0 2px 9px #000, 0 0 6px rgba(253,57,45,0.12);
+      max-width: 700px;
+      pointer-events: auto;
+    }
+    #countdown-inline {
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      font-family: "Stack Sans Text", sans-serif;
     }
 
-    #countdown-inline {
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-  font-family: "Stack Sans Text", sans-serif;
-}
+    /* HERO CARDS: absolutely positioned so they don't push centerbox */
+    .hero-cards {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 6%; /* distance from bottom of hero */
+      width: 86%; /* relative width of hero */
+      max-width: 1200px;
+      /* height is percentage of hero; adjust as needed */
+      height: 28%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 2%;
+      align-items: stretch;
+      pointer-events: auto;
+    }
+
+    /* small card (top-left and top-right) */
+    .card {
+      background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(20,20,20,0.55));
+      border: 1px solid rgba(255, 130, 40, 0.12);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 24px rgba(255,80,20,0.04) inset;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      position: relative;
+      transition: transform .16s ease, box-shadow .16s ease;
+      min-height: 0; /* allow child overflow to work correctly */
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+    }
+    .card .card-inner {
+      padding: 12px 14px;
+      flex: 1 1 auto;
+      min-height: 0; /* allow scrolling children */
+      display: flex;
+      flex-direction: column;
+    }
+    .card .card-title {
+      font-family: "Orbitron", sans-serif;
+      font-weight: 700;
+      color: #ffd36c;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .card .card-body {
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 6px;
+    }
+    /* subtle custom scrollbar for corp aesthetic */
+    .card .card-body::-webkit-scrollbar { width: 8px; }
+    .card .card-body::-webkit-scrollbar-thumb { background: rgba(255,130,40,0.15); border-radius: 6px; }
+    .card .card-footer {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* big card spans both columns on second row */
+    .card--large {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, rgba(8,8,8,0.8), rgba(18,18,18,0.6));
+      border: 1px solid rgba(255,120,30,0.12);
+      border-radius: 14px;
+      padding: 10px;
+      min-height: 0;
+    }
+    .game-art {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg,#2e2e2e,#141414);
+    }
+    .game-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffb870;
+      margin-bottom: 6px;
+    }
+
+    /* Responsive: stack cards on small screens */
+    @media (max-width: 880px) {
+      .hero-cards {
+        width: 92%;
+        bottom: 4%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 12px;
+        position: static; /* stacked beneath centerbox when small screens; doesn't push because overall layout will flow */
+        transform: none;
+        left: auto;
+      }
+      .comingsoon-centerbox {
+        height: auto;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+      }
+      .card--large { grid-column: auto; }
+      .card { min-height: 120px; }
+    }
+
+    /* small tweaks for accessibility and clarity */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Footer (kept mostly the same) */
     footer{
       background: #1f1e1e;
       padding-top: 50px;
@@ -199,6 +323,8 @@
       margin: auto;
       display: flex;
       justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
     .footer-content{
       width: 33.3%;
@@ -209,7 +335,6 @@
       text-align: center;
       font-family: "Rajdhani", sans-serif;
       font-weight: 700;
-      font-style: normal;
       color: white;
     }
     .footer-content p{
@@ -217,25 +342,12 @@
       margin: auto;
       padding: 7px;
       font-family: "Exo 2", sans-serif;
-      font-optical-sizing: auto;
       font-weight: 400;
-      font-style: normal;
-      font-size: 30px;
+      font-size: 16px;
       color: white;
     }
-    .footer-content ul{
-      text-align: center;
-    }
-    .list{
-      padding: 0;
-    }
-    .list li{
-      width: auto;
-      text-align: center;
-      list-style-type:none;
-      padding: 7px;
-      position: relative;
-    }
+    .list{ padding: 0; }
+    .list li{ text-align: center; list-style-type:none; padding: 7px; position: relative; }
     .list li::before{
       content: '';
       position: absolute;
@@ -247,60 +359,18 @@
       background: #f18930;
       transition-duration: .5s;
     }
-    .list li:hover::before{
-      width: 70px;
-    }
-    .social-icons{
-      text-align: center;
-      padding: 0;
-    }
-    .social-icons li{
-      display: inline-block;
-      text-align: center;
-      padding: 5px;
-    }
-    .social-icons li a i {
-      font-size: 50px;
-      transition: 0.3s;
-    }
-    footer a{
-      text-decoration: none;
-      color: #fff
-    }
-    a:hover{
-      color: #f18930;
-    }
-    .social-icons li a:hover i {
-      color: #f18930 !important;
-    }
-    .bottom-bar{
-      background: #f18930;
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 50px;
-    }
-    .bottom-bar p{
-      color: #343434;
-      margin: 0;
-      font-size: 16px;
-      padding: 7px;
-    }
-    .social-icons li:nth-of-type(1) i{
-      color: #FF0000;
-      font-size: 50px;
-    }
-    .social-icons li:nth-of-type(2) i {
-      color: #6441a5;
-      font-size: 50px;
-    }
-    .social-icons li:nth-of-type(3) i {
-      color: #1877F2;
-      font-size: 50px;
-    }
+    .list li:hover::before{ width: 70px; }
+    .social-icons{ text-align: center; padding: 0; }
+    .social-icons li{ display: inline-block; text-align: center; padding: 5px; }
+    .social-icons li a i { font-size: 50px; transition: 0.3s; }
+    footer a{ text-decoration: none; color: #fff }
+    a:hover{ color: #f18930; }
+    .bottom-bar{ background: #f18930; text-align: center; padding: 10px 0; margin-top: 50px; }
+    .bottom-bar p{ color: #343434; margin: 0; font-size: 16px; padding: 7px; }
   </style>
 </head>
 <body>
-  <div class="topnav" id="myTopnav">
+  <div class="topnav" id="myTopnav" role="navigation" aria-label="Top navigation">
     <div class="logo">
       <a href="index.html">
         <img src="Benzene.JPG" alt="Logo">
@@ -311,22 +381,74 @@
       <li><a href="about.html"><span id="nav-about">About</span></a></li>
       <li><a href="content.html"><span id="nav-product">Content</span></a></li>
       <li class="socialiconnav">
-        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.youtube.com/channel/UCdtYr6UaG6RkfUt6T8dSdKw" aria-label="YouTube channel"><i class="fa-brands fa-youtube"></i></a>
       </li>
     </ul>
   </div>
-  <section class="comingsoon-hero">
-    <video autoplay muted loop playsinline class="bg-video">
+
+  <section class="comingsoon-hero" aria-labelledby="upcoming-heading">
+    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true">
       <source src="4k Abstract Hexagon Party Lights Metallic color TV Screen Saver Mind Relaxing Scifi Light Animation.mp4" type="video/mp4" />
     </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-rgboverlay"></div>
+
     <div class="comingsoon-centerbox">
      <span class="comingsoon-brand-label">CONTENT</span>
-     <h1 class="comingsoon-title">UPCOMING Stream</h1>
-     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline"></span> </p>
+     <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING Stream</h1>
+     <p class="comingsoon-desc"> Starting in: <span id="countdown-inline" aria-live="polite"></span> </p>
+    </div>
+
+    <!-- HERO CARDS: 2 small cards (same row) + 1 large card (spans full width) -->
+    <div class="hero-cards" role="region" aria-label="Upcoming stream details">
+      <!-- Card 1: When -->
+      <article class="card" role="article" aria-labelledby="card-when-title">
+        <div class="card-inner">
+          <div id="card-when-title" class="card-title">When</div>
+          <div class="card-body" tabindex="0">
+            <p><strong>Date:</strong> December 16, 2025</p>
+            <p><strong>Time:</strong> 20:00 (local)</p>
+            <p><small>Join early for warm-up and community chat.</small></p>
+            <p><small>Reminder: Schedule subject to change — check channel updates.</small></p>
+            <!-- more content will scroll inside this area if needed -->
+          </div>
+          <div class="card-footer" aria-hidden="true">
+            <span class="meta">Countdown visible above</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: What -->
+      <article class="card" role="article" aria-labelledby="card-what-title">
+        <div class="card-inner">
+          <div id="card-what-title" class="card-title">What</div>
+          <div class="card-body" tabindex="0">
+            <p><strong>Stream Focus:</strong> Casual multiplayer co-op and community Q&A</p>
+            <p><strong>Segments:</strong> Playthrough, tips & tricks, chat, and giveaways</p>
+            <p><strong>Expect:</strong> high-energy gameplay, friendly commentary, occasional mod challenges.</p>
+            <p><small>Bring questions for the Q&A — we'll answer live.</small></p>
+          </div>
+          <div class="card-footer" aria-hidden="true">
+            <span class="meta">Moderated chat</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Large Card: Game (spans both columns) -->
+      <article class="card card--large" role="article" aria-labelledby="card-game-title">
+        <div class="card-inner" style="padding:10px;">
+          <div id="card-game-title" class="game-title">Game: "Neon Rift"</div>
+          <!-- Replace with actual game art -->
+          <img class="game-art" src="placeholder-game-art.jpg" alt="Game art for Neon Rift (placeholder)">
+          <div class="card-body" tabindex="0" style="margin-top:8px;">
+            <p><strong>About the Game:</strong> Neon Rift is a fast-paced sci-fi arena shooter with cooperative objectives and PvE elements. Expect tight movement, flashy visuals, and tense boss encounters.</p>
+            <p><strong>Planned Activities:</strong> We'll push through the Storm Bastion raid, try new loadouts, and experiment with community-suggested builds.</p>
+            <p><strong>Notes:</strong> Stream will highlight community interaction and be spoiler-aware for campaign missions.</p>
+            <p><small>Game art & details will be updated as we finalize the event.</small></p>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
+
   <footer id="footer">
     <div class="container">
       <div class="footer-content">
@@ -355,32 +477,34 @@
       <p>Copyright ©2025; Designed by Group5</p>
     </div>
   </footer>
+
 </body>
-  <script>
+<script>
+  // Countdown (keeps original logic)
   const targetDate = new Date("December 16, 2025 20:00:00").getTime();
+  const countdownElement = document.getElementById("countdown-inline");
 
-const countdownElement = document.getElementById("countdown-inline");
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+    if (distance < 0) {
+      countdownElement.innerHTML = "Live now!";
+      clearInterval(interval);
+      return;
+    }
 
-  if (distance < 0) {
-    countdownElement.innerHTML = "Live now!";
-    clearInterval(interval);
-    return;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const interval = setInterval(updateCountdown, 1000);
+  updateCountdown();
 
-  countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-
-const interval = setInterval(updateCountdown, 1000);
-updateCountdown(); 
-    </script>
+  // Accessibility note: ensure card images have meaningful alt text or aria-hidden if purely decorative.
+</script>
 </html>
