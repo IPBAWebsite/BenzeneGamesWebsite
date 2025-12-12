@@ -150,20 +150,17 @@
 
 
 .hero-overlay {
-  position: absolute;
-  top: calc(var(--nav-height) + 2vh);
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin: calc(var(--nav-height) + 2vh) auto 0; 
   width: 86%;
   max-width: 1200px;
-  max-height: calc(100vh - var(--nav-height) - 2vh);
-  height: auto;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   z-index: 100; 
-  box-sizing: border-box;
-  padding: 0.5rem 0;      
+  padding: 0.5rem 0;
+  max-height: calc(100vh - var(--nav-height) - 2vh);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -171,27 +168,26 @@
 }
 
  
- .comingsoon-centerbox {
-  position: relative;       
-  z-index: 500;             
+.comingsoon-centerbox {
+  position: relative;            
   width: 100%;
   color: #fff;
-  padding: 0.8rem 1.25rem;  
+  padding: 0.8rem 1.25rem;
   display: flex;
   flex-direction: column;
-  align-items: center;      
+  align-items: center;
   justify-content: center;
-  text-align: center;       
+  text-align: center;
   height: var(--centerbox-h);
   min-height: 64px;
   max-height: 32vh;
   box-sizing: border-box;
   pointer-events: auto;
-  background: rgba(0,0,0,0.42); 
+  background: rgba(0,0,0,0.6);   
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow: 0 10px 30px rgba(0,0,0,0.55); 
-  margin: 0; 
+  margin: 0;                     
 }
   
   .comingsoon-brand-label { display:inline-block; margin:6px auto; font-size:0.78rem; letter-spacing:1.5px; color:rgba(255,255,255,0.95); background:rgba(255,255,255,0.06); padding:6px 14px; border-radius:18px; font-weight:bold; text-shadow:0 2px 8px #000; font-family:"Stack Sans Text", Arial, sans-serif; }
