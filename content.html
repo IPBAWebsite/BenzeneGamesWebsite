@@ -298,20 +298,31 @@
     z-index: 600; /* ensure it's above cards */
   }
   .comingsoon-title { font-family:"Stack Sans Text","Science Gothic",Arial,sans-serif; font-size:clamp(1.6rem,3.8vw,3rem); font-weight:800; margin:6px 0 8px 0; background:rgba(0,0,0,0.13); padding:0.09em 0.29em; border-radius:10px; display:block; }
-  .comingsoon-desc { font-family:"Stack Sans Text",Arial,sans-serif; margin-top:0.15rem; font-size:clamp(0.95rem,1.5vw,1.05rem); color:#fffbe9; text-shadow:0 2px 9px #000; max-width:100%; }
-  /* make the inline countdown more robust: background, wrap, and avoid overflowing the centerbox */
-  #countdown-inline { 
-    font-weight:700; 
-    color:#fff; 
-    display:inline-block; 
-    margin-top:6px;
-    background: rgba(0,0,0,0.36);
-    padding: 6px 10px;
-    border-radius: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .comingsoon-desc {
+  display: inline-flex;       
+  align-items: center;
+  gap: 0.6rem;                 
+  margin-top: 0.15rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: #fffbe9;
+  text-shadow: 0 2px 9px #000;
+  max-width: 100%;
+  white-space: nowrap;         
+}
+#countdown-inline {
+  display: inline-block;       
+  vertical-align: middle;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 6px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(420px, 90%);
+  box-sizing: border-box;
+}
 
   /* HERO CARDS: grid inside overlay
      Use min-content rows so when stacked the grid doesn't force taller rows that break overlay height. */
@@ -643,11 +654,16 @@
 
     <!-- HERO OVERLAY: contains centerbox + cards so they scale together and stay visible below the nav -->
     <div class="hero-overlay" role="region" aria-label="Hero overlay - summary and cards">
-      <div class="comingsoon-centerbox" role="region" aria-label="Upcoming summary">
-        <span class="comingsoon-brand-label">CONTENT</span>
-        <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING Stream</h1>
-        <p class="comingsoon-desc">Starting in: <span id="countdown-inline" aria-live="polite"></span></p>
-      </div>
+    <div class="comingsoon-centerbox" role="region" aria-label="Upcoming summary">
+  <span class="comingsoon-brand-label">CONTENT</span>
+  <h1 id="upcoming-heading" class="comingsoon-title">UPCOMING Stream</h1>
+
+ 
+  <div class="comingsoon-timer" aria-hidden="false">
+    <p class="comingsoon-desc" aria-hidden="false">Starting in:</p>
+    <div id="countdown-inline" aria-live="polite" role="status"></div>
+  </div>
+</div>
 
       <!-- overlay-level side scroll hint (shows if overlay is scrollable) -->
       <div class="side-scroll-hint" aria-hidden="true"></div>
