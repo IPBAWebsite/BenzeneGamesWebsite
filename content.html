@@ -689,6 +689,39 @@
         font-size: 50px;
     }
 
+
+
+
+
+    @media (max-width: 880px) {
+  /* Push the overlay down a little more than the nav height so the heading is visible */
+  .hero-overlay {
+    top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 12px) !important;
+    /* keep overlay scrollable */
+    max-height: calc(100vh - var(--nav-height) - 12px) !important;
+  }
+
+  /* Small extra breathing room specifically for the centerbox content */
+  .comingsoon-centerbox {
+    margin-top: 0.25rem !important;
+    padding-top: 0.25rem !important;
+    z-index: 210; /* ensure centerbox sits above video but below nav */
+  }
+
+  /* Slightly reduce the big title so it won't be pushed too far up on narrow phones */
+  .comingsoon-title {
+    font-size: clamp(1.6rem, 6.2vw, 3.2rem) !important;
+    margin-top: 0.25rem !important;
+  }
+
+  /* Make sure the inline countdown is visible (no overlap) */
+  #countdown-inline {
+    position: relative;
+    z-index: 220;
+    margin-top: 0.4rem !important;
+  }
+}
+
   </style>
 </head>
 <body>
