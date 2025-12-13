@@ -722,6 +722,46 @@
   }
 }
 
+
+    @media (max-width: 880px) {
+  /* move / shrink the badge so it sits visually in the top-right without overlapping text */
+  .live-badge {
+    position: absolute !important;
+    top: 10px !important;        /* distance from card top */
+    right: 12px !important;      /* distance from card right */
+    transform: none !important;
+    font-size: 0.95rem !important;
+    padding: 6px 10px !important;
+    white-space: nowrap !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45) !important;
+    z-index: 220 !important;
+  }
+
+  /* Reserve horizontal room for the badge so the title doesn't sit under it */
+  .card .card-title,
+  .card--large .game-title {
+    padding-right: 110px !important; /* leave space for badge (tweak value if needed) */
+  }
+
+  /* Slightly reduce title size on narrow phones so wrapping is nicer */
+  .card .card-title {
+    font-size: 1.25rem !important;
+    line-height: 1.15 !important;
+  }
+
+  /* If a card's title still gets pushed, add a tiny top padding to the inner container */
+  .card .card-inner {
+    padding-top: 10px !important;
+  }
+
+  /* For very narrow screens reduce the reserved space so it doesn't force too much wrapping */
+  @media (max-width: 420px) {
+    .card .card-title,
+    .card--large .game-title { padding-right: 90px !important; }
+    .live-badge { font-size: 0.9rem !important; padding: 5px 8px !important; top: 8px !important; right: 10px !important; }
+  }
+}
+
   </style>
 </head>
 <body>
