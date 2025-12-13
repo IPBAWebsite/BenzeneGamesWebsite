@@ -56,14 +56,16 @@
   display: inline-block;
   border-radius: 8px;
   overflow: visible;
+
+  /* NUDGE: move the clickable link + halo. Increase to push more. */
+  transform: translateX(40px);
 }
 
 /* light circular halo behind the logo; LEFT is offset to match the image nudge */
 .logo a::before {
   content: "";
   position: absolute;
-  /* keep halo centered over the visual logo but offset it the same amount the image is moved */
-  left: calc(50% + 40px);   /* match this value to the .logo img transform below */
+  left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: calc(100% + 56px);
@@ -93,12 +95,17 @@
   position: relative;
   z-index: 1;
 
-  /* NUDGE: shift the image right — change 18px to suit your needs */
-  transform: translateX(40px);
+  /* no visual-only nudge here — the anchor is moved instead */
+  transform: none;
 
   /* keep a subtle shadow so the image reads crisply */
   filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45));
   -webkit-filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45));
+}
+
+/* smaller offset on very small screens so layout stays balanced */
+@media (max-width: 480px) {
+  .logo a { transform: translateX(12px); }
 }
 
 /* smaller offset on very small screens so layout stays balanced */
