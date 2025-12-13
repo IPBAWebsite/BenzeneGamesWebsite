@@ -68,15 +68,23 @@
       align-items: center;
       height: 100%;
     }
-    .logo img {
-      /* ensure logo never taller than nav */
-      max-height: calc(var(--nav-height, 150px) - 30px);
-      width: auto;
-      height: auto;
-      vertical-align: middle;
-      margin: 0;
-      display: block;
-    }
+.logo img {
+  /* ensure logo never taller than nav */
+  max-height: calc(var(--nav-height, 150px) - 30px);
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  margin: 0;
+  display: block;
+  filter: brightness(1.15) contrast(1.05) saturate(1.05)
+          drop-shadow(0 6px 14px rgba(0,0,0,0.6))
+          drop-shadow(0 0 8px rgba(255,255,255,0.06));
+  -webkit-filter: brightness(1.15) contrast(1.05) saturate(1.05)
+                 drop-shadow(0 6px 14px rgba(0,0,0,0.6))
+                 drop-shadow(0 0 8px rgba(255,255,255,0.06));
+  position: relative;
+  z-index: 2;
+}
 
    .topnav {
       --nav-height: 150px;
