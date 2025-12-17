@@ -1061,7 +1061,7 @@ In the game, players explore different areas that have been designed to create a
     a.href = WATCH_URL;
     a.target = '_blank';
     a.rel = 'noopener';
-    a.textContent = 'Watch live now';
+    a.textContent = '<i class="fa-solid fa-eye"></i> Watch Live Now';
     // place after the countdown if present, otherwise append to centerbox
     if (countdownEl && countdownEl.parentNode) {
       countdownEl.parentNode.appendChild(a);
@@ -1075,7 +1075,7 @@ In the game, players explore different areas that have been designed to create a
     if (hasSetState) return;
     hasSetState = true;
 
-    titleEl.textContent = 'Live now!';
+    titleEl.textContent = 'LIVE NOW!';
     if (startingText) startingText.style.display = 'none';
     if (countdownEl) countdownEl.style.display = 'none';
     createWatchButton();
@@ -1097,7 +1097,7 @@ In the game, players explore different areas that have been designed to create a
 
   function setEndedState() {
     // Update heading & remove watch button. No countdown shown.
-    titleEl.textContent = 'Live has ended';
+    titleEl.textContent = 'LIVE HAS ENDED';
     const btn = centerbox.querySelector('.live-now-btn');
     if (btn) btn.remove();
     if (startingText) startingText.style.display = 'none';
@@ -1117,7 +1117,7 @@ In the game, players explore different areas that have been designed to create a
         return true;
       }
     } else {
-      // fallback: if existing countdown script writes "Live now!" into countdownEl
+      // fallback: if existing countdown script writes "LIVE NOW!" into countdownEl
       const ct = (countdownEl.textContent || '').trim().toLowerCase();
       if (ct.includes('live')) {
         setLiveState();
