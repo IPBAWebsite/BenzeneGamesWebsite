@@ -691,7 +691,20 @@
     }
 
 
-
+.live-now-btn {
+  display: inline-block;
+  background: linear-gradient(90deg,#ff6b3d 0%,#ff3b3b 100%);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 24px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  margin-top: 10px;
+  font-family: inherit;
+}
+.live-now-btn:focus,
+.live-now-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.30); }
 
 
     @media (max-width: 880px) {
@@ -763,6 +776,7 @@
   }
 }
 
+    
   </style>
 </head>
 <body>
@@ -1021,5 +1035,118 @@ In the game, players explore different areas that have been designed to create a
     }
   });
 </script>
+
+  <script>
+(function () {
+  // Elements we will update (existing in your markup)
+  const titleEl = document.querySelector('.comingsoon-title');
+  const startingText = document.querySelector('.comingsoon-desc'); // "Starting in:"
+  const countdownEl = document.getElementById('countdown-inline');
+  const centerbox = document.querySelector('.comingsoon-centerbox');
+  const WATCH_URL = 'https://www.youtube.com/@BenzeneGamesOfficial'; // change if needed
+
+  if (!titleEl || !countdownEl || !centerbox) return;
+
+  // targetDate is defined earlier in your existing script (ms since epoch).
+  // Fallback: if not present, tries to detect live text written by existing code.
+  const nowMs = () => Date.now();
+  const LIVE_WINDOW_MS = 3 * 60 * 60 * 1000; // 3 hours
+
+  let hasSetState = false;
+
+  function createWatchButton() {
+    if (centerbox.querySelector('.live-now-btn')) return centerbox.querySelector('.live-now-btn');
+    const a = document.createElement('a');
+    a.className = 'live-now-btn';
+    a.href = WATCH_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'Watch live now';
+    // place after the countdown if present, otherwise append to centerbox
+    if (countdownEl && countdownEl.parentNode) {
+      countdownEl.parentNode.appendChild(a);
+    } else {
+      centerbox.appendChild(a);
+    }
+    return a;
+  }
+
+  function setLiveState() {
+    if (hasSetState) return;
+    hasSetState = true;
+
+    titleEl.textContent = 'Live now!';
+    if (startingText) startingText.style.display = 'none';
+    if (countdownEl) countdownEl.style.display = 'none';
+    createWatchButton();
+
+    // schedule "ended" state 3 hours after the targetDate (if available) or 3h from now
+    let endAt = null;
+    try {
+      if (typeof targetDate === 'number') endAt = targetDate + LIVE_WINDOW_MS;
+    } catch (e) { /* ignore */ }
+    if (!endAt) endAt = nowMs() + LIVE_WINDOW_MS;
+    const ms = endAt - nowMs();
+    if (ms > 0) {
+      setTimeout(setEndedState, ms);
+    } else {
+      // if already past end window, set ended immediately
+      setEndedState();
+    }
+  }
+
+  function setEndedState() {
+    // Update heading & remove watch button. No countdown shown.
+    titleEl.textContent = 'Live has ended';
+    const btn = centerbox.querySelector('.live-now-btn');
+    if (btn) btn.remove();
+    if (startingText) startingText.style.display = 'none';
+    if (countdownEl) countdownEl.style.display = 'none';
+  }
+
+  function checkState() {
+    // If you have targetDate (ms) use that. Otherwise rely on countdown text.
+    if (typeof targetDate === 'number') {
+      const now = nowMs();
+      if (now >= targetDate && now < (targetDate + LIVE_WINDOW_MS)) {
+        setLiveState();
+        return true;
+      }
+      if (now >= (targetDate + LIVE_WINDOW_MS)) {
+        setEndedState();
+        return true;
+      }
+    } else {
+      // fallback: if existing countdown script writes "Live now!" into countdownEl
+      const ct = (countdownEl.textContent || '').trim().toLowerCase();
+      if (ct.includes('live')) {
+        setLiveState();
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Run once on load
+  checkState();
+
+  // Observe changes to the countdown element (existing code updates it)
+  const mo = new MutationObserver(() => {
+    if (!hasSetState) checkState();
+  });
+  mo.observe(countdownEl, { childList: true, characterData: true, subtree: true });
+
+  // Poll as a safety net (stops if state set)
+  const poll = setInterval(() => {
+    if (hasSetState) {
+      clearInterval(poll);
+      mo.disconnect();
+      return;
+    }
+    checkState();
+  }, 800);
+})();
+</script>
+  
 </body>
 </html>
