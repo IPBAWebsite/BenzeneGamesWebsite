@@ -969,7 +969,7 @@ In the game, players explore different areas that have been designed to create a
     const distance = targetDate - now;
     if (distance < 0) {
       if (countdownElement) countdownElement.textContent = "Live now!";
-      if (cardCountdownElement) cardCountdownElement.textContent = "Live now!";
+      if (cardCountdownElement) cardCountdownElement.textContent = "0s";
       clearInterval(interval);
       return;
     }
