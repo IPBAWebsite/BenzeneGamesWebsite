@@ -1147,6 +1147,48 @@ In the game, players explore different areas that have been designed to create a
   }, 800);
 })();
 </script>
-  
+  <script>
+(function () {
+  const root = document.documentElement;
+  const nav = document.querySelector('.topnav');
+  const navToggle = document.getElementById('navToggle');
+
+  if (!nav) return;
+
+  function updateNavVar() {
+    // Measure the nav's current height and write it to :root as --nav-height
+    const h = Math.ceil(nav.getBoundingClientRect().height);
+    root.style.setProperty('--nav-height', h + 'px');
+  }
+
+  // Throttle with RAF to avoid layout thrash
+  let rafId = 0;
+  function scheduleUpdate() {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(updateNavVar);
+  }
+
+  // Run on load and give fonts/video a short time to settle
+  window.addEventListener('load', () => setTimeout(updateNavVar, 60));
+
+  // Update when viewport changes
+  window.addEventListener('resize', scheduleUpdate);
+  window.addEventListener('orientationchange', scheduleUpdate);
+
+  // When the mobile nav toggle runs (it changes nav height), update after it toggles
+  if (navToggle) navToggle.addEventListener('click', () => setTimeout(updateNavVar, 180));
+
+  // Observe any direct size changes to the nav (menu opens/closes, children injected, etc.)
+  const resizeObserver = new ResizeObserver(scheduleUpdate);
+  resizeObserver.observe(nav);
+
+  // Also observe navigation mutations (class changes e.g. .open) as a fallback
+  const mo = new MutationObserver(scheduleUpdate);
+  mo.observe(nav, { attributes: true, childList: true, subtree: true });
+
+  // initial measurement
+  updateNavVar();
+})();
+</script>
 </body>
 </html>
